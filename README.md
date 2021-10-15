@@ -1,1 +1,15 @@
-# ccf-organ-vr-gallery
+# CCF Organ VR Gallery
+
+Welcome to this repo! 
+
+## Background and More Information
+
+For more information about the Common Coordinate Framework (CCF), see the HuBMAP CCF Portal at <https://hubmapconsortium.github.io/ccf/>.
+
+## Change Log
+
+See the [ChangeLog](CHANGELOG.md) for the latest developments.
+
+## Credits
+
+This software is developed by the [Cyberinfrastructure for Network Science Center at Indiana University](http://cns.iu.edu/). It is funded by NIH Award [OT2OD026671](https://projectreporter.nih.gov/project_info_description.cfm?aid=9687220").
