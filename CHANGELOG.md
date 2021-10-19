@@ -2,6 +2,14 @@
 
 Changelog for the CCF Organ VR Gallery
 
+## 0.3.5 - 2021-10-19
+
+### Added in 0.3.5
+
+* More organs added
+* Fixed issue where organ explosion value was resized during user input even when not selected
+Added teleportation platforms
+
 ## 0.3.4.1 - 2021-10-6
 
 ### Added in 0.3.4.1
