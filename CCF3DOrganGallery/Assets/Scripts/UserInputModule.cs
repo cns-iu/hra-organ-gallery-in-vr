@@ -5,9 +5,7 @@ using UnityEngine.InputSystem;
 
 public class UserInputModule : MonoBehaviour
 {
-    public ExplodingViewManager[] m_OrganExplodeManagers;
     public InputActionReference m_ExplodeReference;
-    public float m_Step;
     public float m_ScalingFactor;
     public float m_GlobalSliderValue;
 
@@ -30,46 +28,19 @@ public class UserInputModule : MonoBehaviour
     {
         ForwardRaycastHitEvent?.Invoke(hasHit, hit);
     }
-
-    private void Awake()
-    {
-        m_OrganExplodeManagers = Object.FindObjectsOfType<ExplodingViewManager>();
-    }
-
     void Update()
     {
-        m_GlobalSliderValue = ReadJoystickInput();
-        RestrictAndShareJoystickValue(m_GlobalSliderValue);
+        BroadcastJoystickValue(m_GlobalSliderValue);
     }
 
-    private void RestrictAndShareJoystickValue(float joystickValue)
+    private void BroadcastJoystickValue(float joystickValue)
     {
-        foreach (var org in m_OrganExplodeManagers)
-        {
-            float output = org.m_ExplodingValue;
-            output += joystickValue * m_Step;
-
-            if (output > 1)
-            {
-                output = 1;
-            }
-            if (output < 0)
-            {
-                output = 0;
-            }
-
-            org.m_ExplodingValue = output;
-            BroadcastNewJoystickEvent(output);
-        }
+        m_GlobalSliderValue = ReadJoystickInput();
+        OnUpdateJoystickValueEvent?.Invoke(joystickValue);
     }
 
     private float ReadJoystickInput()
     {
         return m_ExplodeReference.action.ReadValue<Vector2>().y * m_ScalingFactor;
-    }
-
-    void BroadcastNewJoystickEvent(float message)
-    {
-        OnUpdateJoystickValueEvent?.Invoke(message);
     }
 }
