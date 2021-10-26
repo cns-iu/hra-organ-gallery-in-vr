@@ -2,7 +2,7 @@
 
 Changelog for the CCF Organ VR Gallery
 
-## 0.3.5 - 2021-10-26
+## 0.3.5.1 - 2021-10-26
 
 ### Added in 0.3.5.1
 
