@@ -87,26 +87,7 @@ public class ExplodingViewManager : MonoBehaviour
     private List<GameObject> FlattenChildrenIntoList(GameObject organ)
     {
         List<GameObject> result = new List<GameObject>();
-
-        FindLeaves(organ.transform, result);
+        Utils.FindLeaves(organ.transform, result);
         return result;
     }
-
-    void FindLeaves(Transform parent, List<GameObject> result)
-    {
-        if (parent.childCount == 0)
-        {
-            result.Add(parent.gameObject);
-        }
-        else
-        {
-            foreach (Transform child in parent)
-            {
-                FindLeaves(child, result);
-            }
-        }
-
-
-    }
-
 }

@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class OrganHighlighter : MonoBehaviour
 {
-    public GameObject pre_Marker;
     public bool m_CanBeExploded = false;
-    public GameObject m_Marker;
+    public List<Outline> m_OutlinesList;
     private void OnEnable()
     {
         UserInputModule.ForwardRaycastHitEvent += SetHighlightOnTargetUpdate;
@@ -23,14 +22,22 @@ public class OrganHighlighter : MonoBehaviour
 
     private void Awake()
     {
-        m_Marker = Instantiate(pre_Marker, transform.position, Quaternion.identity);
-        m_Marker.SetActive(false);
+        AddOutlineComponents();
     }
 
-    void CreateAndGetMarker()
+    void AddOutlineComponents()
     {
-
-        // m_Marker = transform.GetChild(transform.childCount - 1).gameObject;
+        List<GameObject> result = new List<GameObject>();
+        Utils.FindLeaves(transform, result);
+        foreach (GameObject go in result)
+        {
+            if (go.GetComponent<Outline>() == null)
+            {
+                go.AddComponent<Outline>();
+            }
+            go.GetComponent<Outline>().enabled = false;
+            m_OutlinesList.Add(go.GetComponent<Outline>());
+        }
     }
 
     void DetermineIfCanBeExploded(bool hasHit, RaycastHit hit)
@@ -40,7 +47,11 @@ public class OrganHighlighter : MonoBehaviour
 
     void SetHighlightOnTargetUpdate(bool hasHit, RaycastHit hit)
     {
-        m_Marker.SetActive(m_CanBeExploded);
+        // m_Marker.SetActive(m_CanBeExploded);
+        foreach (var outline in m_OutlinesList)
+        {
+            outline.enabled = m_CanBeExploded;
+        }
     }
 
     void EnableExplosion(bool hasHit, RaycastHit hit)
