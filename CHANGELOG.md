@@ -2,6 +2,13 @@
 
 Changelog for the CCF Organ VR Gallery
 
+## 0.3.5 - 2021-10-26
+
+### Added in 0.3.5.1
+
+* Replaced highlight marker with outline
+* Implemented simple annotation for controller
+
 ## 0.3.5 - 2021-10-19
 
 ### Added in 0.3.5
