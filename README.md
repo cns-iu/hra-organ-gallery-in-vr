@@ -6,6 +6,10 @@ Welcome to this repo!
 
 For more information about the Common Coordinate Framework (CCF), see the HuBMAP CCF Portal at <https://hubmapconsortium.github.io/ccf/>.
 
+## Video Demo
+
+Video demos and dev diaries can be found on [this](https://www.youtube.com/playlist?list=PLLKzeLLVLR5sSCQ9i-XSrCVZQJm2zTXN2) YouTube playlist.
+
 ## Change Log
 
 See the [ChangeLog](CHANGELOG.md) for the latest developments.
