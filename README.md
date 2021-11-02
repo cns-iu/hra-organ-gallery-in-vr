@@ -2,6 +2,11 @@
 
 Welcome to this repo! 
 
+## Become a test user
+
+If you would like to become a test user, please email Andreas Bueckle at [abueckle@iu.edu](mailto:abueckle@iu.edu).
+
+
 ## Background and More Information
 
 For more information about the Common Coordinate Framework (CCF), see the HuBMAP CCF Portal at <https://hubmapconsortium.github.io/ccf/>.
