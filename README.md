@@ -12,4 +12,4 @@ See the [ChangeLog](CHANGELOG.md) for the latest developments.
 
 ## Credits
 
-This software is developed by the [Cyberinfrastructure for Network Science Center at Indiana University](http://cns.iu.edu/). It is funded by NIH Award [OT2OD026671](https://projectreporter.nih.gov/project_info_description.cfm?aid=9687220").
+This software is developed by [Andreas Bueckle](https://www.andreas-bueckle.com) the [Cyberinfrastructure for Network Science Center at Indiana University](http://cns.iu.edu/). It is funded by NIH Award [OT2OD026671](https://projectreporter.nih.gov/project_info_description.cfm?aid=9687220").
