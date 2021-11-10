@@ -11,6 +11,10 @@ public class OrganHighlighter : MonoBehaviour
         UserInputModule.ForwardRaycastHitEvent += SetHighlightOnTargetUpdate;
         UserInputModule.ForwardRaycastHitEvent += EnableExplosion;
         UserInputModule.ForwardRaycastHitEvent += DetermineIfCanBeExploded;
+
+        UserInputModule.CollisionWithOrganEvent += SetHighlightOnTargetUpdate;
+        UserInputModule.CollisionWithOrganEvent += EnableExplosion;
+        UserInputModule.CollisionWithOrganEvent += DetermineIfCanBeExploded;
     }
 
     private void OnDisable()
@@ -18,6 +22,10 @@ public class OrganHighlighter : MonoBehaviour
         UserInputModule.ForwardRaycastHitEvent -= SetHighlightOnTargetUpdate;
         UserInputModule.ForwardRaycastHitEvent -= EnableExplosion;
         UserInputModule.ForwardRaycastHitEvent -= DetermineIfCanBeExploded;
+
+        UserInputModule.CollisionWithOrganEvent -= SetHighlightOnTargetUpdate;
+        UserInputModule.CollisionWithOrganEvent -= EnableExplosion;
+        UserInputModule.CollisionWithOrganEvent -= DetermineIfCanBeExploded;
     }
 
     private void Awake()
@@ -45,6 +53,22 @@ public class OrganHighlighter : MonoBehaviour
         m_CanBeExploded = hasHit && hit.collider.gameObject.Equals(this.gameObject);
     }
 
+    void DetermineIfCanBeExploded(GameObject gameObject)
+    {
+        m_CanBeExploded = (gameObject == this.gameObject);
+    }
+
+    void SetHighlightOnTargetUpdate(GameObject gameObject)
+    {
+        if (gameObject == this.gameObject)
+        {
+            foreach (var outline in m_OutlinesList)
+            {
+                outline.enabled = m_CanBeExploded;
+            }
+        }
+    }
+
     void SetHighlightOnTargetUpdate(bool hasHit, RaycastHit hit)
     {
         // m_Marker.SetActive(m_CanBeExploded);
@@ -55,6 +79,11 @@ public class OrganHighlighter : MonoBehaviour
     }
 
     void EnableExplosion(bool hasHit, RaycastHit hit)
+    {
+        this.GetComponent<ExplodingViewManager>().enabled = m_CanBeExploded;
+    }
+
+    void EnableExplosion(GameObject gameObject)
     {
         this.GetComponent<ExplodingViewManager>().enabled = m_CanBeExploded;
     }

@@ -14,14 +14,33 @@ public class UserInputModule : MonoBehaviour
     public delegate void TargetedOrganUpdate(bool hasHit, RaycastHit hit);
     public static event TargetedOrganUpdate ForwardRaycastHitEvent;
 
+    public delegate void CollisionWithOrgan(GameObject gameObject);
+    public static event CollisionWithOrgan CollisionWithOrganEvent;
+    public delegate void CollisionWithOrganEnd();
+    public static event CollisionWithOrganEnd CollisionWithOrganEndEvent;
+
     private void OnEnable()
     {
         ControllerRaycaster.RaycastEmitterEvent += ForwardRaycastHit;
+        CollisionEventHandler.CollisionStartEvent += ForwardCollision;
+        CollisionEventHandler.CollisionEndEvent += ForwardCollisionEnd;
     }
 
     private void OnDisable()
     {
         ControllerRaycaster.RaycastEmitterEvent -= ForwardRaycastHit;
+        CollisionEventHandler.CollisionStartEvent -= ForwardCollision;
+        CollisionEventHandler.CollisionEndEvent -= ForwardCollisionEnd;
+    }
+
+    private void ForwardCollisionEnd()
+    {
+        CollisionWithOrganEndEvent?.Invoke();
+    }
+
+    void ForwardCollision(GameObject gameObject)
+    {
+        CollisionWithOrganEvent?.Invoke(gameObject);
     }
 
     void ForwardRaycastHit(bool hasHit, RaycastHit hit)
