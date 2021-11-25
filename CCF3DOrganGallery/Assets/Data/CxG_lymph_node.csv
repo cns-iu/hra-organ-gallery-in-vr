@@ -1,0 +1,35 @@
+﻿tissue_type,cell_type_ontology_id,cell_type,Total
+lymph node,CL:0000037,hematopoietic stem cell,34
+lymph node,CL:0000084,T cell,3848
+lymph node,CL:0000097,mast cell,143
+lymph node,CL:0000115,endothelial cell,158
+lymph node,CL:0000232,erythrocyte,24
+lymph node,CL:0000235,macrophage,1148
+lymph node,CL:0000236,B cell,15249
+lymph node,CL:0000499,stromal cell,111
+lymph node,CL:0000624,"CD4-positive, alpha-beta T cell",8406
+lymph node,CL:0000625,"CD8-positive, alpha-beta T cell",538
+lymph node,CL:0000775,neutrophil,107
+lymph node,CL:0000784,plasmacytoid dendritic cell,6
+lymph node,CL:0000786,plasma cell,2687
+lymph node,CL:0000787,memory B cell,3319
+lymph node,CL:0000788,naive B cell,1335
+lymph node,CL:0000790,immature alpha-beta T cell,121
+lymph node,CL:0000791,mature alpha-beta T cell,400
+lymph node,CL:0000810,"CD4-positive, alpha-beta thymocyte",6719
+lymph node,CL:0000811,"CD8-positive, alpha-beta thymocyte",343
+lymph node,CL:0000814,mature NK T cell,683
+lymph node,CL:0000815,regulatory T cell,889
+lymph node,CL:0000841,mature conventional dendritic cell,17
+lymph node,CL:0000860,classical monocyte,246
+lymph node,CL:0000875,non-classical monocyte,31
+lymph node,CL:0000895,"naive thymus-derived CD4-positive, alpha-beta T cell",1499
+lymph node,CL:0000897,"CD4-positive, alpha-beta memory T cell",1434
+lymph node,CL:0000909,"CD8-positive, alpha-beta memory T cell",864
+lymph node,CL:0000921,type I NK T cell,3758
+lymph node,CL:0001044,"effector CD4-positive, alpha-beta T cell",6908
+lymph node,CL:0001050,"effector CD8-positive, alpha-beta T cell",5860
+lymph node,CL:0001065,innate lymphoid cell,2420
+lymph node,CL:0002393,intermediate monocyte,306
+lymph node,CL:0002394,CD141-positive myeloid dendritic cell,101
+lymph node,CL:0002399,CD1c-positive myeloid dendritic cell,90

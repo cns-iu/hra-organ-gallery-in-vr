@@ -1,0 +1,70 @@
+﻿tissue_type,cell_type_ontology_id,cell_type,Total
+peripheral zone of prostate,CL:0000094,granulocyte,14
+peripheral zone of prostate,CL:0000151,secretory cell,920
+peripheral zone of prostate,CL:0000165,neuroendocrine cell,20
+peripheral zone of prostate,CL:0000236,B cell,3
+peripheral zone of prostate,CL:0000359,vascular associated smooth muscle cell,86
+peripheral zone of prostate,CL:0000451,dendritic cell,43
+peripheral zone of prostate,CL:0000669,pericyte cell,140
+peripheral zone of prostate,CL:0000738,leukocyte,358
+peripheral zone of prostate,CL:0000786,plasma cell,3
+peripheral zone of prostate,CL:0000810,"CD4-positive, alpha-beta thymocyte",47
+peripheral zone of prostate,CL:0000814,mature NK T cell,1
+peripheral zone of prostate,CL:0000860,classical monocyte,14
+peripheral zone of prostate,CL:0000875,non-classical monocyte,7
+peripheral zone of prostate,CL:0001044,"effector CD4-positive, alpha-beta T cell",5
+peripheral zone of prostate,CL:0002340,luminal cell of prostate epithelium,3697
+peripheral zone of prostate,CL:0002341,basal cell of prostate epithelium,27279
+peripheral zone of prostate,CL:0002394,CD141-positive myeloid dendritic cell,1
+peripheral zone of prostate,CL:0002399,CD1c-positive myeloid dendritic cell,47
+peripheral zone of prostate,CL:0002622,prostate stromal cell,176
+peripheral zone of prostate,CL:1000296,epithelial cell of urethra,2425
+peripheral zone of prostate,CL:1000299,fibroblast of connective tissue of prostate,321
+peripheral zone of prostate,CL:1000304,fibroblast of connective tissue of nonglandular part of prostate,135
+peripheral zone of prostate,CL:1000305,fibroblast of connective tissue of glandular part of prostate,238
+peripheral zone of prostate,CL:1000487,smooth muscle cell of prostate,664
+peripheral zone of prostate,CL:2000059,prostate gland microvascular endothelial cell,1473
+prostate gland,CL:0000019,sperm,11
+prostate gland,CL:0000038,erythroid progenitor cell,86
+prostate gland,CL:0000057,fibroblast,223
+prostate gland,CL:0000066,epithelial cell,6848
+prostate gland,CL:0000084,T cell,586
+prostate gland,CL:0000097,mast cell,9
+prostate gland,CL:0000115,endothelial cell,585
+prostate gland,CL:0000158,club cell,1078
+prostate gland,CL:0000192,smooth muscle cell,285
+prostate gland,CL:0000235,macrophage,317
+prostate gland,CL:0000499,stromal cell,32
+prostate gland,CL:0000576,monocyte,33
+prostate gland,CL:0000625,"CD8-positive, alpha-beta T cell",1081
+prostate gland,CL:0000763,myeloid cell,365
+prostate gland,CL:0000775,neutrophil,16
+prostate gland,CL:0000814,mature NK T cell,430
+prostate gland,CL:0002340,luminal cell of prostate epithelium,1092
+prostate gland,CL:0002341,basal cell of prostate epithelium,3298
+transition zone of prostate,CL:0000094,granulocyte,9
+transition zone of prostate,CL:0000151,secretory cell,4466
+transition zone of prostate,CL:0000165,neuroendocrine cell,25
+transition zone of prostate,CL:0000236,B cell,2
+transition zone of prostate,CL:0000359,vascular associated smooth muscle cell,72
+transition zone of prostate,CL:0000451,dendritic cell,38
+transition zone of prostate,CL:0000669,pericyte cell,132
+transition zone of prostate,CL:0000738,leukocyte,305
+transition zone of prostate,CL:0000786,plasma cell,5
+transition zone of prostate,CL:0000810,"CD4-positive, alpha-beta thymocyte",60
+transition zone of prostate,CL:0000814,mature NK T cell,2
+transition zone of prostate,CL:0000860,classical monocyte,10
+transition zone of prostate,CL:0000875,non-classical monocyte,11
+transition zone of prostate,CL:0001044,"effector CD4-positive, alpha-beta T cell",10
+transition zone of prostate,CL:0001050,"effector CD8-positive, alpha-beta T cell",1
+transition zone of prostate,CL:0002340,luminal cell of prostate epithelium,1161
+transition zone of prostate,CL:0002341,basal cell of prostate epithelium,16931
+transition zone of prostate,CL:0002394,CD141-positive myeloid dendritic cell,2
+transition zone of prostate,CL:0002399,CD1c-positive myeloid dendritic cell,39
+transition zone of prostate,CL:0002622,prostate stromal cell,409
+transition zone of prostate,CL:1000296,epithelial cell of urethra,8244
+transition zone of prostate,CL:1000299,fibroblast of connective tissue of prostate,847
+transition zone of prostate,CL:1000304,fibroblast of connective tissue of nonglandular part of prostate,188
+transition zone of prostate,CL:1000305,fibroblast of connective tissue of glandular part of prostate,446
+transition zone of prostate,CL:1000487,smooth muscle cell of prostate,845
+transition zone of prostate,CL:2000059,prostate gland microvascular endothelial cell,2442

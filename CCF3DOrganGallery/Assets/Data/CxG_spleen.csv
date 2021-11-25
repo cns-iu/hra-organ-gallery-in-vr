@@ -1,0 +1,24 @@
+﻿tissue_type,cell_type_ontology_id,cell_type,Total
+spleen,CL:0000037,hematopoietic stem cell,73
+spleen,CL:0000115,endothelial cell,596
+spleen,CL:0000232,erythrocyte,170
+spleen,CL:0000233,platelet,29
+spleen,CL:0000235,macrophage,1335
+spleen,CL:0000625,"CD8-positive, alpha-beta T cell",43
+spleen,CL:0000775,neutrophil,4539
+spleen,CL:0000784,plasmacytoid dendritic cell,43
+spleen,CL:0000786,plasma cell,3171
+spleen,CL:0000787,memory B cell,6460
+spleen,CL:0000788,naive B cell,1044
+spleen,CL:0000814,mature NK T cell,2439
+spleen,CL:0000815,regulatory T cell,288
+spleen,CL:0000860,classical monocyte,4443
+spleen,CL:0000895,"naive thymus-derived CD4-positive, alpha-beta T cell",1261
+spleen,CL:0000897,"CD4-positive, alpha-beta memory T cell",1771
+spleen,CL:0000900,"naive thymus-derived CD8-positive, alpha-beta T cell",610
+spleen,CL:0000909,"CD8-positive, alpha-beta memory T cell",4301
+spleen,CL:0000921,type I NK T cell,1038
+spleen,CL:0001065,innate lymphoid cell,117
+spleen,CL:0002393,intermediate monocyte,131
+spleen,CL:0002394,CD141-positive myeloid dendritic cell,51
+spleen,CL:0002399,CD1c-positive myeloid dendritic cell,51

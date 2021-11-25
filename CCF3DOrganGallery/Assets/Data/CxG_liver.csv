@@ -1,0 +1,14 @@
+﻿tissue_type,cell_type_ontology_id,cell_type,Total
+liver,CL:0000057,fibroblast,76
+liver,CL:0000084,T cell,146
+liver,CL:0000115,endothelial cell,267
+liver,CL:0000182,hepatocyte,1558
+liver,CL:0000232,erythrocyte,108
+liver,CL:0000235,macrophage,1381
+liver,CL:0000576,monocyte,612
+liver,CL:0000775,neutrophil,83
+liver,CL:0000786,plasma cell,34
+liver,CL:0000814,mature NK T cell,245
+liver,CL:0002538,intrahepatic cholangiocyte,42
+liver,CL:1000398,endothelial cell of hepatic sinusoid,421
+liver,CL:2000055,liver dendritic cell,34

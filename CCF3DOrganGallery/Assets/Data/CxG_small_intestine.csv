@@ -1,0 +1,21 @@
+﻿tissue_type,cell_type_ontology_id,cell_type,Total
+small intestine,CL:0000057,fibroblast,113
+small intestine,CL:0000097,mast cell,65
+small intestine,CL:0000131,gut endothelial cell,46
+small intestine,CL:0000160,goblet cell,61
+small intestine,CL:0000236,B cell,519
+small intestine,CL:0000576,monocyte,61
+small intestine,CL:0000584,enterocyte,942
+small intestine,CL:0000624,"CD4-positive, alpha-beta T cell",5257
+small intestine,CL:0000625,"CD8-positive, alpha-beta T cell",2323
+small intestine,CL:0000775,neutrophil,68
+small intestine,CL:0000786,plasma cell,303
+small intestine,CL:0002250,intestinal crypt stem cell,102
+small intestine,CL:0009012,transit amplifying cell of small intestine,227
+small intestine,CL:0009017,intestinal crypt stem cell of small intestine,71
+small intestine,CL:0019032,intestinal tuft cell,160
+small intestine,CL:1000334,enterocyte of epithelium of small intestine,1100
+small intestine,CL:1000343,paneth cell of epithelium of small intestine,647
+small intestine,CL:1000495,small intestine goblet cell,300
+small intestine,CL:1001516,intestinal enteroendocrine cell,58
+small intestine,CL:1001589,duodenum glandular cell,44

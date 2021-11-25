@@ -1,0 +1,163 @@
+﻿tissue_type,cell_type_ontology_id,cell_type,Total
+apex of heart,CL:0000057,fibroblast,10370
+apex of heart,CL:0000077,mesothelial cell,6
+apex of heart,CL:0000097,mast cell,320
+apex of heart,CL:0000115,endothelial cell,2659
+apex of heart,CL:0000192,smooth muscle cell,3462
+apex of heart,CL:0000235,macrophage,3380
+apex of heart,CL:0000236,B cell,154
+apex of heart,CL:0000451,dendritic cell,150
+apex of heart,CL:0000576,monocyte,281
+apex of heart,CL:0000623,natural killer cell,854
+apex of heart,CL:0000669,pericyte cell,16730
+apex of heart,CL:0000794,"CD8-positive, alpha-beta cytotoxic T cell",420
+apex of heart,CL:0000814,mature NK T cell,343
+apex of heart,CL:0000896,"activated CD4-positive, alpha-beta T cell",241
+apex of heart,CL:0000906,"activated CD8-positive, alpha-beta T cell",503
+apex of heart,CL:0000934,"CD4-positive, alpha-beta cytotoxic T cell",696
+apex of heart,CL:0001054,CD14-positive monocyte,317
+apex of heart,CL:0002131,regular ventricular cardiac myocyte,23991
+apex of heart,CL:0002138,endothelial cell of lymphatic vessel,258
+apex of heart,CL:0002144,capillary endothelial cell,17259
+apex of heart,CL:0002319,neural cell,431
+apex of heart,CL:0002397,"CD14-positive, CD16-positive monocyte",590
+apex of heart,CL:0002543,vein endothelial cell,1822
+apex of heart,CL:1000309,epicardial adipocyte,876
+apex of heart,CL:1000413,endothelial cell of artery,5635
+apex of heart,unknown,unknown,6503
+heart,CL:0000182,hepatocyte,1089
+heart,CL:0000192,smooth muscle cell,222
+heart,CL:0000235,macrophage,74
+heart,CL:0000746,cardiac muscle cell,7205
+heart,CL:0002548,fibroblast of cardiac tissue,250
+heart,CL:0010008,cardiac endothelial cell,2665
+heart left ventricle,CL:0000057,fibroblast,10315
+heart left ventricle,CL:0000077,mesothelial cell,30
+heart left ventricle,CL:0000097,mast cell,453
+heart left ventricle,CL:0000115,endothelial cell,1127
+heart left ventricle,CL:0000192,smooth muscle cell,3139
+heart left ventricle,CL:0000235,macrophage,2247
+heart left ventricle,CL:0000236,B cell,112
+heart left ventricle,CL:0000451,dendritic cell,143
+heart left ventricle,CL:0000576,monocyte,230
+heart left ventricle,CL:0000623,natural killer cell,322
+heart left ventricle,CL:0000669,pericyte cell,19501
+heart left ventricle,CL:0000794,"CD8-positive, alpha-beta cytotoxic T cell",429
+heart left ventricle,CL:0000814,mature NK T cell,224
+heart left ventricle,CL:0000896,"activated CD4-positive, alpha-beta T cell",170
+heart left ventricle,CL:0000906,"activated CD8-positive, alpha-beta T cell",368
+heart left ventricle,CL:0000934,"CD4-positive, alpha-beta cytotoxic T cell",642
+heart left ventricle,CL:0001054,CD14-positive monocyte,132
+heart left ventricle,CL:0002131,regular ventricular cardiac myocyte,41699
+heart left ventricle,CL:0002138,endothelial cell of lymphatic vessel,90
+heart left ventricle,CL:0002144,capillary endothelial cell,10990
+heart left ventricle,CL:0002319,neural cell,728
+heart left ventricle,CL:0002397,"CD14-positive, CD16-positive monocyte",234
+heart left ventricle,CL:0002543,vein endothelial cell,1292
+heart left ventricle,CL:1000309,epicardial adipocyte,160
+heart left ventricle,CL:1000413,endothelial cell of artery,4412
+heart left ventricle,unknown,unknown,8072
+heart right ventricle,CL:0000057,fibroblast,9690
+heart right ventricle,CL:0000077,mesothelial cell,20
+heart right ventricle,CL:0000097,mast cell,220
+heart right ventricle,CL:0000115,endothelial cell,1588
+heart right ventricle,CL:0000192,smooth muscle cell,2361
+heart right ventricle,CL:0000235,macrophage,2061
+heart right ventricle,CL:0000236,B cell,114
+heart right ventricle,CL:0000451,dendritic cell,165
+heart right ventricle,CL:0000576,monocyte,251
+heart right ventricle,CL:0000623,natural killer cell,412
+heart right ventricle,CL:0000669,pericyte cell,13552
+heart right ventricle,CL:0000794,"CD8-positive, alpha-beta cytotoxic T cell",338
+heart right ventricle,CL:0000814,mature NK T cell,173
+heart right ventricle,CL:0000896,"activated CD4-positive, alpha-beta T cell",98
+heart right ventricle,CL:0000906,"activated CD8-positive, alpha-beta T cell",459
+heart right ventricle,CL:0000934,"CD4-positive, alpha-beta cytotoxic T cell",532
+heart right ventricle,CL:0001054,CD14-positive monocyte,227
+heart right ventricle,CL:0002131,regular ventricular cardiac myocyte,30915
+heart right ventricle,CL:0002138,endothelial cell of lymphatic vessel,121
+heart right ventricle,CL:0002144,capillary endothelial cell,9025
+heart right ventricle,CL:0002319,neural cell,473
+heart right ventricle,CL:0002397,"CD14-positive, CD16-positive monocyte",341
+heart right ventricle,CL:0002543,vein endothelial cell,1076
+heart right ventricle,CL:1000309,epicardial adipocyte,406
+heart right ventricle,CL:1000413,endothelial cell of artery,3099
+heart right ventricle,unknown,unknown,6802
+interventricular septum,CL:0000057,fibroblast,7660
+interventricular septum,CL:0000077,mesothelial cell,3
+interventricular septum,CL:0000097,mast cell,240
+interventricular septum,CL:0000115,endothelial cell,1273
+interventricular septum,CL:0000192,smooth muscle cell,2291
+interventricular septum,CL:0000235,macrophage,1931
+interventricular septum,CL:0000236,B cell,175
+interventricular septum,CL:0000451,dendritic cell,87
+interventricular septum,CL:0000576,monocyte,328
+interventricular septum,CL:0000623,natural killer cell,1005
+interventricular septum,CL:0000669,pericyte cell,12091
+interventricular septum,CL:0000794,"CD8-positive, alpha-beta cytotoxic T cell",314
+interventricular septum,CL:0000814,mature NK T cell,272
+interventricular septum,CL:0000896,"activated CD4-positive, alpha-beta T cell",204
+interventricular septum,CL:0000906,"activated CD8-positive, alpha-beta T cell",289
+interventricular septum,CL:0000934,"CD4-positive, alpha-beta cytotoxic T cell",414
+interventricular septum,CL:0001054,CD14-positive monocyte,471
+interventricular septum,CL:0002131,regular ventricular cardiac myocyte,28684
+interventricular septum,CL:0002138,endothelial cell of lymphatic vessel,157
+interventricular septum,CL:0002144,capillary endothelial cell,11447
+interventricular septum,CL:0002319,neural cell,428
+interventricular septum,CL:0002397,"CD14-positive, CD16-positive monocyte",903
+interventricular septum,CL:0002543,vein endothelial cell,811
+interventricular septum,CL:1000309,epicardial adipocyte,146
+interventricular septum,CL:1000413,endothelial cell of artery,3682
+interventricular septum,unknown,unknown,6560
+left cardiac atrium,CL:0000057,fibroblast,10917
+left cardiac atrium,CL:0000077,mesothelial cell,431
+left cardiac atrium,CL:0000097,mast cell,260
+left cardiac atrium,CL:0000115,endothelial cell,3064
+left cardiac atrium,CL:0000192,smooth muscle cell,3413
+left cardiac atrium,CL:0000235,macrophage,3380
+left cardiac atrium,CL:0000236,B cell,213
+left cardiac atrium,CL:0000451,dendritic cell,171
+left cardiac atrium,CL:0000576,monocyte,352
+left cardiac atrium,CL:0000623,natural killer cell,638
+left cardiac atrium,CL:0000669,pericyte cell,13195
+left cardiac atrium,CL:0000794,"CD8-positive, alpha-beta cytotoxic T cell",871
+left cardiac atrium,CL:0000814,mature NK T cell,305
+left cardiac atrium,CL:0000896,"activated CD4-positive, alpha-beta T cell",197
+left cardiac atrium,CL:0000906,"activated CD8-positive, alpha-beta T cell",743
+left cardiac atrium,CL:0000934,"CD4-positive, alpha-beta cytotoxic T cell",484
+left cardiac atrium,CL:0001054,CD14-positive monocyte,361
+left cardiac atrium,CL:0002129,regular atrial cardiac myocyte,14772
+left cardiac atrium,CL:0002138,endothelial cell of lymphatic vessel,109
+left cardiac atrium,CL:0002144,capillary endothelial cell,7498
+left cardiac atrium,CL:0002319,neural cell,1072
+left cardiac atrium,CL:0002397,"CD14-positive, CD16-positive monocyte",809
+left cardiac atrium,CL:0002543,vein endothelial cell,1778
+left cardiac atrium,CL:1000309,epicardial adipocyte,1549
+left cardiac atrium,CL:1000413,endothelial cell of artery,2049
+left cardiac atrium,unknown,unknown,4103
+right cardiac atrium,CL:0000057,fibroblast,10389
+right cardiac atrium,CL:0000077,mesothelial cell,228
+right cardiac atrium,CL:0000097,mast cell,50
+right cardiac atrium,CL:0000115,endothelial cell,3552
+right cardiac atrium,CL:0000192,smooth muscle cell,1576
+right cardiac atrium,CL:0000235,macrophage,1641
+right cardiac atrium,CL:0000236,B cell,427
+right cardiac atrium,CL:0000451,dendritic cell,98
+right cardiac atrium,CL:0000576,monocyte,242
+right cardiac atrium,CL:0000623,natural killer cell,397
+right cardiac atrium,CL:0000669,pericyte cell,2787
+right cardiac atrium,CL:0000794,"CD8-positive, alpha-beta cytotoxic T cell",584
+right cardiac atrium,CL:0000814,mature NK T cell,146
+right cardiac atrium,CL:0000896,"activated CD4-positive, alpha-beta T cell",137
+right cardiac atrium,CL:0000906,"activated CD8-positive, alpha-beta T cell",639
+right cardiac atrium,CL:0000934,"CD4-positive, alpha-beta cytotoxic T cell",345
+right cardiac atrium,CL:0001054,CD14-positive monocyte,375
+right cardiac atrium,CL:0002129,regular atrial cardiac myocyte,8711
+right cardiac atrium,CL:0002138,endothelial cell of lymphatic vessel,19
+right cardiac atrium,CL:0002144,capillary endothelial cell,1540
+right cardiac atrium,CL:0002319,neural cell,829
+right cardiac atrium,CL:0002397,"CD14-positive, CD16-positive monocyte",401
+right cardiac atrium,CL:0002543,vein endothelial cell,1707
+right cardiac atrium,CL:1000309,epicardial adipocyte,662
+right cardiac atrium,CL:1000413,endothelial cell of artery,1440
+right cardiac atrium,unknown,unknown,2581

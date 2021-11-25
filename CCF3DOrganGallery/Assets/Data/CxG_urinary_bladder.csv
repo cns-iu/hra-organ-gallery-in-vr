@@ -1,0 +1,16 @@
+﻿tissue_type,cell_type_ontology_id,cell_type,Total
+bladder organ,CL:0000057,fibroblast,4927
+bladder organ,CL:0000084,T cell,2626
+bladder organ,CL:0000097,mast cell,991
+bladder organ,CL:0000186,myofibroblast cell,1989
+bladder organ,CL:0000192,smooth muscle cell,227
+bladder organ,CL:0000235,macrophage,4876
+bladder organ,CL:0000236,B cell,251
+bladder organ,CL:0000669,pericyte cell,708
+bladder organ,CL:0000784,plasmacytoid dendritic cell,18
+bladder organ,CL:0000786,plasma cell,1141
+bladder organ,CL:0000814,mature NK T cell,485
+bladder organ,CL:0002138,endothelial cell of lymphatic vessel,73
+bladder organ,CL:0002144,capillary endothelial cell,66
+bladder organ,CL:0002543,vein endothelial cell,266
+bladder organ,CL:1001428,bladder urothelial cell,2873

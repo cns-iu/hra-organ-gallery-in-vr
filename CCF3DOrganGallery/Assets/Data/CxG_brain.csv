@@ -1,0 +1,11 @@
+﻿tissue_type,cell_type_ontology_id,cell_type,Total
+primary motor cortex,CL:0000115,endothelial cell,1118
+primary motor cortex,CL:0000127,astrocyte,1873
+primary motor cortex,CL:0000128,oligodendrocyte,3360
+primary motor cortex,CL:0000129,microglial cell,1355
+primary motor cortex,CL:0000192,smooth muscle cell,19
+primary motor cortex,CL:0000617,GABAergic neuron,29486
+primary motor cortex,CL:0000669,pericyte cell,763
+primary motor cortex,CL:0000679,glutamatergic neuron,53263
+primary motor cortex,CL:0000708,leptomeningeal cell,1651
+primary motor cortex,CL:0002453,oligodendrocyte precursor cell,600

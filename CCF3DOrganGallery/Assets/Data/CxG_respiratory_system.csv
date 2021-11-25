@@ -1,0 +1,32 @@
+﻿tissue_type,cell_type_ontology_id,cell_type,Total
+epithelium of bronchus (cell culture),CL:0000158,club cell,4521
+epithelium of bronchus (cell culture),CL:0002208,brush cell of bronchus,69
+epithelium of bronchus (cell culture),CL:0002332,ciliated cell of the bronchus,6669
+epithelium of bronchus (cell culture),CL:0017000,pulmonary ionocyte,126
+epithelium of bronchus (cell culture),CL:1000223,lung neuroendocrine cell,74
+epithelium of bronchus (cell culture),CL:1000312,bronchial goblet cell,43
+epithelium of bronchus (cell culture),CL:1000349,basal cell of epithelium of bronchus,9584
+epithelium of bronchus (cell culture),unknown,BC/Club,1522
+mesenteric artery,CL:0000548,animal cell,2276
+mesenteric artery,CL:1000413,endothelial cell of artery,1214
+trachea,CL:0000057,fibroblast,1239
+trachea,CL:0000064,ciliated cell,317
+trachea,CL:0000084,T cell,131
+trachea,CL:0000097,mast cell,69
+trachea,CL:0000115,endothelial cell,257
+trachea,CL:0000151,secretory cell,253
+trachea,CL:0000160,goblet cell,84
+trachea,CL:0000192,smooth muscle cell,96
+trachea,CL:0000235,macrophage,541
+trachea,CL:0000236,B cell,462
+trachea,CL:0000319,mucus secreting cell,64
+trachea,CL:0000624,"CD4-positive, alpha-beta T cell",65
+trachea,CL:0000625,"CD8-positive, alpha-beta T cell",464
+trachea,CL:0000646,basal cell,4198
+trachea,CL:0000775,neutrophil,758
+trachea,CL:0000786,plasma cell,138
+trachea,CL:0000809,"double-positive, alpha-beta thymocyte",6
+trachea,CL:0002320,connective tissue cell,249
+trachea,CL:0005006,ionocyte,13
+trachea,CL:1000329,tracheal goblet cell,77
+trachea,CL:1000330,serous cell of epithelium of trachea,41
