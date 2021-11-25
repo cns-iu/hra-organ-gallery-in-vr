@@ -19,7 +19,8 @@ public class DataReader : MonoBehaviour
 
     void ReadCSV()
     {
-        using (var reader = new StreamReader("Assets/Data/" + m_Filename))
+        TextAsset kidneyData = Resources.Load<TextAsset>(m_Filename);
+        using (var reader = new StreamReader(new MemoryStream(kidneyData.bytes)))
         {
             while (!reader.EndOfStream)
             {
@@ -28,7 +29,7 @@ public class DataReader : MonoBehaviour
 
                 for (int i = 0; i < elements.Length; i++)
                 {
-                    elements[i] = elements[i].Replace("\"","");
+                    elements[i] = elements[i].Replace("\"", "");
                 }
 
                 if (elements[3] != "Total")
@@ -39,7 +40,6 @@ public class DataReader : MonoBehaviour
                     }
                     else
                     {
- 
                         m_CellCounts.Add(new CellCount(elements[1], elements[2] + elements[3], elements[4]));
                     }
 
@@ -63,5 +63,9 @@ public struct CellCount
         this.total = t;
     }
 
+    public override string ToString()
+    {
+        return this.ontology_id + ", " + this.cellType + ", " + this.total;
+    }
 
 }

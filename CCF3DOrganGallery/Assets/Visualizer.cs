@@ -41,9 +41,9 @@ public class Visualizer : MonoBehaviour
                 GameObject symbol = Instantiate(pre_Dot);
                 symbol.GetComponent<SpriteRenderer>().color = m_ColorHues[m_CellTypesFromData.IndexOf(m_CellCounts[i].cellType)];
                 symbol.AddComponent<Cell>().m_CellType = m_CellCounts[i].cellType;
+                symbol.AddComponent<CellAnimator>();
                 m_Cells.Add(symbol);
-               
-
+                
                 symbol.transform.Translate(
                     Random.Range(0, .1f),
                     Random.Range(0, .1f),

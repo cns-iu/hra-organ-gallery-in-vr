@@ -1,0 +1,8 @@
+﻿tissue_type,cell_type_ontology_id,cell_type,Total
+kidney,CL:0000115,endothelial cell,95
+kidney,CL:0000235,macrophage,321
+kidney,CL:0000236,B cell,341
+kidney,CL:0000492,CD4-positive helper T cell,181
+kidney,CL:0000625,"CD8-positive, alpha-beta T cell",241
+kidney,CL:0000814,mature NK T cell,131
+kidney,CL:0002518,kidney epithelial cell,8331
