@@ -6,12 +6,12 @@ public class CellAnimator : MonoBehaviour
 {
     public List<GameObject> m_Cells = new List<GameObject>();
 
-    [SerializeField]
-    private GameObject m_CellDestinationsParent;
+    public GameObject m_User;
+
     public List<GameObject> m_AllDestinations = new List<GameObject>();
     public GameObject m_Destination;
     private List<string> m_CellTypesFromData = new List<string>();
-
+    public GameObject m_CellDestinationsParent;
     private void OnEnable()
     {
         Visualizer.VisualizationBuiltEvent += OnVisualizationBuiltMoveCell;
@@ -24,15 +24,17 @@ public class CellAnimator : MonoBehaviour
 
     void Awake()
     {
+        m_User = GameObject.FindGameObjectWithTag("MainCamera");
         m_CellDestinationsParent = GameObject.Find("CellDestinations");
         GetAllDestinations();
         m_Cells = Visualizer.m_Cells;
         m_CellTypesFromData = Visualizer.m_CellTypesFromData;
+        Debug.Log(m_AllDestinations.Count);
         m_Destination = m_AllDestinations[m_CellTypesFromData.IndexOf(this.GetComponent<Cell>().m_CellType)].gameObject;
-        foreach (var item in m_CellTypesFromData)
-        {
-            Debug.Log(item);
-        }
+    }
+
+    private void Update() {
+        this.transform.LookAt(m_User.transform);
     }
 
     void GetAllDestinations()
@@ -46,12 +48,15 @@ public class CellAnimator : MonoBehaviour
     void OnVisualizationBuiltMoveCell()
     {
         m_CellTypesFromData = Visualizer.m_CellTypesFromData;
-        StartCoroutine(MoveTo(this.gameObject, m_Destination, 2f));
+        this.gameObject.transform.position = m_Destination.transform.position;
+        SetDestinationAsParent();
+        this.transform.position += Random.insideUnitSphere * 0.05f;
     }
 
-    // private IEnumerator Wiggle() { 
-
-    // }
+    void SetDestinationAsParent()
+    {
+        this.transform.parent = m_Destination.transform;
+    }
 
     private IEnumerator MoveTo(GameObject gameObject, GameObject destination, float time)
     {

@@ -15,6 +15,8 @@ public class Visualizer : MonoBehaviour
 
     public delegate void VisualizationBuilt();
     public static event VisualizationBuilt VisualizationBuiltEvent;
+    public static event VisualizationBuilt UniqueCellTypesDetected;
+    
     public static List<string> m_CellTypesFromData = new List<string>();
 
     private List<CellCount> m_CellCounts = new List<CellCount>();
@@ -43,12 +45,6 @@ public class Visualizer : MonoBehaviour
                 symbol.AddComponent<Cell>().m_CellType = m_CellCounts[i].cellType;
                 symbol.AddComponent<CellAnimator>();
                 m_Cells.Add(symbol);
-                
-                symbol.transform.Translate(
-                    Random.Range(0, .1f),
-                    Random.Range(0, .1f),
-                    Random.Range(0, .1f)
-                );
             }
         }
         VisualizationBuiltEvent?.Invoke();
@@ -64,6 +60,8 @@ public class Visualizer : MonoBehaviour
 
             }
         }
+        UniqueCellTypesDetected?.Invoke();
+        Debug.Log("UniqueCellTypesDetected?.Invoke() called");
     }
 
     void SetColorHues()
