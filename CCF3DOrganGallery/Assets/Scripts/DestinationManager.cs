@@ -30,7 +30,6 @@ public class DestinationManager : MonoBehaviour
         for (int i = 0; i < m_NumberDestinations; i++)
         {
             Destination d = new Destination(m_Origin.x + m_MaxDistance * i, m_Origin.y, m_Origin.z, m_Organs[i]);
-            Debug.Log(d.position);
         }
     }
 

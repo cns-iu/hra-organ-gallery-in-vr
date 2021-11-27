@@ -29,7 +29,7 @@ public class CellAnimator : MonoBehaviour
         GetAllDestinations();
         m_Cells = Visualizer.m_Cells;
         m_CellTypesFromData = Visualizer.m_CellTypesFromData;
-        Debug.Log(m_AllDestinations.Count);
+        // Debug.Log(m_AllDestinations.Count);
         m_Destination = m_AllDestinations[m_CellTypesFromData.IndexOf(this.GetComponent<Cell>().m_CellType)].gameObject;
     }
 

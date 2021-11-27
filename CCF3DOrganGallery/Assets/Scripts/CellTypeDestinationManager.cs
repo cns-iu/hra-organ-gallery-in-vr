@@ -26,12 +26,12 @@ public class CellTypeDestinationManager : MonoBehaviour
 
     void PlaceDestinationsOnCircle()
     {
-        Debug.Log("UniqueCellTypesDetected() called");
+        // Debug.Log("UniqueCellTypesDetected() called");
         float radius = 0.2f;
 
         for (int i = 0; i < m_CellTypesFromData.Count; i++)
         {
-            Debug.Log(i);
+            // Debug.Log(i);
             float offsetDegrees = i * Mathf.PI * 2f / m_CellTypesFromData.Count;
             GameObject destination = new GameObject();
             destination.name = "CellGroup" + i.ToString();

@@ -61,7 +61,7 @@ public class Visualizer : MonoBehaviour
             }
         }
         UniqueCellTypesDetected?.Invoke();
-        Debug.Log("UniqueCellTypesDetected?.Invoke() called");
+        // Debug.Log("UniqueCellTypesDetected?.Invoke() called");
     }
 
     void SetColorHues()

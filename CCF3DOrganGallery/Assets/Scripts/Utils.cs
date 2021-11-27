@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class Utils
+public class Utils : MonoBehaviour
 {
     public static void FindLeaves(Transform parent, List<GameObject> result)
     {
