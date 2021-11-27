@@ -2,6 +2,16 @@
 
 Changelog for the CCF Organ VR Gallery
 
+## 0.4.0 - 2021-11-27
+
+### Added in 0.4.0
+
+* Added Stage 3 (cells) with CellxGene data for the male left kidney
+* Refined Stage 1 with light effects
+* Implemented basic SceneSelector via spheres
+* Added annotations for all stages
+* Added music (for testing purposes) 
+
 ## 0.3.5.1 - 2021-10-26
 
 ### Added in 0.3.5.1
