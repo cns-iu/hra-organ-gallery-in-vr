@@ -2,6 +2,15 @@
 
 Changelog for the CCF Organ VR Gallery
 
+## 0.4.1 - 2021-12-30
+
+### Added in 0.4.1
+
+* Adjusted height of skin reference organ in Stage 1
+* Made outline of anatomical structures thinner in Stage 2
+* Added annotation that #cells in the entire organ is actually larger in Stage 3
+* Replaced the music
+
 ## 0.4.0 - 2021-11-27
 
 ### Added in 0.4.0

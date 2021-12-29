@@ -44,6 +44,7 @@ public class OrganHighlighter : MonoBehaviour
                 go.AddComponent<Outline>();
             }
             go.GetComponent<Outline>().enabled = false;
+            go.GetComponent<Outline>().OutlineWidth = 1f;
             m_OutlinesList.Add(go.GetComponent<Outline>());
         }
     }

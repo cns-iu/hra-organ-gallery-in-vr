@@ -564,8 +564,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxIntensity: 1.09
-  m_Duration: 4
-  m_Delay: 10
+  m_Duration: 2.5
+  m_Delay: 0
 --- !u!1001 &117223176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -617,9 +617,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7127947438237108041, guid: 5dc93ef274608684995c0afb780deb68, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.281
+      objectReference: {fileID: 0}
+    - target: {fileID: -6048754800693459929, guid: 5dc93ef274608684995c0afb780deb68, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5160787204687851642, guid: 5dc93ef274608684995c0afb780deb68, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.112
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5dc93ef274608684995c0afb780deb68, type: 3}
       propertyPath: m_Name
       value: VH_F_Vasculature_v1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925231373287515142, guid: 5dc93ef274608684995c0afb780deb68, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dc93ef274608684995c0afb780deb68, type: 3}
@@ -1391,7 +1407,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592796970}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 1.268, z: 1.591}
+  m_LocalPosition: {x: 0, y: 0.88, z: 1.591}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1434,9 +1450,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bb3639f29ce788742b3222d67f0478f7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5aaa7f832dd29c844800cfc558f529d0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1862,8 +1878,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxIntensity: 0.14
-  m_Duration: 4
-  m_Delay: 10
+  m_Duration: 2.5
+  m_Delay: 0
 --- !u!1001 &742147987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2077,9 +2093,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2639635910167274428, guid: 42a55fa74696daa438222471ea911084, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 42a55fa74696daa438222471ea911084, type: 3}
       propertyPath: m_Name
       value: VH_F_Heart_v1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4065252889864503351, guid: 42a55fa74696daa438222471ea911084, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170152901255392270, guid: 42a55fa74696daa438222471ea911084, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328198546802341855, guid: 42a55fa74696daa438222471ea911084, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.109
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42a55fa74696daa438222471ea911084, type: 3}
@@ -2254,7 +2286,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.541}
+  m_AnchoredPosition: {x: 0, y: 0.26}
   m_SizeDelta: {x: 654, y: 340.6975}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &963194225
@@ -2540,8 +2572,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxIntensity: 0.7
-  m_Duration: 4
-  m_Delay: 10
+  m_Duration: 2.5
+  m_Delay: 0
 --- !u!1 &1006179136
 GameObject:
   m_ObjectHideFlags: 0
