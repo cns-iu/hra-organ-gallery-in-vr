@@ -4,11 +4,30 @@ using UnityEngine;
 
 public class Music : MonoBehaviour
 {
+    private static Object instance = null;
     private AudioSource m_AudioSource;
     private void Awake()
     {
-        DontDestroyOnLoad(transform.gameObject);
-        m_AudioSource = GetComponent<AudioSource>();
+        if (instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+            m_AudioSource = GetComponent<AudioSource>();
+        }
+        
+    }
+
+    private void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
+        }
     }
 
     public void PlayMusic()

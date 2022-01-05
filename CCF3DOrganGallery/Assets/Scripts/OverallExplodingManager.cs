@@ -23,7 +23,7 @@ public class OverallExplodingManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        UserInputModule.OnUpdateJoystickValueEvent += OnListenForJoystickValue;
+        UserInputModule.OnUpdateJoystickValueEvent -= OnListenForJoystickValue;
     }
 
     // Update is called once per frame

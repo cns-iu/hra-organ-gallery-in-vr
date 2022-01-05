@@ -2,7 +2,17 @@
 
 Changelog for the CCF Organ VR Gallery
 
-## 0.4.1 - 2021-12-30
+## 0.5 - 2022-01-05
+
+### Added in 0.5
+
+* Added new CCF reference organs from 12/2022 release
+* Brought the female in Stage 1 closer to the user
+* Added labels over each organ on Stage 2
+* Made the required play area smaller so the user can reach the female in Stage 1 and the kidney box in Stage 3 more easily
+* Add teleportation to Stages 1 and 3 
+
+## 0.4.1 - 2021-12-29
 
 ### Added in 0.4.1
 

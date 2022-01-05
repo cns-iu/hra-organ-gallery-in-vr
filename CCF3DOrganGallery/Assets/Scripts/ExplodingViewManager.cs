@@ -53,8 +53,6 @@ public class ExplodingViewManager : MonoBehaviour
         for (int i = 0; i < m_AnatomicalStructures.Count; i++)
         {
             Vector3 destination = -Vector3.Normalize(m_Centroid - m_StartPositions[i]);
-            // Debug.DrawLine(m_StartPositions[i], m_Centroid, Color.red);
-            // Debug.DrawLine(m_AnatomicalStructures[i].transform.position, m_Centroid, Color.red);
             m_AnatomicalStructures[i].transform.position = Vector3.Lerp(
               m_StartPositions[i],
               destination + m_Centroid,
