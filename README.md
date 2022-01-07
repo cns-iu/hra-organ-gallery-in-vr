@@ -1,8 +1,6 @@
 # CCF Organ VR Gallery
 
-Welcome to this repo! 
-
-For more information about the Common Coordinate Framework (CCF), see the HuBMAP CCF Portal at <https://hubmapconsortium.github.io/ccf/>.
+Welcome to this repo! For more information about the Common Coordinate Framework (CCF), see the HuBMAP CCF Portal at [https://hubmapconsortium.github.io/ccf/](https://hubmapconsortium.github.io/ccf/).
 
 ## Changelog
 
@@ -28,7 +26,7 @@ V. Spitzer, M. J. Ackerman, A. L. Scherzinger, and D. Whitlock, "The visible hum
 
 To access all Visible Human Massive Open Online (VHMOOC) materials, register for free at [https://expand.iu.edu/browse/sice/cns/courses/hubmap-visible-human-mooc](https://expand.iu.edu/browse/sice/cns/courses/hubmap-visible-human-mooc).
 
-## REFERENCES
+## References
 
 K. Börner et al. "Tissue Registration and Exploration User Interfaces in support of a Human Reference Atlas." [https://www.biorxiv.org/content/10.1101/2021.12.30.474265](https://www.biorxiv.org/content/10.1101/2021.12.30.474265) (accessed Jan 7, 2022).
 
@@ -36,7 +34,7 @@ K. Börner et al., "Anatomical structures, cell types and biomarkers of the Huma
 
 M. P. Snyder et al., "The human body at cellular resolution: the NIH Human Biomolecular Atlas Program," Nature, vol. 574, no. 7777, pp. 187-192, 2019/10/01 2019, doi: 10.1038/s41586-019-1629-x
 
-## Other woftware credits
+## Other software credits
 
 Cyberinfrastructure for Network Science Center. "Registration User Interface." [https://hubmapconsortium.github.io/ccf-ui/rui/](https://hubmapconsortium.github.io/ccf-ui/rui/) (accessed Jan 7, 2022).
 
