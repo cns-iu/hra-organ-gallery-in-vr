@@ -6,6 +6,10 @@ Welcome to this repo! The CCF Organ VR Gallery lets the user explore 21 human or
 
 For more information about the Common Coordinate Framework (CCF), see the HuBMAP CCF Portal at [https://hubmapconsortium.github.io/ccf/](https://hubmapconsortium.github.io/ccf/).
 
+## Video demo
+
+We present the CCF Organ VR Gallery in this demo: [https://www.youtube.com/watch?v=S9pBOlSfsnc](https://www.youtube.com/watch?v=S9pBOlSfsnc)
+
 ## Changelog
 
 See the [Changelog](CHANGELOG.md) for the latest developments.
