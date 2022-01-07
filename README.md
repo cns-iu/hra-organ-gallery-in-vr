@@ -1,6 +1,6 @@
 # CCF Organ VR Gallery
 
-![A user in action in the CCF Organ VR Gallery](img/thumbnail.png)
+![A user in action in the CCF Organ VR Gallery, looking at the whole body, many organs, and the number of cells in a kidney, as well as exploding a heart.](img/thumbnail.png)
 
 Welcome to this repo! The CCF Organ VR Gallery lets the user explore 21 human organs, journeying from the Whole Body, to the Organ, to the Cell stage and back, presented in real-world size and 3D. The user discovers hidden region by exploding and collapsing organs into their individual anatomical structures. We show cell type populations for a kidney using a data-driven dot density visualization. The organ models were developed to map trillions of cells for the Human BioMolecular Atlas Program (HuBMAP). 
 
