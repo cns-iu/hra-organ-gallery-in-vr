@@ -61,4 +61,10 @@ crashlytics-build.properties
 # Audio folder
 Audio
 
+# Keystore
+*.keystore
+
+# Old folders
+[Aa]ppLab/Old*
+
 
