@@ -3,7 +3,27 @@ guid: 626ae5727d9b00f47b9b724455fc3efa
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__Ureter
+    second: {fileID: 2100000, guid: b24023f2a7f1c8c47a58190f188d811b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__kidneyCapsule1
+    second: {fileID: 2100000, guid: 06e0d4230818d6f4482df41c19234f8f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__kidney_CortexMedulla1
+    second: {fileID: 2100000, guid: a210de7c8504aa0409588618012dbaab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__kidney_Pyramids1
+    second: {fileID: 2100000, guid: 0f51155ce5319f644a8a6480e7956a3c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
