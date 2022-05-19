@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.Networking;
+using System.Threading.Tasks;
 
 public class DataFetcher : MonoBehaviour
 {
@@ -12,32 +13,35 @@ public class DataFetcher : MonoBehaviour
         get { return _nodeArray; }
     }
 
-    [SerializeField] private string Url = "https://ccf-api.hubmapconsortium.org/v1/scene?sex=male&ontology-terms=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FUBERON_0004538";
-
-    void Awake()
+    public async Task<NodeArray> Get(string url)
     {
-        StartCoroutine(getRequest(Url));
-    }
-
-    IEnumerator getRequest(string uri)
-    {
-        UnityWebRequest uwr = UnityWebRequest.Get(uri);
-        yield return uwr.SendWebRequest();
-
-        if (uwr.result == UnityWebRequest.Result.ConnectionError)
+        try
         {
-            Debug.Log("Error While Sending: " + uwr.error);
-        }
-        else
-        {
-            var text = uwr.downloadHandler.text
-            .Replace("@id", "jsonLdId")
-            .Replace("@type", "jsonLdType");
+            using var www = UnityWebRequest.Get(url);
+            var operation = www.SendWebRequest();
+
+            while (!operation.isDone)
+                await Task.Yield();
+
+            if (www.result != UnityWebRequest.Result.Success)
+                Debug.LogError($"Failed: {www.error}");
+
+            var result = www.downloadHandler.text;
+
+            var text = www.downloadHandler.text
+           .Replace("@id", "jsonLdId")
+           .Replace("@type", "jsonLdType");
             _nodeArray = JsonUtility.FromJson<NodeArray>(
                 "{ \"nodes\":" +
                 text
                 + "}"
                 );
+            return _nodeArray;
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"{nameof(Get)} failed: {ex.Message}");
+            return default;
         }
     }
 }
