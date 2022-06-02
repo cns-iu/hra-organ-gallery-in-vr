@@ -31,7 +31,7 @@ public class SceneBuilder : MonoBehaviour
 
             GameObject block = Instantiate(
             pre_TissueBlock,
-            MatrixExtensions.BuildMatrix(_nodeArray.nodes[i].transformMatrix).GetPosition(),
+            MatrixExtensions.BuildMatrix(_nodeArray.nodes[i].transformMatrix).ExtractPosition(),
             MatrixExtensions.BuildMatrix(_nodeArray.nodes[i].transformMatrix).rotation
             );
             block.transform.localScale = MatrixExtensions.ExtractScale(MatrixExtensions.BuildMatrix(_nodeArray.nodes[i].transformMatrix));
