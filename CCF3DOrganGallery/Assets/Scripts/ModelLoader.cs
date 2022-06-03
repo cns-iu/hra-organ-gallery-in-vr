@@ -18,6 +18,7 @@ public class ModelLoader : MonoBehaviour
             name = "Model"
         };
     }
+    
     public void DownloadFile(string url)
     {
         string path = GetFilePath(url);
