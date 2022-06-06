@@ -23,6 +23,12 @@ public class SceneBuilder : MonoBehaviour
         var httpClient = dataFetcher;
         _nodeArray = await httpClient.Get(url);
         CreateTissueBlocks();
+        PlaceOrgan();
+    }
+
+    void PlaceOrgan()
+    {
+        string url = _nodeArray.nodes[0].scenegraph;
     }
 
     void CreateTissueBlocks()
@@ -65,19 +71,11 @@ public class SceneBuilder : MonoBehaviour
     void TestMatrix(float[] transformMatrix, string id)
     {
         Matrix4x4 matrix = MatrixExtensions.BuildMatrix(transformMatrix);
-        Debug.Log(id);
-        Debug.Log("Before: " + matrix);
-
         Vector3 pos = matrix.GetPosition();
         Quaternion rot = matrix.rotation;
         Vector3 s = matrix.lossyScale;
-
         Matrix4x4 m = new Matrix4x4();
         m.SetTRS(pos, rot, s);
-
-        Debug.Log("matrix with pos/rot/s : " + m);
-
-        Debug.Log(m == matrix);
     }
 
 }

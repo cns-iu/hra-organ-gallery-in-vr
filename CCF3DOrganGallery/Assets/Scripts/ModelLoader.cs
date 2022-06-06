@@ -7,18 +7,20 @@ using Siccity.GLTFUtility;
 
 public class ModelLoader : MonoBehaviour
 {
-    GameObject wrapper;
-    [SerializeField] string filePath;
+    [SerializeField] private string filePath;
+    private GameObject wrapper;
 
     private void Start()
     {
-        filePath = $"{Application.persistentDataPath}/Files/";
+        filePath = $"{Application.persistentDataPath}/Models/";
         wrapper = new GameObject
         {
             name = "Model"
         };
+
+        DownloadFile("https://ccf-ontology.hubmapconsortium.org/objects/v1.1/VH_M_Kidney_L.glb");
     }
-    
+
     public void DownloadFile(string url)
     {
         string path = GetFilePath(url);

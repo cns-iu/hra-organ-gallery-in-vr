@@ -1322,7 +1322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4177c9159833d9346bb628d89fed4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filePath: https://ccf-ontology.hubmapconsortium.org/ccf.owl#VHMSkinV1.1
+  filePath: 
 --- !u!4 &967626588
 Transform:
   m_ObjectHideFlags: 0
