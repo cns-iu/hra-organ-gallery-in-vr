@@ -859,6 +859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b78091712786194292fe6abdae2e2d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tissueBlocksRenderer: {fileID: 0}
 --- !u!1 &231104967
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,6 +970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b78091712786194292fe6abdae2e2d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tissueBlocksRenderer: {fileID: 0}
 --- !u!1 &359284503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,6 +1253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b78091712786194292fe6abdae2e2d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tissueBlocksRenderer: {fileID: 0}
 --- !u!1 &728637999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1639,6 +1642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b78091712786194292fe6abdae2e2d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tissueBlocksRenderer: {fileID: 0}
 --- !u!1 &999485878
 GameObject:
   m_ObjectHideFlags: 0
@@ -2348,14 +2352,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109062177}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c01ab0be3171c444595ea21d93fa4a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rightTriggerPressed: {fileID: -5241032162533854315, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  selectedTissueBlock: {fileID: 0}
-  material: {fileID: 0}
 --- !u!114 &1109062185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2363,14 +2365,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109062177}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e7c262f23f499b418cdfa65a7a67d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightTriggerPressed: {fileID: -5241032162533854315, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  rightTriggerPressed: {fileID: 0}
   selectedTissueBlock: {fileID: 0}
-  material: {fileID: 0}
 --- !u!1 &1164665553
 GameObject:
   m_ObjectHideFlags: 0
@@ -2910,6 +2911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b78091712786194292fe6abdae2e2d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tissueBlocksRenderer: {fileID: 0}
 --- !u!1001 &1613824510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3082,6 +3084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b78091712786194292fe6abdae2e2d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tissueBlocksRenderer: {fileID: 0}
 --- !u!1 &1779119766
 GameObject:
   m_ObjectHideFlags: 0
@@ -3554,6 +3557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b78091712786194292fe6abdae2e2d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tissueBlocksRenderer: {fileID: 0}
 --- !u!1 &1913993246
 GameObject:
   m_ObjectHideFlags: 0
@@ -3664,6 +3668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b78091712786194292fe6abdae2e2d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tissueBlocksRenderer: {fileID: 0}
 --- !u!1 &1936266337
 GameObject:
   m_ObjectHideFlags: 0
