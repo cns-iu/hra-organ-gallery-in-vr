@@ -27,18 +27,31 @@ public class SceneBuilder : MonoBehaviour
 
     void CreateTissueBlocks()
     {
+
         for (int i = 0; i < _nodeArray.nodes.Length; i++)
         {
+            Matrix4x4 reflected = ReflectZ() * MatrixExtensions.BuildMatrix(_nodeArray.nodes[i].transformMatrix);
             GameObject block = Instantiate(
-       pre_TissueBlock,
-       MatrixExtensions.BuildMatrix(_nodeArray.nodes[i].transformMatrix).GetPosition(), //use Unity's built-in functionality, matrix col1 != pos etc.
-       MatrixExtensions.BuildMatrix(_nodeArray.nodes[i].transformMatrix).rotation
+                pre_TissueBlock,
+                reflected.GetPosition(), //use Unity's built-in functionality, matrix col1 != pos etc.
+                reflected.rotation
        );
-            block.transform.localScale = MatrixExtensions.BuildMatrix(_nodeArray.nodes[i].transformMatrix).lossyScale;
-            block.transform.position = new Vector3(block.transform.position.x, block.transform.position.y, -block.transform.position.z);
+            block.transform.localScale = reflected.lossyScale * 2f;
+            // block.transform.position = new Vector3(block.transform.position.x, block.transform.position.y, -block.transform.position.z);
 
             SetData(block, _nodeArray.nodes[i]);
         }
+    }
+
+    Matrix4x4 ReflectZ()
+    {
+        var result = new Matrix4x4(
+            new Vector4(1, 0, 0, 0),
+            new Vector4(0, 1, 0, 0),
+            new Vector4(0, 0, -1, 0),
+            new Vector4(0, 0, 0, 1)
+        );
+        return result;
     }
 
     void SetData(GameObject obj, Node node)
