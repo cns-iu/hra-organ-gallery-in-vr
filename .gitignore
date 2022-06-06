@@ -61,3 +61,6 @@ crashlytics-build.properties
 # Audio folder
 [Aa]ssets/Audio
 
+# Layout file
+*.dwlt
+
