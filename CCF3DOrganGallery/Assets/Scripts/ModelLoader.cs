@@ -13,10 +13,10 @@ public class ModelLoader : MonoBehaviour
     private void Start()
     {
         filePath = $"{Application.persistentDataPath}/Models/";
-        wrapper = new GameObject
-        {
-            name = "Model"
-        };
+        // wrapper = new GameObject
+        // {
+        //     name = "Model"
+        // };
 
         DownloadFile("https://ccf-ontology.hubmapconsortium.org/objects/v1.1/VH_M_Kidney_L.glb");
     }
@@ -58,7 +58,7 @@ public class ModelLoader : MonoBehaviour
     {
         ResetWrapper();
         GameObject model = Importer.LoadFromFile(path);
-        model.transform.SetParent(wrapper.transform);
+        // model.transform.SetParent(wrapper.transform);
     }
 
     IEnumerator GetFileRequest(string url, Action<UnityWebRequest> callback)

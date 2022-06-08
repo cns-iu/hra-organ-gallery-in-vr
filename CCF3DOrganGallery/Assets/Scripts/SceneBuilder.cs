@@ -16,6 +16,7 @@ public class SceneBuilder : MonoBehaviour
     private void Start()
     {
         GetNodes(url);
+        GetOrgan(); //organ is currently added in ModelLoader.cs
     }
 
     public async void GetNodes(string url)
@@ -23,12 +24,11 @@ public class SceneBuilder : MonoBehaviour
         var httpClient = dataFetcher;
         _nodeArray = await httpClient.Get(url);
         CreateTissueBlocks();
-        PlaceOrgan();
     }
 
-    void PlaceOrgan()
+    void GetOrgan()
     {
-        string url = _nodeArray.nodes[0].scenegraph;
+       
     }
 
     void CreateTissueBlocks()
@@ -39,12 +39,10 @@ public class SceneBuilder : MonoBehaviour
             Matrix4x4 reflected = ReflectZ() * MatrixExtensions.BuildMatrix(_nodeArray.nodes[i].transformMatrix);
             GameObject block = Instantiate(
                 pre_TissueBlock,
-                reflected.GetPosition(), //use Unity's built-in functionality, matrix col1 != pos etc.
+                reflected.GetPosition(), 
                 reflected.rotation
        );
             block.transform.localScale = reflected.lossyScale * 2f;
-            // block.transform.position = new Vector3(block.transform.position.x, block.transform.position.y, -block.transform.position.z);
-
             SetData(block, _nodeArray.nodes[i]);
         }
     }
