@@ -55,7 +55,6 @@ public class SceneBuilder : MonoBehaviour
 
     void CreateAndPlaceTissueBlocks()
     {
-
         for (int i = 1; i < _nodeArray.nodes.Length; i++)
         {
             Debug.Log(_nodeArray.nodes[0]);
