@@ -12,34 +12,57 @@ public class SceneBuilder : MonoBehaviour
     [SerializeField] NodeArray _nodeArray;
     [SerializeField] NodeArray NodeArray { get; }
     [SerializeField] private List<GameObject> _tissueBlocks;
+    [SerializeField] private ModelLoader modelLoader;
+    private GameObject organ;
 
     private void Start()
     {
         GetNodes(url);
-        GetOrgan(); //organ is currently added in ModelLoader.cs
     }
 
     public async void GetNodes(string url)
     {
-        var httpClient = dataFetcher;
+        DataFetcher httpClient = dataFetcher;
         _nodeArray = await httpClient.Get(url);
-        CreateTissueBlocks();
+        CreateAndPlaceTissueBlocks();
+        LoadOrgan(); //organ is currently added in ModelLoader.cs
     }
 
-    void GetOrgan()
+    void LoadOrgan()
     {
-       
+        organ = modelLoader.GetModel(_nodeArray.nodes[0].scenegraph);
+        PlaceOrgan();
     }
 
-    void CreateTissueBlocks()
+    void PlaceOrgan() //-1, 1, -1 -> for scale
+    {
+        Matrix4x4 reflected = ReflectZ() * MatrixExtensions.BuildMatrix(_nodeArray.nodes[0].transformMatrix);
+        organ.transform.position = reflected.GetPosition();
+        organ.transform.rotation = reflected.rotation;
+        organ.transform.localScale = new Vector3(
+            reflected.lossyScale.x,
+            reflected.lossyScale.y,
+            -reflected.lossyScale.z
+        );
+        // reflected.lossyScale;
+        Debug.Log("ReflectZ(): " + ReflectZ());
+        Debug.Log("BuildMAtrix(): " + MatrixExtensions.BuildMatrix(_nodeArray.nodes[0].transformMatrix));
+        Debug.Log("reflected: " + reflected);
+        Debug.Log(reflected.GetPosition());
+        Debug.Log(reflected.rotation);
+        Debug.Log(reflected.lossyScale);
+    }
+
+    void CreateAndPlaceTissueBlocks()
     {
 
-        for (int i = 0; i < _nodeArray.nodes.Length; i++)
+        for (int i = 1; i < _nodeArray.nodes.Length; i++)
         {
+            Debug.Log(_nodeArray.nodes[0]);
             Matrix4x4 reflected = ReflectZ() * MatrixExtensions.BuildMatrix(_nodeArray.nodes[i].transformMatrix);
             GameObject block = Instantiate(
                 pre_TissueBlock,
-                reflected.GetPosition(), 
+                reflected.GetPosition(),
                 reflected.rotation
        );
             block.transform.localScale = reflected.lossyScale * 2f;
