@@ -9,4 +9,16 @@ public class TissueBlockData : MonoBehaviour
 
     [field: SerializeField]
     public float[] TransformMatrix { get; set; }
+
+    [field: SerializeField]
+    public string Name { get; set; }
+
+    [field: SerializeField]
+    public string Tooltip { get; set; }
+
+    [field: SerializeField]
+    public string[] CcfAnnotations { get; set; }
+
+    [field: SerializeField]
+    public string HubmapId { get; set; }
 }

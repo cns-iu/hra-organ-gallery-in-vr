@@ -5,8 +5,16 @@ using System.Threading.Tasks;
 
 public class SceneBuilder : MonoBehaviour
 {
-    [SerializeField] private string url = "https://ccf-api.hubmapconsortium.org/v1/scene?sex=male&ontology-terms=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FUBERON_0004538";
-    // [SerializeField] private string urlSpatialPlacement = "https://ccf-api.hubmapconsortium.org/#/operations/get-spatial-placement";
+    public delegate void SceneBuilt();
+    public static event SceneBuilt OnSceneBuilt;
+
+    [SerializeField] private string url = "https://ccf-api--staging.herokuapp.com/v1/reference-organ-scene?ontology-terms=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FUBERON_0004538&organ-iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FUBERON_0002097&sex=male";
+    //ontology terms: tissue block; organ iri: organ
+    // heart: 0000948
+    //left kidney: 0004538
+    //skin: 0002097
+    //choose organ iri: skin for correct placement and ontology term for which tissue blocks you want to show
+
     [SerializeField] private GameObject pre_TissueBlock;
     [SerializeField] private DataFetcher dataFetcher;
     [SerializeField] NodeArray _nodeArray;
@@ -26,6 +34,7 @@ public class SceneBuilder : MonoBehaviour
         _nodeArray = await httpClient.Get(url);
         CreateAndPlaceTissueBlocks();
         LoadOrgan(); //organ is currently added in ModelLoader.cs
+        OnSceneBuilt?.Invoke();
     }
 
     void LoadOrgan()
@@ -44,20 +53,36 @@ public class SceneBuilder : MonoBehaviour
             reflected.lossyScale.y,
             -reflected.lossyScale.z
         );
-        // reflected.lossyScale;
-        Debug.Log("ReflectZ(): " + ReflectZ());
-        Debug.Log("BuildMAtrix(): " + MatrixExtensions.BuildMatrix(_nodeArray.nodes[0].transformMatrix));
-        Debug.Log("reflected: " + reflected);
-        Debug.Log(reflected.GetPosition());
-        Debug.Log(reflected.rotation);
-        Debug.Log(reflected.lossyScale);
+
+        SetOrganOpacity(organ, _nodeArray.nodes[0].opacity);
+    }
+
+    void SetOrganOpacity(GameObject organWrapper, float alpha)
+    {
+
+        List<Transform> list = new List<Transform>();
+        list = LeavesFinder.FindLeaves(organWrapper.transform.GetChild(0), list);
+
+        foreach (var item in list)
+        {
+            Renderer renderer = item.GetComponent<MeshRenderer>();
+
+            if (renderer == null) continue;
+            Color updatedColor = renderer.material.color;
+            updatedColor.a = alpha;
+            renderer.material.color = updatedColor;
+
+            Shader standard;
+            standard = Shader.Find("Standard");
+            renderer.material.shader = standard;
+            MaterialExtensions.ToFadeMode(renderer.material);
+        }
     }
 
     void CreateAndPlaceTissueBlocks()
     {
         for (int i = 1; i < _nodeArray.nodes.Length; i++)
         {
-            Debug.Log(_nodeArray.nodes[0]);
             Matrix4x4 reflected = ReflectZ() * MatrixExtensions.BuildMatrix(_nodeArray.nodes[i].transformMatrix);
             GameObject block = Instantiate(
                 pre_TissueBlock,
@@ -82,20 +107,10 @@ public class SceneBuilder : MonoBehaviour
 
     void SetData(GameObject obj, Node node)
     {
-        obj.AddComponent<TissueBlockData>().EntityId = node.entityId;
-        obj.GetComponent<TissueBlockData>().TransformMatrix = node.transformMatrix;
-
-        TestMatrix(obj.GetComponent<TissueBlockData>().TransformMatrix, obj.GetComponent<TissueBlockData>().EntityId);
+        TissueBlockData dataComponent = obj.AddComponent<TissueBlockData>();
+        dataComponent.EntityId = node.entityId;
+        dataComponent.Name = node.name;
+        dataComponent.Tooltip = node.tooltip;
+        dataComponent.CcfAnnotations = node.ccf_annotations;
     }
-
-    void TestMatrix(float[] transformMatrix, string id)
-    {
-        Matrix4x4 matrix = MatrixExtensions.BuildMatrix(transformMatrix);
-        Vector3 pos = matrix.GetPosition();
-        Quaternion rot = matrix.rotation;
-        Vector3 s = matrix.lossyScale;
-        Matrix4x4 m = new Matrix4x4();
-        m.SetTRS(pos, rot, s);
-    }
-
 }
