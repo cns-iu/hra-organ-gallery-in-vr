@@ -28,10 +28,10 @@ public class TissueBlockSelectActions : MonoBehaviour
         // If our ray hits a collider somewhere in the scene, do:
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
+            // Debug.Log((hit.collider.name)); // Logs the name of the gameObject our Raycast hits
             // Compare if the object's tag was "TissueBlock"
             if (hit.collider.CompareTag("TissueBlock"))
             {
-                Debug.Log(hit.point);
                 // Invoke OnHover event
                 OnHover?.Invoke(hit); // '?' is an elegant way to check whether null without using an additional if statement
                 
