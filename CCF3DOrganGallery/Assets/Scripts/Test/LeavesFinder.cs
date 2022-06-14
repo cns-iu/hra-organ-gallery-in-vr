@@ -8,11 +8,11 @@ public class LeavesFinder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        FindLeaves(this.transform);
+        FindLeaves(this.transform, leafArray);
         foreach (var item in leafArray)
         {
             Debug.Log(item.gameObject.name);
-            item.gameObject.AddComponent < ExplodingViewManager >();
+            item.gameObject.AddComponent<ExplodingViewManager>();
         }
 
 
@@ -26,7 +26,7 @@ public class LeavesFinder : MonoBehaviour
     }
 
 
-    void FindLeaves(Transform parent)
+    public static List<Transform> FindLeaves(Transform parent, List<Transform> leafArray)
     {
         // Debug.Log(parent.childCount);
         if (parent.childCount == 0)
@@ -39,12 +39,12 @@ public class LeavesFinder : MonoBehaviour
         {
             foreach (Transform child in parent)
             {
-                FindLeaves(child);
+                FindLeaves(child, leafArray);
                 leafArray.Add(parent);
                 // Debug.Log(child.gameObject.name);
             }
         }
 
-       
+        return leafArray;
     }
 }

@@ -7,18 +7,21 @@ using Siccity.GLTFUtility;
 
 public class ModelLoader : MonoBehaviour
 {
-    GameObject wrapper;
-    [SerializeField] string filePath;
+    [SerializeField] private string filePath;
+    private GameObject wrapper;
 
-    private void Start()
+    public GameObject GetModel(string url)
     {
-        filePath = $"{Application.persistentDataPath}/Files/";
+        filePath = $"{Application.persistentDataPath}/Models/";
         wrapper = new GameObject
         {
             name = "Model"
         };
+
+        DownloadFile(url);
+        return wrapper;
     }
-    
+
     public void DownloadFile(string url)
     {
         string path = GetFilePath(url);

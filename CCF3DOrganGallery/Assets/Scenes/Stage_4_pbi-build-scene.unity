@@ -994,12 +994,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbc63f27c4470648873028ae28fa258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  url: https://ccf-api--staging.herokuapp.com/v1/reference-organ-scene?ontology-terms=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FUBERON_0004538&organ-iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FUBERON_0004538&sex=male
+  url: https://ccf-api.hubmapconsortium.org/v1/scene
   pre_TissueBlock: {fileID: 903711217248147082, guid: 24c8b6f2824924940aa9e547c7f781e3, type: 3}
   dataFetcher: {fileID: 309744075}
   _nodeArray:
     nodes: []
   _tissueBlocks: []
+  modelLoader: {fileID: 967626587}
 --- !u!4 &600342371
 Transform:
   m_ObjectHideFlags: 0
@@ -1322,7 +1323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4177c9159833d9346bb628d89fed4896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filePath: https://ccf-ontology.hubmapconsortium.org/ccf.owl#VHMSkinV1.1
+  filePath: 
 --- !u!4 &967626588
 Transform:
   m_ObjectHideFlags: 0
@@ -2522,7 +2523,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1857630675}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.026, y: 1.6563716, z: 2.889986}
+  m_LocalPosition: {x: -2.053, y: 0, z: -1.026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
