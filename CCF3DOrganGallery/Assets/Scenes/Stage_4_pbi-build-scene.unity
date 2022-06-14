@@ -994,7 +994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbc63f27c4470648873028ae28fa258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  url: https://ccf-api--staging.herokuapp.com/v1/reference-organ-scene?ontology-terms=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FUBERON_0004538&organ-iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FUBERON_0004538&sex=male
+  url: https://ccf-api.hubmapconsortium.org/v1/scene
   pre_TissueBlock: {fileID: 903711217248147082, guid: 24c8b6f2824924940aa9e547c7f781e3, type: 3}
   dataFetcher: {fileID: 309744075}
   _nodeArray:

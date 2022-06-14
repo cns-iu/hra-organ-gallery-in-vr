@@ -9,6 +9,8 @@ public class SceneBuilder : MonoBehaviour
     public static event SceneBuilt OnSceneBuilt;
 
     [SerializeField] private string url = "https://ccf-api--staging.herokuapp.com/v1/reference-organ-scene?ontology-terms=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FUBERON_0004538&organ-iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FUBERON_0002097&sex=male";
+    // use SCENE: https://ccf-api.hubmapconsortium.org/v1/scene
+    //old: https://ccf-api--staging.herokuapp.com/v1/reference-organ-scene?ontology-terms=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FUBERON_0004538&organ-iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FUBERON_0004538&sex=male
     //ontology terms: tissue block; organ iri: organ
     // heart: 0000948
     //left kidney: 0004538
@@ -21,7 +23,7 @@ public class SceneBuilder : MonoBehaviour
     [SerializeField] NodeArray NodeArray { get; }
     [SerializeField] private List<GameObject> _tissueBlocks;
     [SerializeField] private ModelLoader modelLoader;
-    private GameObject organ;
+    // private GameObject organ;
 
     private void Start()
     {
@@ -32,18 +34,22 @@ public class SceneBuilder : MonoBehaviour
     {
         DataFetcher httpClient = dataFetcher;
         _nodeArray = await httpClient.Get(url);
+        LoadOrgans(); //organ is currently added in ModelLoader.cs
         CreateAndPlaceTissueBlocks();
-        LoadOrgan(); //organ is currently added in ModelLoader.cs
         OnSceneBuilt?.Invoke();
     }
 
-    void LoadOrgan()
+    void LoadOrgans()
     {
-        organ = modelLoader.GetModel(_nodeArray.nodes[0].scenegraph);
-        PlaceOrgan();
+        foreach (var node in _nodeArray.nodes)
+        {
+            if (node.scenegraph == null) return;
+            GameObject organ = modelLoader.GetModel(node.scenegraph);
+            PlaceOrgan(organ, node);
+        }
     }
 
-    void PlaceOrgan() //-1, 1, -1 -> for scale
+    void PlaceOrgan(GameObject organ, Node node) //-1, 1, -1 -> for scale
     {
         Matrix4x4 reflected = ReflectZ() * MatrixExtensions.BuildMatrix(_nodeArray.nodes[0].transformMatrix);
         organ.transform.position = reflected.GetPosition();
@@ -54,7 +60,7 @@ public class SceneBuilder : MonoBehaviour
             -reflected.lossyScale.z
         );
 
-        SetOrganOpacity(organ, _nodeArray.nodes[0].opacity);
+        SetOrganOpacity(organ, node.opacity);
     }
 
     void SetOrganOpacity(GameObject organWrapper, float alpha)
@@ -83,6 +89,7 @@ public class SceneBuilder : MonoBehaviour
     {
         for (int i = 1; i < _nodeArray.nodes.Length; i++)
         {
+            if (_nodeArray.nodes[i].scenegraph != null) continue;
             Matrix4x4 reflected = ReflectZ() * MatrixExtensions.BuildMatrix(_nodeArray.nodes[i].transformMatrix);
             GameObject block = Instantiate(
                 pre_TissueBlock,
