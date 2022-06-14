@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
+// Need to implement so that only one cube changes colour at one time
 public class TissueBlockColorChanger : MonoBehaviour
 {
-    
     // References the Renderer of current tissue block in question
     [FormerlySerializedAs("_tissueBlocksRenderer")] public Renderer tissueBlocksRenderer;
     // Rider optimization code to replace "_color" in *.SetColor() method
@@ -12,7 +12,7 @@ public class TissueBlockColorChanger : MonoBehaviour
     // When the required Input action is in progress
     private void OnEnable()
     {
-        // Subscribes events to 
+        // Subscribes events to respective colour changing method
         TissueBlockSelectActions.OnSelected += SetSelectColor;
         TissueBlockSelectActions.OnHover += SetHoverColor;
         TissueBlockSelectActions.SetToDefault += SetDefaultColor;
@@ -21,7 +21,7 @@ public class TissueBlockColorChanger : MonoBehaviour
     // When required Input action is no longer taking place
     private void OnDestroy()
     {
-        // Unsubscribes
+        // Unsubscribes events to respective colour changing method
         TissueBlockSelectActions.OnSelected -= SetSelectColor;
         TissueBlockSelectActions.OnHover -= SetHoverColor;
         TissueBlockSelectActions.SetToDefault -= SetDefaultColor;
@@ -30,19 +30,26 @@ public class TissueBlockColorChanger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Acquires renderer from tissueBlock(s)
         tissueBlocksRenderer = GetComponent<Renderer>();
     }
 
-    public void SetDefaultColor(RaycastHit hit) //
+    public void SetDefaultColor(RaycastHit hit) 
     {
+        // Sets colour of tissue-block to white for default state when tissue-block is not given focus
         tissueBlocksRenderer.material.SetColor(Color1, Color.white);
+        // Turning off the Outline Script  
+        gameObject.GetComponent<Outline>().enabled = false;
     }
 
     public void SetHoverColor(RaycastHit hit)
     {
         if (hit.collider.name.Equals(this.gameObject.name))
         {
+            // Sets colour of tissue-block to yellow when it is hovered upon. Only works when RaycastHit object collider matches the same tissue-block.
             tissueBlocksRenderer.material.SetColor(Color1, Color.yellow);   
+            // Turning on the Outline Script 
+            gameObject.GetComponent<Outline>().enabled = true;
         }
     }
 
@@ -50,7 +57,10 @@ public class TissueBlockColorChanger : MonoBehaviour
     {
         if (hit.collider.name.Equals(this.gameObject.name))
         {
+            // Sets colour of tissue-block to blue when it is hovered upon and selected. Only works when RaycastHit object collider matches the same tissue-block.
             tissueBlocksRenderer.material.SetColor(Color1, Color.blue);
+            // Turning on the Outline Script
+            gameObject.GetComponent<Outline>().enabled = true;
         }
     }
 }

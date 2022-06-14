@@ -50,7 +50,7 @@ namespace SpaceNavigatorDriver {
 		#endregion - Callbacks -
 
 		static void Update() {
-			// Autosave settings.
+			// Auto-save settings.
 			if (!Application.isPlaying && DateTime.Now.Second - _lastSaveTime > _saveInterval) {
 				Settings.Write();
 				_lastSaveTime = DateTime.Now.Second;
@@ -129,7 +129,7 @@ namespace SpaceNavigatorDriver {
 				}
 			}
 
-			// Update sceneview pivot and repaint view.
+			// Update Scene view pivot and repaint view.
 			sceneView.pivot = _pivot.position;
 			sceneView.rotation = _pivot.rotation;
 			sceneView.Repaint();
@@ -158,7 +158,7 @@ namespace SpaceNavigatorDriver {
 				_camera.RotateAround(Tools.handlePosition, _camera.forward, rotation.z);
 			}
 
-			// Update sceneview pivot and repaint view.
+			// Update Scene view pivot and repaint view.
 			sceneView.pivot = _pivot.position;
 			sceneView.rotation = _pivot.rotation;
 			sceneView.Repaint();
@@ -251,7 +251,7 @@ namespace SpaceNavigatorDriver {
 		public static void StraightenHorizon() {
 			_camera.rotation = Quaternion.Euler(_camera.rotation.eulerAngles.x, _camera.rotation.eulerAngles.y, 0);
 
-			// Update sceneview pivot and repaint view.
+			// Update Scene view pivot and repaint view.
 			SceneView.lastActiveSceneView.pivot = _pivot.position;
 			SceneView.lastActiveSceneView.rotation = _pivot.rotation;
 			SceneView.lastActiveSceneView.Repaint();

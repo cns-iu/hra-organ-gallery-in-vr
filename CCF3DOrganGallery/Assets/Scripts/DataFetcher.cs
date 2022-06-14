@@ -71,7 +71,6 @@ public class Node
     public bool zoomToOnLoad;
     public int[] color;
     public float opacity;
-    // Doc see https://math.gl/modules/core/docs/api-reference/matrix4
     public float[] transformMatrix;
     public string name;
     public string tooltip;

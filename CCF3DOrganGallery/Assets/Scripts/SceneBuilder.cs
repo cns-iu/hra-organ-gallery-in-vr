@@ -5,13 +5,25 @@ using System.Threading.Tasks;
 
 public class SceneBuilder : MonoBehaviour
 {
-    [SerializeField] private string url = "https://ccf-api.hubmapconsortium.org/v1/scene?sex=male&ontology-terms=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FUBERON_0004538";
-    // [SerializeField] private string urlSpatialPlacement = "https://ccf-api.hubmapconsortium.org/#/operations/get-spatial-placement";
+    public delegate void SceneBuilt();
+    public static event SceneBuilt OnSceneBuilt;
+
+    [SerializeField] private string url = "https://ccf-api--staging.herokuapp.com/v1/reference-organ-scene?ontology-terms=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FUBERON_0004538&organ-iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FUBERON_0002097&sex=male";
+    // use SCENE: https://ccf-api.hubmapconsortium.org/v1/scene
+    //old: https://ccf-api--staging.herokuapp.com/v1/reference-organ-scene?ontology-terms=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FUBERON_0004538&organ-iri=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FUBERON_0004538&sex=male
+    //ontology terms: tissue block; organ iri: organ
+    // heart: 0000948
+    //left kidney: 0004538
+    //skin: 0002097
+    //choose organ iri: skin for correct placement and ontology term for which tissue blocks you want to show
+
     [SerializeField] private GameObject pre_TissueBlock;
     [SerializeField] private DataFetcher dataFetcher;
     [SerializeField] NodeArray _nodeArray;
     [SerializeField] NodeArray NodeArray { get; }
     [SerializeField] private List<GameObject> _tissueBlocks;
+    [SerializeField] private ModelLoader modelLoader;
+    // private GameObject organ;
 
     private void Start()
     {
@@ -20,25 +32,71 @@ public class SceneBuilder : MonoBehaviour
 
     public async void GetNodes(string url)
     {
-        var httpClient = dataFetcher;
+        DataFetcher httpClient = dataFetcher;
         _nodeArray = await httpClient.Get(url);
-        CreateTissueBlocks();
+        LoadOrgans(); //organ is currently added in ModelLoader.cs
+        CreateAndPlaceTissueBlocks();
+        OnSceneBuilt?.Invoke();
     }
 
-    void CreateTissueBlocks()
+    void LoadOrgans()
+    {
+        foreach (var node in _nodeArray.nodes)
+        {
+            if (node.scenegraph == null) return;
+            GameObject organ = modelLoader.GetModel(node.scenegraph);
+            PlaceOrgan(organ, node);
+        }
+    }
+
+    void PlaceOrgan(GameObject organ, Node node) //-1, 1, -1 -> for scale
+    {
+        Matrix4x4 reflected = ReflectZ() * MatrixExtensions.BuildMatrix(_nodeArray.nodes[0].transformMatrix);
+        organ.transform.position = reflected.GetPosition();
+        organ.transform.rotation = reflected.rotation;
+        organ.transform.localScale = new Vector3(
+            reflected.lossyScale.x,
+            reflected.lossyScale.y,
+            -reflected.lossyScale.z
+        );
+
+        SetOrganOpacity(organ, node.opacity);
+    }
+
+    void SetOrganOpacity(GameObject organWrapper, float alpha)
     {
 
-        for (int i = 0; i < _nodeArray.nodes.Length; i++)
+        List<Transform> list = new List<Transform>();
+        list = LeavesFinder.FindLeaves(organWrapper.transform.GetChild(0), list);
+
+        foreach (var item in list)
         {
+            Renderer renderer = item.GetComponent<MeshRenderer>();
+
+            if (renderer == null) continue;
+            Color updatedColor = renderer.material.color;
+            updatedColor.a = alpha;
+            renderer.material.color = updatedColor;
+
+            Shader standard;
+            standard = Shader.Find("Standard");
+            renderer.material.shader = standard;
+            MaterialExtensions.ToFadeMode(renderer.material);
+        }
+    }
+
+    void CreateAndPlaceTissueBlocks()
+    {
+        for (int i = 1; i < _nodeArray.nodes.Length; i++)
+        {
+            if (_nodeArray.nodes[i].scenegraph != null) continue;
             Matrix4x4 reflected = ReflectZ() * MatrixExtensions.BuildMatrix(_nodeArray.nodes[i].transformMatrix);
             GameObject block = Instantiate(
                 pre_TissueBlock,
-                reflected.GetPosition(), //use Unity's built-in functionality, matrix col1 != pos etc.
+                reflected.GetPosition(),
                 reflected.rotation
        );
             block.transform.localScale = reflected.lossyScale * 2f;
-            // block.transform.position = new Vector3(block.transform.position.x, block.transform.position.y, -block.transform.position.z);
-
             SetData(block, _nodeArray.nodes[i]);
         }
     }
@@ -56,28 +114,10 @@ public class SceneBuilder : MonoBehaviour
 
     void SetData(GameObject obj, Node node)
     {
-        obj.AddComponent<TissueBlockData>().EntityId = node.entityId;
-        obj.GetComponent<TissueBlockData>().TransformMatrix = node.transformMatrix;
-
-        TestMatrix(obj.GetComponent<TissueBlockData>().TransformMatrix, obj.GetComponent<TissueBlockData>().EntityId);
+        TissueBlockData dataComponent = obj.AddComponent<TissueBlockData>();
+        dataComponent.EntityId = node.entityId;
+        dataComponent.Name = node.name;
+        dataComponent.Tooltip = node.tooltip;
+        dataComponent.CcfAnnotations = node.ccf_annotations;
     }
-
-    void TestMatrix(float[] transformMatrix, string id)
-    {
-        Matrix4x4 matrix = MatrixExtensions.BuildMatrix(transformMatrix);
-        Debug.Log(id);
-        Debug.Log("Before: " + matrix);
-
-        Vector3 pos = matrix.GetPosition();
-        Quaternion rot = matrix.rotation;
-        Vector3 s = matrix.lossyScale;
-
-        Matrix4x4 m = new Matrix4x4();
-        m.SetTRS(pos, rot, s);
-
-        Debug.Log("matrix with pos/rot/s : " + m);
-
-        Debug.Log(m == matrix);
-    }
-
 }

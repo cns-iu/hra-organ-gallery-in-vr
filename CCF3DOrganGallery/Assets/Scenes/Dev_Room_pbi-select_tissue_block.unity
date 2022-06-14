@@ -373,7 +373,7 @@ LineRenderer:
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.005
+    widthMultiplier: 0.02
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -451,10 +451,7 @@ MonoBehaviour:
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_InteractionLayers:
-    m_Bits: 4294967295
   m_AttachTransform: {fileID: 0}
-  m_KeepSelectedTargetValid: 1
   m_StartingSelectedInteractable: {fileID: 0}
   m_HoverEntered:
     m_PersistentCalls:
@@ -482,7 +479,6 @@ MonoBehaviour:
       m_Calls: []
   m_SelectActionTrigger: 0
   m_HideControllerOnSelect: 0
-  m_AllowHoveredActivate: 0
   m_PlayAudioClipOnSelectEntered: 0
   m_AudioClipForOnSelectEntered: {fileID: 0}
   m_PlayAudioClipOnSelectExited: 0
@@ -516,7 +512,6 @@ MonoBehaviour:
   m_LineType: 0
   m_BlendVisualLinePoints: 1
   m_MaxRaycastDistance: 30
-  m_RayOriginTransform: {fileID: 0}
   m_ReferenceFrame: {fileID: 0}
   m_Velocity: 16
   m_Acceleration: 9.8
@@ -534,6 +529,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
   m_HitClosestOnly: 0
+  m_KeepSelectedTargetValid: 1
   m_HoverToSelect: 0
   m_HoverTimeToSelect: 0.5
   m_EnableUIInteraction: 1
@@ -587,18 +583,6 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 8248158260566104461, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_TrackingStateAction:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Tracking State
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 8c91689b-505d-4b54-afc7-63ece81f376c
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
   m_SelectAction:
     m_UseReference: 1
     m_Action:
@@ -611,18 +595,6 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -6131295136447488360, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_SelectActionValue:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Select Action Value
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: ef15a355-ed70-447c-81b5-0126bfa37d5a
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
   m_ActivateAction:
     m_UseReference: 1
     m_Action:
@@ -635,18 +607,6 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -5982496924579745919, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_ActivateActionValue:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Activate Action Value
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 67ca59a0-19c7-4081-a34d-981a2cd91fbb
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
   m_UIPressAction:
     m_UseReference: 1
     m_Action:
@@ -659,18 +619,6 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -6395602842196007441, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_UIPressActionValue:
-    m_UseReference: 0
-    m_Action:
-      m_Name: UI Press Action Value
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 3cb447bc-747c-420e-8aa8-72f6b94a2d4b
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
   m_HapticDeviceAction:
     m_UseReference: 1
     m_Action:
@@ -762,6 +710,7 @@ GameObject:
   - component: {fileID: 120154613}
   - component: {fileID: 120154612}
   - component: {fileID: 120154616}
+  - component: {fileID: 120154617}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: TissueBlock
@@ -841,7 +790,7 @@ Transform:
   m_GameObject: {fileID: 120154611}
   m_LocalRotation: {x: 0.59886056, y: -0.47478113, z: -0.55959153, w: -0.32063413}
   m_LocalPosition: {x: 0.0033612251, y: 0.025898695, z: 0.0073280334}
-  m_LocalScale: {x: 0.0050000004, y: 0.005, z: 0.0049999994}
+  m_LocalScale: {x: 0.007828501, y: 0.0078285, z: 0.007828499}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1936266338}
@@ -860,6 +809,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tissueBlocksRenderer: {fileID: 0}
+--- !u!114 &120154617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120154611}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.73238754, g: 0, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &231104967
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,6 +840,7 @@ GameObject:
   - component: {fileID: 231104969}
   - component: {fileID: 231104968}
   - component: {fileID: 231104972}
+  - component: {fileID: 231104973}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: TissueBlock
@@ -952,7 +920,7 @@ Transform:
   m_GameObject: {fileID: 231104967}
   m_LocalRotation: {x: 0.5239208, y: -0.18505192, z: -0.3813017, w: -0.7388314}
   m_LocalPosition: {x: 0.011537313, y: 0.006255865, z: -0.002049446}
-  m_LocalScale: {x: 0.0050000004, y: 0.0050000004, z: 0.0049999994}
+  m_LocalScale: {x: 0.008889001, y: 0.008889001, z: 0.008888999}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1936266338}
@@ -971,6 +939,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tissueBlocksRenderer: {fileID: 0}
+--- !u!114 &231104973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231104967}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.73238754, g: 0, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &359284503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,6 +1142,7 @@ GameObject:
   - component: {fileID: 588782357}
   - component: {fileID: 588782356}
   - component: {fileID: 588782360}
+  - component: {fileID: 588782361}
   m_Layer: 0
   m_Name: Cube (5)
   m_TagString: TissueBlock
@@ -1254,6 +1241,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tissueBlocksRenderer: {fileID: 0}
+--- !u!114 &588782361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588782355}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.73238754, g: 0, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &728637999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1545,6 +1550,7 @@ GameObject:
   - component: {fileID: 956726386}
   - component: {fileID: 956726385}
   - component: {fileID: 956726389}
+  - component: {fileID: 956726390}
   m_Layer: 0
   m_Name: Cube (6)
   m_TagString: TissueBlock
@@ -1624,7 +1630,7 @@ Transform:
   m_GameObject: {fileID: 956726384}
   m_LocalRotation: {x: -0.015800474, y: -0.021557173, z: -0.7259729, w: 0.6872038}
   m_LocalPosition: {x: 0.022199392, y: -0.029892683, z: 0.0064311028}
-  m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
+  m_LocalScale: {x: 0.006547, y: 0.006547, z: 0.006547}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1936266338}
@@ -1643,6 +1649,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tissueBlocksRenderer: {fileID: 0}
+--- !u!114 &956726390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956726384}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.73238754, g: 0, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &999485878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1759,9 +1783,6 @@ MonoBehaviour:
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_InteractionLayers:
-    m_Bits: 1
-  m_SelectMode: 1
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
     m_PersistentCalls:
@@ -1773,12 +1794,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_HoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FirstSelectEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_LastSelectExited:
     m_PersistentCalls:
       m_Calls: []
   m_SelectEntered:
@@ -1823,9 +1838,6 @@ MonoBehaviour:
   m_TeleportationProvider: {fileID: 1857630679}
   m_MatchOrientation: 0
   m_TeleportTrigger: 0
-  m_Teleporting:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1109062177
 GameObject:
   m_ObjectHideFlags: 0
@@ -2010,7 +2022,7 @@ LineRenderer:
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.005
+    widthMultiplier: 0.02
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -2088,10 +2100,7 @@ MonoBehaviour:
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_InteractionLayers:
-    m_Bits: 4294967295
   m_AttachTransform: {fileID: 0}
-  m_KeepSelectedTargetValid: 1
   m_StartingSelectedInteractable: {fileID: 0}
   m_HoverEntered:
     m_PersistentCalls:
@@ -2119,7 +2128,6 @@ MonoBehaviour:
       m_Calls: []
   m_SelectActionTrigger: 0
   m_HideControllerOnSelect: 0
-  m_AllowHoveredActivate: 0
   m_PlayAudioClipOnSelectEntered: 0
   m_AudioClipForOnSelectEntered: {fileID: 0}
   m_PlayAudioClipOnSelectExited: 0
@@ -2153,7 +2161,6 @@ MonoBehaviour:
   m_LineType: 0
   m_BlendVisualLinePoints: 1
   m_MaxRaycastDistance: 30
-  m_RayOriginTransform: {fileID: 0}
   m_ReferenceFrame: {fileID: 0}
   m_Velocity: 16
   m_Acceleration: 9.8
@@ -2171,6 +2178,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
   m_HitClosestOnly: 0
+  m_KeepSelectedTargetValid: 1
   m_HoverToSelect: 0
   m_HoverTimeToSelect: 0.5
   m_EnableUIInteraction: 1
@@ -2224,18 +2232,6 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 5101698808175986029, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_TrackingStateAction:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Tracking State
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 0374edc9-77fc-4db5-8da9-c3c721689e92
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
   m_SelectAction:
     m_UseReference: 1
     m_Action:
@@ -2248,18 +2244,6 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 187161793506945269, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_SelectActionValue:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Select Action Value
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 7a4dee56-23c9-42e6-bcad-a178ab4249b6
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
   m_ActivateAction:
     m_UseReference: 1
     m_Action:
@@ -2272,18 +2256,6 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_ActivateActionValue:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Activate Action Value
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: b18a8a48-7790-47e1-9a0d-40e09eb858a2
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
   m_UIPressAction:
     m_UseReference: 1
     m_Action:
@@ -2296,18 +2268,6 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 3279264004350380116, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_UIPressActionValue:
-    m_UseReference: 0
-    m_Action:
-      m_Name: UI Press Action Value
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 5ac9de26-927f-45f3-abc9-84784bd1acb9
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
   m_HapticDeviceAction:
     m_UseReference: 1
     m_Action:
@@ -2814,6 +2774,7 @@ GameObject:
   - component: {fileID: 1447585498}
   - component: {fileID: 1447585497}
   - component: {fileID: 1447585501}
+  - component: {fileID: 1447585502}
   m_Layer: 0
   m_Name: Cube (4)
   m_TagString: TissueBlock
@@ -2912,6 +2873,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tissueBlocksRenderer: {fileID: 0}
+--- !u!114 &1447585502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447585496}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.73238754, g: 0, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &1613824510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2987,6 +2966,7 @@ GameObject:
   - component: {fileID: 1686780552}
   - component: {fileID: 1686780551}
   - component: {fileID: 1686780555}
+  - component: {fileID: 1686780556}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: TissueBlock
@@ -3085,6 +3065,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tissueBlocksRenderer: {fileID: 0}
+--- !u!114 &1686780556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686780550}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.73238754, g: 0, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1779119766
 GameObject:
   m_ObjectHideFlags: 0
@@ -3304,12 +3302,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7448815bd5148434682b3d931066cd10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Camera: {fileID: 0}
-  m_OriginBaseGameObject: {fileID: 1857630675}
+  m_RigBaseGameObject: {fileID: 1857630675}
   m_CameraFloorOffsetObject: {fileID: 557508230}
+  m_CameraGameObject: {fileID: 1382859023}
   m_RequestedTrackingOriginMode: 0
   m_CameraYOffset: 1.36144
-  m_CameraGameObject: {fileID: 1382859023}
+  m_TrackingSpace: 3
+  m_TrackingOriginMode: -2147483648
 --- !u!4 &1857630677
 Transform:
   m_ObjectHideFlags: 0
@@ -3339,7 +3338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Timeout: 10
-  m_XROrigin: {fileID: 1857630676}
+  m_XRRig: {fileID: 0}
 --- !u!114 &1857630679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3460,6 +3459,8 @@ GameObject:
   - component: {fileID: 1902247531}
   - component: {fileID: 1902247530}
   - component: {fileID: 1902247534}
+  - component: {fileID: 1902247535}
+  - component: {fileID: 1902247536}
   m_Layer: 0
   m_Name: Cube
   m_TagString: TissueBlock
@@ -3558,6 +3559,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tissueBlocksRenderer: {fileID: 0}
+--- !u!114 &1902247535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902247529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d177f5243441d44689a7d8c2b4eb307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weblink: https://raw.githubusercontent.com/hubmapconsortium/tissue-bar-graphs/static/csv/Kidney_Blue_Lake/HBM537.LTFK.379.csv
+--- !u!114 &1902247536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902247529}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.73238754, g: 0, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1913993246
 GameObject:
   m_ObjectHideFlags: 0
@@ -3571,6 +3603,7 @@ GameObject:
   - component: {fileID: 1913993248}
   - component: {fileID: 1913993247}
   - component: {fileID: 1913993251}
+  - component: {fileID: 1913993252}
   m_Layer: 0
   m_Name: Cube (7)
   m_TagString: TissueBlock
@@ -3650,7 +3683,7 @@ Transform:
   m_GameObject: {fileID: 1913993246}
   m_LocalRotation: {x: -0.033353996, y: -0.32388306, z: -0.90550447, w: 0.27211952}
   m_LocalPosition: {x: 0.019420624, y: -0.043394566, z: -0.012292385}
-  m_LocalScale: {x: 0.005, y: 0.0050000004, z: 0.0050000004}
+  m_LocalScale: {x: 0.0069885, y: 0.0069885002, z: 0.0069885002}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1936266338}
@@ -3669,6 +3702,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tissueBlocksRenderer: {fileID: 0}
+--- !u!114 &1913993252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913993246}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0.73238754, g: 0, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &1936266337
 GameObject:
   m_ObjectHideFlags: 0
@@ -3706,7 +3757,7 @@ Transform:
   - {fileID: 956726388}
   - {fileID: 1913993250}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2024686433
 PrefabInstance:
@@ -3717,7 +3768,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 626ae5727d9b00f47b9b724455fc3efa, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 626ae5727d9b00f47b9b724455fc3efa, type: 3}
       propertyPath: m_LocalPosition.x
