@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-/* This code is a Temporary replacement till Andi works with me on the events functionality */ 
+/* This code is a Temporary replacement till Andi works with me on the events functionality ~Yash Kumar*/ 
 public class SelectionTemporary: MonoBehaviour
 {   
     // References Input Action created "XRI RightHand/SelectTissue"
