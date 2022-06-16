@@ -44,7 +44,7 @@ public class TissueBlockColorChanger : MonoBehaviour
 
     public void SetHoverColor(RaycastHit hit)
     {
-        if (hit.collider.name.Equals(this.gameObject.name))
+        if (hit.collider.gameObject.Equals(this.gameObject))
         {
             // Sets colour of tissue-block to yellow when it is hovered upon. Only works when RaycastHit object collider matches the same tissue-block.
             tissueBlocksRenderer.material.SetColor(Color1, Color.yellow);   
@@ -55,7 +55,7 @@ public class TissueBlockColorChanger : MonoBehaviour
 
     public void SetSelectColor(RaycastHit hit)
     {
-        if (hit.collider.name.Equals(this.gameObject.name))
+        if (hit.collider.gameObject.Equals(this.gameObject))
         {
             // Sets colour of tissue-block to blue when it is hovered upon and selected. Only works when RaycastHit object collider matches the same tissue-block.
             tissueBlocksRenderer.material.SetColor(Color1, Color.blue);
