@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 public class TissueBlockColorChanger : MonoBehaviour
 {
     // References the Renderer of current tissue block in question
-    [FormerlySerializedAs("_tissueBlocksRenderer")] public Renderer tissueBlocksRenderer;
+    private Renderer tissueBlocksRenderer;
     // Rider optimization code to replace "_color" in *.SetColor() method
     private static readonly int Color1 = Shader.PropertyToID("_Color");
 
