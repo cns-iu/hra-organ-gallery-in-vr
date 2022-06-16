@@ -95,6 +95,7 @@ public class SceneBuilder : MonoBehaviour
        );
             block.transform.localScale = reflected.lossyScale * 2f;
             SetTissueBlockData(block, nodeArray.nodes[i]);
+            SetCellTypeData(block);
             TissueBlocks.Add(block);
         }
     }
@@ -117,6 +118,11 @@ public class SceneBuilder : MonoBehaviour
         dataComponent.Name = node.name;
         dataComponent.Tooltip = node.tooltip;
         dataComponent.CcfAnnotations = node.ccf_annotations;
+    }
+
+    void SetCellTypeData(GameObject obj) {
+        obj.AddComponent<CellTypeData>();
+        obj.AddComponent<CellTypeDataFetcher>();
     }
 
     void SetOrganData(GameObject obj, Node node)
