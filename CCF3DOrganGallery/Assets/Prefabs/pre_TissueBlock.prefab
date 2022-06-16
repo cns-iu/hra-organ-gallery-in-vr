@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 903711217248147076}
   - component: {fileID: 903711217248147077}
   - component: {fileID: 3178941828089054274}
+  - component: {fileID: 2230855432245231417}
+  - component: {fileID: 2985615586740839679}
   m_Layer: 0
   m_Name: pre_TissueBlock
-  m_TagString: Untagged
+  m_TagString: TissueBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,8 +107,39 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 903711217248147082}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ae41ca0bd6274c46b52fe255305e05d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2230855432245231417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903711217248147082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b78091712786194292fe6abdae2e2d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tissueBlocksRenderer: {fileID: 0}
+--- !u!114 &2985615586740839679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903711217248147082}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0, b: 0.9644861, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
