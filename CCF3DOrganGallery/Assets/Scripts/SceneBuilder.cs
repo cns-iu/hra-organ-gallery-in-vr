@@ -16,11 +16,8 @@ public class SceneBuilder : MonoBehaviour
     [SerializeField] public NodeArray nodeArray;
     [SerializeField] private ModelLoader modelLoader;
 
-
-
     private void Start()
     {
-        // GetNodes(url);
         sceneConfiguration = GetComponent<SceneConfiguration>();
         GetNodes(sceneConfiguration.BuildUrl());
     }
