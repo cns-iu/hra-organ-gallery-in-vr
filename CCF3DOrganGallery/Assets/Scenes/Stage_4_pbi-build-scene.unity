@@ -721,6 +721,7 @@ GameObject:
   m_Component:
   - component: {fileID: 309744076}
   - component: {fileID: 309744075}
+  - component: {fileID: 309744077}
   m_Layer: 0
   m_Name: DataFetcher
   m_TagString: Untagged
@@ -755,6 +756,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &309744077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309744074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51224125dbfb72441aee363c2f1b81b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaleEntityIds: []
+  FemaleEntityIds: []
+  sceneBuilder: {fileID: 600342370}
+  url: 
 --- !u!1 &339996761
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,12 +1205,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TissueBlocks: []
   Organs: []
+  MaleEntityIds: []
+  FemaleEntityIds: []
   sceneConfiguration: {fileID: 0}
   pre_TissueBlock: {fileID: 903711217248147082, guid: 24c8b6f2824924940aa9e547c7f781e3, type: 3}
   dataFetcher: {fileID: 309744075}
   nodeArray:
     nodes: []
   modelLoader: {fileID: 967626587}
+  maleLetters: VH_M
+  femaleLetters: VH_F
 --- !u!4 &600342371
 Transform:
   m_ObjectHideFlags: 0
