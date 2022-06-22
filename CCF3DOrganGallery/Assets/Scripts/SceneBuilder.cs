@@ -28,6 +28,7 @@ public class SceneBuilder : MonoBehaviour
         nodeArray = await httpClient.Get(url);
         LoadOrgans(); //organ is currently added in ModelLoader.cs
         CreateAndPlaceTissueBlocks();
+        ParentTissueBlocksToOrgans(TissueBlocks, Organs);
         OnSceneBuilt?.Invoke();
     }
 
@@ -45,7 +46,7 @@ public class SceneBuilder : MonoBehaviour
 
     void PlaceOrgan(GameObject organ, Node node) //-1, 1, -1 -> for scale
     {
-        Matrix4x4 reflected = ReflectZ() * MatrixExtensions.BuildMatrix(nodeArray.nodes[0].transformMatrix);
+        Matrix4x4 reflected = ReflectZ() * MatrixExtensions.BuildMatrix(node.transformMatrix);
         organ.transform.position = reflected.GetPosition();
         organ.transform.rotation = reflected.rotation;
         organ.transform.localScale = new Vector3(
@@ -117,7 +118,8 @@ public class SceneBuilder : MonoBehaviour
         dataComponent.CcfAnnotations = node.ccf_annotations;
     }
 
-    void SetCellTypeData(GameObject obj) {
+    void SetCellTypeData(GameObject obj)
+    {
         obj.AddComponent<CellTypeData>();
         obj.AddComponent<CellTypeDataFetcher>();
     }
@@ -127,5 +129,22 @@ public class SceneBuilder : MonoBehaviour
         OrganData dataComponent = obj.AddComponent<OrganData>();
         dataComponent.sceneGraph = node.scenegraph;
         dataComponent.representationOf = node.representation_of;
+    }
+
+    void ParentTissueBlocksToOrgans(List<GameObject> tissueBlocks, List<GameObject> organs)
+    {
+        for (int i = 0; i < tissueBlocks.Count; i++)
+        {
+            for (int j = 0; j < organs.Count; j++)
+            {
+                foreach (var url in tissueBlocks[i].GetComponent<TissueBlockData>().CcfAnnotations)
+                {
+                    if (url == organs[j].GetComponent<OrganData>().representationOf)
+                    {
+                        tissueBlocks[i].transform.parent = organs[j].transform;
+                    }
+                }
+            }
+        }
     }
 }
