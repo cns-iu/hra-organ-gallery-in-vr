@@ -124,7 +124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b78091712786194292fe6abdae2e2d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tissueBlocksRenderer: {fileID: 0}
 --- !u!114 &2985615586740839679
 MonoBehaviour:
   m_ObjectHideFlags: 0

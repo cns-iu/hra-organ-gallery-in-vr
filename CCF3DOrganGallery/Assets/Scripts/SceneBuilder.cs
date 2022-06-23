@@ -9,18 +9,19 @@ public class SceneBuilder : MonoBehaviour
     public static event SceneBuilt OnSceneBuilt;
     public List<GameObject> TissueBlocks;
     public List<GameObject> Organs;
+    public List<string> MaleEntityIds;
+    public List<string> FemaleEntityIds;
 
     [SerializeField] private SceneConfiguration sceneConfiguration;
     [SerializeField] private GameObject pre_TissueBlock;
     [SerializeField] private DataFetcher dataFetcher;
     [SerializeField] public NodeArray nodeArray;
     [SerializeField] private ModelLoader modelLoader;
-
-
+    [SerializeField] private string maleLetters;
+    [SerializeField] private string femaleLetters;
 
     private void Start()
     {
-        // GetNodes(url);
         sceneConfiguration = GetComponent<SceneConfiguration>();
         GetNodes(sceneConfiguration.BuildUrl());
     }
@@ -31,7 +32,7 @@ public class SceneBuilder : MonoBehaviour
         nodeArray = await httpClient.Get(url);
         LoadOrgans(); //organ is currently added in ModelLoader.cs
         CreateAndPlaceTissueBlocks();
-        OnSceneBuilt?.Invoke();
+        ParentTissueBlocksToOrgans(TissueBlocks, Organs);
     }
 
     void LoadOrgans()
@@ -48,7 +49,7 @@ public class SceneBuilder : MonoBehaviour
 
     void PlaceOrgan(GameObject organ, Node node) //-1, 1, -1 -> for scale
     {
-        Matrix4x4 reflected = ReflectZ() * MatrixExtensions.BuildMatrix(nodeArray.nodes[0].transformMatrix);
+        Matrix4x4 reflected = ReflectZ() * MatrixExtensions.BuildMatrix(node.transformMatrix);
         organ.transform.position = reflected.GetPosition();
         organ.transform.rotation = reflected.rotation;
         organ.transform.localScale = new Vector3(
@@ -120,7 +121,8 @@ public class SceneBuilder : MonoBehaviour
         dataComponent.CcfAnnotations = node.ccf_annotations;
     }
 
-    void SetCellTypeData(GameObject obj) {
+    void SetCellTypeData(GameObject obj)
+    {
         obj.AddComponent<CellTypeData>();
         obj.AddComponent<CellTypeDataFetcher>();
     }
@@ -128,7 +130,91 @@ public class SceneBuilder : MonoBehaviour
     void SetOrganData(GameObject obj, Node node)
     {
         OrganData dataComponent = obj.AddComponent<OrganData>();
-        dataComponent.sceneGraph = node.scenegraph;
-        dataComponent.representationOf = node.representation_of;
+        dataComponent.SceneGraph = node.scenegraph;
+        dataComponent.RepresentationOf = node.representation_of;
     }
+
+    async void ParentTissueBlocksToOrgans(List<GameObject> tissueBlocks, List<GameObject> organs)
+    {
+        // Add back to AssignEntityIdsToDonorSexLists if delay bug
+        // AssignEntityIdsToDonorSexLists();
+        MaleEntityIds = await GetEntityIdsBySex("https://ccf-api.hubmapconsortium.org/v1/tissue-blocks?sex=male");
+        FemaleEntityIds = await GetEntityIdsBySex("https://ccf-api.hubmapconsortium.org/v1/tissue-blocks?sex=female");
+
+        Debug.Log(MaleEntityIds.Count);
+        Debug.Log(FemaleEntityIds.Count);
+
+        // assign donor sex to organ
+        for (int i = 0; i < Organs.Count; i++)
+        {
+            OrganData data = Organs[i].GetComponent<OrganData>();
+
+            for (int n = 0; n < MaleEntityIds.Count; n++)
+            {
+                if (data.SceneGraph.Contains(maleLetters))
+                {
+                    data.DonorSex = "male";
+                }
+                else
+                {
+                    data.DonorSex = "female";
+                }
+            }
+        }
+
+        // assign donor sex to tissue block and parent to organ
+        for (int i = 0; i < TissueBlocks.Count; i++)
+        {
+            TissueBlockData tissueData = TissueBlocks[i].GetComponent<TissueBlockData>();
+            if (MaleEntityIds.Contains(tissueData.EntityId))
+            {
+                tissueData.DonorSex = "male";
+            }
+            else
+            {
+                tissueData.DonorSex = "female";
+            }
+
+            // parenting should happen here, currently parents to first item it finds (spinal cord?) --BUG
+            for (int j = 0; j < Organs.Count; j++)
+            {
+                OrganData organData = Organs[j].GetComponent<OrganData>();
+                bool isRightOrgan = false;
+
+                foreach (var annotation in tissueData.CcfAnnotations)
+                {
+                    if (organData.RepresentationOf == annotation)
+                    {
+                        isRightOrgan = true;
+                        continue;
+                    }
+                }
+
+                if (tissueData.DonorSex == organData.DonorSex && isRightOrgan)
+                {
+                    TissueBlocks[i].transform.parent = Organs[j].transform;
+                }
+            }
+        }
+
+        // trigger OnSceneBuilt event
+        OnSceneBuilt?.Invoke();
+    }
+
+    public async Task<List<string>> GetEntityIdsBySex(string url)
+    {
+        List<string> result = new List<string>();
+        DataFetcher httpClient = dataFetcher;
+        nodeArray = await httpClient.Get(url);
+        foreach (var item in nodeArray.nodes)
+        {
+            result.Add(item.jsonLdId);
+        }
+        return result;
+    }
+
+    // async void AssignEntityIdsToDonorSexLists()
+    // {
+
+    // }
 }

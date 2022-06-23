@@ -5,8 +5,11 @@ using UnityEngine;
 public class OrganData : MonoBehaviour
 {
     [field: SerializeField]
-    public string representationOf { get; set; }
+    public string RepresentationOf { get; set; }
 
     [field: SerializeField]
-    public string sceneGraph { get; set; }
+    public string SceneGraph { get; set; }
+
+    [field: SerializeField]
+    public string DonorSex { get; set; }
 }
