@@ -141,9 +141,6 @@ public class SceneBuilder : MonoBehaviour
         MaleEntityIds = await GetEntityIdsBySex("https://ccf-api.hubmapconsortium.org/v1/tissue-blocks?sex=male");
         FemaleEntityIds = await GetEntityIdsBySex("https://ccf-api.hubmapconsortium.org/v1/tissue-blocks?sex=female");
 
-        Debug.Log(MaleEntityIds.Count);
-        Debug.Log(FemaleEntityIds.Count);
-
         // assign donor sex to organ
         for (int i = 0; i < Organs.Count; i++)
         {
@@ -175,24 +172,18 @@ public class SceneBuilder : MonoBehaviour
                 tissueData.DonorSex = "female";
             }
 
-            // parenting should happen here, currently parents to first item it finds (spinal cord?) --BUG
+            // parenting should happen here, still leaves some tissue blocks unparented
             for (int j = 0; j < Organs.Count; j++)
             {
                 OrganData organData = Organs[j].GetComponent<OrganData>();
-                bool isRightOrgan = false;
 
                 foreach (var annotation in tissueData.CcfAnnotations)
                 {
-                    if (organData.RepresentationOf == annotation)
+                    if (tissueData.DonorSex == organData.DonorSex && organData.RepresentationOf == annotation)
                     {
-                        isRightOrgan = true;
-                        continue;
+                        TissueBlocks[i].transform.parent = Organs[j].transform;
+                        break;
                     }
-                }
-
-                if (tissueData.DonorSex == organData.DonorSex && isRightOrgan)
-                {
-                    TissueBlocks[i].transform.parent = Organs[j].transform;
                 }
             }
         }
