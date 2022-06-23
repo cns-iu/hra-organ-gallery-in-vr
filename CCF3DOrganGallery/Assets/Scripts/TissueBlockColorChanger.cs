@@ -60,6 +60,7 @@ public class TissueBlockColorChanger : MonoBehaviour
             // Sets colour of tissue-block to blue when it is hovered upon and selected. Only works when RaycastHit object collider matches the same tissue-block.
             tissueBlocksRenderer.material.SetColor(Color1, Color.blue);
             // Turning on the Outline Script
+            Debug.Log("abc");
             gameObject.GetComponent<Outline>().enabled = true;
         }
     }

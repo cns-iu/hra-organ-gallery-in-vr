@@ -1,13 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CellTypeData : MonoBehaviour
 {
-    public string[] cell_type = new string[10];
-    public int[] count = new int[10];
-    public float[] percentage = new float[10];
-    public string[] cat = new string[10];
-    public string[] sex = new string[10];
-    public string[] exp = new string[10];
-    public int[] age = new int[10];
-    public float[] y_pos = new float[10];
+    public List<string> cell_type;
+    public List<int> count;
+    public List<float> percentage;
+    public List<string> cat;
+    public List<string> sex;
+    public List<string> exp;
+    public List<int> age;
+    public List<float> y_pos;
 }
