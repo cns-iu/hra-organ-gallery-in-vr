@@ -17,8 +17,9 @@ public class SceneBuilder : MonoBehaviour
     [SerializeField] private DataFetcher dataFetcher;
     [SerializeField] public NodeArray nodeArray;
     [SerializeField] private ModelLoader modelLoader;
-    [SerializeField] private string maleLetters;
-    [SerializeField] private string femaleLetters;
+    // [SerializeField] private List<string> maleLetters;
+    // [SerializeField] private List<string> femaleLetters;
+    [SerializeField] private Dictionary<string, string> dictOrganSex;
 
     private void Start()
     {
@@ -137,27 +138,11 @@ public class SceneBuilder : MonoBehaviour
     async void ParentTissueBlocksToOrgans(List<GameObject> tissueBlocks, List<GameObject> organs)
     {
         // Add back to AssignEntityIdsToDonorSexLists if delay bug
-        // AssignEntityIdsToDonorSexLists();
         MaleEntityIds = await GetEntityIdsBySex("https://ccf-api.hubmapconsortium.org/v1/tissue-blocks?sex=male");
         FemaleEntityIds = await GetEntityIdsBySex("https://ccf-api.hubmapconsortium.org/v1/tissue-blocks?sex=female");
 
         // assign donor sex to organ
-        for (int i = 0; i < Organs.Count; i++)
-        {
-            OrganData data = Organs[i].GetComponent<OrganData>();
-
-            for (int n = 0; n < MaleEntityIds.Count; n++)
-            {
-                if (data.SceneGraph.Contains(maleLetters))
-                {
-                    data.DonorSex = "male";
-                }
-                else
-                {
-                    data.DonorSex = "female";
-                }
-            }
-        }
+        await GetOrganSex();
 
         // assign donor sex to tissue block and parent to organ
         for (int i = 0; i < TissueBlocks.Count; i++)
@@ -165,21 +150,20 @@ public class SceneBuilder : MonoBehaviour
             TissueBlockData tissueData = TissueBlocks[i].GetComponent<TissueBlockData>();
             if (MaleEntityIds.Contains(tissueData.EntityId))
             {
-                tissueData.DonorSex = "male";
+                tissueData.DonorSex = "Male";
             }
             else
             {
-                tissueData.DonorSex = "female";
+                tissueData.DonorSex = "Female";
             }
 
-            // parenting should happen here, still leaves some tissue blocks unparented
             for (int j = 0; j < Organs.Count; j++)
             {
                 OrganData organData = Organs[j].GetComponent<OrganData>();
-
+                
                 foreach (var annotation in tissueData.CcfAnnotations)
                 {
-                    if (tissueData.DonorSex == organData.DonorSex && organData.RepresentationOf == annotation)
+                    if (organData.RepresentationOf == annotation && organData.DonorSex == tissueData.DonorSex)
                     {
                         TissueBlocks[i].transform.parent = Organs[j].transform;
                         break;
@@ -187,7 +171,6 @@ public class SceneBuilder : MonoBehaviour
                 }
             }
         }
-
         // trigger OnSceneBuilt event
         OnSceneBuilt?.Invoke();
     }
@@ -197,15 +180,28 @@ public class SceneBuilder : MonoBehaviour
         List<string> result = new List<string>();
         DataFetcher httpClient = dataFetcher;
         nodeArray = await httpClient.Get(url);
-        foreach (var item in nodeArray.nodes)
+        foreach (var node in nodeArray.nodes)
         {
-            result.Add(item.jsonLdId);
+            result.Add(node.jsonLdId);
         }
         return result;
     }
 
-    // async void AssignEntityIdsToDonorSexLists()
-    // {
+    public async Task GetOrganSex()
+    {
+        DataFetcher httpClient = dataFetcher;
+        nodeArray = await httpClient.Get("https://ccf-api.hubmapconsortium.org/v1/reference-organs");
+        foreach (var organ in Organs)
+        {
+            OrganData organData = organ.GetComponent<OrganData>();
 
-    // }
+            foreach (var node in nodeArray.nodes)
+            {
+                if (organData.SceneGraph == node.glbObject.file)
+                {
+                    organData.DonorSex = node.sex;
+                }
+            }
+        }
+    }
 }

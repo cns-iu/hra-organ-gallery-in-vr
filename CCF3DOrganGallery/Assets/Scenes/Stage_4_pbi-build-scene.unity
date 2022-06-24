@@ -1196,8 +1196,16 @@ MonoBehaviour:
   nodeArray:
     nodes: []
   modelLoader: {fileID: 967626587}
-  maleLetters: VH_M
-  femaleLetters: VH_F
+  maleLetters:
+  - VH_M
+  - NIH_M
+  - SBU_M
+  - 
+  femaleLetters:
+  - VH_F
+  - NIH_F
+  - SBU_F
+  - 
 --- !u!4 &600342371
 Transform:
   m_ObjectHideFlags: 0
