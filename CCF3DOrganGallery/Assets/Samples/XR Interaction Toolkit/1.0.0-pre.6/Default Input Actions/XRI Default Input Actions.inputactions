@@ -622,6 +622,15 @@
                     "processors": "",
                     "interactions": "Hold",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "OrganGrab",
+                    "type": "Button",
+                    "id": "99e1b9ca-a5f9-409e-b65a-0725faa18720",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -941,6 +950,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Select Tissue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "02c9f091-347e-4537-9f29-999036b3eb92",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OrganGrab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

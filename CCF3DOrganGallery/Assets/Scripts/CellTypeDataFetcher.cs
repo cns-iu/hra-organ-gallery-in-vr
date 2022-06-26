@@ -24,7 +24,7 @@ public class CellTypeDataFetcher : MonoBehaviour
         _cellTypeData = gameObject.GetComponent<CellTypeData>();
         _tissueBlockData = gameObject.GetComponent<TissueBlockData>();
         _hid = _tissueBlockData.HubmapId;
-        //
+        // Initializing the list of tissue-blocks that are hit
         _hitTissueBlocks = new List<GameObject>();
     }
 
@@ -59,7 +59,7 @@ public class CellTypeDataFetcher : MonoBehaviour
             for (var i = 0; i < data.Count ; i++)
             {
                 //Code to log parsed data into the serialized fields for easy access by Visualization script
-                _cellTypeData.cell_type.Add((string)data[i]["\"cell_type\""]);
+                _cellTypeData.cellType.Add((string)data[i]["\"cell_type\""]);
                 _cellTypeData.count.Add((int)data[i]["\"count\""]);
                 _cellTypeData.percentage.Add((float)data[i]["\"percentage\""]);
                 _cellTypeData.cat.Add((string)data[i]["\"cat\""]);
@@ -69,11 +69,11 @@ public class CellTypeDataFetcher : MonoBehaviour
                 var yPos = data[i]["\"y_pos\""];
                 if (ReferenceEquals(yPos, ""))
                 {
-                    _cellTypeData.y_pos.Add(0f);
+                    _cellTypeData.yPos.Add(0f);
                 }
                 else
                 {
-                    _cellTypeData.y_pos.Add((float)yPos);
+                    _cellTypeData.yPos.Add((float)yPos);
                 }
             }
         }
