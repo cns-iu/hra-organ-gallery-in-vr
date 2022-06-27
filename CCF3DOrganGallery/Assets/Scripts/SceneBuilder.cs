@@ -17,23 +17,21 @@ public class SceneBuilder : MonoBehaviour
     [SerializeField] private DataFetcher dataFetcher;
     [SerializeField] public NodeArray nodeArray;
     [SerializeField] private ModelLoader modelLoader;
-    // [SerializeField] private List<string> maleLetters;
-    // [SerializeField] private List<string> femaleLetters;
     [SerializeField] private Dictionary<string, string> dictOrganSex;
 
-    private void Start()
+    private async void Start()
     {
         sceneConfiguration = GetComponent<SceneConfiguration>();
-        GetNodes(sceneConfiguration.BuildUrl());
+        await GetNodes(sceneConfiguration.BuildUrl());
+        LoadOrgans(); //organ is loaded in ModelLoader.cs
+        CreateAndPlaceTissueBlocks();
+        ParentTissueBlocksToOrgans(TissueBlocks, Organs);
     }
 
-    public async void GetNodes(string url)
+    public async Task GetNodes(string url)
     {
         DataFetcher httpClient = dataFetcher;
         nodeArray = await httpClient.Get(url);
-        LoadOrgans(); //organ is currently added in ModelLoader.cs
-        CreateAndPlaceTissueBlocks();
-        ParentTissueBlocksToOrgans(TissueBlocks, Organs);
     }
 
     void LoadOrgans()
