@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class SelectionTemporary: MonoBehaviour
 {   
     // References Input Action created "XRI RightHand/SelectTissue"
-    public InputActionReference rightTriggerPressed; 
+    public InputActionReference leftTriggerPressed; 
     
     //References selectedTissueBlock to accept the gameObject whose Collider is met with Raycast Ray.
     public GameObject selectedTissueBlock;
@@ -37,7 +37,7 @@ public class SelectionTemporary: MonoBehaviour
                 // Fetch script TissueBlocksColorChanger and use method responsible for setting Hover color
                 selectedTissueBlock.GetComponent<TissueBlockColorChanger>().SetHoverColor(hit);
                 // In case the rightTriggerPressed reference returns true (is in progress)
-                if (rightTriggerPressed.action.inProgress)
+                if (leftTriggerPressed.action.inProgress)
                 {
                     // Fetch script TissueBlocksColorChanger and use method responsible for setting Selection color
                     selectedTissueBlock.GetComponent<TissueBlockColorChanger>().SetSelectColor(hit);
