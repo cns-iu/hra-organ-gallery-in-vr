@@ -18,7 +18,7 @@ public class PullOut : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // SceneBuilder.OnSceneBuilt += InitializeOrganDefaultValues; // If commented, that is because SceneBuilder is not inside the current scene
+        SceneBuilder.OnSceneBuilt += InitializeOrganDefaultValues;
         InitializeOrganDefaultValues();
     }
 
