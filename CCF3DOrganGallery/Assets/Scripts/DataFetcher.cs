@@ -30,7 +30,8 @@ public class DataFetcher : MonoBehaviour
 
             var text = www.downloadHandler.text
            .Replace("@id", "jsonLdId")
-           .Replace("@type", "jsonLdType");
+           .Replace("@type", "jsonLdType")
+           .Replace("object","glbObject");
             _nodeArray = JsonUtility.FromJson<NodeArray>(
                 "{ \"nodes\":" +
                 text
@@ -75,4 +76,15 @@ public class Node
     public string name;
     public string tooltip;
     public float priority;
+
+    public int rui_rank;
+    public GLBObject glbObject; //for reference organs
+    public string sex; //for reference organs
+}
+
+[Serializable]
+public class GLBObject
+{
+    public string id;
+    public string file;
 }
