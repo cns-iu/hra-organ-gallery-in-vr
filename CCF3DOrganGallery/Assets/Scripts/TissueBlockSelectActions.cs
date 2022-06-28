@@ -15,7 +15,7 @@ public class TissueBlockSelectActions : MonoBehaviour
     public static event RayAct SetToDefault;
 
     // References Input Action created "XRI RightHand/SelectTissue"
-    public InputActionReference rightTriggerPressed; 
+    public InputActionReference leftTriggerPressed; 
     
     // Update is called once per frame
     void Update()
@@ -36,7 +36,7 @@ public class TissueBlockSelectActions : MonoBehaviour
                 OnHover?.Invoke(hit); // '?' is an elegant way to check whether null without using an additional if statement
                 
                 // Check if Index Trigger of Right hand Oculus Quest Controller has been pressed
-                if (rightTriggerPressed.action.inProgress)
+                if (leftTriggerPressed.action.inProgress)
                 {
                     // Invoke event responsible for setting Selection colour
                     OnSelected?.Invoke(hit);

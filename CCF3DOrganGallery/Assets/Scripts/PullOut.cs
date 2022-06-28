@@ -1,18 +1,19 @@
 using System.Collections;
 using UnityEngine;
 
-// Grabbable Obj >> Scale
+// Scale the organ
 
 public class PullOut : MonoBehaviour
 {
-    [SerializeField] private GameObject rightController;
-    private BoxCollider _organCollider; 
+    // [SerializeField] private GameObject rightController;
+    // private Collider _organ; 
     private Vector3 _defaultPosition = Vector3.zero;
     private Quaternion _defaultRotation = Quaternion.identity;
     private Vector3 _defaultScale = Vector3.one;
     private bool _organContact;
     private float _duration = 2f;
     private bool _rotating;
+    private bool stillHolding;
     
     // Start is called before the first frame update
     void Start()
@@ -28,42 +29,43 @@ public class PullOut : MonoBehaviour
         _defaultPosition = o.transform.position;
         _defaultRotation = o.transform.rotation;
         _defaultScale = o.transform.localScale;
-        _organCollider = GetComponent<BoxCollider>();
+        //_organ = GetComponent<Collider>();
     }
     
     // Update is called once per frame
-    void Update()
-    {
-        // Checking to make sure Rotation is correct
-        Debug.Log("default Rotation: " + _defaultRotation.eulerAngles);
-        Debug.Log("Rotation: " + transform.rotation.eulerAngles);
-        
-        // Check if the right controller's position is within the bounds of the organ's collider
-        if(_organCollider.bounds.Contains(rightController.transform.position))
-        {
-            _organContact = true;
-        }
-        else
-        {
-            // Upon releasing the organ at different location/rotation, starting coroutines to lerp the organ back to original position and rotation
-            if (_organContact)
-            {
-                StartCoroutine(SmoothLerp(_duration));
-                StartCoroutine(RotateObject(gameObject, _defaultRotation, _duration));
-            }
-            _organContact = false;
-        }
-
-        // Maps the organ's position and rotation to that of the right controller 
-        if (_organContact)
-        {
-            var transform1 = transform;
-            transform1.position = rightController.transform.position;
-            transform1.rotation = rightController.transform.rotation;
-        }
-    }
+    // void Update()
+    // {
+    //     // Checking to make sure Rotation is correct
+    //     Debug.Log("default Rotation: " + _defaultRotation.eulerAngles);
+    //     Debug.Log("Rotation: " + transform.rotation.eulerAngles);
+    //     
+    //     // Check if the right controller's position is within the bounds of the organ's collider
+    //     if(_organ.bounds.Contains(rightController.transform.position))
+    //     {
+    //         _organContact = true;
+    //     }
+    //     else
+    //     {
+    //         // Upon releasing the organ at different location/rotation, starting coroutines to lerp the organ back to original position and rotation
+    //         if (_organContact)
+    //         {
+    //             StartCoroutine(SmoothLerp(_duration));
+    //             StartCoroutine(RotateObject(gameObject, _defaultRotation, _duration));
+    //         }
+    //         _organContact = false;
+    //     }
+    //
+    //     // Maps the organ's position and rotation to that of the right controller 
+    //     if (_organContact)
+    //     {
+    //         var transform1 = transform;
+    //         transform1.position = rightController.transform.position;
+    //         transform1.rotation = rightController.transform.rotation;
+    //     }
+    // }
     
     // Smoothly returning organ to default position
+    
     private IEnumerator SmoothLerp (float time)
     {
         Vector3 startingPos  = transform.position;
@@ -76,6 +78,34 @@ public class PullOut : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+    }
+
+    // public void OnStartHolding()
+    // {
+    //     stillHolding = true;
+    //     OnHoldOrgan();
+    // }
+    //
+    // private void OnHoldOrgan()p
+    // {
+    //     transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 5);
+    //     Debug.Log("hi");
+    //     if (stillHolding)
+    //     {
+    //         OnHoldOrgan();
+    //     }
+    // }
+
+    public void FloatBack()
+    {
+        StartCoroutine(SmoothLerp(_duration));
+        StartCoroutine(RotateObject(gameObject, _defaultRotation, _duration));
+        //stillHolding = false;
+        Debug.Log("Float back method called.");
+        Debug.Log("default Rotation: " + _defaultRotation.eulerAngles);
+        Debug.Log("Rotation: " + transform.rotation.eulerAngles);
+        Debug.Log("default Rotation: " + _defaultPosition);
+        Debug.Log("Rotation: " + transform.position);
     }
     
     // Smoothly returning organ to default rotation
@@ -100,23 +130,3 @@ public class PullOut : MonoBehaviour
         _rotating = false;
     }
 }
-
-// Humble beginnings
-    // private void MoveOrganToDefault()
-    // {
-    //     // Calculate distance to move
-    //     var step =  speed * Time.deltaTime; 
-    //     // Calculate radians to move
-    //     float singleStep = speed * Time.deltaTime;
-    //     
-    //     //transform.position = Vector3.MoveTowards(transform.position, defaultPosition, step);
-    //     
-    //     // Rotate our transform a step closer to the target's.
-    //     Vector3 targetDirection = defaultPosition - transform.position;
-    //     
-    //     // Rotate the forward vector towards the target direction by one step
-    //     Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
-    //
-    //     // Calculate a rotation a step closer to the target and applies rotation to this object
-    //     transform.rotation = Quaternion.LookRotation(newDirection);
-    // }

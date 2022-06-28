@@ -169,6 +169,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Select Tissue",
+                    "type": "Button",
+                    "id": "55bf33c9-56c9-41f0-b36f-85997f0e18a1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -490,6 +499,17 @@
                     "action": "Translate Anchor",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "a185c46d-480a-4169-a9b9-9485f38b920e",
+                    "path": "<OculusTouchController>/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select Tissue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -618,15 +638,6 @@
                     "name": "Select Tissue",
                     "type": "Button",
                     "id": "d529d096-d8a9-4ab5-8215-8998623aa27c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Hold",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "OrganGrab",
-                    "type": "Button",
-                    "id": "99e1b9ca-a5f9-409e-b65a-0725faa18720",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Hold",
@@ -950,17 +961,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Select Tissue",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "02c9f091-347e-4537-9f29-999036b3eb92",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "OrganGrab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

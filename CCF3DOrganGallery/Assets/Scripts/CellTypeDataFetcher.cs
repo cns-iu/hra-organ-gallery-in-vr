@@ -12,7 +12,8 @@ public class CellTypeDataFetcher : MonoBehaviour
     private CellTypeData _cellTypeData;
     // Reference to TissueBlockData script
     private TissueBlockData _tissueBlockData;
-    string _hid;
+    // String for HubMap ID
+    private string _hid;
     // String field to be accessed to store the data read from GitHub
     public string resultText;
     // To store the cubes that have been hit
