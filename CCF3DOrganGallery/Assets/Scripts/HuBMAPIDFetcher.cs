@@ -9,17 +9,7 @@ public class HuBMAPIDFetcher : MonoBehaviour
 {
     private HubmapIdHolder response;
 
-    private void OnEnable()
-    {
-        SceneBuilder.OnSceneBuilt += FromEntityIdGetHubmapId;
-    }
-
-    private void OnDestroy()
-    {
-        SceneBuilder.OnSceneBuilt -= FromEntityIdGetHubmapId;
-    }
-
-    public async void FromEntityIdGetHubmapId()
+    public async Task FromEntityIdGetHubmapId(IProgress<bool> progress)
     {
         TissueBlockData dataComponent = GetComponent<TissueBlockData>();
         string entityId = dataComponent.EntityId;
@@ -29,7 +19,9 @@ public class HuBMAPIDFetcher : MonoBehaviour
         {
             response = await Get(entityId);
             dataComponent.HubmapId = response.hubmap_id;
+            progress.Report(true);
         }
+
     }
 
     private async Task<HubmapIdHolder> Get(string url)

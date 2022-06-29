@@ -1,15 +1,25 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+[Serializable]
 public class CellTypeData : MonoBehaviour
 {
-    [FormerlySerializedAs("cell_type")] public List<string> cellType;
-    public List<int> count;
-    public List<float> percentage;
-    public List<string> cat;
-    public List<string> sex;
-    public List<string> exp;
-    public List<int> age;
-    [FormerlySerializedAs("y_pos")] public List<float> yPos;
+    [SerializeField] public List<CellCount> cellCounts = new List<CellCount>();
 }
+
+[Serializable]
+public class CellCount
+{
+    public string cellType;
+    public int count;
+    public float percentage;
+    public string cat;
+    public string sex;
+    public string exp;
+    public int age;
+    public float yPos;
+}
+
+

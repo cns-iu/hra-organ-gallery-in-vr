@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using UnityEngine.Networking;
 
 public class SceneBuilder : MonoBehaviour
 {
@@ -13,12 +15,19 @@ public class SceneBuilder : MonoBehaviour
     public List<string> FemaleEntityIds;
 
     [SerializeField] private SceneConfiguration sceneConfiguration;
-    [SerializeField] private GameObject pre_TissueBlock;
+    [SerializeField] private GameObject preTissueBlock;
     [SerializeField] private DataFetcher dataFetcher;
-    [SerializeField] public NodeArray nodeArray;
+    [SerializeField] private NodeArray nodeArray;
     [SerializeField] private ModelLoader modelLoader;
-    [SerializeField] private Dictionary<string, string> dictOrganSex;
 
+    private int numberOfHubmapIds;
+    public int NumberOfHubmapIds
+    {
+        get { return numberOfHubmapIds; }
+    }
+    
+
+    //driver code 
     private async void Start()
     {
         sceneConfiguration = GetComponent<SceneConfiguration>();
@@ -32,6 +41,55 @@ public class SceneBuilder : MonoBehaviour
     {
         DataFetcher httpClient = dataFetcher;
         nodeArray = await httpClient.Get(url);
+    }
+
+    private async Task GetAllHubmapIds(List<GameObject> tissueBlocks)
+    {
+        for (int i = 0; i < tissueBlocks.Count; i++)
+        {
+            TissueBlockData data = tissueBlocks[i].GetComponent<TissueBlockData>();
+
+            // take entity id
+            string entityId = data.EntityId;
+
+            //get hubmap id
+            HubmapIdHolder response = new HubmapIdHolder();
+
+            if (entityId.Contains("hubmap"))
+            {
+                response = await Get(entityId, response);
+
+                //assign hubmap id
+                data.HubmapId = response.hubmap_id;
+                Debug.Log(data.HubmapId);
+            }
+        }
+    }
+
+    private async Task<HubmapIdHolder> Get(string url, HubmapIdHolder response)
+    {
+        try
+        {
+            using var www = UnityWebRequest.Get(url);
+            var operation = www.SendWebRequest();
+
+            while (!operation.isDone)
+                await Task.Yield();
+
+            if (www.result != UnityWebRequest.Result.Success)
+                Debug.LogError($"Failed: {www.error}");
+
+            var result = www.downloadHandler.text;
+
+            var text = www.downloadHandler.text;
+            response = JsonUtility.FromJson<HubmapIdHolder>(text);
+            return response;
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"{nameof(Get)} failed: {ex.Message}");
+            return default;
+        }
     }
 
     void LoadOrgans()
@@ -89,7 +147,7 @@ public class SceneBuilder : MonoBehaviour
             if (nodeArray.nodes[i].scenegraph != null) continue;
             Matrix4x4 reflected = ReflectZ() * MatrixExtensions.BuildMatrix(nodeArray.nodes[i].transformMatrix);
             GameObject block = Instantiate(
-                pre_TissueBlock,
+                preTissueBlock,
                 reflected.GetPosition(),
                 reflected.rotation
        );
@@ -158,7 +216,7 @@ public class SceneBuilder : MonoBehaviour
             for (int j = 0; j < Organs.Count; j++)
             {
                 OrganData organData = Organs[j].GetComponent<OrganData>();
-                
+
                 foreach (var annotation in tissueData.CcfAnnotations)
                 {
                     if (organData.RepresentationOf == annotation && organData.DonorSex == tissueData.DonorSex)
@@ -169,6 +227,20 @@ public class SceneBuilder : MonoBehaviour
                 }
             }
         }
+
+        var tasks = new List<Task>();
+        for (int i = 0; i < tissueBlocks.Count; i++)
+        {
+            var progress = new Progress<bool>((value) =>
+            {
+                if(value) numberOfHubmapIds++;
+            });
+
+            tasks.Add(tissueBlocks[i].GetComponent<HuBMAPIDFetcher>().FromEntityIdGetHubmapId(progress));
+        }
+
+        await Task.WhenAll(tasks);
+
         // trigger OnSceneBuilt event
         OnSceneBuilt?.Invoke();
     }
@@ -202,4 +274,15 @@ public class SceneBuilder : MonoBehaviour
             }
         }
     }
+
+    private class HubmapIdArray
+    {
+        [SerializeField] public HubmapIdHolder[] hubmapIdHolder;
+    }
+
+    private class HubmapIdHolder
+    {
+        public string hubmap_id;
+    }
+
 }
