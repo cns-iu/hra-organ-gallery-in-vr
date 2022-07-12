@@ -1,19 +1,26 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-// Scale the organ
+// Scale the organ???
+// Tissue block position changer for utility 
+// Vector3 abc = GameObject.FindGameObjectWithTag("LeftController").transform.position;
+// transform.position += (abc - transform.position);
+// SmoothLerp and RotateObject are yet to be adapted to tissue-blocks as well
 
 public class PullOut : MonoBehaviour
 {
-    // [SerializeField] private GameObject rightController;
-    // private Collider _organ; 
+    // To eventually store default position of organ / tissue-block this script is attached to
     private Vector3 _defaultPosition = Vector3.zero;
+    // To eventually store default rotation of organ / tissue-block this script is attached to
     private Quaternion _defaultRotation = Quaternion.identity;
+    // To eventually store default scale of organ / tissue-block this script is attached to
     private Vector3 _defaultScale = Vector3.one;
-    private bool _organContact;
+    // Duration to lerp over
     private float _duration = 2f;
+    // To check if organ is still rotating
     private bool _rotating;
-    private bool stillHolding;
+    public InputActionReference buttonPressed;
     
     // Start is called before the first frame update
     void Start()
@@ -29,87 +36,42 @@ public class PullOut : MonoBehaviour
         _defaultPosition = o.transform.position;
         _defaultRotation = o.transform.rotation;
         _defaultScale = o.transform.localScale;
-        //_organ = GetComponent<Collider>();
     }
     
     // Update is called once per frame
-    // void Update()
-    // {
-    //     // Checking to make sure Rotation is correct
-    //     Debug.Log("default Rotation: " + _defaultRotation.eulerAngles);
-    //     Debug.Log("Rotation: " + transform.rotation.eulerAngles);
-    //     
-    //     // Check if the right controller's position is within the bounds of the organ's collider
-    //     if(_organ.bounds.Contains(rightController.transform.position))
-    //     {
-    //         _organContact = true;
-    //     }
-    //     else
-    //     {
-    //         // Upon releasing the organ at different location/rotation, starting coroutines to lerp the organ back to original position and rotation
-    //         if (_organContact)
-    //         {
-    //             StartCoroutine(SmoothLerp(_duration));
-    //             StartCoroutine(RotateObject(gameObject, _defaultRotation, _duration));
-    //         }
-    //         _organContact = false;
-    //     }
-    //
-    //     // Maps the organ's position and rotation to that of the right controller 
-    //     if (_organContact)
-    //     {
-    //         var transform1 = transform;
-    //         transform1.position = rightController.transform.position;
-    //         transform1.rotation = rightController.transform.rotation;
-    //     }
-    // }
-    
-    // Smoothly returning organ to default position
-    
-    private IEnumerator SmoothLerp (float time)
+   private void Update()
     {
-        Vector3 startingPos  = transform.position;
-        Vector3 finalPos = _defaultPosition; //transform.position + (transform.forward * 5);
+        // If primary button ('A' or 'X') on either controller is pressed, return organ that has been displaced smoothly back to original position 
+        if (buttonPressed.action.triggered)
+        {
+            FloatBack();
+        }
+    }
+
+    // Calls linear interpolation for restoring organ to default position and rotation 
+    private void FloatBack()
+    {
+        StartCoroutine(SmoothLerp(gameObject , _defaultPosition, _duration));
+        StartCoroutine(RotateObject(gameObject, _defaultRotation, _duration));
+    }
+    
+    // Smoothly linearly interpolates the displaced organ back to default position
+    private IEnumerator SmoothLerp (GameObject obj, Vector3 destination, float time)
+    {
+        Vector3 startingPos  = obj.transform.position;
+        Vector3 finalPos = destination; 
         float elapsedTime = 0;
         
         while (elapsedTime < time)
         {
-            transform.position = Vector3.Lerp(startingPos, finalPos, (elapsedTime / time));
+            obj.transform.position = Vector3.Lerp(startingPos, finalPos, (elapsedTime / time));
             elapsedTime += Time.deltaTime;
             yield return null;
         }
     }
-
-    // public void OnStartHolding()
-    // {
-    //     stillHolding = true;
-    //     OnHoldOrgan();
-    // }
-    //
-    // private void OnHoldOrgan()p
-    // {
-    //     transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 5);
-    //     Debug.Log("hi");
-    //     if (stillHolding)
-    //     {
-    //         OnHoldOrgan();
-    //     }
-    // }
-
-    public void FloatBack()
-    {
-        StartCoroutine(SmoothLerp(_duration));
-        StartCoroutine(RotateObject(gameObject, _defaultRotation, _duration));
-        //stillHolding = false;
-        Debug.Log("Float back method called.");
-        Debug.Log("default Rotation: " + _defaultRotation.eulerAngles);
-        Debug.Log("Rotation: " + transform.rotation.eulerAngles);
-        Debug.Log("default Rotation: " + _defaultPosition);
-        Debug.Log("Rotation: " + transform.position);
-    }
     
-    // Smoothly returning organ to default rotation
-    IEnumerator RotateObject(GameObject gameObjectToMove, Quaternion newRot, float duration)
+    // Smoothly linearly interpolates the displaced organ back to default rotation
+    private IEnumerator RotateObject(GameObject gameObjectToMove, Quaternion newRot, float duration)
     {
         // Checks if this IEnumerator has already been called
         if (_rotating)

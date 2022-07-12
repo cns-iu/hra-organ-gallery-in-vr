@@ -642,6 +642,15 @@
                     "processors": "",
                     "interactions": "Hold",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Float Back Organ",
+                    "type": "Button",
+                    "id": "96b4614e-8bd8-44c3-98f2-8a204a540788",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -963,32 +972,15 @@
                     "action": "Select Tissue",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Custom",
-            "id": "8f63b027-9974-4d6a-a0b1-99268e417015",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "0d4ad1ca-06af-4cdf-aab9-f78a619d6122",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "918cff2b-7d0b-4e3d-a561-c41255ab279b",
-                    "path": "",
+                    "id": "89a1c123-20b1-4e98-9506-aedb4a0cf70a",
+                    "path": "<OculusTouchController>/primaryButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Float Back Organ",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -18,7 +18,7 @@ public class CellTypeDataFetcher : MonoBehaviour
     public string resultText;
     // To store the cubes that have been hit
     private List<GameObject> _hitTissueBlocks;
-
+    
     private void Awake()
     {
         // Passing references of scripts on awakening
