@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Music
   - TissueBlock
+  - LeftController
+  - RightController
   layers:
   - Default
   - TransparentFX
@@ -14,8 +16,8 @@ TagManager:
   - Water
   - UI
   - Global
-  - 
-  - 
+  - Organ
+  - Tissue-Blocks
   - 
   - 
   - 
