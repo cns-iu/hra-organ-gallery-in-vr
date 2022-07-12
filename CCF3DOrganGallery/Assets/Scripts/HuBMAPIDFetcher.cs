@@ -7,19 +7,9 @@ using UnityEngine.Networking;
 
 public class HuBMAPIDFetcher : MonoBehaviour
 {
-    private Stuff response;
+    private HubmapIdHolder response;
 
-    private void OnEnable()
-    {
-        SceneBuilder.OnSceneBuilt += FromEntityIdGetHubmapId;
-    }
-
-    private void OnDestroy()
-    {
-        SceneBuilder.OnSceneBuilt -= FromEntityIdGetHubmapId;
-    }
-
-    public async void FromEntityIdGetHubmapId()
+    public async Task FromEntityIdGetHubmapId(IProgress<bool> progress)
     {
         TissueBlockData dataComponent = GetComponent<TissueBlockData>();
         string entityId = dataComponent.EntityId;
@@ -29,10 +19,12 @@ public class HuBMAPIDFetcher : MonoBehaviour
         {
             response = await Get(entityId);
             dataComponent.HubmapId = response.hubmap_id;
+            progress.Report(true);
         }
+
     }
 
-    public async Task<Stuff> Get(string url)
+    private async Task<HubmapIdHolder> Get(string url)
     {
         try
         {
@@ -48,7 +40,7 @@ public class HuBMAPIDFetcher : MonoBehaviour
             var result = www.downloadHandler.text;
 
             var text = www.downloadHandler.text;
-            response = JsonUtility.FromJson<Stuff>(text);
+            response = JsonUtility.FromJson<HubmapIdHolder>(text);
             return response;
         }
         catch (Exception ex)
@@ -58,12 +50,12 @@ public class HuBMAPIDFetcher : MonoBehaviour
         }
     }
 
-    public class StuffArray
+    private class HubmapIdArray
     {
-        [SerializeField] public Stuff[] stuffs;
+        [SerializeField] public HubmapIdHolder[] hubmapIdHolder;
     }
 
-    public class Stuff
+    private class HubmapIdHolder
     {
         public string hubmap_id;
     }

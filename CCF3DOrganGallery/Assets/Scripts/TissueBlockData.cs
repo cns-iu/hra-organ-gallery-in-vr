@@ -8,9 +8,6 @@ public class TissueBlockData : MonoBehaviour
     public string EntityId { get; set; }
 
     [field: SerializeField]
-    public float[] TransformMatrix { get; set; }
-
-    [field: SerializeField]
     public string Name { get; set; }
 
     [field: SerializeField]
@@ -21,4 +18,7 @@ public class TissueBlockData : MonoBehaviour
 
     [field: SerializeField]
     public string HubmapId { get; set; }
+
+    [field: SerializeField]
+    public string DonorSex;
 }
