@@ -15,7 +15,9 @@ public class CellTypeDataFetcher : MonoBehaviour
     // String field to be accessed to store the data read from GitHub
     public string resultText;
     // To store the cubes that have been hit
+
     private List<GameObject> hitTissueBlocks;
+
 
     private void Awake()
     {
