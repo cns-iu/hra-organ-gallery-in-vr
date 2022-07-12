@@ -19,7 +19,7 @@ public class Visualizer : MonoBehaviour
     
     public static List<string> m_CellTypesFromData = new List<string>();
 
-    private List<CellCount> m_CellCounts = new List<CellCount>();
+    // private List<CellCount> m_CellCounts = new List<CellCount>();
     // Start is called before the first frame update
 
     private void Awake()
@@ -29,39 +29,39 @@ public class Visualizer : MonoBehaviour
 
     private void Start()
     {
-        m_CellCounts = m_DataReader.m_CellCounts;
+        // m_CellCounts = m_DataReader.m_CellCounts;
         DetectUniqueCellTypes();
         Visualize();
     }
 
     void Visualize()
     {
-        for (int i = 0; i < m_CellCounts.Count; i++)
-        {
-            for (int j = 0; j < int.Parse(m_CellCounts[i].total); j++)
-            {
-                GameObject symbol = Instantiate(pre_Dot);
-                symbol.GetComponent<SpriteRenderer>().color = m_ColorHues[m_CellTypesFromData.IndexOf(m_CellCounts[i].cellType)];
-                symbol.AddComponent<Cell>().m_CellType = m_CellCounts[i].cellType;
-                symbol.AddComponent<CellAnimator>();
-                m_Cells.Add(symbol);
-            }
-        }
-        VisualizationBuiltEvent?.Invoke();
+        // for (int i = 0; i < m_CellCounts.Count; i++)
+        // {
+        //     for (int j = 0; j < int.Parse(m_CellCounts[i].total); j++)
+        //     {
+        //         GameObject symbol = Instantiate(pre_Dot);
+        //         symbol.GetComponent<SpriteRenderer>().color = m_ColorHues[m_CellTypesFromData.IndexOf(m_CellCounts[i].cellType)];
+        //         symbol.AddComponent<Cell>().m_CellType = m_CellCounts[i].cellType;
+        //         symbol.AddComponent<CellAnimator>();
+        //         m_Cells.Add(symbol);
+        //     }
+        // }
+        // VisualizationBuiltEvent?.Invoke();
     }
 
     void DetectUniqueCellTypes()
     {
-        for (int i = 0; i < m_CellCounts.Count; i++)
-        {
-            if (!m_CellTypesFromData.Contains(m_CellCounts[i].cellType))
-            {
-                m_CellTypesFromData.Add(m_CellCounts[i].cellType);
+        // for (int i = 0; i < m_CellCounts.Count; i++)
+        // {
+        //     if (!m_CellTypesFromData.Contains(m_CellCounts[i].cellType))
+        //     {
+        //         m_CellTypesFromData.Add(m_CellCounts[i].cellType);
 
-            }
-        }
-        UniqueCellTypesDetected?.Invoke();
-        // Debug.Log("UniqueCellTypesDetected?.Invoke() called");
+        //     }
+        // }
+        // UniqueCellTypesDetected?.Invoke();
+        // // Debug.Log("UniqueCellTypesDetected?.Invoke() called");
     }
 
     void SetColorHues()

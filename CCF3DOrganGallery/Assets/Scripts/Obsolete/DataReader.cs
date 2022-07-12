@@ -5,7 +5,7 @@ using System.IO;
 
 public class DataReader : MonoBehaviour
 {
-    public List<CellCount> m_CellCounts = new List<CellCount>();
+    // public List<CellCount> m_CellCounts = new List<CellCount>();
 
     [SerializeField]
     private string m_Filename;
@@ -36,11 +36,11 @@ public class DataReader : MonoBehaviour
                 {
                     if (elements.Length == 4)
                     {
-                        m_CellCounts.Add(new CellCount(elements[1], elements[2], elements[3]));
+                        // m_CellCounts.Add(new CellCount(elements[1], elements[2], elements[3]));
                     }
                     else
                     {
-                        m_CellCounts.Add(new CellCount(elements[1], elements[2] + elements[3], elements[4]));
+                        // m_CellCounts.Add(new CellCount(elements[1], elements[2] + elements[3], elements[4]));
                     }
 
                 }
@@ -50,22 +50,22 @@ public class DataReader : MonoBehaviour
     }
 }
 
-public struct CellCount
-{
-    public string ontology_id;
-    public string cellType;
-    public string total;
+// public struct CellCount
+// {
+//     public string ontology_id;
+//     public string cellType;
+//     public string total;
 
-    public CellCount(string o, string ct, string t)
-    {
-        this.ontology_id = o;
-        this.cellType = ct;
-        this.total = t;
-    }
+//     public CellCount(string o, string ct, string t)
+//     {
+//         this.ontology_id = o;
+//         this.cellType = ct;
+//         this.total = t;
+//     }
 
-    public override string ToString()
-    {
-        return this.ontology_id + ", " + this.cellType + ", " + this.total;
-    }
+//     public override string ToString()
+//     {
+//         return this.ontology_id + ", " + this.cellType + ", " + this.total;
+//     }
 
-}
+// }
