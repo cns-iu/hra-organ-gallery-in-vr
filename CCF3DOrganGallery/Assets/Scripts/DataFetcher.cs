@@ -30,8 +30,7 @@ public class DataFetcher : MonoBehaviour
 
             var text = www.downloadHandler.text
            .Replace("@id", "jsonLdId")
-           .Replace("@type", "jsonLdType")
-           .Replace("object","glbObject");
+           .Replace("@type", "jsonLdType");
             _nodeArray = JsonUtility.FromJson<NodeArray>(
                 "{ \"nodes\":" +
                 text

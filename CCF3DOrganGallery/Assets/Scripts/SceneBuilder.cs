@@ -101,6 +101,7 @@ public class SceneBuilder : MonoBehaviour
             PlaceOrgan(organ, node);
             SetOrganData(organ, node);
             Organs.Add(organ);
+            SetOrganOpacity(organ, node.opacity);
         }
     }
 
@@ -114,13 +115,10 @@ public class SceneBuilder : MonoBehaviour
             reflected.lossyScale.y,
             -reflected.lossyScale.z
         );
-
-        SetOrganOpacity(organ, node.opacity);
     }
 
     void SetOrganOpacity(GameObject organWrapper, float alpha)
     {
-
         List<Transform> list = new List<Transform>();
         list = LeavesFinder.FindLeaves(organWrapper.transform.GetChild(0), list);
 
