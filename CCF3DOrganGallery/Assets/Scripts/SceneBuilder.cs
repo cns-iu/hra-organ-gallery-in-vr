@@ -19,20 +19,23 @@ public class SceneBuilder : MonoBehaviour
     [SerializeField] private DataFetcher dataFetcher;
     [SerializeField] private NodeArray nodeArray;
     [SerializeField] private ModelLoader modelLoader;
+    [SerializeField] private List<GameObject> organsTemp = new List<GameObject>();
 
     private int numberOfHubmapIds;
     public int NumberOfHubmapIds
     {
         get { return numberOfHubmapIds; }
     }
-    
+
 
     //driver code 
     private async void Start()
     {
         sceneConfiguration = GetComponent<SceneConfiguration>();
+        Debug.Log(nodeArray.nodes.Length);
         await GetNodes(sceneConfiguration.BuildUrl());
-        LoadOrgans(); //organ is loaded in ModelLoader.cs
+        Debug.Log(nodeArray.nodes.Length);
+        await GetOrgans(); //organ is loaded in ModelLoader.cs
         CreateAndPlaceTissueBlocks();
         ParentTissueBlocksToOrgans(TissueBlocks, Organs);
     }
@@ -41,6 +44,46 @@ public class SceneBuilder : MonoBehaviour
     {
         DataFetcher httpClient = dataFetcher;
         nodeArray = await httpClient.Get(url);
+    }
+
+    public async Task GetOrgans()
+    {
+        List<Task<GameObject>> tasks = new List<Task<GameObject>>();
+
+        foreach (var node in nodeArray.nodes)
+        {
+            if (node.scenegraph == null) break;
+            Debug.Log(node.scenegraph);
+            // Task<GameObject> t = modelLoader.GetModel(node.scenegraph);
+            GameObject g = await modelLoader.GetModel(node.scenegraph);
+            organsTemp.Add(g);
+            // tasks.Add(t);
+            // Debug.Log("Now working on task " + tasks[tasks.Count - 1].Id);
+            // Debug.Log(tasks[tasks.Count-1].Status);
+
+            // GameObject g = await modelLoader.GetModel(node.scenegraph);
+            // Task t = modelLoader.GetModel(node.scenegraph);
+            // tasks.Add(t);
+            // GameObject organ = await modelLoader.GetModel(node.scenegraph);
+            // // tasks.Add(modelLoader.GetModel(node.scenegraph));
+            // // organList.Add(modelLoader.GetModel(node.scenegraph).Result);
+        }
+
+        await Task.WhenAll(tasks);
+        Debug.Log("got em all");
+
+        foreach (var t in tasks)
+        {           
+            // organsTemp.Add(t.GetAwaiter().GetResult());
+        }
+
+        // foreach (var o in organList)
+        // {
+        //     PlaceOrgan(o, node);
+        //     SetOrganData(o, node);
+        //     Organs.Add(o);
+        //     SetOrganOpacity(o, node.opacity);
+        // }
     }
 
     private async Task GetAllHubmapIds(List<GameObject> tissueBlocks)
@@ -92,18 +135,7 @@ public class SceneBuilder : MonoBehaviour
         }
     }
 
-    void LoadOrgans()
-    {
-        foreach (var node in nodeArray.nodes)
-        {
-            if (node.scenegraph == null) return;
-            GameObject organ = modelLoader.GetModel(node.scenegraph);
-            PlaceOrgan(organ, node);
-            SetOrganData(organ, node);
-            Organs.Add(organ);
-            SetOrganOpacity(organ, node.opacity);
-        }
-    }
+
 
     void PlaceOrgan(GameObject organ, Node node) //-1, 1, -1 -> for scale
     {
@@ -231,7 +263,7 @@ public class SceneBuilder : MonoBehaviour
         {
             var progress = new Progress<bool>((value) =>
             {
-                if(value) numberOfHubmapIds++;
+                if (value) numberOfHubmapIds++;
             });
 
             tasks.Add(tissueBlocks[i].GetComponent<HuBMAPIDFetcher>().FromEntityIdGetHubmapId(progress));

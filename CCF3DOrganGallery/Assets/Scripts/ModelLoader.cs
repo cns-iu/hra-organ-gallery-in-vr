@@ -4,13 +4,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using Siccity.GLTFUtility;
+using System.Threading.Tasks;
 
 public class ModelLoader : MonoBehaviour
 {
     [SerializeField] private string filePath;
-    private GameObject wrapper;
+    [SerializeField] private GameObject wrapper;
 
-    public GameObject GetModel(string url)
+    public async Task<GameObject> GetModel(string url)
     {
         filePath = $"{Application.persistentDataPath}/Models/";
         wrapper = new GameObject
@@ -19,6 +20,7 @@ public class ModelLoader : MonoBehaviour
         };
 
         DownloadFile(url);
+        await Task.Yield();
         return wrapper;
     }
 
@@ -33,18 +35,19 @@ public class ModelLoader : MonoBehaviour
         }
 
         StartCoroutine(GetFileRequest(url, (UnityWebRequest req) =>
-        {
-            if (req.isNetworkError || req.isHttpError)
-            {
-                // Log any errors that may happen
-                Debug.Log($"{req.error} : {req.downloadHandler.text}");
-            }
-            else
-            {
-                // Save the model into a new wrapper
-                LoadModel(path);
-            }
-        }));
+               {
+                   if (req.isNetworkError || req.isHttpError)
+                   {
+                       // Log any errors that may happen
+                       Debug.Log($"{req.error} : {req.downloadHandler.text}");
+                   }
+                   else
+                   {
+                       Debug.LogFormat("Calling LoadModel({0})", path);
+                       LoadModel(path);
+                   }
+               }));
+
     }
 
     string GetFilePath(string url)
@@ -59,6 +62,7 @@ public class ModelLoader : MonoBehaviour
     {
         ResetWrapper();
         GameObject model = Importer.LoadFromFile(path);
+        Debug.Log("Now setting parent for " + model.name);
         model.transform.SetParent(wrapper.transform);
     }
 
