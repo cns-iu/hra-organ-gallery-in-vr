@@ -36,7 +36,7 @@ public class ModelLoader : MonoBehaviour
 
         StartCoroutine(GetFileRequest(url, (UnityWebRequest req) =>
                {
-                   if (req.isNetworkError || req.isHttpError)
+                   if (req.result == UnityWebRequest.Result.ConnectionError || req.result == UnityWebRequest.Result.ProtocolError)
                    {
                        // Log any errors that may happen
                        Debug.Log($"{req.error} : {req.downloadHandler.text}");
