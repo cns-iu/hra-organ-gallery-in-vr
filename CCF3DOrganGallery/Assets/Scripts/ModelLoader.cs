@@ -43,7 +43,6 @@ public class ModelLoader : MonoBehaviour
                    }
                    else
                    {
-                       Debug.LogFormat("Calling LoadModel({0})", path);
                        LoadModel(path);
                    }
                }));
@@ -62,7 +61,6 @@ public class ModelLoader : MonoBehaviour
     {
         ResetWrapper();
         GameObject model = Importer.LoadFromFile(path);
-        Debug.Log("Now setting parent for " + model.name);
         model.transform.SetParent(wrapper.transform);
     }
 

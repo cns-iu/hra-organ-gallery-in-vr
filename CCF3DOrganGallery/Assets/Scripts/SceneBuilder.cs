@@ -32,9 +32,7 @@ public class SceneBuilder : MonoBehaviour
     private async void Start()
     {
         sceneConfiguration = GetComponent<SceneConfiguration>();
-        Debug.Log(nodeArray.nodes.Length);
         await GetNodes(sceneConfiguration.BuildUrl());
-        Debug.Log(nodeArray.nodes.Length);
         await GetOrgans(); //organ is loaded in ModelLoader.cs
         CreateAndPlaceTissueBlocks();
         ParentTissueBlocksToOrgans(TissueBlocks, Organs);
@@ -53,7 +51,6 @@ public class SceneBuilder : MonoBehaviour
         foreach (var node in nodeArray.nodes)
         {
             if (node.scenegraph == null) break;
-            Debug.Log(node.scenegraph);
             // Task<GameObject> t = modelLoader.GetModel(node.scenegraph);
             GameObject g = await modelLoader.GetModel(node.scenegraph);
             organsTemp.Add(g);
