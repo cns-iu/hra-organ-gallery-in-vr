@@ -33,12 +33,10 @@ public class ModelLoader : MonoBehaviour
             LoadModel(path);
             return;
         }
-
         StartCoroutine(GetFileRequest(url, (UnityWebRequest req) =>
                {
                    if (req.result == UnityWebRequest.Result.ConnectionError || req.result == UnityWebRequest.Result.ProtocolError)
                    {
-                       // Log any errors that may happen
                        Debug.Log($"{req.error} : {req.downloadHandler.text}");
                    }
                    else
@@ -46,7 +44,6 @@ public class ModelLoader : MonoBehaviour
                        LoadModel(path);
                    }
                }));
-
     }
 
     string GetFilePath(string url)

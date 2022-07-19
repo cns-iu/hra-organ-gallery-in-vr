@@ -18,8 +18,7 @@ public class SceneBuilder : MonoBehaviour
     [SerializeField] private GameObject preTissueBlock;
     [SerializeField] private DataFetcher dataFetcher;
     [SerializeField] private NodeArray nodeArray;
-    [SerializeField] private ModelLoader modelLoader;
-    [SerializeField] private List<GameObject> organsTemp = new List<GameObject>();
+    [SerializeField] private GameObject loaderParent;
 
     private int numberOfHubmapIds;
     public int NumberOfHubmapIds
@@ -27,13 +26,13 @@ public class SceneBuilder : MonoBehaviour
         get { return numberOfHubmapIds; }
     }
 
-
     //driver code 
     private async void Start()
     {
         sceneConfiguration = GetComponent<SceneConfiguration>();
         await GetNodes(sceneConfiguration.BuildUrl());
-        await GetOrgans(); //organ is loaded in ModelLoader.cs
+        await GetOrgans();
+        // await HandleOrgansAfterLoading();
         CreateAndPlaceTissueBlocks();
         ParentTissueBlocksToOrgans(TissueBlocks, Organs);
     }
@@ -44,43 +43,52 @@ public class SceneBuilder : MonoBehaviour
         nodeArray = await httpClient.Get(url);
     }
 
+    private async Task HandleOrgansAfterLoading()
+    {
+
+        await Task.Yield();
+    }
+
     public async Task GetOrgans()
     {
         List<Task<GameObject>> tasks = new List<Task<GameObject>>();
-
+        List<GameObject> loaders = new List<GameObject>();
         foreach (var node in nodeArray.nodes)
         {
             if (node.scenegraph == null) break;
-            // Task<GameObject> t = modelLoader.GetModel(node.scenegraph);
-            GameObject g = await modelLoader.GetModel(node.scenegraph);
-            organsTemp.Add(g);
-            // tasks.Add(t);
-            // Debug.Log("Now working on task " + tasks[tasks.Count - 1].Id);
-            // Debug.Log(tasks[tasks.Count-1].Status);
+            GameObject g = new GameObject()
+            {
+                name = "Loader"
+            };
+            g.AddComponent<ModelLoader>();
+            loaders.Add(g);
+            g.transform.parent = loaderParent.transform;
+            Task<GameObject> t = g.GetComponent<ModelLoader>().GetModel(node.scenegraph);
+            tasks.Add(t);
 
-            // GameObject g = await modelLoader.GetModel(node.scenegraph);
-            // Task t = modelLoader.GetModel(node.scenegraph);
-            // tasks.Add(t);
-            // GameObject organ = await modelLoader.GetModel(node.scenegraph);
-            // // tasks.Add(modelLoader.GetModel(node.scenegraph));
-            // // organList.Add(modelLoader.GetModel(node.scenegraph).Result);
+            await Task.Yield();
+            SetOrganData(t.Result, node);
+
+            // SetOrganData(o, node);
+            Organs.Add(t.Result);
+
         }
 
         await Task.WhenAll(tasks);
+
         Debug.Log("got em all");
 
-        foreach (var t in tasks)
-        {           
-            // organsTemp.Add(t.GetAwaiter().GetResult());
+        foreach (var o in Organs)
+        {
+            foreach (var node in nodeArray.nodes)
+            {
+                if (o.GetComponent<OrganData>().SceneGraph == node.scenegraph)
+                {
+                    PlaceOrgan(o, node);
+                    // SetOrganOpacity(o, node.opacity);
+                }
+            }
         }
-
-        // foreach (var o in organList)
-        // {
-        //     PlaceOrgan(o, node);
-        //     SetOrganData(o, node);
-        //     Organs.Add(o);
-        //     SetOrganOpacity(o, node.opacity);
-        // }
     }
 
     private async Task GetAllHubmapIds(List<GameObject> tissueBlocks)
@@ -227,6 +235,8 @@ public class SceneBuilder : MonoBehaviour
         // assign donor sex to organ
         await GetOrganSex();
 
+        Debug.Log("parenting now");
+
         // assign donor sex to tissue block and parent to organ
         for (int i = 0; i < TissueBlocks.Count; i++)
         {
@@ -239,6 +249,7 @@ public class SceneBuilder : MonoBehaviour
             {
                 tissueData.DonorSex = "Female";
             }
+            Debug.Log("assigning to tissue block " + tissueData.DonorSex);
 
             for (int j = 0; j < Organs.Count; j++)
             {
@@ -288,15 +299,18 @@ public class SceneBuilder : MonoBehaviour
     {
         DataFetcher httpClient = dataFetcher;
         nodeArray = await httpClient.Get("https://ccf-api.hubmapconsortium.org/v1/reference-organs");
+        Debug.Log(nodeArray.nodes.Length);
         foreach (var organ in Organs)
         {
             OrganData organData = organ.GetComponent<OrganData>();
 
             foreach (var node in nodeArray.nodes)
             {
-                if (organData.SceneGraph == node.glbObject.file)
+                Debug.Log("comparing   " + organData.SceneGraph + " and " + node.glbObject.id);
+                if (organData.SceneGraph == node.glbObject.id)
                 {
                     organData.DonorSex = node.sex;
+                    Debug.Log("assigning to organ" + organData.DonorSex);
                 }
             }
         }
