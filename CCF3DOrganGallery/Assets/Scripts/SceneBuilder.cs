@@ -84,8 +84,9 @@ public class SceneBuilder : MonoBehaviour
             {
                 if (o.GetComponent<OrganData>().SceneGraph == node.scenegraph)
                 {
+                    Debug.Log("Now placing" + node.reference_organ);
                     PlaceOrgan(o, node);
-                    // SetOrganOpacity(o, node.opacity);
+                    SetOrganOpacity(o, node.opacity);
                 }
             }
         }
@@ -235,8 +236,6 @@ public class SceneBuilder : MonoBehaviour
         // assign donor sex to organ
         await GetOrganSex();
 
-        Debug.Log("parenting now");
-
         // assign donor sex to tissue block and parent to organ
         for (int i = 0; i < TissueBlocks.Count; i++)
         {
@@ -249,7 +248,6 @@ public class SceneBuilder : MonoBehaviour
             {
                 tissueData.DonorSex = "Female";
             }
-            Debug.Log("assigning to tissue block " + tissueData.DonorSex);
 
             for (int j = 0; j < Organs.Count; j++)
             {
@@ -287,7 +285,7 @@ public class SceneBuilder : MonoBehaviour
     {
         List<string> result = new List<string>();
         DataFetcher httpClient = dataFetcher;
-        nodeArray = await httpClient.Get(url);
+        NodeArray nodeArray = await httpClient.Get(url);
         foreach (var node in nodeArray.nodes)
         {
             result.Add(node.jsonLdId);
@@ -298,7 +296,7 @@ public class SceneBuilder : MonoBehaviour
     public async Task GetOrganSex()
     {
         DataFetcher httpClient = dataFetcher;
-        nodeArray = await httpClient.Get("https://ccf-api.hubmapconsortium.org/v1/reference-organs");
+        NodeArray nodeArray = await httpClient.Get("https://ccf-api.hubmapconsortium.org/v1/reference-organs");
         Debug.Log(nodeArray.nodes.Length);
         foreach (var organ in Organs)
         {
@@ -306,11 +304,10 @@ public class SceneBuilder : MonoBehaviour
 
             foreach (var node in nodeArray.nodes)
             {
-                Debug.Log("comparing   " + organData.SceneGraph + " and " + node.glbObject.id);
-                if (organData.SceneGraph == node.glbObject.id)
+                // Debug.Log("file: " + node.reference_organ);
+                if (organData.SceneGraph == node.glbObject.file)
                 {
                     organData.DonorSex = node.sex;
-                    Debug.Log("assigning to organ" + organData.DonorSex);
                 }
             }
         }

@@ -41,6 +41,7 @@ public class ModelLoader : MonoBehaviour
                    }
                    else
                    {
+                    Debug.Log("coroutine finished");
                        LoadModel(path);
                    }
                }));
@@ -67,7 +68,9 @@ public class ModelLoader : MonoBehaviour
         {
             req.downloadHandler = new DownloadHandlerFile(GetFilePath(url));
             yield return req.SendWebRequest();
+            Debug.Log(req.isDone);
             callback(req);
+            // ADD TASK>YIELD!!!!!!!! or transform into async method!!!!!!!!!
         }
     }
 
