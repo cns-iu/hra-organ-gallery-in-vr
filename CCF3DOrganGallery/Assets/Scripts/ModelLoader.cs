@@ -24,7 +24,7 @@ public class ModelLoader : MonoBehaviour
         return wrapper;
     }
 
-    public void DownloadFile(string url)
+    public async void DownloadFile(string url)
     {
         string path = GetFilePath(url);
         if (File.Exists(path))
@@ -33,18 +33,34 @@ public class ModelLoader : MonoBehaviour
             LoadModel(path);
             return;
         }
-        StartCoroutine(GetFileRequest(url, (UnityWebRequest req) =>
+
+        await GetFileRequest(url,(UnityWebRequest req) =>
                {
+                   Debug.Log("sending request for " + url);
                    if (req.result == UnityWebRequest.Result.ConnectionError || req.result == UnityWebRequest.Result.ProtocolError)
                    {
                        Debug.Log($"{req.error} : {req.downloadHandler.text}");
                    }
                    else
                    {
-                    Debug.Log("coroutine finished");
+                       Debug.Log("coroutine finished");
                        LoadModel(path);
                    }
-               }));
+               });
+        Debug.Log("Model downloaded for: " + path);
+        
+        // StartCoroutine(GetFileRequest(url, (UnityWebRequest req) =>
+        //        {
+        //            if (req.result == UnityWebRequest.Result.ConnectionError || req.result == UnityWebRequest.Result.ProtocolError)
+        //            {
+        //                Debug.Log($"{req.error} : {req.downloadHandler.text}");
+        //            }
+        //            else
+        //            {
+        //             Debug.Log("coroutine finished");
+        //                LoadModel(path);
+        //            }
+        //        }));
     }
 
     string GetFilePath(string url)
@@ -62,13 +78,24 @@ public class ModelLoader : MonoBehaviour
         model.transform.SetParent(wrapper.transform);
     }
 
-    IEnumerator GetFileRequest(string url, Action<UnityWebRequest> callback)
+    async Task GetFileRequest(string url, Action<UnityWebRequest> callback)
     {
         using (UnityWebRequest req = UnityWebRequest.Get(url))
         {
             req.downloadHandler = new DownloadHandlerFile(GetFilePath(url));
-            yield return req.SendWebRequest();
-            Debug.Log(req.isDone);
+
+            var operation = req.SendWebRequest();
+
+            while (!operation.isDone)
+                await Task.Yield();
+
+            // while (!req.isDone) {
+            //     Debug.Log(req.downloadProgress);
+            //     await Task.Yield();
+            // }
+            // yield return req.SendWebRequest();
+            
+
             callback(req);
             // ADD TASK>YIELD!!!!!!!! or transform into async method!!!!!!!!!
         }

@@ -20,6 +20,7 @@ public class SceneBuilder : MonoBehaviour
     [SerializeField] private NodeArray nodeArray;
     [SerializeField] private GameObject loaderParent;
 
+    private int modelsLoaded;
     private int numberOfHubmapIds;
     public int NumberOfHubmapIds
     {
@@ -32,7 +33,7 @@ public class SceneBuilder : MonoBehaviour
         sceneConfiguration = GetComponent<SceneConfiguration>();
         await GetNodes(sceneConfiguration.BuildUrl());
         await GetOrgans();
-        // await HandleOrgansAfterLoading();
+
         CreateAndPlaceTissueBlocks();
         ParentTissueBlocksToOrgans(TissueBlocks, Organs);
     }
@@ -41,12 +42,6 @@ public class SceneBuilder : MonoBehaviour
     {
         DataFetcher httpClient = dataFetcher;
         nodeArray = await httpClient.Get(url);
-    }
-
-    private async Task HandleOrgansAfterLoading()
-    {
-
-        await Task.Yield();
     }
 
     public async Task GetOrgans()
@@ -67,11 +62,9 @@ public class SceneBuilder : MonoBehaviour
             tasks.Add(t);
 
             await Task.Yield();
+
             SetOrganData(t.Result, node);
-
-            // SetOrganData(o, node);
             Organs.Add(t.Result);
-
         }
 
         await Task.WhenAll(tasks);
@@ -84,8 +77,8 @@ public class SceneBuilder : MonoBehaviour
             {
                 if (o.GetComponent<OrganData>().SceneGraph == node.scenegraph)
                 {
-                    Debug.Log("Now placing" + node.reference_organ);
                     PlaceOrgan(o, node);
+                    Debug.Log("setting opacity for: " + node.reference_organ);
                     SetOrganOpacity(o, node.opacity);
                 }
             }
@@ -110,7 +103,7 @@ public class SceneBuilder : MonoBehaviour
 
                 //assign hubmap id
                 data.HubmapId = response.hubmap_id;
-                Debug.Log(data.HubmapId);
+                // Debug.Log(data.HubmapId);
             }
         }
     }
@@ -297,7 +290,7 @@ public class SceneBuilder : MonoBehaviour
     {
         DataFetcher httpClient = dataFetcher;
         NodeArray nodeArray = await httpClient.Get("https://ccf-api.hubmapconsortium.org/v1/reference-organs");
-        Debug.Log(nodeArray.nodes.Length);
+        // Debug.Log(nodeArray.nodes.Length);
         foreach (var organ in Organs)
         {
             OrganData organData = organ.GetComponent<OrganData>();
