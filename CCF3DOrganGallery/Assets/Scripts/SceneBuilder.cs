@@ -48,6 +48,8 @@ public class SceneBuilder : MonoBehaviour
     {
         List<Task<GameObject>> tasks = new List<Task<GameObject>>();
         List<GameObject> loaders = new List<GameObject>();
+        Dictionary<GameObject, Node> dict = new Dictionary<GameObject, Node>();
+
         foreach (var node in nodeArray.nodes)
         {
             if (node.scenegraph == null) break;
@@ -60,29 +62,71 @@ public class SceneBuilder : MonoBehaviour
             g.transform.parent = loaderParent.transform;
             Task<GameObject> t = g.GetComponent<ModelLoader>().GetModel(node.scenegraph);
             tasks.Add(t);
+            //Debug.Log(t.Result);
 
-            await Task.Yield();
+            //Debug.Log(node.scenegraph);
+            //dict.Add(t.Result, node);
 
-            SetOrganData(t.Result, node);
-            Organs.Add(t.Result);
+
+
+
+
+            //await Task.Yield();
+
+
         }
 
         await Task.WhenAll(tasks);
 
+
         Debug.Log("got em all");
 
-        foreach (var o in Organs)
+        for (int i = 0; i < tasks.Count; i++)
         {
-            foreach (var node in nodeArray.nodes)
-            {
-                if (o.GetComponent<OrganData>().SceneGraph == node.scenegraph)
-                {
-                    PlaceOrgan(o, node);
-                    Debug.Log("setting opacity for: " + node.reference_organ);
-                    SetOrganOpacity(o, node.opacity);
-                }
-            }
+            Organs.Add(tasks[i].Result);
+            SetOrganData(tasks[i].Result, nodeArray.nodes[i]);
         }
+
+        //foreach (var task in tasks)
+        //{
+
+        //    //SetOrganData(task.Result, dict[task.Result]);
+        //    //foreach (var node in nodeArray.nodes)
+        //    //{
+        //    //    if (node.scenegraph == )
+        //    //    {
+        //    //        SetOrganData(task.Result, node);
+        //    //    }
+
+        //    //}
+
+        //}
+
+
+        //SetOrganData(t.Result, node);
+        //Organs.Add(t.Result);
+        //foreach (var o in Organs)
+        //{
+        //    foreach (var node in nodeArray.nodes)
+        //    {
+        //        if (o.GetComponent<OrganData>().SceneGraph == node.scenegraph)
+        //        {
+        //            PlaceOrgan(o, node);
+        //            Debug.Log("setting opacity for: " + node.reference_organ);
+        //            SetOrganOpacity(o, node.opacity);
+        //            break;
+        //        }
+        //    }
+        //}
+
+        for (int i = 0; i < Organs.Count; i++)
+        {
+            Debug.LogFormat("Placing {0} with data from {1}", Organs[i].GetComponent<OrganData>().SceneGraph, nodeArray.nodes[i].scenegraph);
+            PlaceOrgan(Organs[i], nodeArray.nodes[i]);
+            //Debug.Log("setting opacity for: " + node.reference_organ);
+            SetOrganOpacity(Organs[i], nodeArray.nodes[i].opacity);
+        }
+
     }
 
     private async Task GetAllHubmapIds(List<GameObject> tissueBlocks)

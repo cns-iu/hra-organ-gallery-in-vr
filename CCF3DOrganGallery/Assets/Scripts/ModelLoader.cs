@@ -87,6 +87,7 @@ public class ModelLoader : MonoBehaviour
             var operation = req.SendWebRequest();
 
             while (!operation.isDone)
+                Debug.Log(operation.progress);
                 await Task.Yield();
 
             // while (!req.isDone) {
