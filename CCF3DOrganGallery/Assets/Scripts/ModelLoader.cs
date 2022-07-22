@@ -34,33 +34,17 @@ public class ModelLoader : MonoBehaviour
             return;
         }
 
-        await GetFileRequest(url,(UnityWebRequest req) =>
+        await GetFileRequest(url, (UnityWebRequest req) =>
                {
-                   Debug.Log("sending request for " + url);
                    if (req.result == UnityWebRequest.Result.ConnectionError || req.result == UnityWebRequest.Result.ProtocolError)
                    {
                        Debug.Log($"{req.error} : {req.downloadHandler.text}");
                    }
                    else
                    {
-                       Debug.Log("coroutine finished");
                        LoadModel(path);
                    }
                });
-        Debug.Log("Model downloaded for: " + path);
-        
-        // StartCoroutine(GetFileRequest(url, (UnityWebRequest req) =>
-        //        {
-        //            if (req.result == UnityWebRequest.Result.ConnectionError || req.result == UnityWebRequest.Result.ProtocolError)
-        //            {
-        //                Debug.Log($"{req.error} : {req.downloadHandler.text}");
-        //            }
-        //            else
-        //            {
-        //             Debug.Log("coroutine finished");
-        //                LoadModel(path);
-        //            }
-        //        }));
     }
 
     string GetFilePath(string url)
@@ -86,19 +70,14 @@ public class ModelLoader : MonoBehaviour
 
             var operation = req.SendWebRequest();
 
-            while (!operation.isDone)
+            while (!operation.isDone) {
+                //Use to display process to user if needed
                 Debug.Log(operation.progress);
-                await Task.Yield();
-
-            // while (!req.isDone) {
-            //     Debug.Log(req.downloadProgress);
-            //     await Task.Yield();
-            // }
-            // yield return req.SendWebRequest();
-            
+            }
+            //move await Task.Yield() into while loop if testing after errors               
+            await Task.Yield();
 
             callback(req);
-            // ADD TASK>YIELD!!!!!!!! or transform into async method!!!!!!!!!
         }
     }
 

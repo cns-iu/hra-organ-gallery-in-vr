@@ -62,24 +62,9 @@ public class SceneBuilder : MonoBehaviour
             g.transform.parent = loaderParent.transform;
             Task<GameObject> t = g.GetComponent<ModelLoader>().GetModel(node.scenegraph);
             tasks.Add(t);
-            //Debug.Log(t.Result);
-
-            //Debug.Log(node.scenegraph);
-            //dict.Add(t.Result, node);
-
-
-
-
-
-            //await Task.Yield();
-
-
         }
 
         await Task.WhenAll(tasks);
-
-
-        Debug.Log("got em all");
 
         for (int i = 0; i < tasks.Count; i++)
         {
@@ -87,43 +72,9 @@ public class SceneBuilder : MonoBehaviour
             SetOrganData(tasks[i].Result, nodeArray.nodes[i]);
         }
 
-        //foreach (var task in tasks)
-        //{
-
-        //    //SetOrganData(task.Result, dict[task.Result]);
-        //    //foreach (var node in nodeArray.nodes)
-        //    //{
-        //    //    if (node.scenegraph == )
-        //    //    {
-        //    //        SetOrganData(task.Result, node);
-        //    //    }
-
-        //    //}
-
-        //}
-
-
-        //SetOrganData(t.Result, node);
-        //Organs.Add(t.Result);
-        //foreach (var o in Organs)
-        //{
-        //    foreach (var node in nodeArray.nodes)
-        //    {
-        //        if (o.GetComponent<OrganData>().SceneGraph == node.scenegraph)
-        //        {
-        //            PlaceOrgan(o, node);
-        //            Debug.Log("setting opacity for: " + node.reference_organ);
-        //            SetOrganOpacity(o, node.opacity);
-        //            break;
-        //        }
-        //    }
-        //}
-
         for (int i = 0; i < Organs.Count; i++)
         {
-            Debug.LogFormat("Placing {0} with data from {1}", Organs[i].GetComponent<OrganData>().SceneGraph, nodeArray.nodes[i].scenegraph);
             PlaceOrgan(Organs[i], nodeArray.nodes[i]);
-            //Debug.Log("setting opacity for: " + node.reference_organ);
             SetOrganOpacity(Organs[i], nodeArray.nodes[i].opacity);
         }
 
@@ -147,7 +98,6 @@ public class SceneBuilder : MonoBehaviour
 
                 //assign hubmap id
                 data.HubmapId = response.hubmap_id;
-                // Debug.Log(data.HubmapId);
             }
         }
     }
@@ -177,9 +127,6 @@ public class SceneBuilder : MonoBehaviour
             return default;
         }
     }
-
-
-
     void PlaceOrgan(GameObject organ, Node node) //-1, 1, -1 -> for scale
     {
         Matrix4x4 reflected = ReflectZ() * MatrixExtensions.BuildMatrix(node.transformMatrix);
@@ -191,7 +138,6 @@ public class SceneBuilder : MonoBehaviour
             -reflected.lossyScale.z
         );
     }
-
     void SetOrganOpacity(GameObject organWrapper, float alpha)
     {
         List<Transform> list = new List<Transform>();
@@ -212,7 +158,6 @@ public class SceneBuilder : MonoBehaviour
             MaterialExtensions.ToFadeMode(renderer.material);
         }
     }
-
     void CreateAndPlaceTissueBlocks()
     {
         for (int i = 1; i < nodeArray.nodes.Length; i++)
