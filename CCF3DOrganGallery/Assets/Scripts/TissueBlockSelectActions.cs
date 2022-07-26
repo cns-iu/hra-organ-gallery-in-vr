@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,25 +17,23 @@ public class TissueBlockSelectActions : MonoBehaviour
 
     // References Input Action created "XRI RightHand/SelectTissue"
 
-    public InputActionReference rightTriggerPressed;
+    public InputActionReference triggerPressed;
 
-    private bool isSceneBuilt = false;
+    private bool _isSceneBuilt;
 
     private void OnEnable()
     {
-        SceneBuilder.OnSceneBuilt += () => isSceneBuilt = true;
+        SceneBuilder.OnSceneBuilt += () => _isSceneBuilt = true;
     }
 
     private void OnDestroy()
     {
-        SceneBuilder.OnSceneBuilt -= () => isSceneBuilt = true;
+        SceneBuilder.OnSceneBuilt -= () => _isSceneBuilt = true;
     }
-
 
     // Update is called once per frame
     void Update()
     {
-       
         // Records structure used to get information back from a raycast.
         RaycastHit hit;
         // Casting new ray into the scene
@@ -47,13 +46,13 @@ public class TissueBlockSelectActions : MonoBehaviour
             // Compare if the object's tag was "TissueBlock"
             if (hit.collider.CompareTag("TissueBlock"))
             {
-                if (!isSceneBuilt) return;
+                if (!_isSceneBuilt) return;
                 // Invoke OnHover event
                 OnHover?.Invoke(hit); // '?' is an elegant way to check whether null without using an additional if statement
 
                 // Check if Index Trigger of Right hand Oculus Quest Controller has been pressed
 
-                if (rightTriggerPressed.action.inProgress)
+                if (triggerPressed.action.inProgress)
 
                 {
                     // Invoke event responsible for setting Selection colour
@@ -66,5 +65,10 @@ public class TissueBlockSelectActions : MonoBehaviour
             // If raycast hits objects other than those with "TissueBlock" tag, then invoke event responsible for setting Default colour
             SetToDefault?.Invoke(hit);
         }
+    }
+
+    public void OnABCD()
+    {
+        Debug.Log("abc");
     }
 }

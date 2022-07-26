@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 // Need to implement so that only one cube changes colour at one time
 public class TissueBlockColorChanger : MonoBehaviour
@@ -32,6 +34,7 @@ public class TissueBlockColorChanger : MonoBehaviour
         // Acquires renderer from tissueBlock(s)
         _tissueBlocksRenderer = GetComponent<Renderer>();
     }
+    
 
     public void SetDefaultColor(RaycastHit hit) 
     {

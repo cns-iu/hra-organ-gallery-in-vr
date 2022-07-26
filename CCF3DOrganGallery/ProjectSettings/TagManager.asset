@@ -8,6 +8,7 @@ TagManager:
   - TissueBlock
   - LeftController
   - RightController
+  - Organ
   layers:
   - Default
   - TransparentFX
