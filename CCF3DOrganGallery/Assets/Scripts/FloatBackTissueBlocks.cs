@@ -6,24 +6,12 @@ public class FloatBackTissueBlocks : MonoBehaviour
 {
     // To eventually store default position of tissue-block this script is attached to
     private Vector3 _defaultPosition = Vector3.zero;
-    
-    // To store default local position of tissue-block with respect to parent organ
-    private Vector3 _defaultDefaultPosition = Vector3.zero;
-    
+
     // To eventually store default rotation of tissue-block this script is attached to
     private Quaternion _defaultRotation = Quaternion.identity;
 
-    // To store default local rotation of tissue-block with respect to parent organ
-    private Quaternion _defaultDefaultRotation = Quaternion.identity;
-    
     // To eventually store default scale of tissue-block this script is attached to
     private Vector3 _defaultScale = Vector3.one;
-
-    // To store default local scale of tissue-block with respect to parent organ
-    private Vector3 _defaultDefaultScale = Vector3.one;
-    
-    // Reference to parent organ
-    private GameObject _parentOrgan;
     
     // Duration to lerp over
     private float _duration = 1.5f;
@@ -42,7 +30,6 @@ public class FloatBackTissueBlocks : MonoBehaviour
     {
         SceneBuilder.OnSceneBuilt += InitializeTissueBlockDefaultValues;
         InitializeTissueBlockDefaultValues();
-        _parentOrgan = GameObject.Find("VH_F_Kidney_Left_v1.1");
         _pullOut = GameObject.Find("RightHand Controller").GetComponent<PullOutStateChanger>();
     }
     
@@ -63,18 +50,20 @@ public class FloatBackTissueBlocks : MonoBehaviour
         // If primary button ('A' or 'X') on either controller is pressed, return tissue-block that has been displaced smoothly back to original position 
         if (buttonPressed.action.triggered && !_pullOut.organState)
         {
-            FloatBack();
-            Debug.Log("Float back tissue-blocks triggered");
+            StartCoroutine(FloatBack());
+            // Debug.Log("Float back tissue-blocks triggered");
         }
     }
 
     // Calls linear interpolation for restoring tissue-block to default position and rotation
-    public void FloatBack()
+    public IEnumerator FloatBack()
     {
         // var position = _parentOrgan.transform.position;
         
-        StartCoroutine(SmoothLerp(gameObject, _defaultPosition, _duration));
-        StartCoroutine(RotateObject(gameObject, _defaultRotation, _duration));
+        yield return StartCoroutine(SmoothLerp(gameObject, _defaultPosition, _duration));
+        yield return StartCoroutine(RotateObject(gameObject, _defaultRotation, _duration));
+        
+        // Debug.Log(gameObject.name + " floating back completed");
     }
 
     // Smoothly linearly interpolates the displaced tissue-block back to default position

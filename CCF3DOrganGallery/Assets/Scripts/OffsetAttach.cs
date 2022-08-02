@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
+// XR Grab Interactable script slightly amended to provide us with an offset
 public class OffsetAttach : XRGrabInteractable
 {
     private Vector3 _interactorPosition = Vector3.zero;

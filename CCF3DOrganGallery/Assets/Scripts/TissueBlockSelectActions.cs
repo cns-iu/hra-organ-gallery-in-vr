@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -35,12 +34,11 @@ public class TissueBlockSelectActions : MonoBehaviour
     void Update()
     {
         // Records structure used to get information back from a raycast.
-        RaycastHit hit;
         // Casting new ray into the scene
         Ray ray = new Ray(transform.position, transform.TransformDirection(Vector3.forward));
 
         // If our ray hits a collider somewhere in the scene, do:
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        if (Physics.Raycast(ray, out var hit, Mathf.Infinity))
         {
             // Debug.Log((hit.collider.name)); // Logs the name of the gameObject our Raycast hits
             // Compare if the object's tag was "TissueBlock"
@@ -65,10 +63,5 @@ public class TissueBlockSelectActions : MonoBehaviour
             // If raycast hits objects other than those with "TissueBlock" tag, then invoke event responsible for setting Default colour
             SetToDefault?.Invoke(hit);
         }
-    }
-
-    public void OnABCD()
-    {
-        Debug.Log("abc");
     }
 }
