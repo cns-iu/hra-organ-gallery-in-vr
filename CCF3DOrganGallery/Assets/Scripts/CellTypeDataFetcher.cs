@@ -50,7 +50,7 @@ public class CellTypeDataFetcher : MonoBehaviour
             // Show results as text
             var x = tempFormat(www.downloadHandler.text);
 
-            //capturing the raw text in a variabl for debugging and demo
+            //capturing the raw text in a variable for debugging and demo
             resultText = x;
 
             // Parsing results

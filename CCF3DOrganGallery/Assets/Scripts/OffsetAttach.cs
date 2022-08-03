@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
+// XR Grab Interactable script slightly amended to provide us with an offset
 public class OffsetAttach : XRGrabInteractable
 {
-    private Vector3 interactorPosition = Vector3.zero;
-    private Quaternion interactorRotation = Quaternion.identity;
+    private Vector3 _interactorPosition = Vector3.zero;
+    private Quaternion _interactorRotation = Quaternion.identity;
     
     protected void OnSelectEnter(XRBaseInteractor interactor)
     {
@@ -15,8 +16,8 @@ public class OffsetAttach : XRGrabInteractable
 
     private void StoreInteractor(XRBaseInteractor interactor)
     {
-        interactorPosition = interactor.attachTransform.localPosition;
-        interactorRotation = interactor.attachTransform.localRotation;
+        _interactorPosition = interactor.attachTransform.localPosition;
+        _interactorRotation = interactor.attachTransform.localRotation;
     }
 
     private void MatchAttachmentPoints(XRBaseInteractor interactor)
@@ -35,13 +36,13 @@ public class OffsetAttach : XRGrabInteractable
 
     private void ResetAttachmentPoint(XRBaseInteractor interactor)
     {
-        interactor.attachTransform.localPosition = interactorPosition;
-        interactorRotation = interactor.attachTransform.localRotation;
+        interactor.attachTransform.localPosition = _interactorPosition;
+        _interactorRotation = interactor.attachTransform.localRotation;
     }
 
     private void ClearInteractor(XRBaseInteractor interactor)
     {
-        interactorPosition = Vector3.zero;
-        interactorRotation = Quaternion.identity;
+        _interactorPosition = Vector3.zero;
+        _interactorRotation = Quaternion.identity;
     }
 }
