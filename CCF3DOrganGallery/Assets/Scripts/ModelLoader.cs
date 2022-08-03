@@ -4,13 +4,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using Siccity.GLTFUtility;
+using System.Threading.Tasks;
 
 public class ModelLoader : MonoBehaviour
 {
     [SerializeField] private string filePath;
-    private GameObject wrapper;
+    [SerializeField] private GameObject wrapper;
 
-    public GameObject GetModel(string url)
+    public async Task<GameObject> GetModel(string url)
     {
         filePath = $"{Application.persistentDataPath}/Models/";
         wrapper = new GameObject
@@ -19,10 +20,11 @@ public class ModelLoader : MonoBehaviour
         };
 
         DownloadFile(url);
+        await Task.Yield();
         return wrapper;
     }
 
-    public void DownloadFile(string url)
+    public async void DownloadFile(string url)
     {
         string path = GetFilePath(url);
         if (File.Exists(path))
@@ -32,19 +34,17 @@ public class ModelLoader : MonoBehaviour
             return;
         }
 
-        StartCoroutine(GetFileRequest(url, (UnityWebRequest req) =>
-        {
-            if (req.isNetworkError || req.isHttpError)
-            {
-                // Log any errors that may happen
-                Debug.Log($"{req.error} : {req.downloadHandler.text}");
-            }
-            else
-            {
-                // Save the model into a new wrapper
-                LoadModel(path);
-            }
-        }));
+        await GetFileRequest(url, (UnityWebRequest req) =>
+               {
+                   if (req.result == UnityWebRequest.Result.ConnectionError || req.result == UnityWebRequest.Result.ProtocolError)
+                   {
+                       Debug.Log($"{req.error} : {req.downloadHandler.text}");
+                   }
+                   else
+                   {
+                       LoadModel(path);
+                   }
+               });
     }
 
     string GetFilePath(string url)
@@ -62,12 +62,21 @@ public class ModelLoader : MonoBehaviour
         model.transform.SetParent(wrapper.transform);
     }
 
-    IEnumerator GetFileRequest(string url, Action<UnityWebRequest> callback)
+    async Task GetFileRequest(string url, Action<UnityWebRequest> callback)
     {
         using (UnityWebRequest req = UnityWebRequest.Get(url))
         {
             req.downloadHandler = new DownloadHandlerFile(GetFilePath(url));
-            yield return req.SendWebRequest();
+
+            var operation = req.SendWebRequest();
+
+            while (!operation.isDone) {
+                //Use to display process to user if needed
+                Debug.Log(operation.progress);
+            }
+            //move await Task.Yield() into while loop if testing after errors               
+            await Task.Yield();
+
             callback(req);
         }
     }

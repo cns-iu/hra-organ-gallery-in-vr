@@ -644,9 +644,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Float Back Organ",
+                    "name": "Float Back",
                     "type": "Button",
                     "id": "96b4614e-8bd8-44c3-98f2-8a204a540788",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Switch Pull Out State",
+                    "type": "Button",
+                    "id": "e6951204-a11f-4f48-a890-aae17d392500",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press",
@@ -980,7 +989,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Float Back Organ",
+                    "action": "Float Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3ee3adbd-c748-4e42-a2e3-4192cecae51f",
+                    "path": "<OculusTouchController>/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch Pull Out State",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
