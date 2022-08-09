@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public enum BodySystem { undefined, cardio, digestive, fetal, integumentary, lymphatic, musculoskeletal, nervous, reproductive, respiratory, urinary }
+public enum BodySystem { undefined, integumentary, nervous, respiratory, cardio, digestive, musculoskeletal, lymphatic, urinary, fetal, reproductive }
 
 public class HorizontalExtruder : MonoBehaviour
 {
@@ -37,19 +37,26 @@ public class HorizontalExtruder : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        SceneBuilder.OnSceneBuilt += AssignSystem;
+    }
+
+    private void OnDestroy()
+    {
+        SceneBuilder.OnSceneBuilt -= AssignSystem;
+    }
+
+
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            AssignSystem();
-        }
-
         if (Input.GetKeyDown(KeyCode.E))
         {
             Extrude();
         }
     }
-    
+
     void Extrude()
     {
         string[] systems = System.Enum.GetNames(typeof(BodySystem));
@@ -77,21 +84,12 @@ public class HorizontalExtruder : MonoBehaviour
 
     void AssignSystem()
     {
-        foreach (var kvp in mappings)
-        {
-            Debug.Log("Key: " + kvp.Key);
-            Debug.Log("Value" + kvp.Value);
-        }
-        Debug.Log("here");
         OrganData[] organs = GameObject.FindObjectsOfType<OrganData>();
 
         for (int i = 0; i < organs.Length; i++)
         {
-            Debug.Log(mappings[organs[i].GetComponent<OrganData>().SceneGraph]);
             string system;
-
             bool hasValue = mappings.TryGetValue(organs[i].GetComponent<OrganData>().SceneGraph, out system);
-            Debug.Log("system: " + system);
             organs[i].GetComponent<OrganData>().BodySystem = (BodySystem)Enum.Parse(typeof(BodySystem), system);
         }
     }
