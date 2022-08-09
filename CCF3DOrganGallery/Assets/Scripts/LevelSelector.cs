@@ -22,7 +22,7 @@ public class LevelSelector : MonoBehaviour
     void LoadScene(int sceneIndex)
     {
         m_Slider.gameObject.SetActive(true);
-        StartCoroutine(LoadAsynchronously(sceneIndex));
+        StartCoroutine(LoadAsynchronously(sceneIndex)); //re-write as async function
     }
 
     private IEnumerator LoadAsynchronously(int sceneIndex)
