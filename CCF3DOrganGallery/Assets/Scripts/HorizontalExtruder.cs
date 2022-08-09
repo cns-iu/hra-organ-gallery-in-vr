@@ -49,7 +49,7 @@ public class HorizontalExtruder : MonoBehaviour
             Extrude();
         }
     }
-
+    
     void Extrude()
     {
         string[] systems = System.Enum.GetNames(typeof(BodySystem));
