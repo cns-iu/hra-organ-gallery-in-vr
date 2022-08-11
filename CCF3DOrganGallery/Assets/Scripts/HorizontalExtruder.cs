@@ -8,15 +8,19 @@ public enum BodySystem { undefined, integumentary, nervous, respiratory, cardio,
 
 public class HorizontalExtruder : MonoBehaviour
 {
-    [SerializeField] private int currentStep;
+    [SerializeField] private float currentStep;
     [SerializeField] private float offset;
+    [SerializeField] private float maxDistance;
     [SerializeField] private string filename;
     [SerializeField] private Dictionary<string, string> mappings = new Dictionary<string, string>();
+    private string[] systems;
     // Start is called before the first frame update
 
     private void Awake()
     {
         ReadCsv();
+        systems = System.Enum.GetNames(typeof(BodySystem));
+        UserInputModule.KeyPressed += (key) => Debug.Log("detected key press" + key);
     }
 
     void ReadCsv()
@@ -39,15 +43,13 @@ public class HorizontalExtruder : MonoBehaviour
 
     private void OnEnable()
     {
-        SceneBuilder.OnSceneBuilt += AssignSystem;
+        SceneBuilder.OnSceneBuilt += GetSystemAndDefaultPosition;
     }
 
     private void OnDestroy()
     {
-        SceneBuilder.OnSceneBuilt -= AssignSystem;
+        SceneBuilder.OnSceneBuilt -= GetSystemAndDefaultPosition;
     }
-
-
 
     private void Update()
     {
@@ -59,38 +61,44 @@ public class HorizontalExtruder : MonoBehaviour
 
     void Extrude()
     {
-        string[] systems = System.Enum.GetNames(typeof(BodySystem));
         for (int i = 0; i < systems.Length; i++)
         {
-            Debug.Log(systems[i]);
             List<GameObject> gameObjects = new List<GameObject>();
-            OrganData[] g = GameObject.FindObjectsOfType<OrganData>();
+            OrganData[] organDataComponents = GameObject.FindObjectsOfType<OrganData>();
 
-            foreach (var go in g)
+            foreach (var organData in organDataComponents)
             {
-                if (go.BodySystem == (BodySystem)Enum.Parse(typeof(BodySystem), systems[i]))
+                if (organData.BodySystem == (BodySystem)Enum.Parse(typeof(BodySystem), systems[i]))
                 {
-                    gameObjects.Add(go.gameObject);
+                    gameObjects.Add(organData.gameObject);
                 }
 
             }
-            Debug.Log(gameObjects.Count);
             foreach (var item in gameObjects)
             {
-                item.transform.Translate(0f, 0f, -offset * i);
+                //item.transform.Translate(0f, 0f, -offset * i * currentStep
+                Vector3 defaultPosition = item.GetComponent<OrganData>().DefaultPosition;
+                Vector3 maxPosition = new Vector3(
+                    defaultPosition.x,
+                    defaultPosition.y,
+                    defaultPosition.z - maxDistance * i
+                    );
+                item.transform.position = Vector3.Lerp(defaultPosition, maxPosition, currentStep * i * offset);
             }
         }
     }
 
-    void AssignSystem()
+    void GetSystemAndDefaultPosition()
     {
-        OrganData[] organs = GameObject.FindObjectsOfType<OrganData>();
+        OrganData[] organs = FindObjectsOfType<OrganData>();
 
         for (int i = 0; i < organs.Length; i++)
         {
-            string system;
-            bool hasValue = mappings.TryGetValue(organs[i].GetComponent<OrganData>().SceneGraph, out system);
-            organs[i].GetComponent<OrganData>().BodySystem = (BodySystem)Enum.Parse(typeof(BodySystem), system);
+            OrganData organData = organs[i];
+            _ = mappings.TryGetValue(organData.SceneGraph, out string system);
+            organData.BodySystem = (BodySystem)Enum.Parse(typeof(BodySystem), system);
+            organData.DefaultPosition = organData.gameObject.transform.position;
+
         }
     }
 }
