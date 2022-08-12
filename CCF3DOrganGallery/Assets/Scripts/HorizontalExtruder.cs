@@ -3,24 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public enum BodySystem { undefined, integumentary, nervous, respiratory, cardio, digestive, musculoskeletal, lymphatic, urinary, fetal, reproductive }
 
 public class HorizontalExtruder : MonoBehaviour
 {
+    public KeyHandler upArrowHandler = null;
+    public KeyHandler downArrowHandler = null;
+
     [SerializeField] private float currentStep;
     [SerializeField] private float offset;
     [SerializeField] private float maxDistance;
     [SerializeField] private string filename;
     [SerializeField] private Dictionary<string, string> mappings = new Dictionary<string, string>();
+
+    private List<SystemObjectPair> SystemsObjs = new List<SystemObjectPair>();
     private string[] systems;
-    // Start is called before the first frame update
 
     private void Awake()
     {
         ReadCsv();
         systems = System.Enum.GetNames(typeof(BodySystem));
-        UserInputModule.KeyPressed += (key) => Debug.Log("detected key press" + key);
     }
 
     void ReadCsv()
@@ -44,39 +48,53 @@ public class HorizontalExtruder : MonoBehaviour
     private void OnEnable()
     {
         SceneBuilder.OnSceneBuilt += GetSystemAndDefaultPosition;
+        upArrowHandler.keyHeld += AdjustExtrusion;
+        downArrowHandler.keyHeld += AdjustExtrusion;
     }
 
     private void OnDestroy()
     {
         SceneBuilder.OnSceneBuilt -= GetSystemAndDefaultPosition;
+        upArrowHandler.keyHeld -= AdjustExtrusion;
+        downArrowHandler.keyHeld -= AdjustExtrusion;
     }
 
-    private void Update()
+    void AdjustExtrusion(KeyCode key)
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        float direction = 0;
+        switch (key)
         {
-            Extrude();
+            case KeyCode.UpArrow:
+                direction = 1;
+                break;
+            case KeyCode.DownArrow:
+                direction = -1;
+                break;
+            default:
+                break;
         }
+        Extrude(direction);
     }
 
-    void Extrude()
+    void Extrude(float direction)
     {
-        for (int i = 0; i < systems.Length; i++)
+        currentStep += Time.deltaTime * direction;
+
+        if (currentStep > 1)
         {
-            List<GameObject> gameObjects = new List<GameObject>();
-            OrganData[] organDataComponents = GameObject.FindObjectsOfType<OrganData>();
+            currentStep = 1;
+        }
+        else if (currentStep < 0)
+        {
+            currentStep = 0;
+        }
 
-            foreach (var organData in organDataComponents)
-            {
-                if (organData.BodySystem == (BodySystem)Enum.Parse(typeof(BodySystem), systems[i]))
-                {
-                    gameObjects.Add(organData.gameObject);
-                }
+        for (int i = 0; i < SystemsObjs.Count; i++)
+        {
+            var list = SystemsObjs[i].GameObjects;
 
-            }
-            foreach (var item in gameObjects)
+            foreach (var item in list)
             {
-                //item.transform.Translate(0f, 0f, -offset * i * currentStep
                 Vector3 defaultPosition = item.GetComponent<OrganData>().DefaultPosition;
                 Vector3 maxPosition = new Vector3(
                     defaultPosition.x,
@@ -86,6 +104,7 @@ public class HorizontalExtruder : MonoBehaviour
                 item.transform.position = Vector3.Lerp(defaultPosition, maxPosition, currentStep * i * offset);
             }
         }
+
     }
 
     void GetSystemAndDefaultPosition()
@@ -100,5 +119,38 @@ public class HorizontalExtruder : MonoBehaviour
             organData.DefaultPosition = organData.gameObject.transform.position;
 
         }
+
+
+
+        for (int i = 0; i < systems.Length; i++)
+        {
+            List<GameObject> gameObjects = new List<GameObject>();
+            OrganData[] organDataComponents = FindObjectsOfType<OrganData>();
+
+            foreach (var organData in organDataComponents)
+            {
+                if (organData.BodySystem == (BodySystem)Enum.Parse(typeof(BodySystem), systems[i]))
+                {
+                    gameObjects.Add(organData.gameObject);
+                }
+
+            }
+
+            SystemsObjs.Add(
+               new SystemObjectPair(systems[i], gameObjects));
+
+        }
+    }
+}
+
+struct SystemObjectPair
+{
+    public string System;
+    public List<GameObject> GameObjects;
+
+    public SystemObjectPair(string system, List<GameObject> list)
+    {
+        this.System = system;
+        this.GameObjects = list;
     }
 }
