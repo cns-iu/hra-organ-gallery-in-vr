@@ -14,6 +14,7 @@ public class HorizontalExtruder : MonoBehaviour
 
     [SerializeField] private float currentStep;
     [SerializeField] private float offset;
+    [SerializeField] private float scalingFactor;
     [SerializeField] private float maxDistance;
     [SerializeField] private string filename;
     [SerializeField] private Dictionary<string, string> mappings = new Dictionary<string, string>();
@@ -101,7 +102,7 @@ public class HorizontalExtruder : MonoBehaviour
                     defaultPosition.y,
                     defaultPosition.z - maxDistance * i
                     );
-                item.transform.position = Vector3.Lerp(defaultPosition, maxPosition, currentStep * i * offset);
+                item.transform.position = Vector3.Lerp(defaultPosition, maxPosition, currentStep * i * offset * scalingFactor);
             }
         }
 
