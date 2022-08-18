@@ -48,7 +48,7 @@ public class HorizontalExtruder : MonoBehaviour
 
     private void OnEnable()
     {
-        SceneBuilder.OnSceneBuilt += GetSystemAndDefaultPosition;
+        SceneBuilder.OnSceneBuilt += GetSystemAndDefaultPosition; //remove getting default pos + rot from Kumar's code once pulled in
         upArrowHandler.keyHeld += AdjustExtrusion;
         downArrowHandler.keyHeld += AdjustExtrusion;
     }
@@ -112,7 +112,8 @@ public class HorizontalExtruder : MonoBehaviour
     {
         OrganData[] organs = FindObjectsOfType<OrganData>();
 
-        for (int i = 0; i < organs.Length; i++)
+        //srart at index = 2 to leave skin in default place
+        for (int i = 2; i < organs.Length; i++)
         {
             OrganData organData = organs[i];
             _ = mappings.TryGetValue(organData.SceneGraph, out string system);
