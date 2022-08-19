@@ -5,6 +5,7 @@ using System.IO;
 using System.Net;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static UnityEditor.Progress;
 using static UnityEngine.EventSystems.EventTrigger;
 
@@ -28,7 +29,7 @@ public class HorizontalExtruder : MonoBehaviour
 
     private Dictionary<string, string> mappings = new Dictionary<string, string>();
     private string[] systems;
-    
+
 
     private void Awake()
     {
@@ -102,24 +103,26 @@ public class HorizontalExtruder : MonoBehaviour
 
         for (int i = 2; i < SystemsObjs.Count; i++)
         {
-            var list = SystemsObjs[i].GameObjects;
 
-            for (int n = 0; n < list.Count; n++)
+            foreach (var sex in SystemsObjs[i].GameObjectsBySex)
             {
-                float sideValue = list[n].GetComponent<OrganData>().DonorSex.ToLower() == "male" ? -1 : 1;
-                Vector3 defaultPosition = list[n].GetComponent<OrganData>().DefaultPositionExtruded;
-                Vector3 maxPosition = new Vector3(
-                    defaultPosition.x + maxDistanceTwo * sideValue * n,
-                    defaultPosition.y,
-                    defaultPosition.z
-                    );
-                list[n].transform.position = Vector3.Lerp(defaultPosition, maxPosition, currentStepTwo);
+                for (int k = 0; k < sex.Count; k++)
+                {
+                    float sideValue = sex[k].GetComponent<OrganData>().DonorSex.ToLower() == "male" ? -1 : 1;
+                    Vector3 defaultPosition = sex[k].GetComponent<OrganData>().DefaultPositionExtruded;
+                    Vector3 maxPosition = new Vector3(
+                        defaultPosition.x + maxDistanceTwo * sideValue * k,
+                        defaultPosition.y,
+                        defaultPosition.z
+                        );
+                    sex[k].transform.position = Vector3.Lerp(defaultPosition, maxPosition, currentStepTwo);
+                }
+
             }
+
+            canExtrudeOne = !(currentStepTwo > 0f);
         }
-
-        canExtrudeOne = !(currentStepTwo > 0f);
     }
-
     void AdjustExtrusionOne(KeyCode key)
     {
         if (!canExtrudeOne) return;
@@ -198,10 +201,31 @@ public class HorizontalExtruder : MonoBehaviour
                 }
 
             }
-
             SystemsObjs.Add(
                new SystemObjectPair(systems[i], gameObjects));
+        }
 
+        AssignOrgansIntoSexedList();
+    }
+
+    void AssignOrgansIntoSexedList()
+    {
+        for (int i = 0; i < SystemsObjs.Count; i++)
+        {
+            for (int n = 0; n < SystemsObjs[i].GameObjects.Count; n++)
+            {
+                switch (SystemsObjs[i].GameObjects[n].GetComponent<OrganData>().DonorSex.ToLower())
+                {
+                    case "male":
+                        SystemsObjs[i].GameObjectsBySex[0].Add(SystemsObjs[i].GameObjects[n]);
+                        break;
+                    case "female":
+                        SystemsObjs[i].GameObjectsBySex[1].Add(SystemsObjs[i].GameObjects[n]);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }
@@ -211,10 +235,17 @@ struct SystemObjectPair
 {
     public string System;
     public List<GameObject> GameObjects;
+    public List<List<GameObject>> GameObjectsBySex;
 
     public SystemObjectPair(string system, List<GameObject> list)
     {
         this.System = system;
         this.GameObjects = list;
+        this.GameObjectsBySex = new List<List<GameObject>>() {
+            new List<GameObject>(),
+            new List<GameObject>()
+        };
+
     }
 }
+
