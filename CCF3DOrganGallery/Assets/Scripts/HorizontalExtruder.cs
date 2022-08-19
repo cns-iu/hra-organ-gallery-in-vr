@@ -2,7 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 using static UnityEngine.EventSystems.EventTrigger;
 
 public enum BodySystem { undefined, integumentary, nervous, respiratory, cardio, digestive, musculoskeletal, lymphatic, urinary, fetal, reproductive }
@@ -11,16 +14,21 @@ public class HorizontalExtruder : MonoBehaviour
 {
     public KeyHandler upArrowHandler = null;
     public KeyHandler downArrowHandler = null;
+    public KeyHandler leftArrowHandler = null;
+    public KeyHandler rightArrowHandler = null;
 
-    [SerializeField] private float currentStep;
-    [SerializeField] private float offset;
-    [SerializeField] private float scalingFactor;
-    [SerializeField] private float maxDistance;
+    [SerializeField] private float currentStepOne;
+    [SerializeField] private float currentStepTwo;
+    [SerializeField] private float maxDistanceOne;
+    [SerializeField] private float maxDistanceTwo;
     [SerializeField] private string filename;
-    [SerializeField] private Dictionary<string, string> mappings = new Dictionary<string, string>();
+    [SerializeField] private bool canExtrudeOne = true;
+    [SerializeField] private bool canExtrudeTwo = false;
+    [SerializeField] private List<SystemObjectPair> SystemsObjs = new List<SystemObjectPair>();
 
-    private List<SystemObjectPair> SystemsObjs = new List<SystemObjectPair>();
+    private Dictionary<string, string> mappings = new Dictionary<string, string>();
     private string[] systems;
+    
 
     private void Awake()
     {
@@ -49,19 +57,72 @@ public class HorizontalExtruder : MonoBehaviour
     private void OnEnable()
     {
         SceneBuilder.OnSceneBuilt += GetSystemAndDefaultPosition; //remove getting default pos + rot from Kumar's code once pulled in
-        upArrowHandler.keyHeld += AdjustExtrusion;
-        downArrowHandler.keyHeld += AdjustExtrusion;
+        upArrowHandler.keyHeld += AdjustExtrusionOne;
+        downArrowHandler.keyHeld += AdjustExtrusionOne;
+        leftArrowHandler.keyHeld += AdjustExtrusionTwo;
+        rightArrowHandler.keyHeld += AdjustExtrusionTwo;
     }
 
     private void OnDestroy()
     {
         SceneBuilder.OnSceneBuilt -= GetSystemAndDefaultPosition;
-        upArrowHandler.keyHeld -= AdjustExtrusion;
-        downArrowHandler.keyHeld -= AdjustExtrusion;
+        upArrowHandler.keyHeld -= AdjustExtrusionOne;
+        downArrowHandler.keyHeld -= AdjustExtrusionOne;
+        leftArrowHandler.keyHeld -= AdjustExtrusionTwo;
+        rightArrowHandler.keyHeld -= AdjustExtrusionTwo;
     }
 
-    void AdjustExtrusion(KeyCode key)
+    void AdjustExtrusionTwo(KeyCode key)
     {
+        if (!canExtrudeTwo) return;
+
+        float direction = 0;
+        switch (key)
+        {
+            case KeyCode.RightArrow:
+                direction = 1;
+                break;
+            case KeyCode.LeftArrow:
+                direction = -1;
+                break;
+            default:
+                break;
+        }
+
+        currentStepTwo += Time.deltaTime * direction;
+
+        if (currentStepTwo > 1)
+        {
+            currentStepTwo = 1;
+        }
+        else if (currentStepTwo < 0)
+        {
+            currentStepTwo = 0;
+        }
+
+        for (int i = 2; i < SystemsObjs.Count; i++)
+        {
+            var list = SystemsObjs[i].GameObjects;
+
+            for (int n = 0; n < list.Count; n++)
+            {
+                float sideValue = list[n].GetComponent<OrganData>().DonorSex.ToLower() == "male" ? -1 : 1;
+                Vector3 defaultPosition = list[n].GetComponent<OrganData>().DefaultPositionExtruded;
+                Vector3 maxPosition = new Vector3(
+                    defaultPosition.x + maxDistanceTwo * sideValue * n,
+                    defaultPosition.y,
+                    defaultPosition.z
+                    );
+                list[n].transform.position = Vector3.Lerp(defaultPosition, maxPosition, currentStepTwo);
+            }
+        }
+
+        canExtrudeOne = !(currentStepTwo > 0f);
+    }
+
+    void AdjustExtrusionOne(KeyCode key)
+    {
+        if (!canExtrudeOne) return;
         float direction = 0;
         switch (key)
         {
@@ -74,23 +135,24 @@ public class HorizontalExtruder : MonoBehaviour
             default:
                 break;
         }
-        Extrude(direction);
+        ExtrudeOne(direction);
     }
 
-    void Extrude(float direction)
+    void ExtrudeOne(float direction)
     {
-        currentStep += Time.deltaTime * direction;
+        currentStepOne += Time.deltaTime * direction;
 
-        if (currentStep > 1)
+        if (currentStepOne > 1)
         {
-            currentStep = 1;
+            currentStepOne = 1;
         }
-        else if (currentStep < 0)
+        else if (currentStepOne < 0)
         {
-            currentStep = 0;
+            currentStepOne = 0;
         }
 
-        for (int i = 0; i < SystemsObjs.Count; i++)
+        //srart at index = 2 to leave skin in default place
+        for (int i = 2; i < SystemsObjs.Count; i++)
         {
             var list = SystemsObjs[i].GameObjects;
 
@@ -100,11 +162,14 @@ public class HorizontalExtruder : MonoBehaviour
                 Vector3 maxPosition = new Vector3(
                     defaultPosition.x,
                     defaultPosition.y,
-                    defaultPosition.z - maxDistance * i
+                    defaultPosition.z - maxDistanceOne * i
                     );
-                item.transform.position = Vector3.Lerp(defaultPosition, maxPosition, currentStep * i * offset * scalingFactor);
+                item.transform.position = Vector3.Lerp(defaultPosition, maxPosition, currentStepOne);
+                item.GetComponent<OrganData>().DefaultPositionExtruded = maxPosition;
             }
         }
+
+        canExtrudeTwo = currentStepOne == 1;
 
     }
 
@@ -112,17 +177,13 @@ public class HorizontalExtruder : MonoBehaviour
     {
         OrganData[] organs = FindObjectsOfType<OrganData>();
 
-        //srart at index = 2 to leave skin in default place
-        for (int i = 2; i < organs.Length; i++)
+        for (int i = 0; i < organs.Length; i++)
         {
             OrganData organData = organs[i];
             _ = mappings.TryGetValue(organData.SceneGraph, out string system);
             organData.BodySystem = (BodySystem)Enum.Parse(typeof(BodySystem), system);
             organData.DefaultPosition = organData.gameObject.transform.position;
-
         }
-
-
 
         for (int i = 0; i < systems.Length; i++)
         {
@@ -145,6 +206,7 @@ public class HorizontalExtruder : MonoBehaviour
     }
 }
 
+[Serializable]
 struct SystemObjectPair
 {
     public string System;
