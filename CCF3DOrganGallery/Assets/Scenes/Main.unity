@@ -17574,14 +17574,12 @@ MonoBehaviour:
   rightArrowHandler: {fileID: 11400000, guid: 022769daf9cbb404a9cdd4f50fef0d14, type: 2}
   currentStepOne: 0
   currentStepTwo: 0
-  offset: 0.5
-  scalingFactorOne: 0.2
-  scalingFactorTwo: 1
   maxDistanceOne: 0.5
   maxDistanceTwo: 0.5
   filename: Body_Systems_List
   canExtrudeOne: 1
   canExtrudeTwo: 0
+  SystemsObjs: []
 --- !u!1 &1935450814
 GameObject:
   m_ObjectHideFlags: 0
