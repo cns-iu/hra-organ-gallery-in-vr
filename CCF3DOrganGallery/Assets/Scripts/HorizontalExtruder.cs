@@ -2,21 +2,39 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static UnityEditor.Progress;
+using static UnityEngine.EventSystems.EventTrigger;
 
-public enum BodySystem { undefined, cardio, digestive, fetal, integumentary, lymphatic, musculoskeletal, nervous, reproductive, respiratory, urinary }
+public enum BodySystem { undefined, integumentary, nervous, respiratory, cardio, digestive, musculoskeletal, lymphatic, urinary, fetal, reproductive }
 
 public class HorizontalExtruder : MonoBehaviour
 {
-    [SerializeField] private int currentStep;
-    [SerializeField] private float offset;
+    public KeyHandler upArrowHandler = null;
+    public KeyHandler downArrowHandler = null;
+    public KeyHandler leftArrowHandler = null;
+    public KeyHandler rightArrowHandler = null;
+
+    [SerializeField] private float currentStepOne;
+    [SerializeField] private float currentStepTwo;
+    [SerializeField] private float maxDistanceOne;
+    [SerializeField] private float maxDistanceTwo;
     [SerializeField] private string filename;
-    [SerializeField] private Dictionary<string, string> mappings = new Dictionary<string, string>();
-    // Start is called before the first frame update
+    [SerializeField] private bool canExtrudeOne = true;
+    [SerializeField] private bool canExtrudeTwo = false;
+    [SerializeField] private List<SystemObjectPair> SystemsObjs = new List<SystemObjectPair>();
+
+    private Dictionary<string, string> mappings = new Dictionary<string, string>();
+    private string[] systems;
+
 
     private void Awake()
     {
         ReadCsv();
+        systems = System.Enum.GetNames(typeof(BodySystem));
     }
 
     void ReadCsv()
@@ -37,62 +55,197 @@ public class HorizontalExtruder : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            AssignSystem();
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Extrude();
-        }
+        SceneBuilder.OnSceneBuilt += GetSystemAndDefaultPosition; //remove getting default pos + rot from Kumar's code once pulled in
+        upArrowHandler.keyHeld += AdjustExtrusionOne;
+        downArrowHandler.keyHeld += AdjustExtrusionOne;
+        leftArrowHandler.keyHeld += AdjustExtrusionTwo;
+        rightArrowHandler.keyHeld += AdjustExtrusionTwo;
     }
-    
-    void Extrude()
-    {
-        string[] systems = System.Enum.GetNames(typeof(BodySystem));
-        for (int i = 0; i < systems.Length; i++)
-        {
-            Debug.Log(systems[i]);
-            List<GameObject> gameObjects = new List<GameObject>();
-            OrganData[] g = GameObject.FindObjectsOfType<OrganData>();
 
-            foreach (var go in g)
+    private void OnDestroy()
+    {
+        SceneBuilder.OnSceneBuilt -= GetSystemAndDefaultPosition;
+        upArrowHandler.keyHeld -= AdjustExtrusionOne;
+        downArrowHandler.keyHeld -= AdjustExtrusionOne;
+        leftArrowHandler.keyHeld -= AdjustExtrusionTwo;
+        rightArrowHandler.keyHeld -= AdjustExtrusionTwo;
+    }
+
+    void AdjustExtrusionTwo(KeyCode key)
+    {
+        if (!canExtrudeTwo) return;
+
+        float direction = 0;
+        switch (key)
+        {
+            case KeyCode.RightArrow:
+                direction = 1;
+                break;
+            case KeyCode.LeftArrow:
+                direction = -1;
+                break;
+            default:
+                break;
+        }
+
+        currentStepTwo += Time.deltaTime * direction;
+
+        if (currentStepTwo > 1)
+        {
+            currentStepTwo = 1;
+        }
+        else if (currentStepTwo < 0)
+        {
+            currentStepTwo = 0;
+        }
+
+        for (int i = 2; i < SystemsObjs.Count; i++)
+        {
+
+            foreach (var sex in SystemsObjs[i].GameObjectsBySex)
             {
-                if (go.BodySystem == (BodySystem)Enum.Parse(typeof(BodySystem), systems[i]))
+                for (int k = 0; k < sex.Count; k++)
                 {
-                    gameObjects.Add(go.gameObject);
+                    float sideValue = sex[k].GetComponent<OrganData>().DonorSex.ToLower() == "male" ? -1 : 1;
+                    Vector3 defaultPosition = sex[k].GetComponent<OrganData>().DefaultPositionExtruded;
+                    Vector3 maxPosition = new Vector3(
+                        defaultPosition.x + maxDistanceTwo * sideValue * k,
+                        defaultPosition.y,
+                        defaultPosition.z
+                        );
+                    sex[k].transform.position = Vector3.Lerp(defaultPosition, maxPosition, currentStepTwo);
                 }
 
             }
-            Debug.Log(gameObjects.Count);
-            foreach (var item in gameObjects)
-            {
-                item.transform.Translate(0f, 0f, -offset * i);
-            }
+
+            canExtrudeOne = !(currentStepTwo > 0f);
         }
     }
-
-    void AssignSystem()
+    void AdjustExtrusionOne(KeyCode key)
     {
-        foreach (var kvp in mappings)
+        if (!canExtrudeOne) return;
+        float direction = 0;
+        switch (key)
         {
-            Debug.Log("Key: " + kvp.Key);
-            Debug.Log("Value" + kvp.Value);
+            case KeyCode.UpArrow:
+                direction = 1;
+                break;
+            case KeyCode.DownArrow:
+                direction = -1;
+                break;
+            default:
+                break;
         }
-        Debug.Log("here");
-        OrganData[] organs = GameObject.FindObjectsOfType<OrganData>();
+        ExtrudeOne(direction);
+    }
+
+    void ExtrudeOne(float direction)
+    {
+        currentStepOne += Time.deltaTime * direction;
+
+        if (currentStepOne > 1)
+        {
+            currentStepOne = 1;
+        }
+        else if (currentStepOne < 0)
+        {
+            currentStepOne = 0;
+        }
+
+        //srart at index = 2 to leave skin in default place
+        for (int i = 2; i < SystemsObjs.Count; i++)
+        {
+            var list = SystemsObjs[i].GameObjects;
+
+            foreach (var item in list)
+            {
+                Vector3 defaultPosition = item.GetComponent<OrganData>().DefaultPosition;
+                Vector3 maxPosition = new Vector3(
+                    defaultPosition.x,
+                    defaultPosition.y,
+                    defaultPosition.z - maxDistanceOne * i
+                    );
+                item.transform.position = Vector3.Lerp(defaultPosition, maxPosition, currentStepOne);
+                item.GetComponent<OrganData>().DefaultPositionExtruded = maxPosition;
+            }
+        }
+
+        canExtrudeTwo = currentStepOne == 1;
+
+    }
+
+    void GetSystemAndDefaultPosition()
+    {
+        OrganData[] organs = FindObjectsOfType<OrganData>();
 
         for (int i = 0; i < organs.Length; i++)
         {
-            Debug.Log(mappings[organs[i].GetComponent<OrganData>().SceneGraph]);
-            string system;
+            OrganData organData = organs[i];
+            _ = mappings.TryGetValue(organData.SceneGraph, out string system);
+            organData.BodySystem = (BodySystem)Enum.Parse(typeof(BodySystem), system);
+            organData.DefaultPosition = organData.gameObject.transform.position;
+        }
 
-            bool hasValue = mappings.TryGetValue(organs[i].GetComponent<OrganData>().SceneGraph, out system);
-            Debug.Log("system: " + system);
-            organs[i].GetComponent<OrganData>().BodySystem = (BodySystem)Enum.Parse(typeof(BodySystem), system);
+        for (int i = 0; i < systems.Length; i++)
+        {
+            List<GameObject> gameObjects = new List<GameObject>();
+            OrganData[] organDataComponents = FindObjectsOfType<OrganData>();
+
+            foreach (var organData in organDataComponents)
+            {
+                if (organData.BodySystem == (BodySystem)Enum.Parse(typeof(BodySystem), systems[i]))
+                {
+                    gameObjects.Add(organData.gameObject);
+                }
+
+            }
+            SystemsObjs.Add(
+               new SystemObjectPair(systems[i], gameObjects));
+        }
+
+        AssignOrgansIntoSexedList();
+    }
+
+    void AssignOrgansIntoSexedList()
+    {
+        for (int i = 0; i < SystemsObjs.Count; i++)
+        {
+            for (int n = 0; n < SystemsObjs[i].GameObjects.Count; n++)
+            {
+                switch (SystemsObjs[i].GameObjects[n].GetComponent<OrganData>().DonorSex.ToLower())
+                {
+                    case "male":
+                        SystemsObjs[i].GameObjectsBySex[0].Add(SystemsObjs[i].GameObjects[n]);
+                        break;
+                    case "female":
+                        SystemsObjs[i].GameObjectsBySex[1].Add(SystemsObjs[i].GameObjects[n]);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }
+
+[Serializable]
+struct SystemObjectPair
+{
+    public string System;
+    public List<GameObject> GameObjects;
+    public List<List<GameObject>> GameObjectsBySex;
+
+    public SystemObjectPair(string system, List<GameObject> list)
+    {
+        this.System = system;
+        this.GameObjects = list;
+        this.GameObjectsBySex = new List<List<GameObject>>() {
+            new List<GameObject>(),
+            new List<GameObject>()
+        };
+
+    }
+}
+

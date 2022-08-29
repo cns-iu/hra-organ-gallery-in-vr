@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,9 @@ using UnityEngine.InputSystem;
 
 public class UserInputModule : MonoBehaviour
 {
-    public InputActionReference m_ExplodeReference;
-    public float m_ScalingFactor;
-    public float m_GlobalSliderValue;
+    [SerializeField] private InputActionReference joystickActionReference;
+    [SerializeField] private float m_ScalingFactor;
+    [SerializeField] private float m_GlobalSliderValue;
 
     public delegate void OnUpdateJoystickValue(float newJoystickValue);
     public static event OnUpdateJoystickValue OnUpdateJoystickValueEvent;
@@ -18,6 +19,8 @@ public class UserInputModule : MonoBehaviour
     public static event CollisionWithOrgan CollisionWithOrganEvent;
     public delegate void CollisionWithOrganEnd();
     public static event CollisionWithOrganEnd CollisionWithOrganEndEvent;
+
+    public static event Action<KeyCode> KeyPressed;
 
     private void OnEnable()
     {
@@ -50,6 +53,11 @@ public class UserInputModule : MonoBehaviour
     void Update()
     {
         BroadcastJoystickValue(m_GlobalSliderValue);
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            KeyPressed?.Invoke(KeyCode.A);
+        }
     }
 
     private void BroadcastJoystickValue(float joystickValue)
@@ -60,6 +68,7 @@ public class UserInputModule : MonoBehaviour
 
     private float ReadJoystickInput()
     {
-        return m_ExplodeReference.action.ReadValue<Vector2>().y * m_ScalingFactor;
+        return joystickActionReference.action.ReadValue<Vector2>().y * m_ScalingFactor;
     }
+
 }
