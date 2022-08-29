@@ -49,9 +49,7 @@ public class TissueBlockSelectActions : MonoBehaviour
                 OnHover?.Invoke(hit); // '?' is an elegant way to check whether null without using an additional if statement
 
                 // Check if Index Trigger of Right hand Oculus Quest Controller has been pressed
-
                 if (triggerPressed.action.inProgress)
-
                 {
                     // Invoke event responsible for setting Selection colour
                     OnSelected?.Invoke(hit);

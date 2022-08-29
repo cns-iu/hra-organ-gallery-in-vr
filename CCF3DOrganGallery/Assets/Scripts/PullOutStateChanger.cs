@@ -25,17 +25,19 @@ public class PullOutStateChanger : MonoBehaviour
     // Reference to button that instructs tissue-blocks / organs to float back to original position
     public InputActionReference floatBackInputActionReference;
 
+    // WristPocket manager
+    public WristPocketManager wristPocketManager;
+    
     // Start is called before the first frame update
     void Start()
     {
         // Adding all organs and tissue-blocks in the scene to their respective list
         _organs = GameObject.FindGameObjectsWithTag("Organ").ToList();
         _tissueBlocks = GameObject.FindGameObjectsWithTag("TissueBlock").ToList();
-        
+        wristPocketManager = GameObject.Find("WristPocket").GetComponent<WristPocketManager>();
         // SceneBuilder.OnSceneBuilt += InitializeOrganDefaultValues;
         InitializeOrganDefaultValues();
     }
-
     
     // Update is called once per frame
     private void Update()
@@ -177,15 +179,18 @@ public class PullOutStateChanger : MonoBehaviour
     {
         for (int i = 0; i < _tissueBlocks.Count; i++)
         {
-            var floatBack = _tissueBlocks[i].GetComponent<FloatBackTissueBlocks>();
+            if (!wristPocketManager.wristPocket.Contains(_tissueBlocks[i]))
+            {
+                var floatBack = _tissueBlocks[i].GetComponent<FloatBackTissueBlocks>();
 
-            if (i == _tissueBlocks.Count - 1)       
-            {
-                yield return StartCoroutine(floatBack.FloatBack());
-            }
-            else
-            {
-                StartCoroutine(floatBack.FloatBack());
+                if (i == _tissueBlocks.Count - 1)       
+                {
+                    yield return StartCoroutine(floatBack.FloatBack());
+                }
+                else
+                {
+                    StartCoroutine(floatBack.FloatBack());
+                }
             }
         }
         
