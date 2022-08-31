@@ -6,6 +6,8 @@ using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
+using System.Globalization;
+using Unity.VisualScripting;
 
 public class GitHubChecker : MonoBehaviour
 {
@@ -16,20 +18,39 @@ public class GitHubChecker : MonoBehaviour
     private async void Awake()
     {
         string response = await GetHubmapIds(gitHubUrl);
+        Debug.Log(response);
+        //using (var reader = new StreamReader(response))
+        //{
+        //    using (var csv = new CsvHelper.CsvReader(reader, CultureInfo.InvariantCulture))
+        //    {
+        //        var records = csv.GetRecords<GitHubRecord>();
+        //        Debug.Log(records);
+        //    }
+        //}
 
-        using (var reader = new StreamReader(response))
-        {
-            while (!reader.EndOfStream)
-            {
-                var line = reader.ReadLine();
 
-                Debug.Log(line);
-                //return line;
-            }
+        //using (var reader = new StreamReader(response))
+        //{
+        //    while (!reader.EndOfStream)
+        //    {
+        //        var line = reader.ReadLine();
 
-            //return null;
-        }
+        //        Debug.Log(line);
+        //        //return line;
+        //    }
+
+        //    //return null;
+        //}
         //string data = response.ReadCSV();
+    }
+
+    private struct GitHubRecord
+    {
+        public int number { get; set; }
+        public string HubmapId { get; set; }
+        public string Organ { get; set; }
+        public string Sex { get; set; }
+        public string DataType { get; set; }
     }
 
     private async Task<string> GetHubmapIds(string url)
