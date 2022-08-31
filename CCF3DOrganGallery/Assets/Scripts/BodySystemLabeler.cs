@@ -7,28 +7,33 @@ public class BodySystemLabeler : MonoBehaviour
 {
     [SerializeField] private GameObject pre_label;
     [SerializeField] private HorizontalExtruder horizontalExtruder;
-    [SerializeField] private List<GameObject> labels = new List<GameObject>();
 
     private void OnEnable()
     {
-        SceneBuilder.OnSceneBuilt += AddLabels;
+        HorizontalExtruder.OnBodySystemsReady += AddLabels;
     }
 
     private void OnDestroy()
     {
-        SceneBuilder.OnSceneBuilt += AddLabels;
+        HorizontalExtruder.OnBodySystemsReady += AddLabels;
     }
 
-    private void AddLabels()
+    private void AddLabels(List<SystemObjectPair> list)
     {
-        //for (int i = 0; i < horizontalExtruder.; i++)
-        //{
-        //    GameObject organ = horizontalExtruder.Organs[i];
-        //    GameObject label = Instantiate(pre_label);
-        //    label.transform.SetParent(organ.transform);
-        //    label.transform.position = organ.transform.GetChild(0).transform.position + new Vector3(0, 1, 0);
-        //    label.transform.GetComponentInChildren<TMP_Text>().text = organ.GetComponent<OrganData>().tooltip;
-        //    labels.Add(label);
-        //}
+        for (int i = 0; i < horizontalExtruder.SystemsObjs.Count; i++)
+        {
+            SystemObjectPair sys = horizontalExtruder.SystemsObjs[i];
+            List<GameObject> organs = sys.GameObjects;
+            if (organs.Count == 0) continue;
+
+            GameObject label = Instantiate(pre_label);
+            label.name = "BodySystemLabel" + sys.System.ToUpper();
+            label.transform.SetParent(organs[0].transform);
+            label.transform.position = new Vector3(0, 1.5f, 0);
+            label.transform.GetComponentInChildren<TMP_Text>().text = sys.System;
+            label.GetComponentInChildren<BackgroundOpacity>().extrudeDuringStep = 0;
+            label.GetComponentInChildren<LabelOpacity>().extrudeDuringStep = 0;
+            //labels.Add(label);
+        }
     }
 }

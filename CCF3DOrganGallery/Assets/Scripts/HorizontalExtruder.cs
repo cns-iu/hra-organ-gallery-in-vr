@@ -14,6 +14,7 @@ public enum BodySystem { undefined, integumentary, nervous, respiratory, cardio,
 public class HorizontalExtruder : MonoBehaviour
 {
     public static event Action<float[]> ExtrusionUpdate;
+    public static event Action<List<SystemObjectPair>> OnBodySystemsReady;
 
     public KeyHandler upArrowHandler = null;
     public KeyHandler downArrowHandler = null;
@@ -220,6 +221,7 @@ public class HorizontalExtruder : MonoBehaviour
         }
 
         AssignOrgansIntoSexedList();
+        OnBodySystemsReady?.Invoke(SystemsObjs);
     }
 
     void AssignOrgansIntoSexedList()
@@ -250,6 +252,7 @@ public struct SystemObjectPair
     public string System;
     public List<GameObject> GameObjects;
     public List<List<GameObject>> GameObjectsBySex;
+    [SerializeField]
     public Vector3 SystemPosition
     {
         get { return new Vector3(GameObjects[0].transform.position.x, GameObjects[0].transform.position.y, GameObjects[0].transform.position.z); }

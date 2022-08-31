@@ -6635,9 +6635,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a98dc63c0cd06643a760c2b1c43a881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pre_label: {fileID: 0}
+  pre_label: {fileID: 6985340862692059335, guid: d72e4d82059888343bf8abba15c7c3ad, type: 3}
   horizontalExtruder: {fileID: 1921429947}
-  labels: []
 --- !u!4 &642888743
 Transform:
   m_ObjectHideFlags: 0
@@ -18007,6 +18006,7 @@ MonoBehaviour:
   downArrowHandler: {fileID: 11400000, guid: e79a3e751cf8afa4ea324295ee5770ac, type: 2}
   leftArrowHandler: {fileID: 11400000, guid: 2c8f42965c843cf4d89c5f664283b87d, type: 2}
   rightArrowHandler: {fileID: 11400000, guid: 022769daf9cbb404a9cdd4f50fef0d14, type: 2}
+  SystemsObjs: []
   <CurrentStepOne>k__BackingField: 0
   <CurrentStepTwo>k__BackingField: 0
   maxDistanceOne: 1
@@ -18014,7 +18014,6 @@ MonoBehaviour:
   filename: Body_Systems_List
   canExtrudeOne: 1
   canExtrudeTwo: 0
-  systemsObjs: []
 --- !u!1 &1935450814
 GameObject:
   m_ObjectHideFlags: 0

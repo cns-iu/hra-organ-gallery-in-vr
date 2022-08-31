@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 
 public class LabelOpacity : MonoBehaviour, IOpacitySetter
 {
+    public int extrudeDuringStep = 1;
     private void OnEnable()
     {
         HorizontalExtruder.ExtrusionUpdate += SetOpacity;
@@ -17,7 +18,7 @@ public class LabelOpacity : MonoBehaviour, IOpacitySetter
     }
     public void SetOpacity(float[] stepValues) { 
         TMP_Text t = GetComponent<TMP_Text>();
-        t.color = new Color(t.color.r, t.color.g, t.color.b, stepValues[1]);
+        t.color = new Color(t.color.r, t.color.g, t.color.b, stepValues[extrudeDuringStep]);
     }
 
     private void Awake()

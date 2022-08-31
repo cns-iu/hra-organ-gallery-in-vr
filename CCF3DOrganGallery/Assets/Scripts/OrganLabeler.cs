@@ -20,11 +20,12 @@ public class OrganLabeler : MonoBehaviour
         SceneBuilder.OnSceneBuilt -= AddLabels;
     }
 
-    public virtual void AddLabels() {
+    public void AddLabels() {
         for (int i = 0; i < sceneBuilder.Organs.Count; i++)
         {
             GameObject organ = sceneBuilder.Organs[i];
             GameObject label = Instantiate(pre_label);
+            label.name = "OrganLabel" + organ.name.ToUpper();
             label.transform.SetParent(organ.transform);
             label.transform.position = organ.transform.GetChild(0).transform.position + new Vector3(0,1,0);
             label.transform.GetComponentInChildren<TMP_Text>().text = organ.GetComponent<OrganData>().tooltip;
