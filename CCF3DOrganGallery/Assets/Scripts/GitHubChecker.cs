@@ -2,6 +2,7 @@ using Oculus.Platform;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -14,12 +15,21 @@ public class GitHubChecker : MonoBehaviour
 
     private async void Awake()
     {
-        response = await GetHubmapIds(gitHubUrl);
-        var data = CsvReader.Read(response);
-        for (int i = 0; i < data.Count; i++)
+        string response = await GetHubmapIds(gitHubUrl);
+
+        using (var reader = new StreamReader(response))
         {
-            //Debug.Log(data[i].TryGetValue("hubmap_id"));
+            while (!reader.EndOfStream)
+            {
+                var line = reader.ReadLine();
+
+                Debug.Log(line);
+                //return line;
+            }
+
+            //return null;
         }
+        //string data = response.ReadCSV();
     }
 
     private async Task<string> GetHubmapIds(string url)

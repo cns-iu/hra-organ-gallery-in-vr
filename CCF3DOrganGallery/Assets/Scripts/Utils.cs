@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public static class Utils
@@ -16,6 +17,22 @@ public static class Utils
             {
                 FindLeaves(child, result);
             }
+        }
+    }
+
+    public static void ReadCSV(string text)
+    {
+        using (var reader = new StreamReader(text))
+        {
+            while (!reader.EndOfStream)
+            {
+                var line = reader.ReadLine();
+
+                Debug.Log(line);
+                //return line;
+            }
+
+            //return null;
         }
     }
 
