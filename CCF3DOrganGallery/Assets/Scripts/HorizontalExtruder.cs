@@ -13,23 +13,25 @@ public enum BodySystem { undefined, integumentary, nervous, respiratory, cardio,
 
 public class HorizontalExtruder : MonoBehaviour
 {
+    public static event Action<float[]> ExtrusionUpdate;
+
     public KeyHandler upArrowHandler = null;
     public KeyHandler downArrowHandler = null;
     public KeyHandler leftArrowHandler = null;
     public KeyHandler rightArrowHandler = null;
+    public List<SystemObjectPair> SystemsObjs = new List<SystemObjectPair>();
+    [field: SerializeField] public float CurrentStepOne { get; set; }
+    [field: SerializeField] public float CurrentStepTwo { get; set; }
 
-    [SerializeField] private float currentStepOne;
-    [SerializeField] private float currentStepTwo;
     [SerializeField] private float maxDistanceOne;
     [SerializeField] private float maxDistanceTwo;
     [SerializeField] private string filename;
     [SerializeField] private bool canExtrudeOne = true;
     [SerializeField] private bool canExtrudeTwo = false;
-    [SerializeField] private List<SystemObjectPair> SystemsObjs = new List<SystemObjectPair>();
+   
 
     private Dictionary<string, string> mappings = new Dictionary<string, string>();
     private string[] systems;
-
 
     private void Awake()
     {
@@ -90,16 +92,18 @@ public class HorizontalExtruder : MonoBehaviour
                 break;
         }
 
-        currentStepTwo += Time.deltaTime * direction;
+        CurrentStepTwo += Time.deltaTime * direction;
 
-        if (currentStepTwo > 1)
+        if (CurrentStepTwo > 1)
         {
-            currentStepTwo = 1;
+            CurrentStepTwo = 1;
         }
-        else if (currentStepTwo < 0)
+        else if (CurrentStepTwo < 0)
         {
-            currentStepTwo = 0;
+            CurrentStepTwo = 0;
         }
+
+        ExtrusionUpdate?.Invoke(new float[2] { CurrentStepOne, CurrentStepTwo });
 
         for (int i = 2; i < SystemsObjs.Count; i++)
         {
@@ -115,12 +119,12 @@ public class HorizontalExtruder : MonoBehaviour
                         defaultPosition.y,
                         defaultPosition.z
                         );
-                    sex[k].transform.position = Vector3.Lerp(defaultPosition, maxPosition, currentStepTwo);
+                    sex[k].transform.position = Vector3.Lerp(defaultPosition, maxPosition, CurrentStepTwo);
                 }
 
             }
 
-            canExtrudeOne = !(currentStepTwo > 0f);
+            canExtrudeOne = !(CurrentStepTwo > 0f);
         }
     }
     void AdjustExtrusionOne(KeyCode key)
@@ -143,16 +147,26 @@ public class HorizontalExtruder : MonoBehaviour
 
     void ExtrudeOne(float direction)
     {
-        currentStepOne += Time.deltaTime * direction;
+        CurrentStepOne += Time.deltaTime * direction;
 
-        if (currentStepOne > 1)
+        if (CurrentStepOne > 1)
         {
-            currentStepOne = 1;
+            CurrentStepOne = 1;
         }
-        else if (currentStepOne < 0)
+        else if (CurrentStepOne < 0)
         {
-            currentStepOne = 0;
+            CurrentStepOne = 0;
         }
+
+        //ExtrusionUpdate
+        ExtrusionUpdate?.Invoke(new float[2] { CurrentStepOne, CurrentStepTwo });
+
+        //for (int i = 0; i < SystemsObjs.Count; i++)
+        //{
+        //    Debug.LogFormat("System: {0}.", SystemsObjs[i].System);
+        //    if (SystemsObjs[i].GameObjects.Count == 0) break;
+        //    Debug.LogFormat("System {0} is at {1}.", SystemsObjs[i].System, SystemsObjs[0].SystemPosition);
+        //}
 
         //srart at index = 2 to leave skin in default place
         for (int i = 2; i < SystemsObjs.Count; i++)
@@ -167,12 +181,12 @@ public class HorizontalExtruder : MonoBehaviour
                     defaultPosition.y,
                     defaultPosition.z - maxDistanceOne * i
                     );
-                item.transform.position = Vector3.Lerp(defaultPosition, maxPosition, currentStepOne);
+                item.transform.position = Vector3.Lerp(defaultPosition, maxPosition, CurrentStepOne);
                 item.GetComponent<OrganData>().DefaultPositionExtruded = maxPosition;
             }
         }
 
-        canExtrudeTwo = currentStepOne == 1;
+        canExtrudeTwo = CurrentStepOne == 1;
 
     }
 
@@ -231,11 +245,15 @@ public class HorizontalExtruder : MonoBehaviour
 }
 
 [Serializable]
-struct SystemObjectPair
+public struct SystemObjectPair
 {
     public string System;
     public List<GameObject> GameObjects;
     public List<List<GameObject>> GameObjectsBySex;
+    public Vector3 SystemPosition
+    {
+        get { return new Vector3(GameObjects[0].transform.position.x, GameObjects[0].transform.position.y, GameObjects[0].transform.position.z); }
+    }
 
     public SystemObjectPair(string system, List<GameObject> list)
     {

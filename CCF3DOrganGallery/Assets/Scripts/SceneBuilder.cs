@@ -207,6 +207,7 @@ public class SceneBuilder : MonoBehaviour
         OrganData dataComponent = obj.AddComponent<OrganData>();
         dataComponent.SceneGraph = node.scenegraph;
         dataComponent.RepresentationOf = node.representation_of;
+        dataComponent.tooltip = node.tooltip;
     }
 
     async void ParentTissueBlocksToOrgans(List<GameObject> tissueBlocks, List<GameObject> organs)
