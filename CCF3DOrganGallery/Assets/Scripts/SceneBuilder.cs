@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 using UnityEngine.Networking;
+using TMPro;
 
 public class SceneBuilder : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class SceneBuilder : MonoBehaviour
 
     [SerializeField] private SceneConfiguration sceneConfiguration;
     [SerializeField] private GameObject preTissueBlock;
+    [SerializeField] private GameObject preTeleportationAnchor;
     [SerializeField] private DataFetcher dataFetcher;
     [SerializeField] private NodeArray nodeArray;
     [SerializeField] private GameObject loaderParent;
@@ -74,6 +76,16 @@ public class SceneBuilder : MonoBehaviour
 
         for (int i = 0; i < Organs.Count; i++)
         {
+            //add teleportation anchors and set label
+            GameObject anchor = Instantiate(preTeleportationAnchor);
+            anchor.SetActive(true); 
+            anchor.transform.parent = Organs[i].transform;
+
+            //add tooltip to teleportation anchor label
+            TMP_Text label = anchor.GetComponentInChildren<TMP_Text>();
+            label.text = Organs[i].GetComponent<OrganData>().tooltip;
+
+            //place organ
             PlaceOrgan(Organs[i], nodeArray.nodes[i]);
             SetOrganOpacity(Organs[i], nodeArray.nodes[i].opacity);
         }
@@ -207,6 +219,7 @@ public class SceneBuilder : MonoBehaviour
         OrganData dataComponent = obj.AddComponent<OrganData>();
         dataComponent.SceneGraph = node.scenegraph;
         dataComponent.RepresentationOf = node.representation_of;
+        dataComponent.tooltip = node.tooltip;
     }
 
     async void ParentTissueBlocksToOrgans(List<GameObject> tissueBlocks, List<GameObject> organs)

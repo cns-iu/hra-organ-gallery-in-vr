@@ -5,33 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Scenes/Stage_1_United.unity
-    guid: cebaf07fe8a08a9459c5ab4c33a5a0b7
-  - enabled: 0
-    path: Assets/Scenes/Stage_2_Individual.unity
-    guid: 456300820b3d6c74c9c7e67e1ac56e19
-  - enabled: 0
-    path: Assets/Scenes/Stage_3_Cells.unity
-    guid: 6c323887e1785eb4297b9c84ae36063b
   - enabled: 1
-    path: Assets/Scenes/Stage_4_pbi-build-scene.unity
-    guid: 942bedfe4868d9f4195bab919a9d0652
+    path: Assets/Scenes/Main.unity
+    guid: ae570a16b36439b4ead4419615cdc3f5
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 196b81ea06feefa46aa9e205409ca3b5, type: 2}
     com.unity.addressableassets: {fileID: 11400000, guid: 42c1ecadc99e3724ebbf55b70d84a06e, type: 2}
