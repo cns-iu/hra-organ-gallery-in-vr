@@ -78,7 +78,7 @@ public class SceneBuilder : MonoBehaviour
         {
             //add teleportation anchors and set label
             GameObject anchor = Instantiate(preTeleportationAnchor);
-            anchor.SetActive(true); 
+            anchor.SetActive(true);
             anchor.transform.parent = Organs[i].transform;
 
             //add tooltip to teleportation anchor label
@@ -308,14 +308,16 @@ public class SceneBuilder : MonoBehaviour
         }
     }
 
-    private class HubmapIdArray
-    {
-        [SerializeField] public HubmapIdHolder[] hubmapIdHolder;
-    }
 
-    private class HubmapIdHolder
-    {
-        public string hubmap_id;
-    }
 
+}
+
+public class HubmapIdArray
+{
+    [SerializeField] public HubmapIdHolder[] hubmapIdHolder;
+}
+
+public class HubmapIdHolder
+{
+    public string hubmap_id;
 }
