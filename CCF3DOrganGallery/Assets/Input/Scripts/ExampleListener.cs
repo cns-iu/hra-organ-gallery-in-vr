@@ -16,40 +16,40 @@ public class ExampleListener : MonoBehaviour
 
     public void OnEnable()
     {
-        PrimaryAxisClickHandler.OnButtonDown += PrintTouchButtonDown;
-        PrimaryAxisClickHandler.OnButtonUp += PrintTouchButtonUp;
+        //PrimaryAxisClickHandler.OnButtonDown += PrintTouchButtonDown;
+        //PrimaryAxisClickHandler.OnButtonUp += PrintTouchButtonUp;
 
-        PrimaryAxisHandler.OnValueChange += PrintPrimaryAxis;
-        triggerHandler.OnValueChange += PrintTrigger;
+        //PrimaryAxisHandler.OnValueChange += PrintPrimaryAxis;
+        //triggerHandler.OnValueChange += PrintTrigger;
 
-        PrimaryButtonPressHandler.OnButtonDown += PrintPrimaryButtonDown;
-        PrimaryButtonPressHandler.OnButtonUp += PrintPrimaryButtonUp;
+        //PrimaryButtonPressHandler.OnButtonDown += PrintPrimaryButtonDown;
+        //PrimaryButtonPressHandler.OnButtonUp += PrintPrimaryButtonUp;
 
-        SecondaryButtonPressHandler.OnButtonDown += PrintSecondaryButtonDown;
-        SecondaryButtonPressHandler.OnButtonUp += PrintSecondaryButtonUp;
+        //SecondaryButtonPressHandler.OnButtonDown += PrintSecondaryButtonDown;
+        //SecondaryButtonPressHandler.OnButtonUp += PrintSecondaryButtonUp;
 
-        upArrowHandler.keyHeld += PrintKeyDown;
-        downArrowHandler.keyHeld += PrintKeyDown;
+        //upArrowHandler.keyHeld += PrintKeyDown;
+        //downArrowHandler.keyHeld += PrintKeyDown;
 
-        RightHandJoyStickAxis.action.performed += (value) => { Debug.Log($"Getting vis Input System: {value}"); };
+        //RightHandJoyStickAxis.action.performed += (InputAction.CallbackContext context) => { Debug.Log($"Getting vis Input System: {context.action.ReadValue<Vector2>()}"); };
     }
 
     public void OnDisable()
     {
-        PrimaryAxisClickHandler.OnButtonDown -= PrintTouchButtonDown;
-        PrimaryAxisClickHandler.OnButtonUp -= PrintTouchButtonUp;
+        //PrimaryAxisClickHandler.OnButtonDown -= PrintTouchButtonDown;
+        //PrimaryAxisClickHandler.OnButtonUp -= PrintTouchButtonUp;
         
-        PrimaryAxisHandler.OnValueChange -= PrintPrimaryAxis;
-        triggerHandler.OnValueChange -= PrintTrigger;
+        //PrimaryAxisHandler.OnValueChange -= PrintPrimaryAxis;
+        //triggerHandler.OnValueChange -= PrintTrigger;
 
-        PrimaryButtonPressHandler.OnButtonDown -= PrintPrimaryButtonDown;
-        PrimaryButtonPressHandler.OnButtonUp -= PrintPrimaryButtonUp;
+        //PrimaryButtonPressHandler.OnButtonDown -= PrintPrimaryButtonDown;
+        //PrimaryButtonPressHandler.OnButtonUp -= PrintPrimaryButtonUp;
 
-        SecondaryButtonPressHandler.OnButtonDown -= PrintSecondaryButtonDown;
-        SecondaryButtonPressHandler.OnButtonUp -= PrintPrimaryButtonUp;
+        //SecondaryButtonPressHandler.OnButtonDown -= PrintSecondaryButtonDown;
+        //SecondaryButtonPressHandler.OnButtonUp -= PrintPrimaryButtonUp;
 
-        upArrowHandler.keyHeld -= PrintKeyDown;
-        downArrowHandler.keyHeld -= PrintKeyDown;
+        //upArrowHandler.keyHeld -= PrintKeyDown;
+        //downArrowHandler.keyHeld -= PrintKeyDown;
     }
 
     private void PrintTouchButtonDown(XRController controller)

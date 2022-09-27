@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-
+using UnityEngine.InputSystem;
 
 public enum BodySystem { undefined, integumentary, nervous, respiratory, cardio, digestive, musculoskeletal, lymphatic, urinary, fetal, reproductive }
 
@@ -12,6 +12,8 @@ public class HorizontalExtruder : MonoBehaviour
     public static event Action<float[]> ExtrusionUpdate;
     public static event Action<List<SystemObjectPair>> OnBodySystemsReady;
 
+    public InputActionReference RightHandJoyStickAxis;
+    public InputActionReference LeftHandJoyStickAxis;
     public KeyHandler upArrowHandler = null;
     public KeyHandler downArrowHandler = null;
     public KeyHandler leftArrowHandler = null;
@@ -23,9 +25,9 @@ public class HorizontalExtruder : MonoBehaviour
     [SerializeField] private float maxDistanceOne;
     [SerializeField] private float maxDistanceTwo;
     [SerializeField] private string filename;
-    [SerializeField] private bool canExtrudeOne = true;
+    [SerializeField] private bool canExtrudeOne = false;
     [SerializeField] private bool canExtrudeTwo = false;
-   
+
 
     private Dictionary<string, string> mappings = new Dictionary<string, string>();
     private string[] systems;
@@ -57,10 +59,13 @@ public class HorizontalExtruder : MonoBehaviour
     private void OnEnable()
     {
         SceneBuilder.OnSceneBuilt += GetSystemAndDefaultPosition; //remove getting default pos + rot from Kumar's code once pulled in
+        SceneBuilder.OnSceneBuilt += () => { canExtrudeOne = true; };
         upArrowHandler.keyHeld += AdjustExtrusionOne;
         downArrowHandler.keyHeld += AdjustExtrusionOne;
         leftArrowHandler.keyHeld += AdjustExtrusionTwo;
         rightArrowHandler.keyHeld += AdjustExtrusionTwo;
+        RightHandJoyStickAxis.action.performed += AdjustExtrusionOne;
+        LeftHandJoyStickAxis.action.performed += AdjustExtrusionTwo;
     }
 
     private void OnDestroy()
@@ -70,6 +75,51 @@ public class HorizontalExtruder : MonoBehaviour
         downArrowHandler.keyHeld -= AdjustExtrusionOne;
         leftArrowHandler.keyHeld -= AdjustExtrusionTwo;
         rightArrowHandler.keyHeld -= AdjustExtrusionTwo;
+        RightHandJoyStickAxis.action.performed -= AdjustExtrusionOne;
+        LeftHandJoyStickAxis.action.performed -= AdjustExtrusionTwo;
+    }
+
+    void AdjustExtrusionTwo(InputAction.CallbackContext context)
+    {
+        if (!canExtrudeTwo) return;
+
+        float direction = context.action.ReadValue<Vector2>().x < 0 ? -1 : 1;
+
+
+        CurrentStepTwo += Time.deltaTime * direction;
+
+        if (CurrentStepTwo > 1)
+        {
+            CurrentStepTwo = 1;
+        }
+        else if (CurrentStepTwo < 0)
+        {
+            CurrentStepTwo = 0;
+        }
+
+        ExtrusionUpdate?.Invoke(new float[2] { CurrentStepOne, CurrentStepTwo });
+
+        for (int i = 2; i < SystemsObjs.Count; i++)
+        {
+
+            foreach (var sex in SystemsObjs[i].GameObjectsBySex)
+            {
+                for (int k = 0; k < sex.Count; k++)
+                {
+                    float sideValue = sex[k].GetComponent<OrganData>().DonorSex.ToLower() == "male" ? -1 : 1;
+                    Vector3 defaultPosition = sex[k].GetComponent<OrganData>().DefaultPositionExtruded;
+                    Vector3 maxPosition = new Vector3(
+                        defaultPosition.x + maxDistanceTwo * sideValue * k,
+                        defaultPosition.y,
+                        defaultPosition.z
+                        );
+                    sex[k].transform.position = Vector3.Lerp(defaultPosition, maxPosition, CurrentStepTwo);
+                }
+
+            }
+
+            canExtrudeOne = !(CurrentStepTwo > 0f);
+        }
     }
 
     void AdjustExtrusionTwo(KeyCode key)
@@ -123,6 +173,14 @@ public class HorizontalExtruder : MonoBehaviour
 
             canExtrudeOne = !(CurrentStepTwo > 0f);
         }
+    }
+
+    void AdjustExtrusionOne(InputAction.CallbackContext context)
+    {
+        if (!canExtrudeOne) return;
+
+        float direction = context.action.ReadValue<Vector2>().y < 0f ? -1 : 1;
+        ExtrudeOne(direction);
     }
     void AdjustExtrusionOne(KeyCode key)
     {
