@@ -1005,6 +1005,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Custom",
+            "id": "687782f0-0988-4667-8e1c-8554a65bf513",
+            "actions": [
+                {
+                    "name": "ExtrudeOne",
+                    "type": "Value",
+                    "id": "41a3e47c-8742-41c9-9faa-35851763276e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "17b2941d-05ed-4abc-af44-b56bba4c2769",
+                    "path": "<XRController>{RightHand}/primary2DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExtrudeOne",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

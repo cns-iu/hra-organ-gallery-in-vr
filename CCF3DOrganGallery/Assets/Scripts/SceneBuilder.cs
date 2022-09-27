@@ -17,6 +17,11 @@ public class SceneBuilder : MonoBehaviour
     public List<IdTypeMapping> mappingTissueBlocksWithCT = null;
     public List<GameObject> TissueBlocksWithCT;
 
+    public int NumberOfHubmapIds
+    {
+        get { return numberOfHubmapIds; }
+    }
+
     [SerializeField] private SceneConfiguration sceneConfiguration;
     [SerializeField] private GameObject preTissueBlock;
     [SerializeField] private GameObject preTeleportationAnchor;
@@ -26,10 +31,7 @@ public class SceneBuilder : MonoBehaviour
 
     private int modelsLoaded;
     private int numberOfHubmapIds;
-    public int NumberOfHubmapIds
-    {
-        get { return numberOfHubmapIds; }
-    }
+
 
     //driver code 
     private async void Start()
@@ -45,7 +47,7 @@ public class SceneBuilder : MonoBehaviour
     private void OnEnable()
     {
         //assign the list of tissue blocks with CTs from GitHubChecker to the global property tissueBlocksWithCT 
-        GitHubChecker.GitHubCTChecked += (list) => { Debug.Log("checked"); mappingTissueBlocksWithCT = list; };
+        GitHubChecker.GitHubCTChecked += (list) => { mappingTissueBlocksWithCT = list; };
     }
 
     public async Task GetNodes(string url)
@@ -270,14 +272,15 @@ public class SceneBuilder : MonoBehaviour
         var tasks = new List<Task>();
         for (int i = 0; i < tissueBlocks.Count; i++)
         {
-            var progress = new Progress<bool>((value) =>
+            var progressHubmapIds = new Progress<bool>((value) =>
             {
                 if (value) numberOfHubmapIds++;
             });
 
-            tasks.Add(tissueBlocks[i].GetComponent<HuBMAPIDFetcher>().FromEntityIdGetHubmapId(progress));
+            tasks.Add(tissueBlocks[i].GetComponent<HuBMAPIDFetcher>().FromEntityIdGetHubmapId(progressHubmapIds));
         }
 
+      
         tasks.Add(GetTissueBlocksWithCellTypes());
 
 
@@ -293,8 +296,6 @@ public class SceneBuilder : MonoBehaviour
         {
             await Task.Yield();
         }
-
-        Debug.Log(mappingTissueBlocksWithCT.Count);
 
         for (int i = 0; i < TissueBlocks.Count; i++)
         {

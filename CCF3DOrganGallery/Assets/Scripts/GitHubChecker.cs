@@ -11,6 +11,11 @@ public class GitHubChecker : MonoBehaviour
 {
     public static event Action<List<IdTypeMapping>> GitHubCTChecked;
 
+    public int NumberOfGitHubMappings
+    {
+        get { return mappings.Count; }
+    }
+
     [SerializeField] private string gitHubUrl;
     [SerializeField] private RecordCollection recordList;
     [SerializeField] private List<IdTypeMapping> mappings;

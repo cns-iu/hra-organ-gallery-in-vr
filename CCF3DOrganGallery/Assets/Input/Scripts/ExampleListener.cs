@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class ExampleListener : MonoBehaviour
@@ -10,6 +11,8 @@ public class ExampleListener : MonoBehaviour
     public AxisHandler triggerHandler = null;
     public KeyHandler upArrowHandler = null;
     public KeyHandler downArrowHandler = null;
+
+    public InputActionReference RightHandJoyStickAxis;
 
     public void OnEnable()
     {
@@ -27,6 +30,8 @@ public class ExampleListener : MonoBehaviour
 
         upArrowHandler.keyHeld += PrintKeyDown;
         downArrowHandler.keyHeld += PrintKeyDown;
+
+        RightHandJoyStickAxis.action.performed += (value) => { Debug.Log($"Getting vis Input System: {value}"); };
     }
 
     public void OnDisable()
