@@ -9,6 +9,8 @@ using UnityEngine.Networking;
 
 public class GitHubChecker : MonoBehaviour
 {
+    public static event Action<List<IdTypeMapping>> GitHubCTChecked;
+
     [SerializeField] private string gitHubUrl;
     [SerializeField] private RecordCollection recordList;
     [SerializeField] private List<IdTypeMapping> mappings;
@@ -17,17 +19,25 @@ public class GitHubChecker : MonoBehaviour
     private async void Awake()
     {
         await GetGitHubRecords();
-        GetParentIds();
+        await GetParentIds();
+        GitHubCTChecked?.Invoke(mappings);
     }
 
-    async void GetParentIds()
+    async Task GetParentIds()
     {
         for (int i = 0; i < recordList.records.Count; i++)
         {
-            if (recordList.records[i].DataType == "dataset")
+            var record = recordList.records[i];
+            if (record.DataType.ToLower() == "dataset" && record.PublicationStatus.ToLower() == "published")
             {
-                string parentId = await Get(recordList.records[i].HubmapId);
-                IdTypeMapping mapping = new IdTypeMapping(recordList.records[i].HubmapId, recordList.records[i].DataType, parentId);
+                string parentId = await Get(record.HubmapId);
+                IdTypeMapping mapping = new IdTypeMapping(record.HubmapId, record.DataType, record.PublicationStatus, parentId);
+                mappings.Add(mapping);
+            }
+            else if (record.DataType == "sample")
+            {
+                string parentId = record.HubmapId;
+                IdTypeMapping mapping = new IdTypeMapping(record.HubmapId, record.DataType, record.PublicationStatus, parentId);
                 mappings.Add(mapping);
             }
         }
@@ -35,6 +45,8 @@ public class GitHubChecker : MonoBehaviour
 
     private async Task<string> Get(string datasetHubmapId)
     {
+        string awaitedResult;
+
         try
         {
             using var www = UnityWebRequest.Get(entityApiUrl + datasetHubmapId);
@@ -47,10 +59,17 @@ public class GitHubChecker : MonoBehaviour
                 Debug.LogError($"Failed: {www.error}");
 
             var result = www.downloadHandler.text;
-            //Debug.Log(result);
-
             EntityApiResponse apiResponse = JsonUtility.FromJson<EntityApiResponse>(result);
-            return apiResponse.direct_ancestors[0].hubmap_id;
+
+            if (apiResponse.direct_ancestors[0].entity_type == "Dataset")
+            {
+                return awaitedResult = await Get(apiResponse.direct_ancestors[0].hubmap_id);
+            }
+            else
+            {
+                return apiResponse.direct_ancestors[0].hubmap_id;
+            }
+
         }
         catch (Exception ex)
         {
@@ -72,7 +91,7 @@ public class GitHubChecker : MonoBehaviour
             string[] elements = lines[i].Split(",");
             //guarding clause to remove empty line at the end
             if (!(elements.Length > 1)) continue;
-            recordList.records.Add(new GitHubRecord(elements[0], elements[1], elements[2], elements[3], elements[4]));
+            recordList.records.Add(new GitHubRecord(elements[0], elements[1], elements[2], elements[3], elements[4], elements[5]));
         }
     }
 
@@ -90,18 +109,6 @@ public class GitHubChecker : MonoBehaviour
     }
 
     [Serializable]
-    struct IdTypeMapping
-    {
-        [SerializeField] public string Id;
-        [SerializeField] public string Type;
-        [SerializeField] public string ParentId;
-
-        public IdTypeMapping(string id, string type, string parentId = "") => (Id, Type, ParentId) = (id, type, parentId);
-    }
-
-
-
-    [Serializable]
     struct RecordCollection
     {
         [SerializeField] public List<GitHubRecord> records;
@@ -115,8 +122,9 @@ public class GitHubChecker : MonoBehaviour
         [field: SerializeField] public string Organ { get; set; }
         [field: SerializeField] public string Sex { get; set; }
         [field: SerializeField] public string DataType { get; set; }
+        [field: SerializeField] public string PublicationStatus { get; set; }
 
-        public GitHubRecord(string p1, string p2, string p3, string p4, string p5) => (number, HubmapId, Organ, Sex, DataType) = (p1, p2, p3, p4, p5);
+        public GitHubRecord(string p1, string p2, string p3, string p4, string p5, string p6) => (number, HubmapId, Organ, Sex, DataType, PublicationStatus) = (p1, p2, p3, p4, p5, p6);
     }
 
     private async Task<string> GetHubmapIds(string url)
@@ -143,4 +151,15 @@ public class GitHubChecker : MonoBehaviour
             return default;
         }
     }
+}
+
+[Serializable]
+public class IdTypeMapping
+{
+    [SerializeField] public string Id;
+    [SerializeField] public string Type;
+    [SerializeField] public string ParentId;
+    [SerializeField] public string PublicationStatus;
+
+    public IdTypeMapping(string id, string type, string publicationStatus, string parentId = "") => (Id, Type, PublicationStatus, ParentId) = (id, type, publicationStatus, parentId);
 }
