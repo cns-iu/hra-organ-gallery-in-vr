@@ -1659,7 +1659,6 @@ GameObject:
   - component: {fileID: 111831085}
   - component: {fileID: 111831084}
   - component: {fileID: 111831083}
-  - component: {fileID: 111831087}
   - component: {fileID: 111831088}
   - component: {fileID: 111831089}
   m_Layer: 0
@@ -2167,48 +2166,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 7779212132400271959, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_ButtonPressPoint: 0.5
---- !u!114 &111831087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 111831081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2213c36610e3b1c4bbf886810ed9db12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_System: {fileID: 1857630678}
-  m_TurnAmount: 45
-  m_DebounceTime: 0.5
-  m_EnableTurnLeftRight: 1
-  m_EnableTurnAround: 1
-  m_DelayTime: 0
-  m_LeftHandSnapTurnAction:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Left Hand Snap Turn
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 22b3d2fa-8b75-42b7-a070-ee969f5fe230
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 1010738217276881514, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_RightHandSnapTurnAction:
-    m_UseReference: 0
-    m_Action:
-      m_Name: Right Hand Snap Turn
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: b1d6c670-4c64-4864-9631-c7b1d0461f9a
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
 --- !u!114 &111831088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18355,6 +18312,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe44a7d2d145494693763c5d348009a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RightHandJoyStickAxis: {fileID: -9221067105965427820, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  LeftHandJoyStickAxis: {fileID: 6334987101343480565, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   upArrowHandler: {fileID: 11400000, guid: 70bedec66ce0f104a8db1c850a8be66b, type: 2}
   downArrowHandler: {fileID: 11400000, guid: e79a3e751cf8afa4ea324295ee5770ac, type: 2}
   leftArrowHandler: {fileID: 11400000, guid: 2c8f42965c843cf4d89c5f664283b87d, type: 2}
@@ -18365,7 +18324,7 @@ MonoBehaviour:
   maxDistanceOne: 1
   maxDistanceTwo: 1
   filename: Body_Systems_List
-  canExtrudeOne: 1
+  canExtrudeOne: 0
   canExtrudeTwo: 0
 --- !u!1 &1935450814
 GameObject:
