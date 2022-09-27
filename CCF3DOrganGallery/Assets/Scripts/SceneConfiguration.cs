@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 public class SceneConfiguration : MonoBehaviour
 {
@@ -8,20 +9,20 @@ public class SceneConfiguration : MonoBehaviour
 
     [SerializeField] private string baseUrl = "https://ccf-api--staging.herokuapp.com/v1/scene";
     [SerializeField]
-    private List<string> showTissueBlocksForOrgans = new List<string>();
+    private List<string> uberonIds = new List<string>();
     [SerializeField] private string sex;
     [SerializeField] const string ontologyQueryString = "&ontology-terms=http://purl.obolibrary.org/obo/UBERON_";
     [SerializeField] const string sexQueryString = "?sex=";
 
     public string BuildUrl()
     {
-        if (showTissueBlocksForOrgans.Count > 0)
+        if (uberonIds.Count > 0)
         {
-            Url = baseUrl + sexQueryString + sex + ontologyQueryString + showTissueBlocksForOrgans[0];
+            Url = baseUrl + sexQueryString + sex + ontologyQueryString + uberonIds[0];
 
-            for (int i = 1; i < showTissueBlocksForOrgans.Count; i++)
+            for (int i = 1; i < uberonIds.Count; i++)
             {
-                Url += ontologyQueryString + showTissueBlocksForOrgans[i];
+                Url += ontologyQueryString + uberonIds[i];
             }
         }
         else

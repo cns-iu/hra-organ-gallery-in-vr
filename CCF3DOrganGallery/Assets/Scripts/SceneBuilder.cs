@@ -14,6 +14,13 @@ public class SceneBuilder : MonoBehaviour
     public List<GameObject> Organs;
     public List<string> MaleEntityIds;
     public List<string> FemaleEntityIds;
+    public List<IdTypeMapping> mappingTissueBlocksWithCT = null;
+    public List<GameObject> TissueBlocksWithCT;
+
+    public int NumberOfHubmapIds
+    {
+        get { return numberOfHubmapIds; }
+    }
 
     [SerializeField] private SceneConfiguration sceneConfiguration;
     [SerializeField] private GameObject preTissueBlock;
@@ -24,10 +31,7 @@ public class SceneBuilder : MonoBehaviour
 
     private int modelsLoaded;
     private int numberOfHubmapIds;
-    public int NumberOfHubmapIds
-    {
-        get { return numberOfHubmapIds; }
-    }
+
 
     //driver code 
     private async void Start()
@@ -38,6 +42,12 @@ public class SceneBuilder : MonoBehaviour
 
         CreateAndPlaceTissueBlocks();
         ParentTissueBlocksToOrgans(TissueBlocks, Organs);
+    }
+
+    private void OnEnable()
+    {
+        //assign the list of tissue blocks with CTs from GitHubChecker to the global property tissueBlocksWithCT 
+        GitHubChecker.GitHubCTChecked += (list) => { mappingTissueBlocksWithCT = list; };
     }
 
     public async Task GetNodes(string url)
@@ -78,7 +88,7 @@ public class SceneBuilder : MonoBehaviour
         {
             //add teleportation anchors and set label
             GameObject anchor = Instantiate(preTeleportationAnchor);
-            anchor.SetActive(true); 
+            anchor.SetActive(true);
             anchor.transform.parent = Organs[i].transform;
 
             //add tooltip to teleportation anchor label
@@ -262,18 +272,44 @@ public class SceneBuilder : MonoBehaviour
         var tasks = new List<Task>();
         for (int i = 0; i < tissueBlocks.Count; i++)
         {
-            var progress = new Progress<bool>((value) =>
+            var progressHubmapIds = new Progress<bool>((value) =>
             {
                 if (value) numberOfHubmapIds++;
             });
 
-            tasks.Add(tissueBlocks[i].GetComponent<HuBMAPIDFetcher>().FromEntityIdGetHubmapId(progress));
+            tasks.Add(tissueBlocks[i].GetComponent<HuBMAPIDFetcher>().FromEntityIdGetHubmapId(progressHubmapIds));
         }
+
+      
+        tasks.Add(GetTissueBlocksWithCellTypes());
+
 
         await Task.WhenAll(tasks);
 
         // trigger OnSceneBuilt event
         OnSceneBuilt?.Invoke();
+    }
+
+    private async Task GetTissueBlocksWithCellTypes()
+    {
+        while (mappingTissueBlocksWithCT.Count == 0)
+        {
+            await Task.Yield();
+        }
+
+        for (int i = 0; i < TissueBlocks.Count; i++)
+        {
+            TissueBlockData data = TissueBlocks[i].GetComponent<TissueBlockData>();
+            for (int j = 0; j < mappingTissueBlocksWithCT.Count; j++)
+            {
+                IdTypeMapping mapping = mappingTissueBlocksWithCT[j];
+
+                if (data.HubmapId == mapping.ParentId)
+                {
+                    TissueBlocksWithCT.Add(data.gameObject);
+                }
+            }
+        }
     }
 
     public async Task<List<string>> GetEntityIdsBySex(string url)
@@ -308,14 +344,16 @@ public class SceneBuilder : MonoBehaviour
         }
     }
 
-    private class HubmapIdArray
-    {
-        [SerializeField] public HubmapIdHolder[] hubmapIdHolder;
-    }
 
-    private class HubmapIdHolder
-    {
-        public string hubmap_id;
-    }
 
+}
+
+public class HubmapIdArray
+{
+    [SerializeField] public HubmapIdHolder[] hubmapIdHolder;
+}
+
+public class HubmapIdHolder
+{
+    public string hubmap_id;
 }
