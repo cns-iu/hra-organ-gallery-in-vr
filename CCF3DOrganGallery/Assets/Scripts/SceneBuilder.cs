@@ -306,7 +306,11 @@ public class SceneBuilder : MonoBehaviour
 
                 if (data.HubmapId == mapping.ParentId)
                 {
-                    TissueBlocksWithCT.Add(data.gameObject);
+                    if (!TissueBlocksWithCT.Contains(data.gameObject))
+                    {
+                        TissueBlocksWithCT.Add(data.gameObject);
+                    }
+                    
                 }
             }
         }
