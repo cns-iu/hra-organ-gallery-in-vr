@@ -98,6 +98,7 @@ public class SceneBuilder : MonoBehaviour
             //place organ
             PlaceOrgan(Organs[i], nodeArray.nodes[i]);
             SetOrganOpacity(Organs[i], nodeArray.nodes[i].opacity);
+            SetOrganCollider(Organs[i]);
         }
 
     }
@@ -160,7 +161,7 @@ public class SceneBuilder : MonoBehaviour
             -reflected.lossyScale.z
         );
     }
-    void SetOrganOpacity(GameObject organWrapper, float alpha)
+    static public void SetOrganOpacity(GameObject organWrapper, float alpha)
     {
         List<Transform> list = new List<Transform>();
         list = LeavesFinder.FindLeaves(organWrapper.transform.GetChild(0), list);
@@ -179,7 +180,16 @@ public class SceneBuilder : MonoBehaviour
             renderer.material.shader = standard;
             MaterialExtensions.ToFadeMode(renderer.material);
         }
+
+
     }
+
+    void SetOrganCollider(GameObject organWrapper)
+    {
+        organWrapper.AddComponent<SphereCollider>().isTrigger = true;
+        organWrapper.AddComponent<AdjustOrganOpacityOnUserApproach>().SetCollider();
+    }
+
     void CreateAndPlaceTissueBlocks()
     {
         for (int i = 1; i < nodeArray.nodes.Length; i++)
@@ -280,7 +290,7 @@ public class SceneBuilder : MonoBehaviour
             tasks.Add(tissueBlocks[i].GetComponent<HuBMAPIDFetcher>().FromEntityIdGetHubmapId(progressHubmapIds));
         }
 
-      
+
         tasks.Add(GetTissueBlocksWithCellTypes());
 
 
@@ -310,7 +320,7 @@ public class SceneBuilder : MonoBehaviour
                     {
                         TissueBlocksWithCT.Add(data.gameObject);
                     }
-                    
+
                 }
             }
         }
