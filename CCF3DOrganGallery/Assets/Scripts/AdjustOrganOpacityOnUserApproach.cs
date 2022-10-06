@@ -7,7 +7,7 @@ public class AdjustOrganOpacityOnUserApproach : MonoBehaviour
 {
     [Header("Fade")]
     [SerializeField] private float maxAlpha = .8f;
-    [SerializeField] private float minAlpha = .2f;
+    [SerializeField] private float minAlpha = .5f;
     [SerializeField] private float fadeDuration = 10f;
 
     [Header("Collider")]
