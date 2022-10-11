@@ -1142,7 +1142,6 @@ GameObject:
   m_Component:
   - component: {fileID: 339996762}
   - component: {fileID: 339996763}
-  - component: {fileID: 339996764}
   m_Layer: 0
   m_Name: Spot Light (1)
   m_TagString: Untagged
@@ -1227,18 +1226,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &339996764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339996761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &359284503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1428,7 +1415,6 @@ GameObject:
   m_Component:
   - component: {fileID: 520688569}
   - component: {fileID: 520688570}
-  - component: {fileID: 520688571}
   m_Layer: 0
   m_Name: Directional Light (3)
   m_TagString: Untagged
@@ -1513,18 +1499,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &520688571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520688568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &557508230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1735,7 +1709,6 @@ GameObject:
   m_Component:
   - component: {fileID: 755833420}
   - component: {fileID: 755833421}
-  - component: {fileID: 755833422}
   m_Layer: 0
   m_Name: Directional Light (2)
   m_TagString: Untagged
@@ -1820,18 +1793,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &755833422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 755833419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &822106588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1904,7 +1865,6 @@ GameObject:
   m_Component:
   - component: {fileID: 828589095}
   - component: {fileID: 828589094}
-  - component: {fileID: 828589096}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -1989,18 +1949,6 @@ Transform:
   m_Father: {fileID: 1326932444}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &828589096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 828589093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &849406486 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4242912356855527141, guid: d72e4d82059888343bf8abba15c7c3ad, type: 3}
@@ -3054,7 +3002,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1352260205}
   - component: {fileID: 1352260206}
-  - component: {fileID: 1352260207}
   m_Layer: 0
   m_Name: Spot Light (2)
   m_TagString: Untagged
@@ -3139,18 +3086,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &1352260207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352260204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1382859023
 GameObject:
   m_ObjectHideFlags: 0
@@ -4283,7 +4218,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1767637231}
   - component: {fileID: 1767637232}
-  - component: {fileID: 1767637233}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -4368,18 +4302,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &1767637233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1767637230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1779119766
 GameObject:
   m_ObjectHideFlags: 0
@@ -4390,7 +4312,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1779119767}
   - component: {fileID: 1779119768}
-  - component: {fileID: 1779119769}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -4475,18 +4396,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &1779119769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1779119766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1797118293
 GameObject:
   m_ObjectHideFlags: 0
@@ -4497,7 +4406,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1797118294}
   - component: {fileID: 1797118295}
-  - component: {fileID: 1797118296}
   m_Layer: 0
   m_Name: Directional Light (4)
   m_TagString: Untagged
@@ -4582,18 +4490,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &1797118296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1797118293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1808298214
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4752,7 +4648,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1868143962}
   - component: {fileID: 1868143963}
-  - component: {fileID: 1868143964}
   m_Layer: 0
   m_Name: Directional Light (1)
   m_TagString: Untagged
@@ -4837,18 +4732,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &1868143964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1868143961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1884818730
 GameObject:
   m_ObjectHideFlags: 0
