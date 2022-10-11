@@ -40,12 +40,13 @@ public class HorizontalExtruder : MonoBehaviour
 
     void ReadCsv()
     {
-        using (var reader = new StreamReader("Assets/Data/" + filename + ".csv"))
+        TextAsset bodySystemsData = Resources.Load<TextAsset>(filename);
+        using (var reader = new StreamReader(new MemoryStream(bodySystemsData.bytes)))
         {
+
             while (!reader.EndOfStream)
             {
                 var line = reader.ReadLine();
-
                 string sceneGraph = line.Split(',')[0];
 
                 if (sceneGraph != "sceneGraph" && sceneGraph != "")
