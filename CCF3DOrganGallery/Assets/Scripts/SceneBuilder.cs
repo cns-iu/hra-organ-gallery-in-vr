@@ -154,12 +154,13 @@ public class SceneBuilder : MonoBehaviour
     {
         Matrix4x4 reflected = ReflectZ() * MatrixExtensions.BuildMatrix(node.transformMatrix);
         organ.transform.position = reflected.GetPosition();
-        organ.transform.rotation = reflected.rotation;
+        organ.transform.rotation = new Quaternion(0f, 0f, 0f, 1f); //hard-coded to avoid bug when running natively on Quest 2
         organ.transform.localScale = new Vector3(
             reflected.lossyScale.x,
             reflected.lossyScale.y,
             -reflected.lossyScale.z
         );
+
     }
     static public void SetOrganOpacity(GameObject organWrapper, float alpha)
     {
