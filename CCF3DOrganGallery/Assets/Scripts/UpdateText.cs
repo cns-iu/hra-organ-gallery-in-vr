@@ -5,19 +5,23 @@ using TMPro;
 
 public class UpdateText : MonoBehaviour
 {
-    [SerializeField] SceneBuilder sceneBuilder;
+    public SceneBuilder sceneBuilder;
+    public GitHubChecker gitHubChecker;
     [SerializeField] private TMP_Text text;
-    [SerializeField] private string defaultText = "";
 
-    // Start is called before the first frame update
-    void Start()
+    public virtual void GetDataSources()
+    {
+        sceneBuilder = FindObjectOfType<SceneBuilder>();
+        gitHubChecker = FindObjectOfType<GitHubChecker>();
+    }
+
+    public virtual void GetText()
     {
         text = GetComponent<TMP_Text>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void SetText(string defaulttext, string setTo)
     {
-        text.text = defaultText + "\n" + sceneBuilder.NumberOfHubmapIds.ToString();
+        text.text = defaulttext + "\n" + setTo;
     }
 }

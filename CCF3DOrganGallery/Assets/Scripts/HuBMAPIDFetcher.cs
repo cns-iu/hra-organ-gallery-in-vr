@@ -40,8 +40,17 @@ public class HuBMAPIDFetcher : MonoBehaviour
             var result = www.downloadHandler.text;
 
             var text = www.downloadHandler.text;
-            response = JsonUtility.FromJson<HubmapIdHolder>(text);
-            return response;
+            try
+            {
+                response = JsonUtility.FromJson<HubmapIdHolder>(text);
+                return response;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
         }
         catch (Exception ex)
         {

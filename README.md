@@ -16,7 +16,7 @@ See the [Changelog](CHANGELOG.md) for the latest developments.
 
 ## Credits
 
-This software is developed by [Andreas Bueckle](https://www.andreas-bueckle.com) the [Cyberinfrastructure for Network Science Center at Indiana University](http://cns.iu.edu/). 
+This software is developed by [Andreas Bueckle](https://www.andreas-bueckle.com) at the [Cyberinfrastructure for Network Science Center at Indiana University](http://cns.iu.edu/). 
 
 ## Become a test user
 

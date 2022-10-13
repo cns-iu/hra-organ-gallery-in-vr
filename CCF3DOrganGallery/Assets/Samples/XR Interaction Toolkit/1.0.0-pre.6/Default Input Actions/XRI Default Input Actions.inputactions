@@ -1005,6 +1005,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Custom",
+            "id": "687782f0-0988-4667-8e1c-8554a65bf513",
+            "actions": [
+                {
+                    "name": "ExtrudeWithJoystickOne",
+                    "type": "Value",
+                    "id": "41a3e47c-8742-41c9-9faa-35851763276e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ExtrudeWithJoystickTwo",
+                    "type": "Value",
+                    "id": "3e375142-0788-4b74-9f91-6b48f457bec8",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "17b2941d-05ed-4abc-af44-b56bba4c2769",
+                    "path": "<XRController>{RightHand}/primary2DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExtrudeWithJoystickOne",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b2e7ab2d-05dd-457f-8c8b-c2864a2a296f",
+                    "path": "<XRController>{LeftHand}/primary2DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExtrudeWithJoystickTwo",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

@@ -9,7 +9,7 @@ public class TissueBlockColorChanger : MonoBehaviour
     private Renderer _tissueBlocksRenderer;
     // Rider optimization code to replace "_color" in *.SetColor() method
     private static readonly int Color1 = Shader.PropertyToID("_Color");
-
+    
     // When the required Input action is in progress
     private void OnEnable()
     {
