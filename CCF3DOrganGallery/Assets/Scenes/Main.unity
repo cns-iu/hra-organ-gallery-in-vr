@@ -4770,8 +4770,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe44a7d2d145494693763c5d348009a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RightHandJoyStickAxis: {fileID: -9221067105965427820, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  LeftHandJoyStickAxis: {fileID: 6334987101343480565, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  RightHandJoyStickAxis: {fileID: 374685546297655728, guid: 058407f661629414eb137d47641a5d5a, type: 3}
+  LeftHandJoyStickAxis: {fileID: 1125698313520803818, guid: 058407f661629414eb137d47641a5d5a, type: 3}
   upArrowHandler: {fileID: 11400000, guid: 70bedec66ce0f104a8db1c850a8be66b, type: 2}
   downArrowHandler: {fileID: 11400000, guid: e79a3e751cf8afa4ea324295ee5770ac, type: 2}
   leftArrowHandler: {fileID: 11400000, guid: 2c8f42965c843cf4d89c5f664283b87d, type: 2}
