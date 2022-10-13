@@ -5,9 +5,14 @@ using System.Threading.Tasks;
 
 public class SceneConfiguration : MonoBehaviour
 {
-    public string Url;
+    [Header("Filters")]
+    [SerializeField] private List<GameObject> organsToShow = new List<GameObject>();
 
-    [SerializeField] private string baseUrl = "https://ccf-api--staging.herokuapp.com/v1/scene";
+
+
+    [Header("URL")]
+    public string Url;
+    [SerializeField] private string baseUrl = "https://ccf-api.hubmapconsortium.org/v1/scene"; //staging: https://ccf-api--staging.herokuapp.com/v1/scene
     [SerializeField]
     private List<string> uberonIds = new List<string>();
     [SerializeField] private string sex;

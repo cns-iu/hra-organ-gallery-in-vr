@@ -1603,6 +1603,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c8280bff5383674499d13370ed238e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  organsToExclude: []
+  sceneBuilder: {fileID: 600342370}
   Url: 
   baseUrl: https://ccf-api.hubmapconsortium.org/v1/scene
   uberonIds: []
@@ -2174,7 +2176,6 @@ GameObject:
   - component: {fileID: 1109062179}
   - component: {fileID: 1109062183}
   - component: {fileID: 1109062184}
-  - component: {fileID: 1109062185}
   m_Layer: 0
   m_Name: RightHand Controller
   m_TagString: Untagged
@@ -2728,18 +2729,6 @@ MonoBehaviour:
   allAxisHandlers:
   - {fileID: 11400000, guid: 08c28c0bb7224c344b4aa2e029702eb0, type: 2}
   allKeyHandlers: []
---- !u!114 &1109062185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109062177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a6f9692c63c40048bbf97d95925c937, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1237776065
 GameObject:
   m_ObjectHideFlags: 0
