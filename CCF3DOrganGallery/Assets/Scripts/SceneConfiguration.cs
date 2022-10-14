@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 public class SceneConfiguration : MonoBehaviour
 {
     [Header("Filters")]
-    [SerializeField] private List<GameObject> organsToShow = new List<GameObject>();
-
-
+    public List<string> organsToShow = new List<string>();
 
     [Header("URL")]
     public string Url;
@@ -18,6 +16,10 @@ public class SceneConfiguration : MonoBehaviour
     [SerializeField] private string sex;
     [SerializeField] const string ontologyQueryString = "&ontology-terms=http://purl.obolibrary.org/obo/UBERON_";
     [SerializeField] const string sexQueryString = "?sex=";
+
+    public void SetOrgansToShow() {
+        
+    }
 
     public string BuildUrl()
     {

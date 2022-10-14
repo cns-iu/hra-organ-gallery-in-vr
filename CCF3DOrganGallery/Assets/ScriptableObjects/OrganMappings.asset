@@ -1,0 +1,227 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b4b3b70cd94c854e9f4ced6a76032c1, type: 3}
+  m_Name: OrganMappings
+  m_EditorClassIdentifier: 
+  pairs:
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0002097
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Skin.glb
+    Tooltip: Skin
+    SceneGraphNode: VH_M_skin
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0002097
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Skin.glb
+    Tooltip: Skin
+    SceneGraphNode: VH_F_skin
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0000955
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/Allen_M_Brain.glb
+    Tooltip: Brain
+    SceneGraphNode: Allen_brain
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0000955
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/Allen_F_Brain.glb
+    Tooltip: Brain
+    SceneGraphNode: Allen_brain
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0000059
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/SBU_M_Intestine_Large.glb
+    Tooltip: Large Intestine
+    SceneGraphNode: VH_M_colon
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0002509
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/NIH_F_Lymph_Node.glb
+    Tooltip: Lymph Node
+    SceneGraphNode: Yao_lymph_node
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0004537
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Blood_Vasculature.glb
+    Tooltip: Blood Vasculature
+    SceneGraphNode: VH_M_blood_vasculature
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0000059
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/SBU_F_Intestine_Large.glb
+    Tooltip: Large Intestine
+    SceneGraphNode: VH_F_colon
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0004537
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Blood_Vasculature.glb
+    Tooltip: Blood Vasculature
+    SceneGraphNode: VH_F_blood_vasculature
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0004548
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Eye_L.glb
+    Tooltip: Left Eye
+    SceneGraphNode: VH_M_eye_L
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0004548
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Eye_L.glb
+    Tooltip: Left Eye
+    SceneGraphNode: VH_F_eye_L
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0004549
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Eye_R.glb
+    Tooltip: Right Eye
+    SceneGraphNode: VH_M_eye_R
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0004549
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Eye_R.glb
+    Tooltip: Right Eye
+    SceneGraphNode: VH_F_eye_R
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0000948
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Heart.glb
+    Tooltip: Heart
+    SceneGraphNode: VH_M_heart
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0001303
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Fallopian_Tube_L.glb
+    Tooltip: Left Fallopian Tube
+    SceneGraphNode: VH_F_fallopian_tube_L
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0004538
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Kidney_L.glb
+    Tooltip: Left Kidney
+    SceneGraphNode: VH_M_left_kidney
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0001302
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Fallopian_Tube_R.glb
+    Tooltip: Right Fallopian Tube
+    SceneGraphNode: VH_F_fallopian_tube_R
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0004539
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Kidney_R.glb
+    Tooltip: Right Kidney
+    SceneGraphNode: VH_M_right_kidney
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0000948
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Heart.glb
+    Tooltip: Heart
+    SceneGraphNode: VH_F_heart
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0004538
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Kidney_L.glb
+    Tooltip: Left Kidney
+    SceneGraphNode: VH_F_left_kidney
+  - RepresentationOf: http://purl.obolibrary.org/obo/FMA_24978
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Knee_L.glb
+    Tooltip: Left Knee
+    SceneGraphNode: VH_M_knee_L
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0004539
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Kidney_R.glb
+    Tooltip: Right Kidney
+    SceneGraphNode: VH_F_right_kidney
+  - RepresentationOf: http://purl.obolibrary.org/obo/FMA_24977
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Knee_R.glb
+    Tooltip: Right Knee
+    SceneGraphNode: VH_M_knee_R
+  - RepresentationOf: http://purl.obolibrary.org/obo/FMA_24978
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Knee_L.glb
+    Tooltip: Left Knee
+    SceneGraphNode: VH_F_knee_L
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0002107
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Liver.glb
+    Tooltip: Liver
+    SceneGraphNode: VH_M_liver
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0001004
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Lung.glb
+    Tooltip: Lung
+    SceneGraphNode: VH_M_respiratory_system
+  - RepresentationOf: http://purl.obolibrary.org/obo/FMA_24977
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Knee_R.glb
+    Tooltip: Right Knee
+    SceneGraphNode: VH_F_knee_R
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0002509
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/NIH_M_Lymph_Node.glb
+    Tooltip: Lymph Node
+    SceneGraphNode: Yao_lymph_node
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0002107
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Liver.glb
+    Tooltip: Liver
+    SceneGraphNode: VH_F_liver
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0001004
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Lung.glb
+    Tooltip: Lung
+    SceneGraphNode: VH_F_respiratory_system
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0001264
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Pancreas.glb
+    Tooltip: Pancreas
+    SceneGraphNode: VH_M_pancreas
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0001270
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Pelvis.glb
+    Tooltip: Pelvis
+    SceneGraphNode: VH_M_pelvis
+  - RepresentationOf: http://purl.obolibrary.org/obo/FMA_7214
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Ovary_L.glb
+    Tooltip: Left Ovary
+    SceneGraphNode: VH_F_left_ovary
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0000079
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Prostate.glb
+    Tooltip: Prostate
+    SceneGraphNode: VH_M_male_reproductive_system
+  - RepresentationOf: http://purl.obolibrary.org/obo/FMA_7213
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Ovary_R.glb
+    Tooltip: Right Ovary
+    SceneGraphNode: VH_F_right_ovary
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0001264
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Pancreas.glb
+    Tooltip: Pancreas
+    SceneGraphNode: VH_F_pancreas
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0001270
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Pelvis.glb
+    Tooltip: Pelvis
+    SceneGraphNode: VH_F_pelvis
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0002108
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Small_Intestine.glb
+    Tooltip: Small Intestine
+    SceneGraphNode: VH_M_small_intestine
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0002106
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Spleen.glb
+    Tooltip: Spleen
+    SceneGraphNode: VH_M_spleen
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0002108
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Small_Intestine.glb
+    Tooltip: Small Intestine
+    SceneGraphNode: VH_F_small_intestine
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0002370
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Thymus.glb
+    Tooltip: Thymus
+    SceneGraphNode: VH_M_thymus
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0002106
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Spleen.glb
+    Tooltip: Spleen
+    SceneGraphNode: VH_F_spleen
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0001223
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Ureter_L.glb
+    Tooltip: Left Ureter
+    SceneGraphNode: VH_M_ureter_L
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0002370
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Thymus.glb
+    Tooltip: Thymus
+    SceneGraphNode: VH_F_thymus
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0001222
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Ureter_R.glb
+    Tooltip: Right Ureter
+    SceneGraphNode: VH_M_ureter_R
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0001223
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Ureter_L.glb
+    Tooltip: Left Ureter
+    SceneGraphNode: VH_F_left_ureter
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0001255
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Urinary_Bladder.glb
+    Tooltip: Urinary Bladder
+    SceneGraphNode: VH_M_urinary_bladder
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0001222
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Ureter_R.glb
+    Tooltip: Right Ureter
+    SceneGraphNode: VH_F_right_ureter
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0001255
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Urinary_Bladder.glb
+    Tooltip: Urinary Bladder
+    SceneGraphNode: VH_F_urinary_bladder
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0002240
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Spinal_Cord.glb
+    Tooltip: Spinal Cord
+    SceneGraphNode: VH_M_spinal_cord
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0000995
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Uterus.glb
+    Tooltip: Uterus
+    SceneGraphNode: VH_F_uterus
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0001987
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Placenta.glb
+    Tooltip: Placenta
+    SceneGraphNode: VH_F_placenta
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0002240
+    SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Spinal_Cord.glb
+    Tooltip: Spinal Cord
+    SceneGraphNode: VH_F_spinal_cord
