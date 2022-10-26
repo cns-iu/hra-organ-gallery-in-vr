@@ -97,7 +97,7 @@ MonoBehaviour:
     SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_M_Knee_L.glb
     Tooltip: Left Knee
     SceneGraphNode: VH_M_knee_L
-  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0004539
+  - RepresentationOf: http://purl.obolibrary.org/obo/UBERON_0002106
     SceneGraph: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Kidney_R.glb
     Tooltip: Right Kidney
     SceneGraphNode: VH_F_right_kidney

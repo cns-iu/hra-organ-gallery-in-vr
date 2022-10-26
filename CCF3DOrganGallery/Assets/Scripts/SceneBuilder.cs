@@ -42,6 +42,19 @@ public class SceneBuilder : MonoBehaviour
 
         CreateAndPlaceTissueBlocks();
         ParentTissueBlocksToOrgans(TissueBlocks, Organs);
+
+        for (int i = 0; i < Organs.Count; i++)
+        {
+            OrganData data = Organs[i].GetComponent<OrganData>();
+            Organs[i].gameObject.SetActive(sceneConfiguration.IdsOrgansToShow.Contains(data.RepresentationOf));
+        }
+    }
+
+    List<GameObject> GetOrgansToShow(List<string> list)
+    {
+        List<GameObject> result = new List<GameObject>();
+
+        return result;
     }
 
     private void OnEnable()

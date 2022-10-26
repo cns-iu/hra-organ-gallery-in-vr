@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using System.Linq;
 
 public class SceneConfiguration : MonoBehaviour
 {
     [Header("Filters")]
-    public List<string> organsToShow = new List<string>();
+    public List<string> IdsOrgansToShow = new List<string>();
+    [SerializeField] private SceneBuilder sceneBuilder;
+
 
     [Header("URL")]
     public string Url;
@@ -17,8 +20,28 @@ public class SceneConfiguration : MonoBehaviour
     [SerializeField] const string ontologyQueryString = "&ontology-terms=http://purl.obolibrary.org/obo/UBERON_";
     [SerializeField] const string sexQueryString = "?sex=";
 
-    public void SetOrgansToShow() {
-        
+    private void OnEnable()
+    {
+        FilterEventHandler.OnFilterCompleteWithOrgans += OnFilterSetOrganVisibility;
+    }
+
+    private void OnDestroy()
+    {
+        FilterEventHandler.OnFilterCompleteWithOrgans -= OnFilterSetOrganVisibility;
+    }
+
+    void OnFilterSetOrganVisibility(List<string> organs)
+    {
+        for (int i = 0; i < sceneBuilder.Organs.Count; i++)
+        {
+            OrganData data = sceneBuilder.Organs[i].GetComponent<OrganData>();
+            sceneBuilder.Organs[i].gameObject.SetActive(organs.Contains(data.tooltip));
+        }
+    }
+
+    private void Awake()
+    {
+        sceneBuilder = GetComponent<SceneBuilder>();
     }
 
     public string BuildUrl()
@@ -38,9 +61,6 @@ public class SceneConfiguration : MonoBehaviour
         }
         return Url;
     }
-    //heart: 0000948
-    //left kidney: 0004538
-    //skin: 0002097
 }
 
 

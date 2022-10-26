@@ -24,9 +24,10 @@ public class HorizontalExtruder : MonoBehaviour
 
     [SerializeField] private float maxDistanceOne;
     [SerializeField] private float maxDistanceTwo;
-    [SerializeField] private string filename;
+    [SerializeField] private string bodySystemsData;
     [SerializeField] private bool canExtrudeOne = false;
     [SerializeField] private bool canExtrudeTwo = false;
+    [SerializeField] private SceneBuilder sceneBuilder;
 
 
     private Dictionary<string, string> mappings = new Dictionary<string, string>();
@@ -40,10 +41,8 @@ public class HorizontalExtruder : MonoBehaviour
 
     void ReadCsv()
     {
-        TextAsset bodySystemsData = Resources.Load<TextAsset>(filename);
-        using (var reader = new StreamReader(new MemoryStream(bodySystemsData.bytes)))
+        using (var reader = Utils.ReadCsv(bodySystemsData))
         {
-
             while (!reader.EndOfStream)
             {
                 var line = reader.ReadLine();
@@ -217,13 +216,6 @@ public class HorizontalExtruder : MonoBehaviour
         //ExtrusionUpdate
         ExtrusionUpdate?.Invoke(new float[2] { CurrentStepOne, CurrentStepTwo });
 
-        //for (int i = 0; i < SystemsObjs.Count; i++)
-        //{
-        //    Debug.LogFormat("System: {0}.", SystemsObjs[i].System);
-        //    if (SystemsObjs[i].GameObjects.Count == 0) break;
-        //    Debug.LogFormat("System {0} is at {1}.", SystemsObjs[i].System, SystemsObjs[0].SystemPosition);
-        //}
-
         //srart at index = 2 to leave skin in default place
         for (int i = 2; i < SystemsObjs.Count; i++)
         {
@@ -248,11 +240,16 @@ public class HorizontalExtruder : MonoBehaviour
 
     void GetSystemAndDefaultPosition()
     {
-        OrganData[] organs = FindObjectsOfType<OrganData>();
-
-        for (int i = 0; i < organs.Length; i++)
+        //OrganData[] organs = FindObjectsOfType<OrganData>();
+        List<OrganData> allOrgans = new List<OrganData>();
+        foreach (var o in sceneBuilder.Organs)
         {
-            OrganData organData = organs[i];
+            allOrgans.Add(o.GetComponent<OrganData>());
+        }
+
+        for (int i = 0; i < allOrgans.Count; i++)
+        {
+            OrganData organData = allOrgans[i];
             _ = mappings.TryGetValue(organData.SceneGraph, out string system);
             organData.BodySystem = (BodySystem)Enum.Parse(typeof(BodySystem), system);
             organData.DefaultPosition = organData.gameObject.transform.position;
@@ -261,9 +258,8 @@ public class HorizontalExtruder : MonoBehaviour
         for (int i = 0; i < systems.Length; i++)
         {
             List<GameObject> gameObjects = new List<GameObject>();
-            OrganData[] organDataComponents = FindObjectsOfType<OrganData>();
 
-            foreach (var organData in organDataComponents)
+            foreach (var organData in allOrgans)
             {
                 if (organData.BodySystem == (BodySystem)Enum.Parse(typeof(BodySystem), systems[i]))
                 {

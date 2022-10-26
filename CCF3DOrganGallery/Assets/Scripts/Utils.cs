@@ -20,20 +20,10 @@ public static class Utils
         }
     }
 
-    public static void ReadCSV(string text)
+    public static StreamReader ReadCsv(string fileName)
     {
-        using (var reader = new StreamReader(text))
-        {
-            while (!reader.EndOfStream)
-            {
-                var line = reader.ReadLine();
-
-                Debug.Log(line);
-                //return line;
-            }
-
-            //return null;
-        }
+        TextAsset asset = Resources.Load<TextAsset>(fileName);
+        return new StreamReader(new MemoryStream(asset.bytes));
     }
 
     public static bool TryCast<T>(this object obj, out T result)
