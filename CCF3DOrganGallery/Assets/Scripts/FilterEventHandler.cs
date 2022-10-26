@@ -15,10 +15,12 @@ public class FilterEventHandler : MonoBehaviour
     [SerializeField] private List<Toggle> toggles;
     [SerializeField] private List<string> newOrgansToShow;
     [SerializeField] private GameObject filterCanvas;
+    [SerializeField] private float threshold = 0.2f;
 
     private void OnEnable()
     {
-        HorizontalExtruder.ExtrusionUpdate += (v) => { canUserSetFilter = v[0] == 0; };
+        //set 0.2 as threshold to account for inaccuracies when getting input on Quest 2 natively
+        HorizontalExtruder.ExtrusionUpdate += (v) => { canUserSetFilter = v[0] <= threshold; };
     }
 
     private void Start()
@@ -40,22 +42,5 @@ public class FilterEventHandler : MonoBehaviour
               }
           }
             );
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (canUserSetFilter)
-            {
-                newOrgansToShow.Clear();
-                for (int i = 0; i < toggles.Count; i++)
-                {
-                    if (toggles[i].isOn) newOrgansToShow.Add(toggles[i].name);
-                }
-                OnFilterComplete?.Invoke();
-                OnFilterCompleteWithOrgans?.Invoke(newOrgansToShow);
-            }
-        }
     }
 }

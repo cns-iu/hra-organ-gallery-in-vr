@@ -1811,6 +1811,7 @@ MonoBehaviour:
   toggles: []
   newOrgansToShow: []
   filterCanvas: {fileID: 0}
+  threshold: 0.2
 --- !u!114 &377563135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5614,6 +5615,7 @@ MonoBehaviour:
   bodySystemsData: Body_Systems_List
   canExtrudeOne: 0
   canExtrudeTwo: 0
+  extrusionSpeed: 0.5
   sceneBuilder: {fileID: 600342370}
 --- !u!1 &1978489829
 GameObject:
@@ -5799,6 +5801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49b8b2499474a264dab5452cb8eec2cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  threshold: 0.2
 --- !u!1 &2092822897
 GameObject:
   m_ObjectHideFlags: 0

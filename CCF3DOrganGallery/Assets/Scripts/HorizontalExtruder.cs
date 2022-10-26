@@ -27,6 +27,7 @@ public class HorizontalExtruder : MonoBehaviour
     [SerializeField] private string bodySystemsData;
     [SerializeField] private bool canExtrudeOne = false;
     [SerializeField] private bool canExtrudeTwo = false;
+    [SerializeField] private float extrusionSpeed = .2f;
     [SerializeField] private SceneBuilder sceneBuilder;
 
 
@@ -60,6 +61,8 @@ public class HorizontalExtruder : MonoBehaviour
     {
         SceneBuilder.OnSceneBuilt += GetSystemAndDefaultPosition; //remove getting default pos + rot from Kumar's code once pulled in
         SceneBuilder.OnSceneBuilt += () => { canExtrudeOne = true; };
+        FilterEventHandler.OnFilterComplete += SetAllActiveOrgansToDefaultPosition;
+        FilterEventHandler.OnFilterComplete += ResetExtrusionOne;
         upArrowHandler.keyHeld += AdjustExtrusionOne;
         downArrowHandler.keyHeld += AdjustExtrusionOne;
         leftArrowHandler.keyHeld += AdjustExtrusionTwo;
@@ -71,6 +74,8 @@ public class HorizontalExtruder : MonoBehaviour
     private void OnDestroy()
     {
         SceneBuilder.OnSceneBuilt -= GetSystemAndDefaultPosition;
+        FilterEventHandler.OnFilterComplete -= SetAllActiveOrgansToDefaultPosition;
+        FilterEventHandler.OnFilterComplete -= ResetExtrusionOne;
         upArrowHandler.keyHeld -= AdjustExtrusionOne;
         downArrowHandler.keyHeld -= AdjustExtrusionOne;
         leftArrowHandler.keyHeld -= AdjustExtrusionTwo;
@@ -86,7 +91,7 @@ public class HorizontalExtruder : MonoBehaviour
         float direction = context.action.ReadValue<Vector2>().x < 0 ? -1 : 1;
 
 
-        CurrentStepTwo += Time.deltaTime * direction;
+        CurrentStepTwo += Time.deltaTime * direction * extrusionSpeed;
 
         if (CurrentStepTwo > 1)
         {
@@ -141,11 +146,11 @@ public class HorizontalExtruder : MonoBehaviour
 
         CurrentStepTwo += Time.deltaTime * direction;
 
-        if (CurrentStepTwo > 1)
+        if (CurrentStepTwo >= 1)
         {
             CurrentStepTwo = 1;
         }
-        else if (CurrentStepTwo < 0)
+        else if (CurrentStepTwo <= 0)
         {
             CurrentStepTwo = 0;
         }
@@ -202,13 +207,15 @@ public class HorizontalExtruder : MonoBehaviour
 
     void ExtrudeOne(float direction)
     {
-        CurrentStepOne += Time.deltaTime * direction;
+        CurrentStepOne += Time.deltaTime * direction * extrusionSpeed;
 
-        if (CurrentStepOne > 1)
+        if (CurrentStepOne >= 1)
         {
             CurrentStepOne = 1;
         }
-        else if (CurrentStepOne < 0)
+
+        //modify this to ensure that 0 is reached when running natively on Quest 2?
+        else if (CurrentStepOne <= 0)
         {
             CurrentStepOne = 0;
         }
@@ -236,6 +243,20 @@ public class HorizontalExtruder : MonoBehaviour
 
         canExtrudeTwo = CurrentStepOne == 1;
 
+    }
+
+    void SetAllActiveOrgansToDefaultPosition()
+    {
+        for (int i = 0; i < sceneBuilder.Organs.Count; i++)
+        {
+            sceneBuilder.Organs[i].transform.position = sceneBuilder.Organs[i].GetComponent<OrganData>().DefaultPosition;
+        }
+    }
+
+    void ResetExtrusionOne()
+    {
+        CurrentStepOne = 0f;
+        ExtrusionUpdate?.Invoke(new float[2] { CurrentStepOne, CurrentStepTwo });
     }
 
     void GetSystemAndDefaultPosition()
