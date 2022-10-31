@@ -42,6 +42,19 @@ public class SceneBuilder : MonoBehaviour
 
         CreateAndPlaceTissueBlocks();
         ParentTissueBlocksToOrgans(TissueBlocks, Organs);
+
+        for (int i = 0; i < Organs.Count; i++)
+        {
+            OrganData data = Organs[i].GetComponent<OrganData>();
+            Organs[i].gameObject.SetActive(sceneConfiguration.IdsOrgansToShow.Contains(data.RepresentationOf));
+        }
+    }
+
+    List<GameObject> GetOrgansToShow(List<string> list)
+    {
+        List<GameObject> result = new List<GameObject>();
+
+        return result;
     }
 
     private void OnEnable()
@@ -60,11 +73,21 @@ public class SceneBuilder : MonoBehaviour
     {
         List<Task<GameObject>> tasks = new List<Task<GameObject>>();
         List<GameObject> loaders = new List<GameObject>();
-        Dictionary<GameObject, Node> dict = new Dictionary<GameObject, Node>();
 
         foreach (var node in nodeArray.nodes)
         {
             if (node.scenegraph == null) break;
+
+            //uncomment to get new organ proerties in ScriptableObject
+            //OrganMapping.pairs.Add(
+            //    new Mapping.OrganProperties(
+            //        node.representation_of,
+            //        node.scenegraph,
+            //        node.tooltip,
+            //        node.scenegraphNode)
+            //    );
+            //Debug.Log(node.scenegraph);
+            //if (!sceneConfiguration.organsToShow.Contains(node.scenegraph)) break;
             GameObject g = new GameObject()
             {
                 name = "Loader"
