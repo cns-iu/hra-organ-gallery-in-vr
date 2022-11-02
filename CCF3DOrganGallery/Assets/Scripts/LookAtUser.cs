@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -24,7 +25,7 @@ public class LookAtUser : MonoBehaviour
 
     private void Update()
     {
-        transform.LookAt(Camera.main.transform.root.position + new Vector3(0f, cameraYOffset, 0f));
+        transform.LookAt(Camera.main.GetComponentInParent<XROrigin>().transform.position + new Vector3(0f, cameraYOffset, 0f));
     }
 
     private float SetOffset()
