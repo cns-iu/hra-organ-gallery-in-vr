@@ -42,6 +42,39 @@ public static class Utils
     ///  Call this method on the parent wrapper and not the actual organ model containing the component models.
     /// </summary>
     /// <param name="m"></param>
+    public static void FitToChildren(GameObject m)
+    {
+        BoxCollider bc = m.AddComponent<BoxCollider>() as BoxCollider;
+        if (m.GetComponent<Collider>() is BoxCollider)
+        {
+            bool hasBounds = false;
+            Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
+            for (int i = 0; i < m.transform.childCount; ++i)
+            {
+                Renderer childRenderer = m.transform.GetChild(i).GetComponent<Renderer>();
+                if (childRenderer != null)
+                {
+                    if (hasBounds)
+                    {
+                        bounds.Encapsulate(childRenderer.bounds);
+                    }
+                    else
+                    {
+                        bounds = childRenderer.bounds;
+                        hasBounds = true;
+                    }
+                }
+            }
+            BoxCollider collider = (BoxCollider)m.GetComponent<Collider>();
+            collider.center = bounds.center - m.transform.position;
+            collider.size = bounds.size;
+        }
+    }
+
+    /// <summary>
+    ///  Call this method on the parent wrapper and not the actual organ model containing the component models.
+    /// </summary>
+    /// <param name="m"></param>
     static void FitToChildren(GameObject m)
     {
         BoxCollider bc = m.AddComponent<BoxCollider>() as BoxCollider;
