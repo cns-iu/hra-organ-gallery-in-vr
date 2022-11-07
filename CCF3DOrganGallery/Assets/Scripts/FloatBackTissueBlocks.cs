@@ -32,7 +32,7 @@ public class FloatBackTissueBlocks : MonoBehaviour
     void Start()
     {
         SceneBuilder.OnSceneBuilt += InitializeTissueBlockDefaultValues;
-        InitializeTissueBlockDefaultValues();
+        // InitializeTissueBlockDefaultValues();
         _pullOut = GameObject.Find("RightHand Controller").GetComponent<PullOutStateChanger>();
         wristPocketManager = GameObject.Find("WristPocket").GetComponent<WristPocketManager>();
     }
