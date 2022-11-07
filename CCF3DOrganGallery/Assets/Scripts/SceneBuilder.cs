@@ -1,10 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 using UnityEngine.Networking;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class SceneBuilder : MonoBehaviour
 {
@@ -32,6 +32,11 @@ public class SceneBuilder : MonoBehaviour
     private int modelsLoaded;
     private int numberOfHubmapIds;
 
+    // Reference to button that instructs tissue-blocks / organs to float back to original position
+    public InputActionReference floatBackInputActionReference;
+
+    // Dict to store default position, rotation adn scale values of organs
+    private readonly Dictionary<GameObject, List<Vector3>> _organDefaults = new Dictionary<GameObject, List<Vector3>>();
 
     //driver code 
     private async void Start()
@@ -185,7 +190,7 @@ public class SceneBuilder : MonoBehaviour
         );
 
     }
-    static public void SetOrganOpacity(GameObject organWrapper, float alpha)
+    public static void SetOrganOpacity(GameObject organWrapper, float alpha)
     {
         List<Transform> list = new List<Transform>();
         list = LeavesFinder.FindLeaves(organWrapper.transform.GetChild(0), list);
@@ -210,8 +215,26 @@ public class SceneBuilder : MonoBehaviour
 
     void SetOrganCollider(GameObject organWrapper)
     {
-        organWrapper.AddComponent<SphereCollider>().isTrigger = true;
-        organWrapper.AddComponent<AdjustOrganOpacityOnUserApproach>().SetCollider();
+        Debug.Log("Came Inside Collider Setter");
+        // Yash Kumar ~ handle organ wrapper colliders eventually(?)
+        //organWrapper.AddComponent<SphereCollider>().isTrigger = true;
+        //organWrapper.AddComponent<AdjustOrganOpacityOnUserApproach>().SetCollider(); 
+        
+        var organChild = organWrapper.transform.GetChild(0);
+
+        Utils.FitToChildren(organChild.gameObject);
+
+        organChild.gameObject.AddComponent<OnExtrudeActivateFloat>();
+        
+        var allChildren = organChild.GetComponentsInChildren<Transform>(); //OP
+        foreach(Transform child in allChildren)
+        {
+            if(child.CompareTag("TissueBlock")) // parent all tissue-blocks to organ on grab, unparent on float back
+            {
+                var col = child.GetComponent<Collider>();
+                col.isTrigger = true;
+            }
+        }
     }
 
     void CreateAndPlaceTissueBlocks()
@@ -382,8 +405,21 @@ public class SceneBuilder : MonoBehaviour
         }
     }
 
+    public void InitializeOrganDefaultValues(GameObject o) // o = organ
+    {
+        var values = new List<Vector3>(){o.transform.position, o.transform.rotation.eulerAngles, o.transform.localScale};
+        if(!_organDefaults.ContainsKey(o))
+        {
+            _organDefaults.Add(o, values); 
+        }
+        // Calls UpdateOrganDefaultValues() function from FloatBackOrgan script attached to each organ
+        o.GetComponent<FloatBackOrgan>().UpdateOrganDefaultValues(values);
+    }
 
-
+    public List<Vector3> GetDefaultValuesForOrgan(GameObject organ) 
+    {
+        return _organDefaults[organ];
+    }
 }
 
 public class HubmapIdArray
