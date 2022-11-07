@@ -65,7 +65,7 @@ public static class Utils
                     }
                 }
             }
-            Debug.Log(bounds.size);
+            //Debug.Log(bounds.size);
             BoxCollider collider = (BoxCollider)m.GetComponent<Collider>();
             collider.center = bounds.center - m.transform.position;
             collider.size = bounds.size * 100;

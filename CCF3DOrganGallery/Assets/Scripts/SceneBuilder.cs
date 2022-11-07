@@ -215,7 +215,7 @@ public class SceneBuilder : MonoBehaviour
 
     void SetOrganCollider(GameObject organWrapper)
     {
-        Debug.Log("Came Inside Collider Setter");
+        //Debug.Log("Came Inside Collider Setter");
         // Yash Kumar ~ handle organ wrapper colliders eventually(?)
         //organWrapper.AddComponent<SphereCollider>().isTrigger = true;
         //organWrapper.AddComponent<AdjustOrganOpacityOnUserApproach>().SetCollider(); 
