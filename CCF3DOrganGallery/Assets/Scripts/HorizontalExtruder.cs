@@ -31,6 +31,7 @@ public class HorizontalExtruder : MonoBehaviour
     [SerializeField] private SceneBuilder sceneBuilder;
 
 
+
     private Dictionary<string, string> mappings = new Dictionary<string, string>();
     private string[] systems;
 
@@ -70,6 +71,8 @@ public class HorizontalExtruder : MonoBehaviour
         RightHandJoyStickAxis.action.performed += AdjustExtrusionOne;
         LeftHandJoyStickAxis.action.performed += AdjustExtrusionTwo;
     }
+
+
 
     private void OnDestroy()
     {
