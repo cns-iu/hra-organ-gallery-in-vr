@@ -26,14 +26,15 @@ public class WristPocketManager : MonoBehaviour
         TissueBlockSelectActions.OnHover += hit => Debug.Log("hi");
         TissueBlockSelectActions.OnSelected += hit => Debug.Log("heyo");
         // TissueBlockSelectActions.OnSelected += SwitchParent;
-        Debug.Log("Abhijeet2");
+        // Debug.Log("Abhijeet2");
     }
 
+    // Switching parent on the basis of where the tissueblock is (OLD FUNCTIONALITY)
     // private void SwitchParent(RaycastHit hit)
     // {   
-    //     Debug.Log("Abhijeet1");
+    //     Debug.Log("test1");
     //     wristPocket[0].transform.SetParent(GameObject.Find("VH_F_Kidney_Left_v1.1").transform);
-    //     Debug.Log("Abhijeet");
+    //     Debug.Log("test");
     // }
 
     // Update is called once per frame

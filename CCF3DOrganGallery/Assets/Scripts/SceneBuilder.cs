@@ -1,3 +1,5 @@
+// using System.Threading.Tasks.Dataflow;
+using System.Diagnostics;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,6 +7,7 @@ using UnityEngine;
 using System.Threading.Tasks;
 using UnityEngine.Networking;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class SceneBuilder : MonoBehaviour
 {
@@ -32,6 +35,11 @@ public class SceneBuilder : MonoBehaviour
     private int modelsLoaded;
     private int numberOfHubmapIds;
 
+    // Reference to button that instructs tissue-blocks / organs to float back to original position
+    public InputActionReference floatBackInputActionReference;
+
+    // Dict to store default position, rotation adn scale values of organs
+    private readonly Dictionary<GameObject, List<Vector3>> _organDefaults = new Dictionary<GameObject, List<Vector3>>();
 
     //driver code 
     private async void Start()
@@ -42,19 +50,6 @@ public class SceneBuilder : MonoBehaviour
 
         CreateAndPlaceTissueBlocks();
         ParentTissueBlocksToOrgans(TissueBlocks, Organs);
-
-        for (int i = 0; i < Organs.Count; i++)
-        {
-            OrganData data = Organs[i].GetComponent<OrganData>();
-            Organs[i].gameObject.SetActive(sceneConfiguration.IdsOrgansToShow.Contains(data.RepresentationOf));
-        }
-    }
-
-    List<GameObject> GetOrgansToShow(List<string> list)
-    {
-        List<GameObject> result = new List<GameObject>();
-
-        return result;
     }
 
     private void OnEnable()
@@ -73,21 +68,11 @@ public class SceneBuilder : MonoBehaviour
     {
         List<Task<GameObject>> tasks = new List<Task<GameObject>>();
         List<GameObject> loaders = new List<GameObject>();
+        Dictionary<GameObject, Node> dict = new Dictionary<GameObject, Node>();
 
         foreach (var node in nodeArray.nodes)
         {
             if (node.scenegraph == null) break;
-
-            //uncomment to get new organ proerties in ScriptableObject
-            //OrganMapping.pairs.Add(
-            //    new Mapping.OrganProperties(
-            //        node.representation_of,
-            //        node.scenegraph,
-            //        node.tooltip,
-            //        node.scenegraphNode)
-            //    );
-            //Debug.Log(node.scenegraph);
-            //if (!sceneConfiguration.organsToShow.Contains(node.scenegraph)) break;
             GameObject g = new GameObject()
             {
                 name = "Loader"
@@ -159,7 +144,7 @@ public class SceneBuilder : MonoBehaviour
                 await Task.Yield();
 
             if (www.result != UnityWebRequest.Result.Success)
-                Debug.LogError($"Failed: {www.error}");
+                UnityEngine.Debug.LogError($"Failed: {www.error}");
 
             var result = www.downloadHandler.text;
 
@@ -169,7 +154,7 @@ public class SceneBuilder : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError($"{nameof(Get)} failed: {ex.Message}");
+            UnityEngine.Debug.LogError($"{nameof(Get)} failed: {ex.Message}");
             return default;
         }
     }
@@ -208,10 +193,143 @@ public class SceneBuilder : MonoBehaviour
 
     }
 
-    void SetOrganCollider(GameObject organWrapper)
+    void SetOrganCollider(GameObject organWrapper) //set colliders here ~Yash
     {
-        organWrapper.AddComponent<SphereCollider>().isTrigger = true;
-        organWrapper.AddComponent<AdjustOrganOpacityOnUserApproach>().SetCollider();
+        UnityEngine.Debug.Log("Came Inside Collider Setter");
+        //organWrapper.AddComponent<SphereCollider>().isTrigger = true;
+        //organWrapper.AddComponent<AdjustOrganOpacityOnUserApproach>().SetCollider(); 
+        
+        var organChild = organWrapper.transform.GetChild(0);
+
+        FitToChildren(organChild.gameObject);
+
+        organChild.gameObject.AddComponent<OnExtrudeActivateFloat>();
+        
+        var allChildren = organChild.GetComponentsInChildren<Transform>(); //OP
+        foreach(Transform child in allChildren)
+        {
+            if(child.CompareTag("TissueBlock")) // parent all tissue-blocks to organ on grab, unparent on float back
+            {
+                var col = child.GetComponent<Collider>();
+                col.isTrigger = true;
+            }
+        }
+
+        // var colliderComp = organChild.AddComponent(BoxCollider);
+        // colliderComp.isTrigger = true;
+        
+        // Important For Later~
+        // var centroid = new Vector3(0,0,0);
+        // float sizeX, sizeY, sizeZ = 0f; 
+        // float minX = Mathf.Infinity, minY = Mathf.Infinity, minZ = Mathf.Infinity; 
+        // float maxX = -Mathf.Infinity, maxY = -Mathf.Infinity, maxZ = -Mathf.Infinity;
+        // UnityEngine.Debug.Log("hello");
+
+        // var allChildren = organChild.GetComponentsInChildren<Transform>(); //OP
+
+        // if (organChild.childCount > 0)
+        // {
+        //     UnityEngine.Debug.Log("I'm Mr. Frundles");
+        //     var i = 0;
+        //     foreach (Transform child in allChildren)
+        //     {
+        //         if(child.GetComponent<MeshRenderer>())
+        //         {                
+        //             var pos = child.transform.position;
+        //             centroid += pos;
+        //             if(pos.x < minX)
+        //             {
+        //                 UnityEngine.Debug.Log("min pos.x" + pos.x);
+        //                 minX = pos.x;
+        //             }
+        //             if(pos.y < minY)
+        //             {
+        //                 UnityEngine.Debug.Log("pos.y" + pos.y);
+        //                 minY = pos.y;
+        //             }
+        //             if(pos.z < minZ)
+        //             {
+        //                 UnityEngine.Debug.Log("pos.z" + pos.z);
+        //                 minZ = pos.z;
+        //             }
+        //             if(pos.x > maxX)
+        //             {
+        //                 UnityEngine.Debug.Log("max pos.x" + pos.x);
+        //                 maxX = pos.x;
+        //             }
+        //             if(pos.y > maxY)
+        //             {
+        //                 UnityEngine.Debug.Log("pos.y" + pos.y);
+        //                 maxY = pos.y;
+        //             }
+        //             if(pos.z > maxZ)
+        //             {
+        //                 UnityEngine.Debug.Log("pos.z" + pos.z);
+        //                 maxZ = pos.z;
+        //             }
+        //             i++;
+        //         }
+        //     }
+        //     centroid /= ( i + 2 );
+        //     sizeX = Mathf.Abs((maxX - minX));
+        //     sizeY = Mathf.Abs((maxY - minY));
+        //     sizeZ = Mathf.Abs((maxZ - minZ));
+
+
+        //     var modelCollider = organChild.gameObject.AddComponent<BoxCollider>();
+        //     UnityEngine.Debug.Log("Added Box Colliders to Wrapper Child Organ " + maxX + " " + minY + " " + maxZ);
+        //     modelCollider.isTrigger = true;
+        //     modelCollider.center = centroid;
+        //     modelCollider.size = new Vector3(sizeX, sizeY, sizeZ);
+        // }
+        // else
+        // {
+        //     UnityEngine.Debug.Log("skipped Mr.Frundles");
+        // }
+        // Tried to get centroid using renderer component on the organ children, found none.
+        // var r = organChild.GetComponent<Renderer>();
+        //     if (r == null)
+        //         return;
+        // var bounds = r.bounds;
+            
+        // Debug.Log(organWrapper.transform.GetChild(0).name + " bounds: " + bounds + "\n");
+        // Debug.Log(organWrapper.transform.GetChild(0).name + " bounds center: " + bounds.center + "\n");
+        // Debug.Log(organWrapper.transform.GetChild(0).name + " bounds extents: " + bounds.extents + "\n");
+    }
+
+
+    // Peter Kienle's code that helps with applying colliders to GameObjects with children components
+    void FitToChildren(GameObject m)
+    {
+        BoxCollider bc = m.AddComponent<BoxCollider>() as BoxCollider;
+        if (m.GetComponent<Collider>() is BoxCollider)
+        {
+
+            bool hasBounds = false;
+            Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
+
+            for (int i = 0; i < m.transform.childCount; ++i)
+            {
+                Renderer childRenderer = m.transform.GetChild(i).GetComponent<Renderer>();
+                if (childRenderer != null)
+                {
+                    if (hasBounds)
+                    {
+                        bounds.Encapsulate(childRenderer.bounds);
+                    }
+                    else
+                    {
+                        bounds = childRenderer.bounds;
+                        hasBounds = true;
+                    }
+                }
+            }
+
+            BoxCollider collider = (BoxCollider)m.GetComponent<Collider>();
+            collider.center = bounds.center - m.transform.position;
+            collider.size = bounds.size;
+            //Debug.Log("bounds " + bounds.size);
+        }
     }
 
     void CreateAndPlaceTissueBlocks()
@@ -382,7 +500,21 @@ public class SceneBuilder : MonoBehaviour
         }
     }
 
+    public void InitializeOrganDefaultValues(GameObject o) // o = organ
+    {
+        var values = new List<Vector3>(){o.transform.position, o.transform.rotation.eulerAngles, o.transform.localScale};
+        if(!_organDefaults.ContainsKey(o))
+        {
+            _organDefaults.Add(o, values); 
+        }
+        // Calls UpdateOrganDefaultValues() function from FloatBackOrgan script attached to each organ
+        o.GetComponent<FloatBackOrgan>().UpdateOrganDefaultValues(values);
+    }
 
+    public List<Vector3> GetDefaultValuesForOrgan(GameObject organ) 
+    {
+        return _organDefaults[organ];
+    }
 
 }
 

@@ -20,10 +20,20 @@ public static class Utils
         }
     }
 
-    public static StreamReader ReadCsv(string fileName)
+    public static void ReadCSV(string text)
     {
-        TextAsset asset = Resources.Load<TextAsset>(fileName);
-        return new StreamReader(new MemoryStream(asset.bytes));
+        using (var reader = new StreamReader(text))
+        {
+            while (!reader.EndOfStream)
+            {
+                var line = reader.ReadLine();
+
+                Debug.Log(line);
+                //return line;
+            }
+
+            //return null;
+        }
     }
 
     public static bool TryCast<T>(this object obj, out T result)
@@ -38,39 +48,6 @@ public static class Utils
         return false;
     }
 
-    /// <summary>
-    ///  Call this method on the parent wrapper and not the actual organ model containing the component models.
-    /// </summary>
-    /// <param name="m"></param>
-    public static void FitToChildren(GameObject m)
-    {
-        BoxCollider bc = m.AddComponent<BoxCollider>() as BoxCollider;
-        if (m.GetComponent<Collider>() is BoxCollider)
-        {
-            bool hasBounds = false;
-            Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
-            for (int i = 0; i < m.transform.childCount; ++i)
-            {
-                Renderer childRenderer = m.transform.GetChild(i).GetComponent<Renderer>();
-                if (childRenderer != null)
-                {
-                    if (hasBounds)
-                    {
-                        bounds.Encapsulate(childRenderer.bounds);
-                    }
-                    else
-                    {
-                        bounds = childRenderer.bounds;
-                        hasBounds = true;
-                    }
-                }
-            }
-            Debug.Log(bounds.size);
-            BoxCollider collider = (BoxCollider)m.GetComponent<Collider>();
-            collider.center = bounds.center - m.transform.position;
-            collider.size = bounds.size * 100;
-        }
-    }
 
     /// <summary>
     /// Remaps a value from one range to another
