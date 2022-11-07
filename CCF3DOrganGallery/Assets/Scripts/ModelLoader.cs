@@ -4,39 +4,12 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using Siccity.GLTFUtility;
-using UnityEngine.InputSystem;
 using System.Threading.Tasks;
 
 public class ModelLoader : MonoBehaviour
 {
     [SerializeField] private string filePath;
     [SerializeField] private GameObject wrapper;
-    // Reference to button that instructs tissue-blocks / organs to float back to original position
-    public InputActionReference floatBackInputActionReference;
-
-    void OnEnable()
-    {
-        // SceneBuilder.OnSceneBuilt += () => { canUserAct = true; };
-        // HorizontalExtruder.ExtrusionUpdate += EnablePullOut;
-        
-    }
-
-    void OnDisable()
-    {
-        // SceneBuilder.OnSceneBuilt += () => { canUserAct = true; };
-        // HorizontalExtruder.ExtrusionUpdate += DisablePullOut;
-    }
-    
-    // slated to work only when CurrentStepTwo has a value equal to 1.0
-    void EnablePullOut(){
-
-        // var floatBack = GetComponent 
-    }
-
-    // slated to work only when CurrentStepTwo has a value other than 1.0
-    void DisablePullOut(){
-
-    }
 
     public async Task<GameObject> GetModel(string url)
     {
@@ -87,7 +60,6 @@ public class ModelLoader : MonoBehaviour
         ResetWrapper();
         GameObject model = Importer.LoadFromFile(path);
         model.transform.SetParent(wrapper.transform);
-        model.tag = "Organ";
     }
 
     async Task GetFileRequest(string url, Action<UnityWebRequest> callback)
