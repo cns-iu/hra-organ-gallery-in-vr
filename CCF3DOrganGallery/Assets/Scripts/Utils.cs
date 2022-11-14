@@ -45,6 +45,7 @@ public static class Utils
     public static void FitToChildren(GameObject m)
     {
         BoxCollider bc = m.AddComponent<BoxCollider>() as BoxCollider;
+        //bc.isTrigger = true;
         if (m.GetComponent<Collider>() is BoxCollider)
         {
             bool hasBounds = false;
@@ -68,7 +69,7 @@ public static class Utils
             //Debug.Log(bounds.size);
             BoxCollider collider = (BoxCollider)m.GetComponent<Collider>();
             collider.center = bounds.center - m.transform.position;
-            collider.size = bounds.size * 100;
+            collider.size = bounds.size;
         }
     }
 

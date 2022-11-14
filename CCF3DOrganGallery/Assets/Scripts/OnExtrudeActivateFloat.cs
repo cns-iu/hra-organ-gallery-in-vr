@@ -25,16 +25,15 @@ public class OnExtrudeActivateFloat : MonoBehaviour
 
     private void OnEnable()
     {
-        if(gameObject.CompareTag("Organ")){
+       
             HorizontalExtruder.ExtrusionUpdate += FloatBackOn;
-        }
+        
     }
 
     private void OnDestroy()
     {
-        if(gameObject.CompareTag("Organ")){
             HorizontalExtruder.ExtrusionUpdate -= FloatBackOn;
-        }
+        
     }
 
     public void FloatBackOn(float[] stepValues)
@@ -67,6 +66,7 @@ public class OnExtrudeActivateFloat : MonoBehaviour
         UnityEngine.Debug.Log("organTriggerOn has been called");
         // make organs interactable, but remain disabled.
         var rb = gameObject.AddComponent<Rigidbody>();
+        rb.isKinematic = true;
         var interaction = gameObject.AddComponent<OffsetAttach>();
         var floatBack = gameObject.AddComponent<FloatBackOrgan>();
         UnityEngine.Debug.Log("floatbacc");
