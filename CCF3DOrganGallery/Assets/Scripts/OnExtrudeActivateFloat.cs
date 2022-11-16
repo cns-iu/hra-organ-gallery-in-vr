@@ -1,11 +1,11 @@
-using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class OnExtrudeActivateFloat : MonoBehaviour
-{    
+{
     // Reference to boolean for checking if completely extruded or not
     private bool canPullOutOrgan = false;
     // Reference to SceneBuilder.cs script
@@ -17,61 +17,46 @@ public class OnExtrudeActivateFloat : MonoBehaviour
         sceneBuilder = GameObject.Find("SceneBuilder").GetComponent<SceneBuilder>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
-
     private void OnEnable()
     {
-        if(gameObject.CompareTag("Organ")){
-            HorizontalExtruder.ExtrusionUpdate += FloatBackOn;
-        }
+        HorizontalExtruder.ExtrusionUpdate += FloatBackOn;
+        HorizontalExtruder.ExtrusionUpdate += (v) => { Debug.Log($"{v[0]},{v[1]}"); };
     }
 
     private void OnDestroy()
     {
-        if(gameObject.CompareTag("Organ")){
-            HorizontalExtruder.ExtrusionUpdate -= FloatBackOn;
-        }
+        HorizontalExtruder.ExtrusionUpdate -= FloatBackOn;
+
     }
 
     public void FloatBackOn(float[] stepValues)
     {
-        if(stepValues[1] == 1f)
+        if (stepValues[1] >= .95f)
         {
-            UnityEngine.Debug.Log("Completely Extruded");
-            if(!canPullOutOrgan)
+            if (!canPullOutOrgan)
             {
                 canPullOutOrgan = true;
-                UnityEngine.Debug.Log("a");
                 organTriggerOn();
                 sceneBuilder.InitializeOrganDefaultValues(gameObject);
-                UnityEngine.Debug.Log("A");
             }
-            else{
-                UnityEngine.Debug.Log("c");
-            }
+
         }
         else
         {
             canPullOutOrgan = false;
             organTriggerOff();
-            UnityEngine.Debug.Log("b");
         }
     }
 
     void organTriggerOn()
     {
-        UnityEngine.Debug.Log("organTriggerOn has been called");
         // make organs interactable, but remain disabled.
         var rb = gameObject.AddComponent<Rigidbody>();
-        var interaction = gameObject.AddComponent<OffsetAttach>();
+        rb.isKinematic = true;
+        var interaction = gameObject.AddComponent<XRGrabInteractable>();
         var floatBack = gameObject.AddComponent<FloatBackOrgan>();
-        UnityEngine.Debug.Log("floatbacc");
         floatBack.buttonPressed = GameObject.Find("SceneBuilder").GetComponent<SceneBuilder>().floatBackInputActionReference;
-        var component = gameObject.GetComponent<Collider>();
+        var component = gameObject.GetComponent<BoxCollider>();
         // var offset = GameObject.Find("Offset");
         component.isTrigger = false;
         interaction.throwOnDetach = false;
@@ -81,11 +66,11 @@ public class OnExtrudeActivateFloat : MonoBehaviour
 
     void organTriggerOff()
     {
-        var component = gameObject.GetComponent<Collider>();
-        var interactable = gameObject.GetComponent<OffsetAttach>();
+        var component = gameObject.GetComponent<BoxCollider>();
+        var interactable = gameObject.GetComponent<XRGrabInteractable>();
         var rb = gameObject.GetComponent<Rigidbody>();
         var floatBack = gameObject.GetComponent<FloatBackOrgan>();
-        
+
         Destroy(interactable);
         Destroy(rb);
         Destroy(floatBack);

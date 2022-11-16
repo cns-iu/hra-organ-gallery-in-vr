@@ -9,6 +9,8 @@ TagManager:
   - LeftController
   - RightController
   - Organ
+  - TeleportationAnchor
+  - UI
   layers:
   - Default
   - TransparentFX

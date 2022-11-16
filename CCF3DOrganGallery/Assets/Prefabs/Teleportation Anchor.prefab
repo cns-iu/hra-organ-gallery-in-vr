@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2139790502138518094}
   m_Layer: 0
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: TeleportationAnchor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 4769653158887649546}
   m_Layer: 0
   m_Name: Teleportation Anchor
-  m_TagString: Untagged
+  m_TagString: TeleportationAnchor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 8025043957053404017}
   m_Layer: 0
   m_Name: Backgrouund
-  m_TagString: Untagged
+  m_TagString: TeleportationAnchor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 3059018139474603439}
   m_Layer: 0
   m_Name: Anchor
-  m_TagString: Untagged
+  m_TagString: TeleportationAnchor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 7415484243283572801}
   m_Layer: 0
   m_Name: HoverIndicator
-  m_TagString: Untagged
+  m_TagString: TeleportationAnchor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 8337516298645425984}
   m_Layer: 0
   m_Name: Label
-  m_TagString: Untagged
+  m_TagString: TeleportationAnchor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

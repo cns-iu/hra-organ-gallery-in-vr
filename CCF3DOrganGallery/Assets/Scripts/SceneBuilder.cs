@@ -10,6 +10,9 @@ public class SceneBuilder : MonoBehaviour
 {
     public delegate void SceneBuilt();
     public static event SceneBuilt OnSceneBuilt;
+
+    public static event Action OnOrgansLoaded;
+
     public List<GameObject> TissueBlocks;
     public List<GameObject> Organs;
     public List<string> MaleEntityIds;
@@ -44,6 +47,8 @@ public class SceneBuilder : MonoBehaviour
         sceneConfiguration = GetComponent<SceneConfiguration>();
         await GetNodes(sceneConfiguration.BuildUrl());
         await GetOrgans();
+
+        OnOrgansLoaded?.Invoke();
 
         CreateAndPlaceTissueBlocks();
         ParentTissueBlocksToOrgans(TissueBlocks, Organs);
@@ -82,17 +87,6 @@ public class SceneBuilder : MonoBehaviour
         foreach (var node in nodeArray.nodes)
         {
             if (node.scenegraph == null) break;
-
-            //uncomment to get new organ proerties in ScriptableObject
-            //OrganMapping.pairs.Add(
-            //    new Mapping.OrganProperties(
-            //        node.representation_of,
-            //        node.scenegraph,
-            //        node.tooltip,
-            //        node.scenegraphNode)
-            //    );
-            //Debug.Log(node.scenegraph);
-            //if (!sceneConfiguration.organsToShow.Contains(node.scenegraph)) break;
             GameObject g = new GameObject()
             {
                 name = "Loader"
@@ -126,9 +120,15 @@ public class SceneBuilder : MonoBehaviour
             //place organ
             PlaceOrgan(Organs[i], nodeArray.nodes[i]);
             SetOrganOpacity(Organs[i], nodeArray.nodes[i].opacity);
-            SetOrganCollider(Organs[i]);
+            //AddPullout(Organs[i]);
         }
 
+    }
+
+    void AddPullout(GameObject organWrapper)
+    {
+        var organChild = organWrapper.transform.GetChild(0);
+        organChild.gameObject.AddComponent<OnExtrudeActivateFloat>();
     }
 
     private async Task GetAllHubmapIds(List<GameObject> tissueBlocks)
@@ -213,30 +213,6 @@ public class SceneBuilder : MonoBehaviour
 
     }
 
-    void SetOrganCollider(GameObject organWrapper)
-    {
-        //Debug.Log("Came Inside Collider Setter");
-        // Yash Kumar ~ handle organ wrapper colliders eventually(?)
-        //organWrapper.AddComponent<SphereCollider>().isTrigger = true;
-        //organWrapper.AddComponent<AdjustOrganOpacityOnUserApproach>().SetCollider(); 
-        
-        var organChild = organWrapper.transform.GetChild(0);
-
-        Utils.FitToChildren(organChild.gameObject);
-
-        organChild.gameObject.AddComponent<OnExtrudeActivateFloat>();
-        
-        var allChildren = organChild.GetComponentsInChildren<Transform>(); //OP
-        foreach(Transform child in allChildren)
-        {
-            if(child.CompareTag("TissueBlock")) // parent all tissue-blocks to organ on grab, unparent on float back
-            {
-                var col = child.GetComponent<Collider>();
-                col.isTrigger = true;
-            }
-        }
-    }
-
     void CreateAndPlaceTissueBlocks()
     {
         for (int i = 1; i < nodeArray.nodes.Length; i++)
@@ -319,7 +295,7 @@ public class SceneBuilder : MonoBehaviour
                 {
                     if (organData.RepresentationOf == annotation && organData.DonorSex == tissueData.DonorSex)
                     {
-                        TissueBlocks[i].transform.parent = Organs[j].transform;
+                        TissueBlocks[i].transform.parent = Organs[j].transform.GetChild(0).transform;
                         break;
                     }
                 }
@@ -407,16 +383,16 @@ public class SceneBuilder : MonoBehaviour
 
     public void InitializeOrganDefaultValues(GameObject o) // o = organ
     {
-        var values = new List<Vector3>(){o.transform.position, o.transform.rotation.eulerAngles, o.transform.localScale};
-        if(!_organDefaults.ContainsKey(o))
+        var values = new List<Vector3>() { o.transform.position, o.transform.rotation.eulerAngles, o.transform.localScale };
+        if (!_organDefaults.ContainsKey(o))
         {
-            _organDefaults.Add(o, values); 
+            _organDefaults.Add(o, values);
         }
         // Calls UpdateOrganDefaultValues() function from FloatBackOrgan script attached to each organ
         o.GetComponent<FloatBackOrgan>().UpdateOrganDefaultValues(values);
     }
 
-    public List<Vector3> GetDefaultValuesForOrgan(GameObject organ) 
+    public List<Vector3> GetDefaultValuesForOrgan(GameObject organ)
     {
         return _organDefaults[organ];
     }

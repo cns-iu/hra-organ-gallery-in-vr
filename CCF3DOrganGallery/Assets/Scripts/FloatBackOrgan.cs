@@ -47,7 +47,6 @@ public class FloatBackOrgan : MonoBehaviour
         _defaultPosition = defaultDict[0];
         _defaultRotation = Quaternion.Euler(defaultDict[1]);
         _defaultScale = defaultDict[2];
-        Debug.Log(gameObject.name + " is at position " + _defaultPosition);
     }
 
     // Update is called once per frame
