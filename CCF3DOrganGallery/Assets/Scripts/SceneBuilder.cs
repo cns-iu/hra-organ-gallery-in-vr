@@ -87,17 +87,6 @@ public class SceneBuilder : MonoBehaviour
         foreach (var node in nodeArray.nodes)
         {
             if (node.scenegraph == null) break;
-
-            //uncomment to get new organ proerties in ScriptableObject
-            //OrganMapping.pairs.Add(
-            //    new Mapping.OrganProperties(
-            //        node.representation_of,
-            //        node.scenegraph,
-            //        node.tooltip,
-            //        node.scenegraphNode)
-            //    );
-            //Debug.Log(node.scenegraph);
-            //if (!sceneConfiguration.organsToShow.Contains(node.scenegraph)) break;
             GameObject g = new GameObject()
             {
                 name = "Loader"
@@ -131,8 +120,15 @@ public class SceneBuilder : MonoBehaviour
             //place organ
             PlaceOrgan(Organs[i], nodeArray.nodes[i]);
             SetOrganOpacity(Organs[i], nodeArray.nodes[i].opacity);
+            //AddPullout(Organs[i]);
         }
 
+    }
+
+    void AddPullout(GameObject organWrapper)
+    {
+        var organChild = organWrapper.transform.GetChild(0);
+        organChild.gameObject.AddComponent<OnExtrudeActivateFloat>();
     }
 
     private async Task GetAllHubmapIds(List<GameObject> tissueBlocks)
@@ -299,7 +295,7 @@ public class SceneBuilder : MonoBehaviour
                 {
                     if (organData.RepresentationOf == annotation && organData.DonorSex == tissueData.DonorSex)
                     {
-                        TissueBlocks[i].transform.parent = Organs[j].transform;
+                        TissueBlocks[i].transform.parent = Organs[j].transform.GetChild(0).transform;
                         break;
                     }
                 }

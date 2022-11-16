@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ColliderTest : MonoBehaviour
@@ -57,7 +58,7 @@ public class ColliderTest : MonoBehaviour
 
         }
 
-        var boxCol = wrapper.AddComponent<BoxCollider>();
+        var boxCol = wrapper.transform.GetChild(0).AddComponent<BoxCollider>();
         boxCol.center = bounds.center - wrapper.transform.position;
         boxCol.size = bounds.size;
 
