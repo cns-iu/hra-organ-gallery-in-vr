@@ -33,6 +33,7 @@ public class OffsetAttach : XRGrabInteractable
         ResetAttachmentPoint(interactor);
         ClearInteractor(interactor);
     }
+    
 
     private void ResetAttachmentPoint(XRBaseInteractor interactor)
     {

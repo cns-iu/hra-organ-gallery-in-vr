@@ -37,7 +37,10 @@ public class SceneBuilder : MonoBehaviour
 
     // Reference to button that instructs tissue-blocks / organs to float back to original position
     public InputActionReference floatBackInputActionReference;
-
+    
+    // Reference to button that instructs tissue-blocks / organs to switch between interactable states 
+    public InputActionReference stateChangeReference;
+    
     // Dict to store default position, rotation adn scale values of organs
     private readonly Dictionary<GameObject, List<Vector3>> _organDefaults = new Dictionary<GameObject, List<Vector3>>();
 
@@ -120,7 +123,7 @@ public class SceneBuilder : MonoBehaviour
             //place organ
             PlaceOrgan(Organs[i], nodeArray.nodes[i]);
             SetOrganOpacity(Organs[i], nodeArray.nodes[i].opacity);
-            //AddPullout(Organs[i]);
+            AddPullout(Organs[i]);
         }
 
     }
@@ -215,6 +218,8 @@ public class SceneBuilder : MonoBehaviour
 
     void CreateAndPlaceTissueBlocks()
     {
+        var remoteReference = GameObject.Find("Reference").GetComponent<ButtonReference>();
+        
         for (int i = 1; i < nodeArray.nodes.Length; i++)
         {
             if (nodeArray.nodes[i].scenegraph != null) continue;
@@ -228,6 +233,7 @@ public class SceneBuilder : MonoBehaviour
             SetTissueBlockData(block, nodeArray.nodes[i]);
             SetCellTypeData(block);
             TissueBlocks.Add(block);
+            remoteReference.TissueBlocks.Add(block);
         }
     }
 

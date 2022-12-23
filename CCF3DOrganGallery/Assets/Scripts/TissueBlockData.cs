@@ -21,4 +21,7 @@ public class TissueBlockData : MonoBehaviour
 
     [field: SerializeField]
     public string DonorSex;
+    
+    [field: SerializeField]
+    public Vector3 DefaultPosition { get; set; }
 }

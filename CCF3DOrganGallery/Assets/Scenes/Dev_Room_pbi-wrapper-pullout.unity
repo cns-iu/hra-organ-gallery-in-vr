@@ -2283,6 +2283,7 @@ GameObject:
   - component: {fileID: 600342371}
   - component: {fileID: 600342370}
   - component: {fileID: 600342372}
+  - component: {fileID: 600342373}
   m_Layer: 0
   m_Name: SceneBuilder
   m_TagString: Untagged
@@ -2343,11 +2344,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c8280bff5383674499d13370ed238e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  organsToShow: []
+  IdsOrgansToShow: []
+  sceneBuilder: {fileID: 0}
   Url: 
   baseUrl: https://ccf-api.hubmapconsortium.org/v1/scene
   uberonIds: []
   sex: 
+--- !u!114 &600342373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600342369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd3af0d2911d3ac4398a9b6c926983bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  organState: 1
+  stateChangeButtonPressed: {fileID: 1254704553984792980, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1 &642888741
 GameObject:
   m_ObjectHideFlags: 0
@@ -3015,7 +3031,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   filePath: 
   wrapper: {fileID: 0}
-  floatBackInputActionReference: {fileID: 8846990264559003861, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!4 &967626588
 Transform:
   m_ObjectHideFlags: 0
@@ -4784,9 +4799,11 @@ MonoBehaviour:
   <CurrentStepTwo>k__BackingField: 0
   maxDistanceOne: 1
   maxDistanceTwo: 1
-  filename: Body_Systems_List
+  bodySystemsData: 
   canExtrudeOne: 0
   canExtrudeTwo: 0
+  extrusionSpeed: 0.2
+  sceneBuilder: {fileID: 0}
 --- !u!114 &1921429948
 MonoBehaviour:
   m_ObjectHideFlags: 0

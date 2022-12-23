@@ -31,16 +31,15 @@ public class FloatBackTissueBlocks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SceneBuilder.OnSceneBuilt += InitializeTissueBlockDefaultValues;
+        // SceneBuilder.OnSceneBuilt += InitializeTissueBlockDefaultValues;
         // InitializeTissueBlockDefaultValues();
-        _pullOut = GameObject.Find("RightHand Controller").GetComponent<PullOutStateChanger>();
-        wristPocketManager = GameObject.Find("WristPocket").GetComponent<WristPocketManager>();
+        _pullOut = GameObject.Find("SceneBuilder").GetComponent<PullOutStateChanger>();
+        // wristPocketManager = GameObject.Find("WristPocket").GetComponent<WristPocketManager>();
     }
     
     // Initializing default Position, Rotation, and Scale
-    public void InitializeTissueBlockDefaultValues()
+    public void InitializeTissueBlockDefaultValues(GameObject tb)
     {
-        var tb = gameObject;
         _defaultPosition = tb.transform.position;
         // _defaultLocalPosition = tb.transform.localPosition;
         _defaultRotation = tb.transform.rotation;
@@ -54,12 +53,12 @@ public class FloatBackTissueBlocks : MonoBehaviour
         // If primary button ('A' or 'X') on either controller is pressed, return tissue-block that has been displaced smoothly back to original position 
         if (buttonPressed.action.triggered && !_pullOut.organState)
         {
-            if (!wristPocketManager.wristPocket.Contains(gameObject))
-            {
-                StartCoroutine(FloatBack());
-                // Debug.Log("Float back tissue-blocks triggered");
-            }
-
+            StartCoroutine(FloatBack());
+            // if (!wristPocketManager.wristPocket.Contains(gameObject))
+            // {
+            //     StartCoroutine(FloatBack());
+            //     // Debug.Log("Float back tissue-blocks triggered");
+            // }
         }
     }
 
