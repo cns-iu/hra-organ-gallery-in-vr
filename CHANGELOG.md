@@ -1,6 +1,15 @@
 # Changelog
 
-Changelog for the CCF Organ VR Gallery
+Changelog for the HRA Organ Gallery
+
+## 0.6 - 2022-01-13
+
+### Added in 0.6
+
+* Complete redesign of stages (now all in one scene)
+* App now pulls organs and tissue blocks dynamically from [CCF API](https://ccf-api.hubmapconsortium.org)
+* Added basic extrusion system to lay out organs in 2D by body system and individually with input from controller
+* Basic dev UI display showing number of tissue blocks, matching cell type counts founds on GitHub, and tissue blocks with such cell type counts
 
 ## 0.5 - 2022-01-05
 
