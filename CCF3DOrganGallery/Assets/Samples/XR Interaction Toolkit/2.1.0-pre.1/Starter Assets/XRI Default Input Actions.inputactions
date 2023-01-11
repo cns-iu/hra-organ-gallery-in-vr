@@ -1586,6 +1586,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Dev",
+            "id": "c4e318fa-fdb6-403e-ad3d-b763923424c7",
+            "actions": [
+                {
+                    "name": "CallAPI",
+                    "type": "Button",
+                    "id": "082bf71d-7b35-49dd-80ec-c931e2989816",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "641d6f7c-42f9-456d-b4f7-ebbd20169e42",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CallAPI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
