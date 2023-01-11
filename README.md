@@ -1,6 +1,6 @@
 # HRA Organ Gallery
 
-![A user in action in the HRA Organ Gallery, looking at the whole body, many organs, and the number of cells in a kidney, as well as exploding a heart.](img/thumbnail.png)
+![A user in action in the HRA Organ Gallery, looking at the whole body, many organs, and the number of cells in a kidney, as well as exploding a heart.](img/short.png)
 
 Welcome to this repo! The HRA Organ Gallery lets the user explore 55 human organs, journeying from the whole body, to the organ, to the tissue block, presented in real-world size and 3D. The organ models were developed to map trillions of cells for the [Human BioMolecular Atlas Program (HuBMAP)](https://commonfund.nih.gov/hubmap). 
 
