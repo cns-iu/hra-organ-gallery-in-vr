@@ -36,7 +36,7 @@ public class PullOutStateChanger : MonoBehaviour
         _tissueBlocks = GameObject.FindGameObjectsWithTag("TissueBlock").ToList();
         wristPocketManager = GameObject.Find("WristPocket").GetComponent<WristPocketManager>();
         // SceneBuilder.OnSceneBuilt += InitializeOrganDefaultValues;
-        InitializeOrganDefaultValues();
+        InitializeOrganDefaultValues(); // stores organ defaults on scene load
     }
     
     // Update is called once per frame

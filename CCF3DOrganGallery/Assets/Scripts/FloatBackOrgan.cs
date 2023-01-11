@@ -28,13 +28,17 @@ public class FloatBackOrgan : MonoBehaviour
     // Reference for PullOutStateChanger
     private PullOutStateChanger _pullOut;
     
+    // Reference to SceneBuilder.cs script
+    private SceneBuilder sceneBuilder;
+    
     // Flag to check if Organ Position values have already been initialized;
     private bool _flag; 
     
     // Start is called before the first frame update
     void Start()
     {
-        _pullOut = GameObject.Find("RightHand Controller").GetComponent<PullOutStateChanger>();
+        sceneBuilder = GameObject.Find("SceneBuilder").GetComponent<SceneBuilder>();
+       // _pullOut = GameObject.Find("RightHand Controller").GetComponent<PullOutStateChanger>();
     }
 
     // Initializing default Position, Rotation, and Scale
@@ -49,7 +53,7 @@ public class FloatBackOrgan : MonoBehaviour
     private void Update()
     {
         // If primary button ('A' or 'X') on either controller is pressed, return organ that has been displaced smoothly back to original position 
-        if (buttonPressed.action.triggered && _pullOut.organState)
+        if (buttonPressed.action.triggered) //  && _pullOut.organState //for later, when we incorporate tissueblock pullout as well
         {
             FloatBack();
         }
@@ -58,6 +62,7 @@ public class FloatBackOrgan : MonoBehaviour
     // Calls linear interpolation for restoring organ to default position and rotation
     private void FloatBack()
     {
+        _defaultPosition = sceneBuilder.GetDefaultValuesForOrgan(gameObject)[0];
         StartCoroutine(SmoothLerp(gameObject, _defaultPosition, _duration));
         StartCoroutine(RotateObject(gameObject, _defaultRotation, _duration));
     }

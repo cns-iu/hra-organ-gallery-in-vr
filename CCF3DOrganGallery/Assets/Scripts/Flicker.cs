@@ -14,7 +14,7 @@ public class Flicker : MonoBehaviour
         {
             image.color = new Color(image.color.r, image.color.g, image.color.b, 0f);
             Destroy(GetComponentInChildren<TMP_Text>().gameObject);
-            Destroy(this);
+            Destroy(this.gameObject);
         };
     }
 

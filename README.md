@@ -1,14 +1,14 @@
-# CCF Organ VR Gallery
+# HRA Organ Gallery
 
-![A user in action in the CCF Organ VR Gallery, looking at the whole body, many organs, and the number of cells in a kidney, as well as exploding a heart.](img/thumbnail.png)
+![A user in action in the HRA Organ Gallery, looking at the whole body, many organs, and the number of cells in a kidney, as well as exploding a heart.](img/thumbnail.png)
 
-Welcome to this repo! The CCF Organ VR Gallery lets the user explore 21 human organs, journeying from the Whole Body, to the Organ, to the Cell stage and back, presented in real-world size and 3D. The user discovers hidden regions by exploding and collapsing organs into their individual anatomical structures. We show cell type populations for a kidney using a data-driven dot density visualization. The organ models were developed to map trillions of cells for the Human BioMolecular Atlas Program (HuBMAP). 
+Welcome to this repo! The HRA Organ Gallery lets the user explore 55 human organs, journeying from the whole body, to the organ, to the tissue block, presented in real-world size and 3D. The organ models were developed to map trillions of cells for the [Human BioMolecular Atlas Program (HuBMAP)](https://commonfund.nih.gov/hubmap). 
 
-For more information about the Common Coordinate Framework (CCF), see the HuBMAP CCF Portal at [https://hubmapconsortium.github.io/ccf/](https://hubmapconsortium.github.io/ccf/).
+For more information about the Common Coordinate Framework (CCF) used to map tissue blocks from 100s of donors to single reference organs, see the HuBMAP CCF Portal at [https://hubmapconsortium.github.io/ccf/](https://hubmapconsortium.github.io/ccf/).
 
 ## Video demo
 
-We present the CCF Organ VR Gallery in this demo: [https://www.youtube.com/watch?v=S9pBOlSfsnc](https://www.youtube.com/watch?v=S9pBOlSfsnc)
+We present the HRA Organ Gallery v0.5 in this demo: [https://www.youtube.com/watch?v=S9pBOlSfsnc](https://www.youtube.com/watch?v=S9pBOlSfsnc)
 
 ## Changelog
 
@@ -16,7 +16,7 @@ See the [Changelog](CHANGELOG.md) for the latest developments.
 
 ## Credits
 
-This software is developed by [Andreas Bueckle](https://www.andreas-bueckle.com) at the [Cyberinfrastructure for Network Science Center at Indiana University](http://cns.iu.edu/). 
+This software is developed by [Andreas Bueckle](https://www.andreas-bueckle.com) and the Red Pill Blue Pill team at the [Cyberinfrastructure for Network Science Center at Indiana University](http://cns.iu.edu/). 
 
 ## Become a test user
 
@@ -36,7 +36,7 @@ To access all Visible Human Massive Open Online (VHMOOC) materials, register for
 
 ## References
 
-K. Börner et al. "Tissue Registration and Exploration User Interfaces in support of a Human Reference Atlas." [https://www.biorxiv.org/content/10.1101/2021.12.30.474265](https://www.biorxiv.org/content/10.1101/2021.12.30.474265) (accessed Jan 7, 2022).
+K. Börner, A. Bueckle, et al., “Tissue Registration and Exploration User Interfaces in support of a Human Reference Atlas,” Nature Communications Biology, 2022. doi: 10.1038/s42003-022-03644-x
 
 K. Börner et al., "Anatomical structures, cell types and biomarkers of the Human Reference Atlas," Nature Cell Biology, vol. 23, no. 11, pp. 1117-1128, 2021/11/01 2021, doi: 10.1038/s41556-021-00788-6.
 
@@ -44,7 +44,7 @@ M. P. Snyder et al., "The human body at cellular resolution: the NIH Human Biomo
 
 ## Other software credits
 
-Cyberinfrastructure for Network Science Center. "Registration User Interface." [https://hubmapconsortium.github.io/ccf-ui/rui/](https://hubmapconsortium.github.io/ccf-ui/rui/) (accessed Jan 7, 2022).
+Cyberinfrastructure for Network Science Center. "Registration User Interface." [https://hubmapconsortium.github.io/ccf-ui/rui/](https://hubmapconsortium.github.io/ccf-ui/rui/) (accessed Jan 11, 2023).
 
-Cyberinfrastructure for Network Science Center. "Exploration User Interface." [https://portal.hubmapconsortium.org/ccf-eui](https://portal.hubmapconsortium.org/ccf-eui)  (accessed Jan 7, 2022).
+Cyberinfrastructure for Network Science Center. "Exploration User Interface." [https://portal.hubmapconsortium.org/ccf-eui](https://portal.hubmapconsortium.org/ccf-eui)  (accessed Jan 11, 2023).
 

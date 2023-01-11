@@ -1,15 +1,18 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 using UnityEngine.Networking;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class SceneBuilder : MonoBehaviour
 {
     public delegate void SceneBuilt();
     public static event SceneBuilt OnSceneBuilt;
+
+    public static event Action OnOrgansLoaded;
+
     public List<GameObject> TissueBlocks;
     public List<GameObject> Organs;
     public List<string> MaleEntityIds;
@@ -32,6 +35,11 @@ public class SceneBuilder : MonoBehaviour
     private int modelsLoaded;
     private int numberOfHubmapIds;
 
+    // Reference to button that instructs tissue-blocks / organs to float back to original position
+    public InputActionReference floatBackInputActionReference;
+
+    // Dict to store default position, rotation adn scale values of organs
+    private readonly Dictionary<GameObject, List<Vector3>> _organDefaults = new Dictionary<GameObject, List<Vector3>>();
 
     //driver code 
     private async void Start()
@@ -40,8 +48,23 @@ public class SceneBuilder : MonoBehaviour
         await GetNodes(sceneConfiguration.BuildUrl());
         await GetOrgans();
 
+        OnOrgansLoaded?.Invoke();
+
         CreateAndPlaceTissueBlocks();
         ParentTissueBlocksToOrgans(TissueBlocks, Organs);
+
+        for (int i = 0; i < Organs.Count; i++)
+        {
+            OrganData data = Organs[i].GetComponent<OrganData>();
+            Organs[i].gameObject.SetActive(sceneConfiguration.IdsOrgansToShow.Contains(data.RepresentationOf));
+        }
+    }
+
+    List<GameObject> GetOrgansToShow(List<string> list)
+    {
+        List<GameObject> result = new List<GameObject>();
+
+        return result;
     }
 
     private void OnEnable()
@@ -60,7 +83,6 @@ public class SceneBuilder : MonoBehaviour
     {
         List<Task<GameObject>> tasks = new List<Task<GameObject>>();
         List<GameObject> loaders = new List<GameObject>();
-        Dictionary<GameObject, Node> dict = new Dictionary<GameObject, Node>();
 
         foreach (var node in nodeArray.nodes)
         {
@@ -98,9 +120,15 @@ public class SceneBuilder : MonoBehaviour
             //place organ
             PlaceOrgan(Organs[i], nodeArray.nodes[i]);
             SetOrganOpacity(Organs[i], nodeArray.nodes[i].opacity);
-            SetOrganCollider(Organs[i]);
+            //AddPullout(Organs[i]);
         }
 
+    }
+
+    void AddPullout(GameObject organWrapper)
+    {
+        var organChild = organWrapper.transform.GetChild(0);
+        organChild.gameObject.AddComponent<OnExtrudeActivateFloat>();
     }
 
     private async Task GetAllHubmapIds(List<GameObject> tissueBlocks)
@@ -162,7 +190,7 @@ public class SceneBuilder : MonoBehaviour
         );
 
     }
-    static public void SetOrganOpacity(GameObject organWrapper, float alpha)
+    public static void SetOrganOpacity(GameObject organWrapper, float alpha)
     {
         List<Transform> list = new List<Transform>();
         list = LeavesFinder.FindLeaves(organWrapper.transform.GetChild(0), list);
@@ -183,12 +211,6 @@ public class SceneBuilder : MonoBehaviour
         }
 
 
-    }
-
-    void SetOrganCollider(GameObject organWrapper)
-    {
-        organWrapper.AddComponent<SphereCollider>().isTrigger = true;
-        organWrapper.AddComponent<AdjustOrganOpacityOnUserApproach>().SetCollider();
     }
 
     void CreateAndPlaceTissueBlocks()
@@ -273,7 +295,7 @@ public class SceneBuilder : MonoBehaviour
                 {
                     if (organData.RepresentationOf == annotation && organData.DonorSex == tissueData.DonorSex)
                     {
-                        TissueBlocks[i].transform.parent = Organs[j].transform;
+                        TissueBlocks[i].transform.parent = Organs[j].transform.GetChild(0).transform;
                         break;
                     }
                 }
@@ -359,8 +381,21 @@ public class SceneBuilder : MonoBehaviour
         }
     }
 
+    public void InitializeOrganDefaultValues(GameObject o) // o = organ
+    {
+        var values = new List<Vector3>() { o.transform.position, o.transform.rotation.eulerAngles, o.transform.localScale };
+        if (!_organDefaults.ContainsKey(o))
+        {
+            _organDefaults.Add(o, values);
+        }
+        // Calls UpdateOrganDefaultValues() function from FloatBackOrgan script attached to each organ
+        o.GetComponent<FloatBackOrgan>().UpdateOrganDefaultValues(values);
+    }
 
-
+    public List<Vector3> GetDefaultValuesForOrgan(GameObject organ)
+    {
+        return _organDefaults[organ];
+    }
 }
 
 public class HubmapIdArray

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2139790502138518094}
   m_Layer: 0
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: TeleportationAnchor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 4769653158887649546}
   m_Layer: 0
   m_Name: Teleportation Anchor
-  m_TagString: Untagged
+  m_TagString: TeleportationAnchor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,7 +148,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3106860447634294176}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: -0.95, z: 0.5}
   m_LocalScale: {x: 0.063, y: 0.063, z: 0.063}
   m_ConstrainProportionsScale: 1
@@ -157,7 +157,7 @@ Transform:
   - {fileID: 8682131088469448876}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &4272689800344076144
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -326,7 +326,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_TeleportationProvider: {fileID: 0}
-  m_MatchOrientation: 0
+  m_MatchOrientation: 2
   m_TeleportTrigger: 0
   m_Teleporting:
     m_PersistentCalls:
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 8025043957053404017}
   m_Layer: 0
   m_Name: Backgrouund
-  m_TagString: Untagged
+  m_TagString: TeleportationAnchor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 3059018139474603439}
   m_Layer: 0
   m_Name: Anchor
-  m_TagString: Untagged
+  m_TagString: TeleportationAnchor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -459,14 +459,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7290243505932945837}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2852823861892468571}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &8431999659863596233
 GameObject:
   m_ObjectHideFlags: 0
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 7415484243283572801}
   m_Layer: 0
   m_Name: HoverIndicator
-  m_TagString: Untagged
+  m_TagString: TeleportationAnchor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 8337516298645425984}
   m_Layer: 0
   m_Name: Label
-  m_TagString: Untagged
+  m_TagString: TeleportationAnchor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
