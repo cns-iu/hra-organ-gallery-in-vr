@@ -37,8 +37,6 @@ public class CCFAPISPARQLQueryTester : MonoBehaviour
             if (www.result != UnityWebRequest.Result.Success)
                 Debug.LogError($"Failed: {www.error}");
 
-            var result = www.downloadHandler.text;
-
             var text = www.downloadHandler.text;
 
             response = JsonUtility.FromJson<SPARQLAPIResponse>(
@@ -47,7 +45,6 @@ public class CCFAPISPARQLQueryTester : MonoBehaviour
                 + "}"
                 );
             return response;
-            //Debug.Log("Response: " + result);
 
         }
         catch (Exception ex)
