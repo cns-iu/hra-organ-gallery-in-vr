@@ -1,14 +1,18 @@
 # HRA Organ Gallery
 
-![A user in action in the HRA Organ Gallery, looking at the whole body, many organs, and the number of cells in a kidney, as well as exploding a heart.](img/short_LETTERS.png)
+![Left: A user interacts with the organs and tissue blocks of the HRA on a standard 2D interface. Right: A user stands in front of the life-sized VH Female.](img/short_LETTERS.png)
 
-Welcome to this repo! The HRA Organ Gallery lets the user explore 55 human organs, journeying from the whole body, to the organ, to the tissue block, presented in real-world size and 3D. The organ models were developed to map trillions of cells for the [Human BioMolecular Atlas Program (HuBMAP)](https://commonfund.nih.gov/hubmap). 
+Welcome to this repo! The HUman Reference Atlas (HRA, [https://humanatlas.io/](https://humanatlas.io)) Organ Gallery lets the user explore 55 human organs and 100s of tissue blocks (as of the HRA v1.3), presented in real-world size and 3D. The organ models were developed to map trillions of cells for the [Human BioMolecular Atlas Program (HuBMAP)](https://commonfund.nih.gov/hubmap). 
+
+## Become a test user
+
+If you would like to become a **test user**, please email Andreas Bueckle at [abueckle@iu.edu](mailto:abueckle@iu.edu). Information for testers can be found [here](INFORMATION_FOR_TESTERS.MD).
 
 For more information about the Common Coordinate Framework (CCF) used to map tissue blocks from 100s of donors to single reference organs, see the HuBMAP CCF Portal at [https://hubmapconsortium.github.io/ccf/](https://hubmapconsortium.github.io/ccf/).
 
 ## Video demo
 
-We present the HRA Organ Gallery v0.5 in this demo: [https://www.youtube.com/watch?v=S9pBOlSfsnc](https://www.youtube.com/watch?v=S9pBOlSfsnc)
+We present the HRA Organ Gallery v0.6.0 in this demo: [https://www.youtube.com/watch?v=V3rmLTANDC8](https://www.youtube.com/watch?v=V3rmLTANDC8)
 
 ## Changelog
 
@@ -18,9 +22,7 @@ See the [Changelog](CHANGELOG.md) for the latest developments.
 
 This software is developed by [Andreas Bueckle](https://www.andreas-bueckle.com) and the Red Pill Blue Pill team at the [Cyberinfrastructure for Network Science Center at Indiana University](http://cns.iu.edu/). 
 
-## Become a test user
 
-If you would like to become a **test user**, please email Andreas Bueckle at [abueckle@iu.edu](mailto:abueckle@iu.edu).
 
 ## Data 
 
