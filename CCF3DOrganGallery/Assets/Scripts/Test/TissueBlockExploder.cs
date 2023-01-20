@@ -12,6 +12,7 @@ public class TissueBlockExploder : MonoBehaviour
     [Header("Explode tissue blocks")]
     [SerializeField] private InputActionReference _explodeTissueBlocks;
     [SerializeField] private List<GameObject> _explodeTissueBlocksList = new List<GameObject>();
+    public Vector3 Centroid { get { return _centroid; } }
     [SerializeField] private Vector3 _centroid;
     [SerializeField] private List<GameObject> _tissueBlocks = new List<GameObject>();
     private float _min = 0f;
@@ -38,7 +39,7 @@ public class TissueBlockExploder : MonoBehaviour
         for (int i = 0; i < _explodeTissueBlocksList.Count; i++)
         {
             _explodeTissueBlocksList[i].GetComponent<TissueBlockExplodeManager>().ExplodeValue += ctx.action.ReadValue<Vector2>().y * _rate * Time.deltaTime;
-            _explodeTissueBlocksList[i].GetComponent<TissueBlockExplodeManager>().ExplodeValue = _explodeTissueBlocksList[i].GetComponent<TissueBlockExplodeManager>().ExplodeValue.ClampFloat(_min, _max);    
+            _explodeTissueBlocksList[i].GetComponent<TissueBlockExplodeManager>().ExplodeValue = _explodeTissueBlocksList[i].GetComponent<TissueBlockExplodeManager>().ExplodeValue.ClampFloat(_min, _max);
 
             Vector3 destination = -Vector3.Normalize(_centroid - _explodeTissueBlocksList[i].GetComponent<TissueBlockExplodeManager>().DefaultPosition);
             _explodeTissueBlocksList[i].transform.position = Vector3.Lerp(
