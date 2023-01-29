@@ -770,6 +770,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "AdjustSphereSize",
+                    "type": "Value",
+                    "id": "920aaa4d-e8c9-4114-bace-92ff8fa5fa5e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ExplodeTissueBlocks",
+                    "type": "Value",
+                    "id": "74828fc7-eafb-4f2e-8c75-39f115543e0f",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -792,6 +810,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "ExtrudeWithJoystickTwo",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a0225dbf-364d-475a-921c-8d200d87a03a",
+                    "path": "<XRController>{RightHand}/primary2DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AdjustSphereSize",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ede102b4-11ec-4449-a5ef-7addcb701b5a",
+                    "path": "<XRController>{LeftHand}/primary2DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExplodeTissueBlocks",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
