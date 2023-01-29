@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: ae570a16b36439b4ead4419615cdc3f5
+  - enabled: 1
+    path: Assets/Scenes/DevRoomTissueBlocks.unity
+    guid: 3125bfe463fc70f4ebed1a35a6a4034e
+  - enabled: 1
+    path: Assets/Scenes/DevRoomAndi.unity
+    guid: 6e53e29d098353348af89f008bc21954
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 196b81ea06feefa46aa9e205409ca3b5, type: 2}
     com.unity.addressableassets: {fileID: 11400000, guid: 42c1ecadc99e3724ebbf55b70d84a06e, type: 2}
