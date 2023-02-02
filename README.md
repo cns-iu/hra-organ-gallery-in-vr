@@ -22,6 +22,9 @@ See the [Changelog](CHANGELOG.md) for the latest developments.
 
 This software is developed by [Andreas Bueckle](https://www.andreas-bueckle.com) and the Red Pill Blue Pill team at the [Cyberinfrastructure for Network Science Center at Indiana University](http://cns.iu.edu/). 
 
+The dragon model in the scene was provided by:
+"Low Poly Dragon" [(https://skfb.ly/6XtXN)](https://skfb.ly/6XtXN) by louieoliva is licensed under Creative Commons Attribution [(http://creativecommons.org/licenses/by/4.0/)](http://creativecommons.org/licenses/by/4.0/).
+
 ## Data 
 
 K. Browne et al. "HuBMAP CCF 3D Reference Object Library." [https://hubmapconsortium.github.io/ccf/pages/ccf-3d-reference-library.html](https://hubmapconsortium.github.io/ccf/pages/ccf-3d-reference-library.html) (accessed Jan 7, 2022).
