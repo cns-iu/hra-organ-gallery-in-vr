@@ -18,7 +18,7 @@ public class TissueBlockSelectActions : MonoBehaviour
 
     public InputActionReference triggerPressed;
 
-    private bool _isSceneBuilt;
+    private bool _isSceneBuilt = true;
 
     private void OnEnable()
     {

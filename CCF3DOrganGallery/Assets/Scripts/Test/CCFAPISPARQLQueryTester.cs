@@ -6,6 +6,7 @@ using System;
 using UnityEngine.Networking;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.Events;
+using System.Text;
 
 public class CCFAPISPARQLQueryTester : MonoBehaviour
 {
@@ -31,7 +32,24 @@ public class CCFAPISPARQLQueryTester : MonoBehaviour
         response = await Get(url);
     }
 
-    public SPARQLAPIResponse response;
+    private SPARQLAPIResponse response;
+
+    public string Pairs
+    {
+        get
+        {
+            StringBuilder sb = new StringBuilder();
+            if (response != null)
+            {
+                foreach (var p in response.pairs)
+                {
+                    sb.Append(p + "\n");
+                }
+            }
+            Debug.Log(sb.ToString());
+            return sb.ToString();
+        }
+    }
 
     public async Task<SPARQLAPIResponse> Get(string url)
     {
@@ -75,6 +93,6 @@ public class CCFAPISPARQLQueryTester : MonoBehaviour
         public string cell_label;
         public string cell_iri;
     }
-    //priv method void that subscribes to event after controller emits even (when user clicks on TB) returns new IRI (uses request URL to retrieve)
+
 }
 
