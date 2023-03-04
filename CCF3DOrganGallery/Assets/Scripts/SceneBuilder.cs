@@ -314,7 +314,7 @@ public class SceneBuilder : MonoBehaviour
         }
 
 
-        tasks.Add(GetTissueBlocksWithCellTypes());
+        //tasks.Add(GetTissueBlocksWithCellTypes());
 
 
         await Task.WhenAll(tasks);

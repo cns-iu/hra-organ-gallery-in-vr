@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Threading.Tasks;
 using System;
 using UnityEngine.Networking;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class CCFAPISPARQLQueryTester : MonoBehaviour
 {
@@ -15,8 +16,9 @@ public class CCFAPISPARQLQueryTester : MonoBehaviour
     //documentation for SPARQL query through grlc: http://grlc.io/api/hubmapconsortium/ccf-grlc/ccf/#/default/get_cell_by_location
     //url with iri descending colon as query string: http://grlc.io/api-git/hubmapconsortium/ccf-grlc/subdir/ccf//cell_by_location?location=http://purl.obolibrary.org/obo/UBERON_0001158&endpoint=https%3A%2F%2Fccf-api.hubmapconsortium.org%2Fv1%2Fsparql?format=application%2Fjson
 
-    async private void Start()
-    {
+    public async void CalAPI(SelectEnterEventArgs args) {
+
+        string iri = args.interactableObject.transform.gameObject.GetComponent<TissueBlockData>().CcfAnnotations[0];
         string url = baseUrl + iri + endpoint + format;
         Debug.Log(url);
         response = await Get(url);
@@ -66,5 +68,6 @@ public class CCFAPISPARQLQueryTester : MonoBehaviour
         public string cell_label;
         public string cell_iri;
     }
+    //priv method void that subscribes to event after controller emits even (when user clicks on TB) returns new IRI (uses request URL to retrieve)
 }
 
