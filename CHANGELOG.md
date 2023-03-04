@@ -2,6 +2,13 @@
 
 Changelog for the HRA Organ Gallery
 
+## 0.6.1 - 2022-03-04
+
+### Added in 0.6.1
+
+* Removed code at scene load that checks for cell type counts on GitHub (speeds up scene load significantly)
+* Grouped dragon model in skin F left hand to Environment game object
+
 ## 0.6 - 2022-01-13
 
 ### Added in 0.6
