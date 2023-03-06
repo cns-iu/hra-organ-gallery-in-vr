@@ -3010,7 +3010,6 @@ GameObject:
   - component: {fileID: 420321810}
   - component: {fileID: 420321809}
   - component: {fileID: 420321808}
-  - component: {fileID: 420321807}
   - component: {fileID: 420321806}
   m_Layer: 0
   m_Name: Left Hand
@@ -3228,19 +3227,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e79a3e751cf8afa4ea324295ee5770ac, type: 2}
   - {fileID: 11400000, guid: 022769daf9cbb404a9cdd4f50fef0d14, type: 2}
   - {fileID: 11400000, guid: 2c8f42965c843cf4d89c5f664283b87d, type: 2}
---- !u!114 &420321807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420321803}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f455fe22bbbc654a83acf67738842c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cellTypeText: {fileID: 0}
 --- !u!114 &420321808
 MonoBehaviour:
   m_ObjectHideFlags: 0
