@@ -32,21 +32,20 @@ public class CCFAPISPARQLQueryTester : MonoBehaviour
         response = await Get(url);
     }
 
-    private SPARQLAPIResponse response;
+    private SPARQLAPIResponse response = new SPARQLAPIResponse();
 
     public string Pairs
     {
         get
         {
             StringBuilder sb = new StringBuilder();
-            if (response != null)
+            if (response.pairs.Length > 0)
             {
                 foreach (var p in response.pairs)
                 {
                     sb.Append(p + "\n");
                 }
             }
-            Debug.Log(sb.ToString());
             return sb.ToString();
         }
     }
@@ -84,7 +83,7 @@ public class CCFAPISPARQLQueryTester : MonoBehaviour
     [Serializable]
     public class SPARQLAPIResponse
     {
-        [SerializeField] public CellIriLabel[] pairs;
+        [SerializeField] public CellIriLabel[] pairs = new CellIriLabel[2];
     }
 
     [Serializable]

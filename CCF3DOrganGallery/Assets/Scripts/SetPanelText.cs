@@ -24,7 +24,7 @@ public class SetPanelText : MonoBehaviour
     private void Awake()
     {
         _tester = FindObjectOfType<CCFAPISPARQLQueryTester>();
-        _cellTypeText = GetComponent<TMP_Text>();
+
 
     }
 
