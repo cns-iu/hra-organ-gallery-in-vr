@@ -8,25 +8,7 @@ using Packages.Rider.Editor.UnitTesting;
 public class SetPanelText : MonoBehaviour
 {
     [SerializeField] private TMP_Text _cellTypeText;
-    [SerializeField] private CCFAPISPARQLQueryTester _tester;
-
-    private void OnEnable()
-    {
-        //TissueBlockSelectActions.OnHover += SetText;
-        //TissueBlockSelectActions.OnSelected += SetText;
-    }
-
-    private void OnDestroy()
-    {
-        //TissueBlockSelectActions.OnHover -= SetText;
-        //TissueBlockSelectActions.OnSelected -= SetText;
-    }
-    private void Awake()
-    {
-        _tester = FindObjectOfType<CCFAPISPARQLQueryTester>();
-
-
-    }
+    [SerializeField] private CCFAPISPARQLQuery _tester;
 
     private void Update()
     {
