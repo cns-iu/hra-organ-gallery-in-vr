@@ -7,78 +7,96 @@ using UnityEngine.Networking;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.Events;
 using System.Text;
+using System.Linq;
+using static Mapping;
+using Unity.VisualScripting;
+using static CCFAPISPARQLQuery;
 
 public class CCFAPISPARQLQuery : MonoBehaviour
 {
-    [SerializeField] private string baseUrl;
-    [SerializeField] private string iri;
-    [SerializeField] private string endpoint;
-    [SerializeField] private string format;
-    [SerializeField] private XRRayInteractor interactor;
+    public static CCFAPISPARQLQuery Instance;
+    public int ExpectedCellTypes
+    {
+        get { return _queryResult.triples.Count; }
+    }
+
+
+    public string CellsInSelected
+    {
+        get
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var cell in _queryResult.triples)
+            {
+                sb.Append(cell.cell_label + "\n");
+            }
+
+            sb.Replace("\"\"", ",");
+            sb.Replace("\"", "");
+
+            return sb.ToString();
+        }
+        private set { }
+    }
+    
+    [Header("Data")]
+    [SerializeField] private QueryResponse _queryResult = new QueryResponse();
+
+    [Header("Request")]
+    [SerializeField] private string _url = "http://grlc.io/api-git/hubmapconsortium/ccf-grlc/subdir/ccf//cells_located_in_as?endpoint=https%3A%2F%2Fccf-api.hubmapconsortium.org%2Fv1%2Fsparql?format=application/json";
+    [SerializeField] private SPARQLAPIResponse _apiResponse = new SPARQLAPIResponse();
+
+    [Header("Scene")]
+    [SerializeField] private XRRayInteractor _interactor;
     private UnityAction<SelectEnterEventArgs> _selectAction;
 
     //documentation for SPARQL query through grlc: http://grlc.io/api/hubmapconsortium/ccf-grlc/ccf/#/default/get_cell_by_location
     //url with iri descending colon as query string: http://grlc.io/api-git/hubmapconsortium/ccf-grlc/subdir/ccf//cell_by_location?location=http://purl.obolibrary.org/obo/UBERON_0001158&endpoint=https%3A%2F%2Fccf-api.hubmapconsortium.org%2Fv1%2Fsparql?format=application%2Fjson
 
-
-    public async void CallAPI(SelectEnterEventArgs args)
+    private void OnEnable()
     {
-        // assigns string iri to link from CCFAnnotations element 0
-        // adds everything to variable URL and outputs into untiy console
-        // outputs into unity console 
-        // makes api call with Get(url)
-        string[] iris = args.interactableObject.transform.gameObject.GetComponent<TissueBlockData>().CcfAnnotations;
-        cellLabelSet.Clear();
+        _selectAction += CheckForCellTypes;
+
+        _interactor.selectEntered.AddListener(
+            _selectAction
+            );
+    }
+
+    public void CheckForCellTypes(SelectEnterEventArgs args)
+    {
+        GameObject interactable = args.interactableObject.transform.gameObject;
+
+        if (interactable.GetComponent<TissueBlockData>() == null) return;
+        string[] iris = interactable.GetComponent<TissueBlockData>().CcfAnnotations;
+        _queryResult.triples.Clear();
         for (int i = 0; i < iris.Length; i++)
         {
-            string url = baseUrl + iris[i] + endpoint + format;
-            Debug.Log($"now calling: {url}");
-            response = await Get(url);
-            Debug.Log($"received from {url}: {response.pairs[0].cell_label}");
-            cellLabelSet.Add(response.pairs[0].cell_label);
-        }
-
-        Debug.Log($"ran all {iris.Length} API queries");
-        
-    }
-/* TESTING HASHSET BELOW
-    void Awake() {
-        HashSet<string> test = new HashSet<string>();
-        test.Add("label1");
-        test.Add("label1");
-        foreach (var s in test) {
-            Debug.Log(s);
-        }
-    }*/
-    
-    [SerializeField] private SPARQLAPIResponse response = new SPARQLAPIResponse();
-    HashSet<string> cellLabelSet = new HashSet<string>();
-    public string Pairs //pairs method to reference when SetPaneltext is called.
-    {
-        get
-        {   
-            //loop through hashset below and return string of labels
-
-            StringBuilder sb = new StringBuilder();
-
-            foreach (var label in cellLabelSet)
-            {
-                sb.Append(label);
-            }
-
-            sb.Replace("\"\"", ",");
-            sb.Replace("\"", "");
-            int count = 0;
-
-            return sb.ToString();
+            List<Cell> result = _apiResponse.triples.Where(n => n.as_iri == iris[i]).ToList();
+            _queryResult.triples.AddRange(result);
         }
     }
-/*
-    public void clearSet(SelectExitEventargs args)
+
+
+    private async void Awake()
     {
-        //use this method to set cellLabelSet
-        args.interactableObject.
-    }*/
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+
+        _interactor = GetComponent<XRRayInteractor>();
+        await GetAllCellTypes();
+    }
+
+    public async Task GetAllCellTypes()
+    {
+        _apiResponse = await Get(_url);
+    }
 
     public async Task<SPARQLAPIResponse> Get(string url)
     {
@@ -90,24 +108,22 @@ public class CCFAPISPARQLQuery : MonoBehaviour
             while (!operation.isDone)
             {
                 float progress = Mathf.Clamp01(operation.progress / .9f);
-                //Debug.Log(operation.progress);
                 await Task.Yield();
             }
 
 
             if (www.result != UnityWebRequest.Result.Success)
-                Debug.LogError($"Failed: {www.error}");
+                Debug.LogError($"Failed: {www.error} for {www.url}");
 
             var text = www.downloadHandler.text;
 
-            response = JsonUtility.FromJson<SPARQLAPIResponse>(
-                "{ \"pairs\":" +
+            _apiResponse = JsonUtility.FromJson<SPARQLAPIResponse>(
+                "{ \"triples\":" +
                 text
                 + "}"
                 );
 
-            return response;
-
+            return _apiResponse;
         }
         catch (Exception ex)
         {
@@ -117,16 +133,23 @@ public class CCFAPISPARQLQuery : MonoBehaviour
     }
 
     [Serializable]
-    public class SPARQLAPIResponse
+    public class QueryResponse
     {
-        [SerializeField] public CellIriLabel[] pairs = new CellIriLabel[2];
+        [SerializeField] public List<Cell> triples = new List<Cell>();
     }
 
     [Serializable]
-    public class CellIriLabel
+    public class SPARQLAPIResponse
     {
-        public string cell_label;
+        [SerializeField] public Cell[] triples = new Cell[0];
+    }
+
+    [Serializable]
+    public class Cell
+    {
+        public string as_iri;
         public string cell_iri;
+        public string cell_label;
     }
 
 }

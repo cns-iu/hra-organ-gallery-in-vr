@@ -226,7 +226,7 @@ public class SceneBuilder : MonoBehaviour
        );
             block.transform.localScale = reflected.lossyScale * 2f;
             SetTissueBlockData(block, nodeArray.nodes[i]);
-            SetCellTypeData(block);
+            //SetCellTypeData(block);
             TissueBlocks.Add(block);
         }
     }
@@ -303,6 +303,7 @@ public class SceneBuilder : MonoBehaviour
         }
 
         var tasks = new List<Task>();
+
         for (int i = 0; i < tissueBlocks.Count; i++)
         {
             var progressHubmapIds = new Progress<bool>((value) =>
@@ -316,6 +317,7 @@ public class SceneBuilder : MonoBehaviour
 
         //tasks.Add(GetTissueBlocksWithCellTypes());
 
+        //tasks.Add(CCFAPISPARQLQuery.Instance.GetAllCellTypes());
 
         await Task.WhenAll(tasks);
 

@@ -8,11 +8,13 @@ using Packages.Rider.Editor.UnitTesting;
 public class SetPanelText : MonoBehaviour
 {
     [SerializeField] private TMP_Text _cellTypeText;
-    [SerializeField] private CCFAPISPARQLQuery _tester;
+    private CCFAPISPARQLQuery _query;
 
     private void Update()
     {
-        _cellTypeText.text = $"For this tissue block, we receive: { _tester.Pairs}" ;
+        _cellTypeText.text = $"For this tissue block, we receive:\n" +
+            $"<b>{CCFAPISPARQLQuery.Instance.ExpectedCellTypes} expected cell types:\n</b>" +
+            $"{ CCFAPISPARQLQuery.Instance.CellsInSelected}" ;
     }
 /*    void SetText(RaycastHit hit)
     {
