@@ -8,6 +8,8 @@ using UnityEngine.InputSystem;
 
 public class SceneBuilder : MonoBehaviour
 {
+    public SceneBuilder Instance;
+
     public delegate void SceneBuilt();
     public static event SceneBuilt OnSceneBuilt;
 
@@ -57,6 +59,18 @@ public class SceneBuilder : MonoBehaviour
         {
             OrganData data = Organs[i].GetComponent<OrganData>();
             Organs[i].gameObject.SetActive(sceneConfiguration.IdsOrgansToShow.Contains(data.RepresentationOf));
+        }
+    }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
         }
     }
 
@@ -317,7 +331,7 @@ public class SceneBuilder : MonoBehaviour
 
         //tasks.Add(GetTissueBlocksWithCellTypes());
 
-        //tasks.Add(CCFAPISPARQLQuery.Instance.GetAllCellTypes());
+        tasks.Add(CCFAPISPARQLQuery.Instance.GetAllCellTypes());
 
         await Task.WhenAll(tasks);
 
