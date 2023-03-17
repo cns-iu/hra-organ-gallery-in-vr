@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Unity.VisualScripting;
-using Packages.Rider.Editor.UnitTesting;
 
 public class SetPanelText : MonoBehaviour
 {

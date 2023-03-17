@@ -2,6 +2,13 @@
 
 Changelog for the HRA Organ Gallery
 
+## 0.6.2 - 2022-03-17
+
+### Added in 0.6.2
+
+* Added code to get all cell types to be expected in selected tissue block (on click)
+* cleaned code in Main scene
+
 ## 0.6.1 - 2022-03-04
 
 ### Added in 0.6.1
