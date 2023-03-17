@@ -788,6 +788,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "SelectWithTrigger",
+                    "type": "Button",
+                    "id": "a9ea07a7-7a85-4aae-ae97-b66a6545b28e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -832,6 +841,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ExplodeTissueBlocks",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "86f5c77b-3373-4b66-8a5e-d2383a7c6b3c",
+                    "path": "<XRController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectWithTrigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

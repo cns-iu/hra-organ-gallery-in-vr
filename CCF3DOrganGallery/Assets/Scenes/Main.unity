@@ -5962,7 +5962,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1098649212
 Transform:
   m_ObjectHideFlags: 0
@@ -7614,7 +7614,7 @@ MonoBehaviour:
       m_Calls: []
   m_TeleportationProvider: {fileID: 0}
   m_MatchOrientation: 0
-  m_TeleportTrigger: 0
+  m_TeleportTrigger: 1
   m_Teleporting:
     m_PersistentCalls:
       m_Calls: []
@@ -11855,6 +11855,30 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7448368269079953793, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448368269079953793, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448368269079953793, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448368269079953793, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448368269079953793, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448368269079953793, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7448368269079953794, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
       propertyPath: m_text
       value: 
@@ -11951,7 +11975,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasForLabel (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7448368268314533038, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
 --- !u!224 &2138181404 stripped
 RectTransform:

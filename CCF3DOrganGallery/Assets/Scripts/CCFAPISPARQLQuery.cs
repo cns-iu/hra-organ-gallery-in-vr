@@ -27,21 +27,31 @@ public class CCFAPISPARQLQuery : MonoBehaviour
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (var cell in _queryResult.triples)
+            for (int i = 0; i < _queryResult.triples.Count; i++)
             {
-                sb.Append(cell.cell_label + "\n");
+                if (i < cellTypesToShare)
+                {
+                    sb.Append(_queryResult.triples[i].cell_label + ", ");
+                }
             }
 
             sb.Replace("\"\"", ",");
             sb.Replace("\"", "");
+            if (sb.ToString().Length > 0)
+            {
+                return sb.ToString().Substring(0, sb.ToString().Length - 1);
+            }
+            else
+            {
+                return sb.ToString();
+            }
 
-            return sb.ToString();
         }
-        private set { }
     }
-    
+
     [Header("Data")]
     [SerializeField] private QueryResponse _queryResult = new QueryResponse();
+    public int cellTypesToShare = 10;
 
     [Header("Request")]
     [SerializeField] private string _url = "http://grlc.io/api-git/hubmapconsortium/ccf-grlc/subdir/ccf//cells_located_in_as?endpoint=https%3A%2F%2Fccf-api.hubmapconsortium.org%2Fv1%2Fsparql?format=application/json";
@@ -111,7 +121,7 @@ public class CCFAPISPARQLQuery : MonoBehaviour
         }
 
         _interactor = GetComponent<XRRayInteractor>();
-        
+
         //await GetAllCellTypes();
     }
 

@@ -13,12 +13,15 @@ public class SetPanelText : MonoBehaviour
     private void Update()
     {
         _cellTypeText.text = $"For this tissue block, we receive:\n" +
-            $"<b>{CCFAPISPARQLQuery.Instance.ExpectedCellTypes} expected cell types:\n</b>" +
-            $"{ CCFAPISPARQLQuery.Instance.CellsInSelected}" ;
+            $"<b>{CCFAPISPARQLQuery.Instance.ExpectedCellTypes} expected cell types" +
+            $"\n</b>" +
+            $"The first {CCFAPISPARQLQuery.Instance.cellTypesToShare} are:\n"+
+            $"{CCFAPISPARQLQuery.Instance.CellsInSelected}"
+            ;
     }
-/*    void SetText(RaycastHit hit)
-    {
-        Debug.Log("use this for testing results" + hit.collider.gameObject.GetComponent<CCFAPISPARQLQueryTester>().Pairs;
-        _cellTypeText.text = hit.collider.gameObject.GetComponent<CellTypeDataFetcher>().resultText;
-    }*/
+    /*    void SetText(RaycastHit hit)
+        {
+            Debug.Log("use this for testing results" + hit.collider.gameObject.GetComponent<CCFAPISPARQLQueryTester>().Pairs;
+            _cellTypeText.text = hit.collider.gameObject.GetComponent<CellTypeDataFetcher>().resultText;
+        }*/
 }
