@@ -18,7 +18,7 @@ public class TissueBlockSelectActions : MonoBehaviour
 
     public InputActionReference triggerPressed;
 
-    private bool _isSceneBuilt = true;
+    private bool _isSceneBuilt = false;
 
     private void OnEnable()
     {
@@ -31,7 +31,7 @@ public class TissueBlockSelectActions : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // Records structure used to get information back from a raycast.
         // Casting new ray into the scene
@@ -40,11 +40,11 @@ public class TissueBlockSelectActions : MonoBehaviour
         // If our ray hits a collider somewhere in the scene, do:
         if (Physics.Raycast(ray, out var hit, Mathf.Infinity))
         {
+            if (!_isSceneBuilt) return;
             // Debug.Log((hit.collider.name)); // Logs the name of the gameObject our Raycast hits
             // Compare if the object's tag was "TissueBlock"
             if (hit.collider.CompareTag("TissueBlock"))
             {
-                if (!_isSceneBuilt) return;
                 // Invoke OnHover event
                 OnHover?.Invoke(hit); // '?' is an elegant way to check whether null without using an additional if statement
 

@@ -1805,7 +1805,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _queryResult:
     triples: []
-  cellTypesToShare: 10
   _url: http://grlc.io/api-git/hubmapconsortium/ccf-grlc/subdir/ccf//cells_located_in_as?endpoint=https%3A%2F%2Fccf-api.hubmapconsortium.org%2Fv1%2Fsparql?format=application/json
   _apiResponse:
     triples: []
@@ -7332,7 +7331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
@@ -11882,11 +11881,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7448368269079953794, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
       propertyPath: m_text
-      value: 
+      value: Please <b>click a tissue block</b> to see predicted cell types.
       objectReference: {fileID: 0}
     - target: {fileID: 7448368269079953794, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
       propertyPath: m_fontSize
-      value: 36
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448368269079953794, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
+      propertyPath: m_margin.w
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448368269079953794, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
+      propertyPath: m_margin.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448368269079953794, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
+      propertyPath: m_margin.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448368269079953794, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
+      propertyPath: m_margin.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448368269079953794, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e898ca0e511be64a99475e143c11d07, type: 2}
+    - target: {fileID: 7448368269079953794, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448368269079953794, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 13231862573617205, guid: 2e898ca0e511be64a99475e143c11d07, type: 2}
+    - target: {fileID: 7448368269079953794, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448368269079953794, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7448368269610335272, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
       propertyPath: m_Pivot.x
@@ -11974,7 +12009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7448368269610335279, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
       propertyPath: m_Name
-      value: CanvasForLabel (1)
+      value: CanvasForCells
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7448368268314533038, guid: 28d4b0fa404335649a59e38b6c44c361, type: 3}
@@ -12013,6 +12048,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cellTypeText: {fileID: 2138181405}
+  _cellTypesToShow: 10
+  flattened: []
 --- !u!1 &2141519333 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5434163652498915334, guid: 26fb2d8af49cc9e46814f0b5f84ef74a, type: 3}
