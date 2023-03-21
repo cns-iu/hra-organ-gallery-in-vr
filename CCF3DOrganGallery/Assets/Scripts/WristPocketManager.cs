@@ -23,8 +23,8 @@ public class WristPocketManager : MonoBehaviour
     void Start()
     {
         wristPocket = new List<GameObject>();
-        TissueBlockSelectActions.OnHover += hit => Debug.Log("hi");
-        TissueBlockSelectActions.OnSelected += hit => Debug.Log("heyo");
+        //TissueBlockSelectActions.OnHover += hit => Debug.Log("hi");
+        //TissueBlockSelectActions.OnSelected += hit => Debug.Log("heyo");
         // TissueBlockSelectActions.OnSelected += SwitchParent;
         Debug.Log("Abhijeet2");
     }
