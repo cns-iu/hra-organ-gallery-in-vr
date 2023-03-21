@@ -43,15 +43,15 @@ public class CellTypeInfoLogger : MonoBehaviour
     private void OnEnable()
     {
         // Subscribes events to respective method
-        TissueBlockSelectActions.OnHover += DisplayHubMapID; // Displays HubMapID when tissue-block is hovered upon
-        TissueBlockSelectActions.OnSelected += PrintCellTypeInfo; // Displays cell information when tissue-block is selected upon
+        //TissueBlockSelectActions.OnHover += DisplayHubMapID; // Displays HubMapID when tissue-block is hovered upon
+        //TissueBlockSelectActions.OnSelected += PrintCellTypeInfo; // Displays cell information when tissue-block is selected upon
     }
 
     private void OnDestroy()
     {
         // Unsubscribes events to respective method
-        TissueBlockSelectActions.OnHover -= DisplayHubMapID;
-        TissueBlockSelectActions.OnSelected -= PrintCellTypeInfo;
+        //TissueBlockSelectActions.OnHover -= DisplayHubMapID;
+        //TissueBlockSelectActions.OnSelected -= PrintCellTypeInfo;
     }
 
     // Responsible for printing HubMap ID when tissue-block is hovered upon
