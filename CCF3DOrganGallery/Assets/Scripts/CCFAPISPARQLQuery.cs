@@ -8,50 +8,28 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.Events;
 using System.Text;
 using System.Linq;
-using static Mapping;
-using Unity.VisualScripting;
-using static CCFAPISPARQLQuery;
 
 public class CCFAPISPARQLQuery : MonoBehaviour
 {
     public static CCFAPISPARQLQuery Instance;
-    public int ExpectedCellTypes
+
+    public int NumberExpectedCellTypesInSelected
     {
         get { return _queryResult.triples.Count; }
     }
 
-
-    public string CellsInSelected
+    public string HubmapIdOfSelected
     {
-        get
-        {
-            StringBuilder sb = new StringBuilder();
-
-            for (int i = 0; i < _queryResult.triples.Count; i++)
-            {
-                if (i < cellTypesToShare)
-                {
-                    sb.Append(_queryResult.triples[i].cell_label + ", ");
-                }
-            }
-
-            sb.Replace("\"\"", ",");
-            sb.Replace("\"", "");
-            if (sb.ToString().Length > 0)
-            {
-                return sb.ToString().Substring(0, sb.ToString().Length - 1);
-            }
-            else
-            {
-                return sb.ToString();
-            }
-
-        }
+        get { return _hubmapIdCurrentlySelected; }
     }
+
+    public static event Action<Dictionary<string, HashSet<string>>> OnNewTissueBlockSelected;
 
     [Header("Data")]
     [SerializeField] private QueryResponse _queryResult = new QueryResponse();
-    public int cellTypesToShare = 10;
+    private Dictionary<string, HashSet<string>> _dictAsCts = new Dictionary<string, HashSet<string>>();
+    private string _hubmapIdCurrentlySelected;
+    private string _organCurrentlySelected;
 
     [Header("Request")]
     [SerializeField] private string _url = "http://grlc.io/api-git/hubmapconsortium/ccf-grlc/subdir/ccf//cells_located_in_as?endpoint=https%3A%2F%2Fccf-api.hubmapconsortium.org%2Fv1%2Fsparql?format=application/json";
@@ -84,6 +62,7 @@ public class CCFAPISPARQLQuery : MonoBehaviour
         GameObject interactable = hit.collider.gameObject.gameObject;
 
         if (interactable.GetComponent<TissueBlockData>() == null) return;
+        _hubmapIdCurrentlySelected = interactable.GetComponent<TissueBlockData>().HubmapId;
         string[] iris = interactable.GetComponent<TissueBlockData>().CcfAnnotations;
         _queryResult.triples.Clear();
         for (int i = 0; i < iris.Length; i++)
@@ -91,6 +70,28 @@ public class CCFAPISPARQLQuery : MonoBehaviour
             List<Cell> result = _apiResponse.triples.Where(n => n.as_iri == iris[i]).ToList();
             _queryResult.triples.AddRange(result);
         }
+
+        OnNewTissueBlockSelected?.Invoke(GetCellsInSelected());
+    }
+
+    private Dictionary<string, HashSet<string>> GetCellsInSelected()
+    {
+        //StringBuilder sb = new StringBuilder();
+        _dictAsCts.Clear();
+
+        for (int i = 0; i < _queryResult.triples.Count; i++)
+        {
+            string asIri = _queryResult.triples[i].as_iri;
+            if (!_dictAsCts.ContainsKey(asIri))
+            {
+                _dictAsCts.Add(asIri, new HashSet<string>() { _queryResult.triples[i].cell_label });
+            }
+            else
+            {
+                _dictAsCts[asIri].Add(_queryResult.triples[i].cell_label);
+            }
+        }
+        return _dictAsCts;
     }
 
     //overload for dev room
@@ -108,8 +109,7 @@ public class CCFAPISPARQLQuery : MonoBehaviour
         }
     }
 
-
-    private async void Awake()
+    private void Awake()
     {
         if (Instance != null && Instance != this)
         {

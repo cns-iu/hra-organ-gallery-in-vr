@@ -2,6 +2,14 @@
 
 Changelog for the HRA Organ Gallery
 
+## 0.6.3 - 2022-03-21
+
+### Added in 0.6.3
+
+* Adjusted display of CTs per AS in selected tissue block
+* Solved bug where multiple tissue blocks were highlighted when hovering over neighboring tissue blocks
+* Added new splash screen
+
 ## 0.6.2 - 2022-03-17
 
 ### Added in 0.6.2

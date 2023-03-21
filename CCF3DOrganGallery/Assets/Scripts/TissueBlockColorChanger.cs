@@ -9,7 +9,7 @@ public class TissueBlockColorChanger : MonoBehaviour
     private Renderer _tissueBlocksRenderer;
     // Rider optimization code to replace "_color" in *.SetColor() method
     private static readonly int Color1 = Shader.PropertyToID("_Color");
-    
+
     // When the required Input action is in progress
     private void OnEnable()
     {
@@ -34,9 +34,9 @@ public class TissueBlockColorChanger : MonoBehaviour
         // Acquires renderer from tissueBlock(s)
         _tissueBlocksRenderer = GetComponent<Renderer>();
     }
-    
 
-    public void SetDefaultColor(RaycastHit hit) 
+
+    public void SetDefaultColor(RaycastHit hit)
     {
         // Sets colour of tissue-block to white for default state when tissue-block is not given focus
         _tissueBlocksRenderer.material.SetColor(Color1, Color.white);
@@ -49,9 +49,13 @@ public class TissueBlockColorChanger : MonoBehaviour
         if (hit.collider.gameObject.Equals(this.gameObject))
         {
             // Sets colour of tissue-block to yellow when it is hovered upon. Only works when RaycastHit object collider matches the same tissue-block.
-            _tissueBlocksRenderer.material.SetColor(Color1, Color.yellow);   
+            _tissueBlocksRenderer.material.SetColor(Color1, Color.yellow);
             // Turning on the Outline Script 
             gameObject.GetComponent<Outline>().enabled = true;
+        }
+        else
+        {
+            SetDefaultColor(hit);
         }
     }
 
@@ -63,6 +67,10 @@ public class TissueBlockColorChanger : MonoBehaviour
             _tissueBlocksRenderer.material.SetColor(Color1, Color.blue);
             // Turning on the Outline Script
             gameObject.GetComponent<Outline>().enabled = true;
+        }
+        else
+        {
+            SetDefaultColor(hit);
         }
     }
 }
