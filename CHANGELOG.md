@@ -2,6 +2,13 @@
 
 Changelog for the HRA Organ Gallery
 
+## 0.6.4 - 2022-03-24
+
+### Added in 0.6.4
+
+* Improved user interface for cell type panel
+* Removed annotations for VR controllers (will likely replace in a future version)
+
 ## 0.6.3 - 2022-03-21
 
 ### Added in 0.6.3
