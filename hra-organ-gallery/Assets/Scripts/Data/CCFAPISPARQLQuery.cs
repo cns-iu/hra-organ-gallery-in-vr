@@ -120,7 +120,7 @@ public class CCFAPISPARQLQuery : MonoBehaviour
             Instance = this;
         }
 
-        _interactor = GetComponent<XRRayInteractor>();
+        
 
         //await GetAllCellTypes();
     }
