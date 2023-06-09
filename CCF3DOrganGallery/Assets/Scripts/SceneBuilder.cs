@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using UnityEngine.Networking;
 using TMPro;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 public class SceneBuilder : MonoBehaviour
 {
@@ -19,8 +20,8 @@ public class SceneBuilder : MonoBehaviour
     public List<GameObject> Organs;
     public List<string> MaleEntityIds;
     public List<string> FemaleEntityIds;
-    public List<IdTypeMapping> mappingTissueBlocksWithCT = null;
-    public List<GameObject> TissueBlocksWithCT;
+    [System.NonSerialized] public List<IdTypeMapping> mappingTissueBlocksWithCT = null;
+    [System.NonSerialized] public List<GameObject> TissueBlocksWithCT;
 
     public int NumberOfHubmapIds
     {

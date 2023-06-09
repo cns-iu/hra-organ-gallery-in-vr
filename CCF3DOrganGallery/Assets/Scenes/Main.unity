@@ -13047,7 +13047,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HBM286.LQFR.435
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f6612e3f75783541ba436a22e7f7476, type: 2}
   m_sharedMaterial: {fileID: 1404662868744291818, guid: 3f6612e3f75783541ba436a22e7f7476, type: 2}
