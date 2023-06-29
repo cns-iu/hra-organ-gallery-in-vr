@@ -3,50 +3,53 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class DisplayFPS : MonoBehaviour
+namespace Assets.Scripts.UI
 {
-    public float updateDelay = 0f;
-
-    private float _targetFPS = 72f;
-    private float _currentFPS = 0f;
-    private float _deltaTime = 0f;
-
-    private TextMeshProUGUI _textFPS;
-    // Start is called before the first frame update
-    void Start()
+    public class DisplayFPS : MonoBehaviour
     {
-        _textFPS = GetComponent<TextMeshProUGUI>();
-        StartCoroutine(DisplayFramesPerSecond());
-    }
+        public float updateDelay = 0f;
 
-    // Update is called once per frame
-    void Update()
-    {
+        private float _targetFPS = 72f;
+        private float _currentFPS = 0f;
+        private float _deltaTime = 0f;
 
-            GenerateFramesPerSecond();
-    }
-
-    private void GenerateFramesPerSecond()
-    {
-        _deltaTime += (Time.unscaledDeltaTime - _deltaTime) * .1f;
-        _currentFPS = 1.0f / _deltaTime;
-    }
-
-    private IEnumerator DisplayFramesPerSecond()
-    {
-        while (true)
+        private TextMeshProUGUI _textFPS;
+        // Start is called before the first frame update
+        void Start()
         {
-            if (_currentFPS >= _targetFPS)
-            {
-                _textFPS.color = new Color32(0, 177, 215, 255);
-            }
-            else
-            {
-                _textFPS.color = new Color32(200, 68, 124, 255);
-            }
-            _textFPS.text = "FPS: " + _currentFPS.ToString(".0");
-            yield return new WaitForSeconds(updateDelay);
+            _textFPS = GetComponent<TextMeshProUGUI>();
+            StartCoroutine(DisplayFramesPerSecond());
         }
 
+        // Update is called once per frame
+        void Update()
+        {
+
+            GenerateFramesPerSecond();
+        }
+
+        private void GenerateFramesPerSecond()
+        {
+            _deltaTime += (Time.unscaledDeltaTime - _deltaTime) * .1f;
+            _currentFPS = 1.0f / _deltaTime;
+        }
+
+        private IEnumerator DisplayFramesPerSecond()
+        {
+            while (true)
+            {
+                if (_currentFPS >= _targetFPS)
+                {
+                    _textFPS.color = new Color32(0, 177, 215, 255);
+                }
+                else
+                {
+                    _textFPS.color = new Color32(200, 68, 124, 255);
+                }
+                _textFPS.text = "FPS: " + _currentFPS.ToString(".0");
+                yield return new WaitForSeconds(updateDelay);
+            }
+
+        }
     }
 }

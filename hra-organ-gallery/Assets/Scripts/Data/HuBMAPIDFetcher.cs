@@ -5,67 +5,70 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class HuBMAPIDFetcher : MonoBehaviour
+namespace Assets.Scripts.Data
 {
-    private HubmapIdHolder response;
-
-    public async Task FromEntityIdGetHubmapId(IProgress<bool> progress)
+    public class HuBMAPIDFetcher : MonoBehaviour
     {
-        TissueBlockData dataComponent = GetComponent<TissueBlockData>();
-        string entityId = dataComponent.EntityId;
+        private HubmapIdHolder response;
 
-        // get hubmap id
-        if (entityId.Contains("hubmap"))
+        public async Task FromEntityIdGetHubmapId(IProgress<bool> progress)
         {
-            response = await Get(entityId);
-            dataComponent.HubmapId = response.hubmap_id;
-            progress.Report(true);
+            TissueBlockData dataComponent = GetComponent<TissueBlockData>();
+            string entityId = dataComponent.EntityId;
+
+            // get hubmap id
+            if (entityId.Contains("hubmap"))
+            {
+                response = await Get(entityId);
+                dataComponent.HubmapId = response.hubmap_id;
+                progress.Report(true);
+            }
+
         }
 
-    }
-
-    private async Task<HubmapIdHolder> Get(string url)
-    {
-        try
+        private async Task<HubmapIdHolder> Get(string url)
         {
-            using var www = UnityWebRequest.Get(url);
-            var operation = www.SendWebRequest();
-
-            while (!operation.isDone)
-                await Task.Yield();
-
-            if (www.result != UnityWebRequest.Result.Success)
-                Debug.LogError($"Failed: {www.error}");
-
-            var result = www.downloadHandler.text;
-
-            var text = www.downloadHandler.text;
             try
             {
-                response = JsonUtility.FromJson<HubmapIdHolder>(text);
-                return response;
+                using var www = UnityWebRequest.Get(url);
+                var operation = www.SendWebRequest();
+
+                while (!operation.isDone)
+                    await Task.Yield();
+
+                if (www.result != UnityWebRequest.Result.Success)
+                    Debug.LogError($"Failed: {www.error}");
+
+                var result = www.downloadHandler.text;
+
+                var text = www.downloadHandler.text;
+                try
+                {
+                    response = JsonUtility.FromJson<HubmapIdHolder>(text);
+                    return response;
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                Debug.LogError($"{nameof(Get)} failed: {ex.Message}");
+                return default;
             }
-           
         }
-        catch (Exception ex)
+
+        private class HubmapIdArray
         {
-            Debug.LogError($"{nameof(Get)} failed: {ex.Message}");
-            return default;
+            [SerializeField] public HubmapIdHolder[] hubmapIdHolder;
         }
-    }
 
-    private class HubmapIdArray
-    {
-        [SerializeField] public HubmapIdHolder[] hubmapIdHolder;
-    }
-
-    private class HubmapIdHolder
-    {
-        public string hubmap_id;
+        private class HubmapIdHolder
+        {
+            public string hubmap_id;
+        }
     }
 }

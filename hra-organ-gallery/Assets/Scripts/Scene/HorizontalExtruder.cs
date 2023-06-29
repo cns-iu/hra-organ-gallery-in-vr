@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.InputSystem;
+using Assets.Scripts.Data;
+using Assets.Scripts.Scene;
+using Assets.Scripts.Utils;
 
 public enum BodySystem { undefined, integumentary, nervous, respiratory, cardio, digestive, musculoskeletal, lymphatic, urinary, fetal, reproductive }
 

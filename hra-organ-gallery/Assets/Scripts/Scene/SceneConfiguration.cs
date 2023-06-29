@@ -3,67 +3,67 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
 using System.Linq;
+using Assets.Scripts.Data;
+using Assets.Scripts.UI;
 
-public class SceneConfiguration : MonoBehaviour
+namespace Assets.Scripts.Scene
 {
-    [Header("Filters")]
-    public List<string> IdsOrgansToShow = new List<string>();
-    [SerializeField] private SceneBuilder sceneBuilder;
-
-
-    [Header("URL")]
-    public string Url;
-    [SerializeField] private string baseUrl = "https://ccf-api.hubmapconsortium.org/v1/scene"; //staging: https://ccf-api--staging.herokuapp.com/v1/scene
-    [SerializeField]
-    private List<string> uberonIds = new List<string>();
-    [SerializeField] private string sex;
-    [SerializeField] const string ontologyQueryString = "&ontology-terms=http://purl.obolibrary.org/obo/UBERON_";
-    [SerializeField] const string sexQueryString = "?sex=";
-
-    private void OnEnable()
+    public class SceneConfiguration : MonoBehaviour
     {
-        FilterEventHandler.OnFilterCompleteWithOrgans += OnFilterSetOrganVisibility;
-    }
+        [Header("Filters")]
+        public List<string> IdsOrgansToShow = new List<string>();
+        [SerializeField] private SceneBuilder sceneBuilder;
 
-    private void OnDestroy()
-    {
-        FilterEventHandler.OnFilterCompleteWithOrgans -= OnFilterSetOrganVisibility;
-    }
 
-    void OnFilterSetOrganVisibility(List<string> organs)
-    {
-        for (int i = 0; i < sceneBuilder.Organs.Count; i++)
+        [Header("URL")]
+        public string Url;
+        [SerializeField] private string baseUrl = "https://ccf-api.hubmapconsortium.org/v1/scene"; //staging: https://ccf-api--staging.herokuapp.com/v1/scene
+        [SerializeField]
+        private List<string> uberonIds = new List<string>();
+        [SerializeField] private string sex;
+        [SerializeField] const string ontologyQueryString = "&ontology-terms=http://purl.obolibrary.org/obo/UBERON_";
+        [SerializeField] const string sexQueryString = "?sex=";
+
+        private void OnEnable()
         {
-            OrganData data = sceneBuilder.Organs[i].GetComponent<OrganData>();
-            sceneBuilder.Organs[i].gameObject.SetActive(organs.Contains(data.tooltip));
+            FilterEventHandler.OnFilterCompleteWithOrgans += OnFilterSetOrganVisibility;
         }
-    }
 
-    private void Awake()
-    {
-        sceneBuilder = GetComponent<SceneBuilder>();
-    }
-
-    public string BuildUrl()
-    {
-        if (uberonIds.Count > 0)
+        private void OnDestroy()
         {
-            Url = baseUrl + sexQueryString + sex + ontologyQueryString + uberonIds[0];
+            FilterEventHandler.OnFilterCompleteWithOrgans -= OnFilterSetOrganVisibility;
+        }
 
-            for (int i = 1; i < uberonIds.Count; i++)
+        void OnFilterSetOrganVisibility(List<string> organs)
+        {
+            for (int i = 0; i < sceneBuilder.Organs.Count; i++)
             {
-                Url += ontologyQueryString + uberonIds[i];
+                OrganData data = sceneBuilder.Organs[i].GetComponent<OrganData>();
+                sceneBuilder.Organs[i].gameObject.SetActive(organs.Contains(data.tooltip));
             }
         }
-        else
+
+        private void Awake()
         {
-            Url = baseUrl + sexQueryString + sex;
+            sceneBuilder = GetComponent<SceneBuilder>();
         }
-        return Url;
+
+        public string BuildUrl()
+        {
+            if (uberonIds.Count > 0)
+            {
+                Url = baseUrl + sexQueryString + sex + ontologyQueryString + uberonIds[0];
+
+                for (int i = 1; i < uberonIds.Count; i++)
+                {
+                    Url += ontologyQueryString + uberonIds[i];
+                }
+            }
+            else
+            {
+                Url = baseUrl + sexQueryString + sex;
+            }
+            return Url;
+        }
     }
 }
-
-
-
-
-

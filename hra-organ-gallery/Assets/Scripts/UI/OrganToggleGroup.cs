@@ -1,3 +1,5 @@
+using Assets.Scripts.Data;
+using Assets.Scripts.Scene;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,62 +8,65 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OrganToggleGroup : MonoBehaviour
+namespace Assets.Scripts.UI
 {
-    public List<Toggle> Toggles;
-
-    [SerializeField] private SceneBuilder sceneBuilder;
-    [SerializeField] private SceneConfiguration sceneConfiguration;
-    [SerializeField] private List<GameObject> activeOrgans;
-    [SerializeField] private Toggle pre_OrganToggle;
-    [SerializeField] private GameObject toggleParent;
-
-    private void OnEnable()
+    public class OrganToggleGroup : MonoBehaviour
     {
-        SceneBuilder.OnSceneBuilt += CreateToggles;
-        //FilterEventHandler.OnFilterComplete += SetToggles;
-    }
+        public List<Toggle> Toggles;
 
-    private void OnDestroy()
-    {
-        SceneBuilder.OnSceneBuilt -= CreateToggles;
-        //FilterEventHandler.OnFilterComplete -= SetToggles;
-    }
+        [SerializeField] private SceneBuilder sceneBuilder;
+        [SerializeField] private SceneConfiguration sceneConfiguration;
+        [SerializeField] private List<GameObject> activeOrgans;
+        [SerializeField] private Toggle pre_OrganToggle;
+        [SerializeField] private GameObject toggleParent;
 
-    void CreateToggles()
-    {
-        List<string> uniqueTooltips = new List<string>();
-
-        for (int i = 0; i < sceneBuilder.Organs.Count; i++)
+        private void OnEnable()
         {
-            if (!uniqueTooltips.Contains(sceneBuilder.Organs[i].GetComponent<OrganData>().tooltip)) 
-                uniqueTooltips.Add(sceneBuilder.Organs[i].GetComponent<OrganData>().tooltip);
+            SceneBuilder.OnSceneBuilt += CreateToggles;
+            //FilterEventHandler.OnFilterComplete += SetToggles;
         }
 
-        for (int i = 0; i < uniqueTooltips.Count; i++)
+        private void OnDestroy()
         {
-            Toggle newToggle = Instantiate(pre_OrganToggle);
-            Toggles.Add(newToggle);
-            newToggle.GetComponentInChildren<TMP_Text>().text = uniqueTooltips[i];
-            newToggle.gameObject.name = uniqueTooltips[i];
-            newToggle.transform.parent = toggleParent.transform;
+            SceneBuilder.OnSceneBuilt -= CreateToggles;
+            //FilterEventHandler.OnFilterComplete -= SetToggles;
         }
 
-        SetToggles();
-    }
-
-    void SetToggles()
-    {
-        activeOrgans = sceneBuilder.Organs.Where((v) => v.activeSelf).ToList();
-
-        for (int i = 0; i < Toggles.Count; i++)
+        void CreateToggles()
         {
-            for (int j = 0; j < activeOrgans.Count; j++)
+            List<string> uniqueTooltips = new List<string>();
+
+            for (int i = 0; i < sceneBuilder.Organs.Count; i++)
             {
-                if (Toggles[i].GetComponentInChildren<TMP_Text>().text.Contains(activeOrgans[j].GetComponent<OrganData>().tooltip))
+                if (!uniqueTooltips.Contains(sceneBuilder.Organs[i].GetComponent<OrganData>().tooltip))
+                    uniqueTooltips.Add(sceneBuilder.Organs[i].GetComponent<OrganData>().tooltip);
+            }
+
+            for (int i = 0; i < uniqueTooltips.Count; i++)
+            {
+                Toggle newToggle = Instantiate(pre_OrganToggle);
+                Toggles.Add(newToggle);
+                newToggle.GetComponentInChildren<TMP_Text>().text = uniqueTooltips[i];
+                newToggle.gameObject.name = uniqueTooltips[i];
+                newToggle.transform.parent = toggleParent.transform;
+            }
+
+            SetToggles();
+        }
+
+        void SetToggles()
+        {
+            activeOrgans = sceneBuilder.Organs.Where((v) => v.activeSelf).ToList();
+
+            for (int i = 0; i < Toggles.Count; i++)
+            {
+                for (int j = 0; j < activeOrgans.Count; j++)
                 {
-                    Toggles[i].isOn = true;
-                    break;
+                    if (Toggles[i].GetComponentInChildren<TMP_Text>().text.Contains(activeOrgans[j].GetComponent<OrganData>().tooltip))
+                    {
+                        Toggles[i].isOn = true;
+                        break;
+                    }
                 }
             }
         }
