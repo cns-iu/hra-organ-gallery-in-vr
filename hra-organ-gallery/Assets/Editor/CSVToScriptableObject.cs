@@ -21,17 +21,14 @@ namespace Assets.Editor
         [MenuItem("Utilities/IngestCellCounts")]
         public static void GetCellCounts()
         {
-            
-            //loop through the root directory, get every file
+            //instantiate the SO
+            CellCount cellCount = ScriptableObject.CreateInstance<CellCount>();
+
+            //loop through the Resources/CellCounts folder and get all CSVs
             foreach (string file in Directory.GetFiles(root, "*.csv"))
             {
-                //make all lines available as string array
                 string[] allLines = File.ReadAllLines(file);
 
-                //create a new instance of a CellCount SO
-                CellCount cellCount = ScriptableObject.CreateInstance<CellCount>();
-
-                //loop through lines
                 for (int i = 1; i < allLines.Length; i++)
                 {
                     //split line into four values
@@ -39,15 +36,21 @@ namespace Assets.Editor
 
                     //parsing the count
                     int count;
-                    Debug.Log(i);
-                    int.TryParse(splitLine[4], out count);
+
+                    int.TryParse(splitLine[4].Replace("\"", ""), out count);
 
                     //adding rows to the CellCount SO
                     cellCount.rows.Add(new Row(
-                        splitLine[0], splitLine[1], splitLine[2], splitLine[3], count
+                        splitLine[0].Replace("\"", ""),
+                        splitLine[1].Replace("\"", ""), 
+                        splitLine[2].Replace("\"", ""), 
+                        splitLine[3].Replace("\"", ""), 
+                        count
                         ));
-                }
 
+
+
+                }
                 //saving the SO
                 AssetDatabase.CreateAsset(cellCount, $"Assets/Resources/CellCounts/CellCounts.asset");
                 AssetDatabase.SaveAssets();
