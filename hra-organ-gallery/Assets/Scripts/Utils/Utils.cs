@@ -22,6 +22,21 @@ namespace Assets.Scripts.Utils
             }
         }
 
+        /// <summary>
+        /// A static method to reflect a transform matrix along the z-axis
+        /// </summary>
+        /// <returns>A reflected Matrix4v4</returns>
+        public static Matrix4x4 ReflectZ()
+        {
+            var result = new Matrix4x4(
+                new Vector4(1, 0, 0, 0),
+                new Vector4(0, 1, 0, 0),
+                new Vector4(0, 0, -1, 0),
+                new Vector4(0, 0, 0, 1)
+            );
+            return result;
+        }
+
         public static StreamReader ReadCsv(string fileName)
         {
             TextAsset asset = Resources.Load<TextAsset>(fileName);

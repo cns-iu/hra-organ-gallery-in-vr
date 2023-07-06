@@ -38,8 +38,8 @@ namespace Assets.Scripts.UI
 
             for (int i = 0; i < sceneBuilder.Organs.Count; i++)
             {
-                if (!uniqueTooltips.Contains(sceneBuilder.Organs[i].GetComponent<OrganData>().tooltip))
-                    uniqueTooltips.Add(sceneBuilder.Organs[i].GetComponent<OrganData>().tooltip);
+                if (!uniqueTooltips.Contains(sceneBuilder.Organs[i].GetComponent<OrganData>().Tooltip))
+                    uniqueTooltips.Add(sceneBuilder.Organs[i].GetComponent<OrganData>().Tooltip);
             }
 
             for (int i = 0; i < uniqueTooltips.Count; i++)
@@ -62,7 +62,7 @@ namespace Assets.Scripts.UI
             {
                 for (int j = 0; j < activeOrgans.Count; j++)
                 {
-                    if (Toggles[i].GetComponentInChildren<TMP_Text>().text.Contains(activeOrgans[j].GetComponent<OrganData>().tooltip))
+                    if (Toggles[i].GetComponentInChildren<TMP_Text>().text.Contains(activeOrgans[j].GetComponent<OrganData>().Tooltip))
                     {
                         Toggles[i].isOn = true;
                         break;

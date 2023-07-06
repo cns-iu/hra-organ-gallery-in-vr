@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Data
 {
-    public class OrganData : MonoBehaviour
+    public class OrganData : MonoBehaviour, IApiSettable
     {
         [field: SerializeField]
         public string RepresentationOf { get; set; }
@@ -25,6 +25,9 @@ namespace Assets.Scripts.Data
         public Vector3 DefaultPositionExtruded { get; set; }
 
         [field: SerializeField]
-        public string tooltip { get; set; }
+        public string Tooltip { get; set; }
+        public void Init(Node node)
+            => (RepresentationOf, SceneGraph, Tooltip)
+            = (node.representation_of, node.scenegraph, node.tooltip);
     }
 }

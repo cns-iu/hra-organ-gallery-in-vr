@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Data
 {
-    public class TissueBlockData : MonoBehaviour
+    public class TissueBlockData : MonoBehaviour, IApiSettable
     {
         [field: SerializeField]
         public string EntityId { get; set; }
@@ -23,5 +23,11 @@ namespace Assets.Scripts.Data
 
         [field: SerializeField]
         public string DonorSex;
+
+        public void Init(Node node)
+       => (EntityId, Name, CcfAnnotations)
+       = (node.entityId, node.name, node.ccf_annotations);
     }
+
+
 }

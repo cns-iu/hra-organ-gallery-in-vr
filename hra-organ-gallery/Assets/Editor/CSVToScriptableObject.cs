@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Assets.Editor
 {
     /// <summary>
-    /// A unitility class to ingest a CSV file with query search results from https://triplydb.com/bherr/-/queries/dataset-ct-counts/3
+    /// A utility class to ingest a CSV file with query search results from https://triplydb.com/bherr/-/queries/dataset-ct-counts/3
     /// </summary>
     public class CSVToScriptableObject : MonoBehaviour
     {

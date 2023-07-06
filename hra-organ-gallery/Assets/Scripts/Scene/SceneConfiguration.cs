@@ -1,21 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Threading.Tasks;
-using System.Linq;
-using Assets.Scripts.Data;
-using Assets.Scripts.UI;
 
 namespace Assets.Scripts.Scene
 {
     public class SceneConfiguration : MonoBehaviour
     {
+        public static SceneConfiguration Instance;
+
         [Header("Filters")]
         public List<string> IdsOrgansToShow = new List<string>();
-        [SerializeField] private SceneBuilder sceneBuilder;
-
-
-        [Header("URL")]
         public string Url;
         [SerializeField] private string baseUrl = "https://ccf-api.hubmapconsortium.org/v1/scene"; //staging: https://ccf-api--staging.herokuapp.com/v1/scene
         [SerializeField]
@@ -24,28 +17,16 @@ namespace Assets.Scripts.Scene
         [SerializeField] const string ontologyQueryString = "&ontology-terms=http://purl.obolibrary.org/obo/UBERON_";
         [SerializeField] const string sexQueryString = "?sex=";
 
-        private void OnEnable()
-        {
-            FilterEventHandler.OnFilterCompleteWithOrgans += OnFilterSetOrganVisibility;
-        }
-
-        private void OnDestroy()
-        {
-            FilterEventHandler.OnFilterCompleteWithOrgans -= OnFilterSetOrganVisibility;
-        }
-
-        void OnFilterSetOrganVisibility(List<string> organs)
-        {
-            for (int i = 0; i < sceneBuilder.Organs.Count; i++)
-            {
-                OrganData data = sceneBuilder.Organs[i].GetComponent<OrganData>();
-                sceneBuilder.Organs[i].gameObject.SetActive(organs.Contains(data.tooltip));
-            }
-        }
-
         private void Awake()
         {
-            sceneBuilder = GetComponent<SceneBuilder>();
+            if (Instance != null && Instance != this)
+            {
+                Destroy(this);
+            }
+            else
+            {
+                Instance = this;
+            }
         }
 
         public string BuildUrl()
