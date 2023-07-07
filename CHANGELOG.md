@@ -1,15 +1,20 @@
-# Changelog
+# Changelog for the HRA Organ Gallery
+## 0.6.5 - 2023-07-07
 
-Changelog for the HRA Organ Gallery
+### Added in 0.6.5
 
-## 0.6.4 - 2022-03-24
+* Improved loading time on scene setup
+* Removed minor bugs
+* Cleaned code and improved documentation
+
+## 0.6.4 - 2023-03-24
 
 ### Added in 0.6.4
 
 * Improved user interface for cell type panel
 * Removed annotations for VR controllers (will likely replace in a future version)
 
-## 0.6.3 - 2022-03-21
+## 0.6.3 - 2023-03-21
 
 ### Added in 0.6.3
 
@@ -17,21 +22,21 @@ Changelog for the HRA Organ Gallery
 * Solved bug where multiple tissue blocks were highlighted when hovering over neighboring tissue blocks
 * Added new splash screen
 
-## 0.6.2 - 2022-03-17
+## 0.6.2 - 2023-03-17
 
 ### Added in 0.6.2
 
 * Added code to get all cell types to be expected in selected tissue block (on click)
 * cleaned code in Main scene
 
-## 0.6.1 - 2022-03-04
+## 0.6.1 - 2023-03-04
 
 ### Added in 0.6.1
 
 * Removed code at scene load that checks for cell type counts on GitHub (speeds up scene load significantly)
 * Grouped dragon model in skin F left hand to Environment game object
 
-## 0.6 - 2022-01-13
+## 0.6 - 2023-01-13
 
 ### Added in 0.6
 
