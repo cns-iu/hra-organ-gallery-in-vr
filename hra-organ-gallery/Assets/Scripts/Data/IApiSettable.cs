@@ -1,6 +1,6 @@
 ﻿namespace Assets.Scripts.Data
 {
-    internal interface IApiSettable
+    public interface IApiSettable
     {
         public void Init(Node node) { }
     }
