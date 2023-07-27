@@ -10,10 +10,25 @@ namespace Assets.Scripts.Data
 {
     public class CellTypeDataProcessor : MonoBehaviour, ISelectionResponse
     {
-        public void OnSelect(GameObject tissueBlock) {
+        public Sample currentSample;
+        public void OnSelect(GameObject tissueBlock)
+        {
+            GetData(tissueBlock.GetComponent<TissueBlockData>());
+        }
 
-            string entityId = tissueBlock.GetComponent<TissueBlockData>().EntityId;
-            Debug.Log(entityId);
+        void GetData(TissueBlockData tissueBlockData)
+        {
+            foreach (var donor in CellTypeLoader.Instance.locations.graph)
+            {
+                foreach (var sample in donor.samples)
+                {
+                    if (sample.jsonLdId == tissueBlockData.EntityId)
+                    {
+                        currentSample = sample;
+                        break;
+                    }
+                }
+            }
         }
     }
 }

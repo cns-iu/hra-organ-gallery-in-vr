@@ -61,7 +61,7 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
 
 
         /// <summary>
-        /// RUns furing first frame
+        /// Runs during first frame
         /// </summary>
         private async void Start()
         {

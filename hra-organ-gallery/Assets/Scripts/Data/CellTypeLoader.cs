@@ -1,25 +1,29 @@
 using UnityEngine;
 using System;
 using Assets.Scripts.Data;
+using System.Collections;
+using HRAOrganGallery;
 
-namespace HRAOrganGallery
+namespace Assets.Scripts.Data
 {
     public class CellTypeLoader : MonoBehaviour, IApiResponseHandler
     {
+        public static CellTypeLoader Instance;
         [SerializeField] private string _fileName;
-        [SerializeField] private EnrichedRuiLocationArray _locations;
+        public EnrichedRuiLocationArray locations;
 
         private void Awake()
         {
             GetJsonFromWeb();
-            Web();
-        }
 
-        async void Web()
-        {
-            WebLoader http = new WebLoader();
-            string s = await http.Get("https://ccf-api.hubmapconsortium.org/v1/scene");
-                Debug.Log(s);
+            if (Instance != null && Instance != this)
+            {
+                Destroy(this);
+            }
+            else
+            {
+                Instance = this;
+            }
         }
 
         public void GetJsonFromWeb()
@@ -37,51 +41,53 @@ namespace HRAOrganGallery
               .Replace("@id", "jsonLdId")
               .Replace("@type", "jsonLdType");
 
-            _locations = JsonUtility.FromJson<EnrichedRuiLocationArray>(result);
+            locations = JsonUtility.FromJson<EnrichedRuiLocationArray>(result);
         }
+    }
 
-        [Serializable]
-        public class EnrichedRuiLocationArray
-        {
-            public EnrichedRuiLocation[] graph;
-        }
 
-        [Serializable]
-        public class EnrichedRuiLocation
-        {
-            public string jsonLdId;
-            public Sample[] samples;
-        }
 
-        [Serializable]
-        public class Sample
-        {
-            public string jsonLdId;
-            public RuiLocation rui_location;
-        }
+    [Serializable]
+    public class EnrichedRuiLocationArray
+    {
+        public EnrichedRuiLocation[] graph;
+    }
 
-        [Serializable]
-        public class RuiLocation
-        {
-            public Summaries[] summaries;
-        }
+    [Serializable]
+    public class EnrichedRuiLocation
+    {
+        public string jsonLdId;
+        public Sample[] samples;
+    }
 
-        [Serializable]
-        public class Summaries
-        {
-            public string jsonLdType;
-            public string annotation_method;
-            public Summary[] summary;
-        }
+    [Serializable]
+    public class Sample
+    {
+        public string jsonLdId;
+        public RuiLocation rui_location;
+    }
 
-        [Serializable]
-        public class Summary
-        {
-            public string jsonLdType;
-            public string cell_id;
-            public string cell_label;
-            public int count;
-            public float percentage;
-        }
+    [Serializable]
+    public class RuiLocation
+    {
+        public Summaries[] summaries;
+    }
+
+    [Serializable]
+    public class Summaries
+    {
+        public string jsonLdType;
+        public string annotation_method;
+        public Summary[] summary;
+    }
+
+    [Serializable]
+    public class Summary
+    {
+        public string jsonLdType;
+        public string cell_id;
+        public string cell_label;
+        public int count;
+        public float percentage;
     }
 }
