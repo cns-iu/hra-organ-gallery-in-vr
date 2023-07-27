@@ -35,7 +35,7 @@ public class HorizontalExtruder : MonoBehaviour
 
     void ReadCsv()
     {
-        using (var reader = Utils.ReadCsv(bodySystemsData))
+        using (var reader = Utils.ReadTextFile(bodySystemsData))
         {
             while (!reader.EndOfStream)
             {

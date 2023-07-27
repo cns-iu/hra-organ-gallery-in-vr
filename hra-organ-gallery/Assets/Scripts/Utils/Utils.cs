@@ -7,6 +7,7 @@ namespace Assets.Scripts.Utils
 {
     public static class Utils
     {
+
         public static void FindLeaves(Transform parent, List<Transform> result)
         {
             if (parent.childCount == 0)
@@ -37,9 +38,14 @@ namespace Assets.Scripts.Utils
             return result;
         }
 
-        public static StreamReader ReadCsv(string fileName)
+        /// <summary>
+        /// A class to read CSV files even when running on Android
+        /// </summary>
+        /// <param name="fileName">The name of the file to be read</param>
+        /// <returns>A StreamReader</returns>
+        public static StreamReader ReadTextFile(string fileName)
         {
-            TextAsset asset = Resources.Load<TextAsset>(fileName);
+            var asset = Resources.Load<TextAsset>(fileName);
             return new StreamReader(new MemoryStream(asset.bytes));
         }
 
