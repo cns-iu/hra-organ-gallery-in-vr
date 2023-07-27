@@ -15,7 +15,7 @@ namespace HRAOrganGallery
 
         private string _url;
 
-        private void Start()
+        private void Awake()
         {
             _url = SceneConfiguration.Instance.BuildUrl();
             if (Instance != null && Instance != this)

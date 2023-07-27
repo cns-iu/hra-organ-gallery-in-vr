@@ -8,8 +8,6 @@ using Assets.Scripts.Data;
 using Assets.Scripts.Scene;
 using Assets.Scripts.Utils;
 
-public enum BodySystem { undefined, integumentary, nervous, respiratory, cardio, digestive, musculoskeletal, lymphatic, urinary, fetal, reproductive }
-
 public class HorizontalExtruder : MonoBehaviour
 {
     public static event Action<List<SystemObjectPair>> OnBodySystemsReady;

@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace Assets.Scripts.Data
 {
+    public enum BodySystem { undefined, integumentary, nervous, respiratory, cardio, digestive, musculoskeletal, lymphatic, urinary, fetal, reproductive }
+
     public class OrganData : MonoBehaviour, IApiSettable
     {
         [field: SerializeField]
