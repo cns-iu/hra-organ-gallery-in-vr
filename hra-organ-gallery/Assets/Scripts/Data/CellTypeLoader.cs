@@ -3,6 +3,7 @@ using System;
 using Assets.Scripts.Data;
 using System.Collections;
 using HRAOrganGallery;
+using System.Threading.Tasks;
 
 namespace Assets.Scripts.Data
 {
@@ -12,9 +13,11 @@ namespace Assets.Scripts.Data
         [SerializeField] private string _fileName;
         public EnrichedRuiLocationArray locations;
 
+        private string _url;
+
         private void Awake()
         {
-            GetJsonFromWeb();
+            GetNodes();
 
             if (Instance != null && Instance != this)
             {
@@ -26,10 +29,13 @@ namespace Assets.Scripts.Data
             }
         }
 
-        public void GetJsonFromWeb()
+        public async Task GetNodes()
         {
-            //This code should be changed later to get enriched RUI locations from the web
-            //It should use a DataFetcher (or WebLoader) to get the data from the web
+            //Will implement later to get data directly from GitHub
+            //Something like:
+            //WebLoader httpClient = new WebLoader();
+            //string response = await httpClient.Get(_url);
+            //Deserialize(response);
             var asset = Resources.Load<TextAsset>(_fileName);
             Deserialize(asset.text);
         }

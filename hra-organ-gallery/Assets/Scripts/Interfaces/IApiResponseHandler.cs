@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace HRAOrganGallery
@@ -8,6 +9,6 @@ namespace HRAOrganGallery
     {
         public void Deserialize(string rawWebResponse);
 
-        public void GetJsonFromWeb();
+        public Task GetNodes();
     }
 }

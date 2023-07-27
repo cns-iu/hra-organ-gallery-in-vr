@@ -7358,7 +7358,7 @@ GameObject:
   - component: {fileID: 463948136}
   - component: {fileID: 463948137}
   - component: {fileID: 463948139}
-  - component: {fileID: 463948138}
+  - component: {fileID: 463948140}
   m_Layer: 0
   m_Name: SceneSetup
   m_TagString: Untagged
@@ -7405,18 +7405,6 @@ MonoBehaviour:
   _maleEntityIds: []
   _femaleEntityIds: []
   numberOfHubmapIds: 0
---- !u!114 &463948138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 463948135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dffeec3e125a5b4fb86b16e2a2d018b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &463948139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7434,6 +7422,20 @@ MonoBehaviour:
   baseUrl: https://ccf-api.hubmapconsortium.org/v1/scene
   uberonIds: []
   sex: 
+--- !u!114 &463948140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463948135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d4ecc722fc4ff41ac18335279a2994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeArray:
+    nodes: []
 --- !u!1001 &473524001
 PrefabInstance:
   m_ObjectHideFlags: 0

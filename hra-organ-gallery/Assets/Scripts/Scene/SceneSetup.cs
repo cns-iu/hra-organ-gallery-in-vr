@@ -65,8 +65,7 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
         /// </summary>
         private async void Start()
         {
-            //make ccf-api call given a scene configuration
-            await GetNodes(SceneConfiguration.Instance.BuildUrl());
+            _nodeArray = await SceneLoader.Instance.ShareData();
 
             //loop through organs in scene and response, add data, and place organs already in scene (match by scenegraphNode)
             Organs = EnrichOrgans(Organs);
@@ -78,17 +77,6 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
 
             //move all organs to central platform
             _parent.SetPositionAndRotation(_adjustedOrganOrigin.position, _adjustedOrganOrigin.rotation);
-        }
-
-        /// <summary>
-        /// Get nodes from API
-        /// </summary>
-        /// <param name="url">The URL to call</param>
-        /// <returns>A Task (async)</returns>
-        public async Task GetNodes(string url)
-        {
-            DataFetcher httpClient = _dataFetcher;
-            _nodeArray = await httpClient.Get(url);
         }
 
         /// <summary>
