@@ -7,6 +7,7 @@ namespace Assets.Scripts.Utils
 {
     public static class Utils
     {
+
         public static void FindLeaves(Transform parent, List<Transform> result)
         {
             if (parent.childCount == 0)
@@ -22,9 +23,29 @@ namespace Assets.Scripts.Utils
             }
         }
 
-        public static StreamReader ReadCsv(string fileName)
+        /// <summary>
+        /// A static method to reflect a transform matrix along the z-axis
+        /// </summary>
+        /// <returns>A reflected Matrix4v4</returns>
+        public static Matrix4x4 ReflectZ()
         {
-            TextAsset asset = Resources.Load<TextAsset>(fileName);
+            var result = new Matrix4x4(
+                new Vector4(1, 0, 0, 0),
+                new Vector4(0, 1, 0, 0),
+                new Vector4(0, 0, -1, 0),
+                new Vector4(0, 0, 0, 1)
+            );
+            return result;
+        }
+
+        /// <summary>
+        /// A class to read CSV files even when running on Android
+        /// </summary>
+        /// <param name="fileName">The name of the file to be read</param>
+        /// <returns>A StreamReader</returns>
+        public static StreamReader ReadTextFile(string fileName)
+        {
+            var asset = Resources.Load<TextAsset>(fileName);
             return new StreamReader(new MemoryStream(asset.bytes));
         }
 

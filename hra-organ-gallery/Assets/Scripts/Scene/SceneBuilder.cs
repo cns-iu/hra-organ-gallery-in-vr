@@ -133,7 +133,7 @@ namespace Assets.Scripts.Scene
 
                 //add tooltip to teleportation anchor label
                 TMP_Text label = anchor.GetComponentInChildren<TMP_Text>();
-                label.text = Organs[i].GetComponent<OrganData>().tooltip;
+                label.text = Organs[i].GetComponent<OrganData>().Tooltip;
 
                 //place organ
                 PlaceOrgan(Organs[i], nodeArray.nodes[i]);
@@ -242,8 +242,7 @@ namespace Assets.Scripts.Scene
                     reflected.rotation
            );
                 block.transform.localScale = reflected.lossyScale * 2f;
-                SetTissueBlockData(block, nodeArray.nodes[i]);
-                //SetCellTypeData(block);
+                block.AddComponent<TissueBlockData>().Init(nodeArray.nodes[i]);
                 TissueBlocks.Add(block);
             }
         }
@@ -274,7 +273,7 @@ namespace Assets.Scripts.Scene
             OrganData dataComponent = obj.AddComponent<OrganData>();
             dataComponent.SceneGraph = node.scenegraph;
             dataComponent.RepresentationOf = node.representation_of;
-            dataComponent.tooltip = node.tooltip;
+            dataComponent.Tooltip = node.tooltip;
         }
 
         async void ParentTissueBlocksToOrgans(List<GameObject> tissueBlocks, List<GameObject> organs)
