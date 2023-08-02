@@ -6,6 +6,9 @@ Source: [https://www.doi.org/10.3389/fbinf.2023.1162723](https://www.doi.org/10.
 
 Welcome to this repo! The Human Reference Atlas (HRA) Organ Gallery ([https://humanatlas.io/vr-organ-gallery](https://humanatlas.io/vr-organ-gallery)) lets the user explore 55 human organs and 100s of tissue blocks (as of the HRA v1.4), presented in real-world size and 3D. The organ models were developed to map trillions of cells for the [Human BioMolecular Atlas Program (HuBMAP)](https://commonfund.nih.gov/hubmap). 
 
+## Organs
+To download the most up to date GLB files for the organs of the HRA, please use this [GitHub repository](https://github.com/cns-iu/hra-glb-download). 
+
 ## Become a test user
 
 If you would like to become a **test user**, please email Andreas Bueckle at [abueckle@iu.edu](mailto:abueckle@iu.edu). Information for testers can be found [here](INFORMATION_FOR_TESTERS.MD).
