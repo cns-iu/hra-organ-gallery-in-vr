@@ -1,17 +1,9 @@
 using Assets.Scripts.Data;
-using Assets.Scripts.Interaction;
-using Assets.Scripts.Scene;
 using Assets.Scripts.Utils;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using TMPro;
-using UnityEditor.Searcher;
 using UnityEngine;
-using UnityEngine.Windows;
-using static Assets.Scripts.Scene.SceneBuilder;
 
 namespace HRAOrganGallery.Assets.Scripts.Scene
 {
@@ -29,13 +21,9 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
 
         [Header("Prefabs and Setup")]
         [SerializeField] private GameObject _preTissueBlock;
-        [SerializeField] private DataFetcher _dataFetcher;
 
         [Header("Data")]
         [SerializeField] private NodeArray _nodeArray;
-        [SerializeField] private List<string> _maleEntityIds = new List<string>();
-        [SerializeField] private List<string> _femaleEntityIds = new List<string>();
-        [SerializeField] private int numberOfHubmapIds;
 
         private void Awake()
         {
@@ -47,9 +35,6 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
             {
                 Instance = this;
             }
-
-            //get reference to DataFetcher
-            _dataFetcher = GetComponent<DataFetcher>();
 
             //add organs to list
             for (int i = 0; i < _parent.childCount; i++)
@@ -138,96 +123,96 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
 
         async void ParentTissueBlocksToOrgans(List<GameObject> tissueBlocks, List<GameObject> organs)
         {
-            // Add back to AssignEntityIdsToDonorSexLists if delay bug
-            _maleEntityIds = await GetEntityIdsBySex("https://ccf-api.hubmapconsortium.org/v1/tissue-blocks?sex=male");
-            _femaleEntityIds = await GetEntityIdsBySex("https://ccf-api.hubmapconsortium.org/v1/tissue-blocks?sex=female");
+            //// Add back to AssignEntityIdsToDonorSexLists if delay bug
+            //_maleEntityIds = await GetEntityIdsBySex("https://ccf-api.hubmapconsortium.org/v1/tissue-blocks?sex=male");
+            //_femaleEntityIds = await GetEntityIdsBySex("https://ccf-api.hubmapconsortium.org/v1/tissue-blocks?sex=female");
 
-            // assign donor sex to organ
-            await GetOrganSex();
+            //// assign donor sex to organ
+            //await GetOrganSex();
 
-            // assign donor sex to tissue block and parent to organ
-            for (int i = 0; i < TissueBlocks.Count; i++)
-            {
-                TissueBlockData tissueData = TissueBlocks[i].GetComponent<TissueBlockData>();
-                if (_maleEntityIds.Contains(tissueData.EntityId))
-                {
-                    tissueData.DonorSex = "Male";
-                }
-                else
-                {
-                    tissueData.DonorSex = "Female";
-                }
+            //// assign donor sex to tissue block and parent to organ
+            //for (int i = 0; i < TissueBlocks.Count; i++)
+            //{
+            //    TissueBlockData tissueData = TissueBlocks[i].GetComponent<TissueBlockData>();
+            //    if (_maleEntityIds.Contains(tissueData.EntityId))
+            //    {
+            //        tissueData.DonorSex = "Male";
+            //    }
+            //    else
+            //    {
+            //        tissueData.DonorSex = "Female";
+            //    }
 
-                for (int j = 0; j < Organs.Count; j++)
-                {
-                    OrganData organData = Organs[j].GetComponent<OrganData>();
+            //    for (int j = 0; j < Organs.Count; j++)
+            //    {
+            //        OrganData organData = Organs[j].GetComponent<OrganData>();
 
-                    foreach (var annotation in tissueData.CcfAnnotations)
-                    {
-                        if (organData.RepresentationOf == annotation && organData.DonorSex == tissueData.DonorSex)
-                        {
-                            TissueBlocks[i].transform.parent = Organs[j].transform.GetChild(0).transform;
-                            break;
-                        }
-                    }
-                }
-            }
+            //        foreach (var annotation in tissueData.CcfAnnotations)
+            //        {
+            //            if (organData.RepresentationOf == annotation && organData.DonorSex == tissueData.DonorSex)
+            //            {
+            //                TissueBlocks[i].transform.parent = Organs[j].transform.GetChild(0).transform;
+            //                break;
+            //            }
+            //        }
+            //    }
+            //}
 
-            var tasks = new List<Task>();
+            //var tasks = new List<Task>();
 
-            for (int i = 0; i < tissueBlocks.Count; i++)
-            {
-                var progressHubmapIds = new Progress<bool>((value) =>
-                {
-                    if (value) numberOfHubmapIds++;
-                });
+            //for (int i = 0; i < tissueBlocks.Count; i++)
+            //{
+            //    var progressHubmapIds = new Progress<bool>((value) =>
+            //    {
+            //        if (value) numberOfHubmapIds++;
+            //    });
 
-                tasks.Add(tissueBlocks[i].GetComponent<HuBMAPIDFetcher>().FromEntityIdGetHubmapId(progressHubmapIds));
-            }
+            //    tasks.Add(tissueBlocks[i].GetComponent<HuBMAPIDFetcher>().FromEntityIdGetHubmapId(progressHubmapIds));
+            //}
 
 
-            //tasks.Add(GetTissueBlocksWithCellTypes());
+            ////tasks.Add(GetTissueBlocksWithCellTypes());
 
-            tasks.Add(CCFAPISPARQLQuery.Instance.GetAllCellTypes());
+            //tasks.Add(CCFAPISPARQLQuery.Instance.GetAllCellTypes());
 
-            await Task.WhenAll(tasks);
+            //await Task.WhenAll(tasks);
 
-            // trigger OnSceneBuilt event
-            OnSceneBuilt?.Invoke();
+            //// trigger OnSceneBuilt event
+            //OnSceneBuilt?.Invoke();
         }
 
 
-        public async Task<List<string>> GetEntityIdsBySex(string url)
-        {
-            List<string> result = new List<string>();
-            DataFetcher httpClient = _dataFetcher;
-            NodeArray nodeArray = await httpClient.Get(url);
-            foreach (var node in nodeArray.nodes)
-            {
-                result.Add(node.jsonLdId);
-            }
-            return result;
-        }
+        //public async Task<List<string>> GetEntityIdsBySex(string url)
+        //{
+        //    List<string> result = new List<string>();
+        //    DataFetcher httpClient = _dataFetcher;
+        //    NodeArray nodeArray = await httpClient.Get(url);
+        //    foreach (var node in nodeArray.nodes)
+        //    {
+        //        result.Add(node.jsonLdId);
+        //    }
+        //    return result;
+        //}
 
-        public async Task GetOrganSex()
-        {
-            DataFetcher httpClient = _dataFetcher;
-            NodeArray nodeArray = await httpClient.Get("https://ccf-api.hubmapconsortium.org/v1/reference-organs");
-            // Debug.Log(nodeArray.nodes.Length);
-            foreach (var organ in Organs)
-            {
-                OrganData organData = organ.GetComponent<OrganData>();
+        //public async Task GetOrganSex()
+        //{
+        //    DataFetcher httpClient = _dataFetcher;
+        //    NodeArray nodeArray = await httpClient.Get("https://ccf-api.hubmapconsortium.org/v1/reference-organs");
+        //    // Debug.Log(nodeArray.nodes.Length);
+        //    foreach (var organ in Organs)
+        //    {
+        //        OrganData organData = organ.GetComponent<OrganData>();
 
-                foreach (var node in nodeArray.nodes)
-                {
-                    // Debug.Log("file: " + node.reference_organ);
-                    if (organData.SceneGraph == node.glbObject.file)
-                    {
-                        organData.DonorSex = node.sex;
-                    }
-                }
-            }
-        }
+        //        foreach (var node in nodeArray.nodes)
+        //        {
+        //            // Debug.Log("file: " + node.reference_organ);
+        //            if (organData.SceneGraph == node.glbObject.file)
+        //            {
+        //                organData.DonorSex = node.sex;
+        //            }
+        //        }
+        //    }
+        //}
     }
 
     public class HubmapIdArray

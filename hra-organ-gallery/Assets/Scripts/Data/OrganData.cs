@@ -1,3 +1,4 @@
+using HRAOrganGallery;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,9 @@ namespace Assets.Scripts.Data
 
     public class OrganData : MonoBehaviour, IApiSettable
     {
+        [field: SerializeField]
+        public string ReferenceOrgan { get; set; }
+
         [field: SerializeField]
         public string RepresentationOf { get; set; }
 
@@ -29,7 +33,7 @@ namespace Assets.Scripts.Data
         [field: SerializeField]
         public string Tooltip { get; set; }
         public void Init(Node node)
-            => (RepresentationOf, SceneGraph, Tooltip)
-            = (node.representation_of, node.scenegraph, node.tooltip);
+            => (ReferenceOrgan, RepresentationOf, SceneGraph, Tooltip)
+            = (node.reference_organ, node.representation_of, node.scenegraph, node.tooltip);
     }
 }
