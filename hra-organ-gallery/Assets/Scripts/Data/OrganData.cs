@@ -30,20 +30,23 @@ namespace Assets.Scripts.Data
 
         [field: SerializeField]
         public string Tooltip { get; set; }
+
+       
+
         public void Init(Node node, string organSex = "")
             => (ReferenceOrgan, RepresentationOf, SceneGraph, Tooltip, Sex)
             = (node.reference_organ, node.representation_of, node.scenegraph, node.tooltip, organSex);
 
         public void Init(Node node)
         {
-            ReferenceOrgan = CleanName(node.reference_organ);
+            ReferenceOrgan = Clean(node.reference_organ);
             RepresentationOf = node.representation_of;
             SceneGraph = node.scenegraph;
             Tooltip = node.tooltip;
             Sex = GetOrganSex(ReferenceOrgan, SceneSetup.Instance.OrganSexMapping);
         }
 
-        private string CleanName(string reference_organ)
+        public string Clean(string reference_organ)
         {
             if (reference_organ.Contains("V1."))
             {
