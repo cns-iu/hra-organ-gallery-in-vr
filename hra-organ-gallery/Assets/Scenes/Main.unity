@@ -6002,6 +6002,46 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 7080459231220570559, guid: 0db95ecb63e771c4599dab6815b73460,
+        type: 3}
+      propertyPath: _midColor.b
+      value: 0.23137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080459231220570559, guid: 0db95ecb63e771c4599dab6815b73460,
+        type: 3}
+      propertyPath: _midColor.g
+      value: 0.92156863
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080459231220570559, guid: 0db95ecb63e771c4599dab6815b73460,
+        type: 3}
+      propertyPath: _highColor.b
+      value: 0.9529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080459231220570559, guid: 0db95ecb63e771c4599dab6815b73460,
+        type: 3}
+      propertyPath: _highColor.g
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080459231220570559, guid: 0db95ecb63e771c4599dab6815b73460,
+        type: 3}
+      propertyPath: _highColor.r
+      value: 0.12941177
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080459231220570559, guid: 0db95ecb63e771c4599dab6815b73460,
+        type: 3}
+      propertyPath: _low_color.b
+      value: 0.3882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080459231220570559, guid: 0db95ecb63e771c4599dab6815b73460,
+        type: 3}
+      propertyPath: _low_color.g
+      value: 0.11764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 7080459231220570559, guid: 0db95ecb63e771c4599dab6815b73460,
+        type: 3}
+      propertyPath: _low_color.r
+      value: 0.9137255
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7355,6 +7395,7 @@ GameObject:
   - component: {fileID: 463948137}
   - component: {fileID: 463948139}
   - component: {fileID: 463948140}
+  - component: {fileID: 463948141}
   m_Layer: 0
   m_Name: SceneSetup
   m_TagString: Untagged
@@ -7397,6 +7438,8 @@ MonoBehaviour:
     type: 3}
   _nodeArray:
     nodes: []
+  _organSexMapping:
+    pairs: []
 --- !u!114 &463948139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7411,9 +7454,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IdsOrgansToShow: []
   Url: 
-  baseUrl: https://ccf-api.hubmapconsortium.org/v1/scene
+  ccfApiEndPoint: https://ccf-api.hubmapconsortium.org/v1/scene
   uberonIds: []
-  sex: 
 --- !u!114 &463948140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7428,6 +7470,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeArray:
     nodes: []
+--- !u!114 &463948141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463948135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ee529cdd9d4864baf22610c5d5deb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  organSexMapping:
+    pairs: []
 --- !u!1001 &473524001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40880,9 +40936,8 @@ MonoBehaviour:
   - http://purl.obolibrary.org/obo/UBERON_0002106
   - http://purl.obolibrary.org/obo/UBERON_0001004
   Url: 
-  baseUrl: https://ccf-api.hubmapconsortium.org/v1/scene
+  ccfApiEndPoint: https://ccf-api.hubmapconsortium.org/v1/scene
   uberonIds: []
-  sex: 
 --- !u!114 &1902463537
 MonoBehaviour:
   m_ObjectHideFlags: 0

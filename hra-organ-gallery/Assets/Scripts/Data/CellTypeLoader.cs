@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Assets.Scripts.Data
 {
-    public class CellTypeLoader : MonoBehaviour, IApiResponseHandler
+    public class CellTypeLoader : MonoBehaviour, IApiResponseHandler<TextAsset>
     {
         public static CellTypeLoader Instance;
         [SerializeField] private string _fileName;
@@ -48,6 +48,11 @@ namespace Assets.Scripts.Data
               .Replace("@type", "jsonLdType");
 
             locations = JsonUtility.FromJson<EnrichedRuiLocationArray>(result);
+        }
+
+        public Task<TextAsset> ShareData()
+        {
+            throw new NotImplementedException();
         }
     }
 

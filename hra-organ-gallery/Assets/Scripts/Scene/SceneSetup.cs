@@ -3,6 +3,7 @@ using Assets.Scripts.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace HRAOrganGallery.Assets.Scripts.Scene
@@ -23,7 +24,9 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
         [SerializeField] private GameObject _preTissueBlock;
 
         [Header("Data")]
-        [SerializeField] private NodeArray _nodeArray;
+        [SerializeField] private NodeArray _nodeArray; //node array to hold CCF API response for scene
+        [SerializeField] private OrganSexMapping _organSexMapping; //mapping to hold organ to sex mapping
+        //[SerializeField] private NodeArray _nodeArray; //node array to hold CCF API response for scene
 
         private void Awake()
         {
@@ -50,7 +53,10 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
         /// </summary>
         private async void Start()
         {
+            //get scene from CCF API
             _nodeArray = await SceneLoader.Instance.ShareData();
+            _organSexMapping = await OrganSexLoader.Instance.ShareData();
+
 
             //loop through organs in scene and response, add data, and place organs already in scene (match by scenegraphNode)
             Organs = EnrichOrgans(Organs);
@@ -123,6 +129,7 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
 
         async void ParentTissueBlocksToOrgans(List<GameObject> tissueBlocks, List<GameObject> organs)
         {
+
             //// Add back to AssignEntityIdsToDonorSexLists if delay bug
             //_maleEntityIds = await GetEntityIdsBySex("https://ccf-api.hubmapconsortium.org/v1/tissue-blocks?sex=male");
             //_femaleEntityIds = await GetEntityIdsBySex("https://ccf-api.hubmapconsortium.org/v1/tissue-blocks?sex=female");
@@ -194,35 +201,25 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
         //    return result;
         //}
 
-        //public async Task GetOrganSex()
-        //{
-        //    DataFetcher httpClient = _dataFetcher;
-        //    NodeArray nodeArray = await httpClient.Get("https://ccf-api.hubmapconsortium.org/v1/reference-organs");
-        //    // Debug.Log(nodeArray.nodes.Length);
-        //    foreach (var organ in Organs)
-        //    {
-        //        OrganData organData = organ.GetComponent<OrganData>();
+        public async Task GetOrganSex()
+        {
+            //DataFetcher httpClient = _dataFetcher;
+            //NodeArray nodeArray = await httpClient.Get("https://ccf-api.hubmapconsortium.org/v1/reference-organs");
+            //// Debug.Log(nodeArray.nodes.Length);
+            //foreach (var organ in Organs)
+            //{
+            //    OrganData organData = organ.GetComponent<OrganData>();
 
-        //        foreach (var node in nodeArray.nodes)
-        //        {
-        //            // Debug.Log("file: " + node.reference_organ);
-        //            if (organData.SceneGraph == node.glbObject.file)
-        //            {
-        //                organData.DonorSex = node.sex;
-        //            }
-        //        }
-        //    }
-        //}
-    }
-
-    public class HubmapIdArray
-    {
-        [SerializeField] public HubmapIdHolder[] hubmapIdHolder;
-    }
-
-    public class HubmapIdHolder
-    {
-        public string hubmap_id;
+            //    foreach (var node in nodeArray.nodes)
+            //    {
+            //        // Debug.Log("file: " + node.reference_organ);
+            //        if (organData.SceneGraph == node.glbObject.file)
+            //        {
+            //            organData.DonorSex = node.sex;
+            //        }
+            //    }
+            //}
+        }
     }
 }
 

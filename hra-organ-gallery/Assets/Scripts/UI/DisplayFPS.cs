@@ -10,8 +10,12 @@ namespace Assets.Scripts.UI
         public float updateDelay = 0f;
 
         private float _targetFPS = 72f;
+        private float _midFPS = 60f;
         private float _currentFPS = 0f;
         private float _deltaTime = 0f;
+        [SerializeField] private Color _highColor = new Color32(0, 177, 215, 255);
+        [SerializeField] private Color _midColor = Color.white;
+        [SerializeField] private Color _low_color = new Color32(200, 68, 124, 255);
 
         private TextMeshProUGUI _textFPS;
         // Start is called before the first frame update
@@ -40,11 +44,15 @@ namespace Assets.Scripts.UI
             {
                 if (_currentFPS >= _targetFPS)
                 {
-                    _textFPS.color = new Color32(0, 177, 215, 255);
+                    _textFPS.color = _highColor;
+                }
+                else if(_currentFPS < _targetFPS && _currentFPS >= _midFPS)
+                {
+                    _textFPS.color = _midColor;
                 }
                 else
                 {
-                    _textFPS.color = new Color32(200, 68, 124, 255);
+                    _textFPS.color = _low_color;
                 }
                 _textFPS.text = "FPS: " + _currentFPS.ToString(".0");
                 yield return new WaitForSeconds(updateDelay);

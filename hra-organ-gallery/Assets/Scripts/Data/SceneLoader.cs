@@ -8,7 +8,10 @@ using Assets.Scripts.Scene;
 
 namespace HRAOrganGallery
 {
-    public class SceneLoader : MonoBehaviour, IApiResponseHandler
+    /// <summary>
+    /// A class to load a scene from the CCF API at https://ccf-api.hubmapconsortium.org/v1/scene
+    /// </summary>
+    public class SceneLoader : MonoBehaviour, IApiResponseHandler<NodeArray>
     {
         public static SceneLoader Instance { get; private set; }
         public NodeArray nodeArray;
@@ -28,7 +31,8 @@ namespace HRAOrganGallery
             }
         }
 
-        public async Task<NodeArray> ShareData() {
+        public async Task<NodeArray> ShareData()
+        {
             await GetNodes();
             return nodeArray;
         }
@@ -53,8 +57,6 @@ namespace HRAOrganGallery
                 + "}"
                 );
         }
-
-
     }
 
     [Serializable]
