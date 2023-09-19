@@ -23,10 +23,9 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
         [Header("Prefabs and Setup")]
         [SerializeField] private GameObject _preTissueBlock;
 
-        [Header("Data")]
-        [SerializeField] private NodeArray _nodeArray; //node array to hold CCF API response for scene
-        [SerializeField] private OrganSexMapping _organSexMapping; //mapping to hold organ to sex mapping
-        //[SerializeField] private NodeArray _nodeArray; //node array to hold CCF API response for scene
+        [field: SerializeField] public OrganSexMapping OrganSexMapping { get; private set; } //mapping to hold organ to sex mapping
+        [field: SerializeField] public RuiLocationOrganMapping RuiLocationMapping { get; private set; }//mapping to hold rui location to ref organ mapping
+        [field: SerializeField] public NodeArray NodeArray { get; private set; } //node array to hold CCF API response for scene
 
         private void Awake()
         {
@@ -54,8 +53,9 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
         private async void Start()
         {
             //get scene from CCF API
-            _nodeArray = await SceneLoader.Instance.ShareData();
-            _organSexMapping = await OrganSexLoader.Instance.ShareData();
+            NodeArray = await SceneLoader.Instance.ShareData();
+            OrganSexMapping = await OrganSexLoader.Instance.ShareData();
+            RuiLocationMapping = await TissueBlockRefOrganLoader.Instance.ShareData();
 
 
             //loop through organs in scene and response, add data, and place organs already in scene (match by scenegraphNode)
@@ -81,7 +81,7 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
             {
                 GameObject current = organs[i];
 
-                Node node = _nodeArray.nodes
+                Node node = NodeArray.nodes
                     .First(
                     n => n.scenegraph.Split("/")[n.scenegraph.Split("/").Length - 1].Replace(".glb", string.Empty) == current.name
                     );
@@ -111,17 +111,17 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
 
         void CreateAndPlaceTissueBlocks()
         {
-            for (int i = 0; i < _nodeArray.nodes.Length; i++)
+            for (int i = 0; i < NodeArray.nodes.Length; i++)
             {
-                if (_nodeArray.nodes[i].scenegraph != null) continue;
-                Matrix4x4 reflected = Utils.ReflectZ() * MatrixExtensions.BuildMatrix(_nodeArray.nodes[i].transformMatrix);
+                if (NodeArray.nodes[i].scenegraph != null) continue;
+                Matrix4x4 reflected = Utils.ReflectZ() * MatrixExtensions.BuildMatrix(NodeArray.nodes[i].transformMatrix);
                 GameObject block = Instantiate(
                     _preTissueBlock,
                     reflected.GetPosition(),
                     reflected.rotation
            );
                 block.transform.localScale = reflected.lossyScale * 2f;
-                block.AddComponent<TissueBlockData>().Init(_nodeArray.nodes[i]);
+                block.AddComponent<TissueBlockData>().Init(NodeArray.nodes[i]);
                 TissueBlocks.Add(block);
                 block.transform.parent = _parent;
             }

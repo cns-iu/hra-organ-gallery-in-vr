@@ -1,6 +1,8 @@
 using HRAOrganGallery;
+using HRAOrganGallery.Assets.Scripts.Scene;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Data
@@ -19,7 +21,7 @@ namespace Assets.Scripts.Data
         public string SceneGraph { get; set; }
 
         [field: SerializeField]
-        public string DonorSex { get; set; }
+        public string Sex { get; set; }
 
         [field: SerializeField]
         public BodySystem BodySystem { get; set; }
@@ -35,5 +37,9 @@ namespace Assets.Scripts.Data
         public void Init(Node node)
             => (ReferenceOrgan, RepresentationOf, SceneGraph, Tooltip)
             = (node.reference_organ, node.representation_of, node.scenegraph, node.tooltip);
+
+        private string GetSex() {
+            return SceneSetup.Instance.OrganSexMapping.pairs.First().sex;
+        }
     }
 }

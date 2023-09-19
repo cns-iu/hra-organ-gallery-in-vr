@@ -7396,6 +7396,7 @@ GameObject:
   - component: {fileID: 463948139}
   - component: {fileID: 463948140}
   - component: {fileID: 463948141}
+  - component: {fileID: 463948142}
   m_Layer: 0
   m_Name: SceneSetup
   m_TagString: Untagged
@@ -7436,10 +7437,12 @@ MonoBehaviour:
   _adjustedOrganOrigin: {fileID: 280468200}
   _preTissueBlock: {fileID: 903711217248147082, guid: c6652058aa66a5240945d30ad6c2b0cc,
     type: 3}
-  _nodeArray:
-    nodes: []
-  _organSexMapping:
+  <OrganSexMapping>k__BackingField:
     pairs: []
+  <RuiLocationMapping>k__BackingField:
+    mappings: []
+  <NodeArray>k__BackingField:
+    nodes: []
 --- !u!114 &463948139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7484,6 +7487,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   organSexMapping:
     pairs: []
+--- !u!114 &463948142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463948135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b33bf5e9a198943479c560f679dcd6ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ruiLocationMapping:
+    mappings: []
 --- !u!1001 &473524001
 PrefabInstance:
   m_ObjectHideFlags: 0
