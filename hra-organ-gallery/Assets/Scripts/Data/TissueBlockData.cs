@@ -25,7 +25,7 @@ namespace Assets.Scripts.Data
         [field: SerializeField]
         public string DonorSex;
 
-        public void Init(Node node)
+        public void Init(Node node, string sex = "")
        => (EntityId, Name, CcfAnnotations)
        = (node.entityId, node.name, node.ccf_annotations);
     }

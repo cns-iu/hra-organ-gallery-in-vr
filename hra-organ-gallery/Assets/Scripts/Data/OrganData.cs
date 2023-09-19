@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace Assets.Scripts.Data
 {
-    public enum BodySystem { undefined, integumentary, nervous, respiratory, cardio, digestive, musculoskeletal, lymphatic, urinary, fetal, reproductive }
 
     public class OrganData : MonoBehaviour, IApiSettable
     {
@@ -24,9 +23,6 @@ namespace Assets.Scripts.Data
         public string Sex { get; set; }
 
         [field: SerializeField]
-        public BodySystem BodySystem { get; set; }
-
-        [field: SerializeField]
         public Vector3 DefaultPosition { get; set; }
 
         [field: SerializeField]
@@ -34,12 +30,48 @@ namespace Assets.Scripts.Data
 
         [field: SerializeField]
         public string Tooltip { get; set; }
-        public void Init(Node node)
-            => (ReferenceOrgan, RepresentationOf, SceneGraph, Tooltip)
-            = (node.reference_organ, node.representation_of, node.scenegraph, node.tooltip);
+        public void Init(Node node, string organSex = "")
+            => (ReferenceOrgan, RepresentationOf, SceneGraph, Tooltip, Sex)
+            = (node.reference_organ, node.representation_of, node.scenegraph, node.tooltip, organSex);
 
-        private string GetSex() {
-            return SceneSetup.Instance.OrganSexMapping.pairs.First().sex;
+        public void Init(Node node)
+        {
+            ReferenceOrgan = CleanName(node.reference_organ);
+            RepresentationOf = node.representation_of;
+            SceneGraph = node.scenegraph;
+            Tooltip = node.tooltip;
+            Sex = GetOrganSex(ReferenceOrgan, SceneSetup.Instance.OrganSexMapping);
+        }
+
+        private string CleanName(string reference_organ)
+        {
+            if (reference_organ.Contains("V1."))
+            {
+                return reference_organ.Remove(reference_organ.IndexOf("V1."));
+            }
+            else
+            {
+                return reference_organ;
+            }
+        }
+
+        private string GetOrganSex(string referenceOrgan, OrganSexMapping mapping)
+        {
+            try
+            {
+                return mapping.pairs.First(o => o.reference_organ.Replace("\"", "") == referenceOrgan).sex.Replace("\"", "");
+            }
+            catch
+            {
+                if (referenceOrgan.Contains("VHF"))
+                {
+                    return "Female";
+                }
+                else
+                {
+                    return "Male";
+                }
+            }
         }
     }
 }

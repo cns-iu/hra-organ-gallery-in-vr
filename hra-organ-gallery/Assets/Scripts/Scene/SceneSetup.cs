@@ -86,7 +86,6 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
                     n => n.scenegraph.Split("/")[n.scenegraph.Split("/").Length - 1].Replace(".glb", string.Empty) == current.name
                     );
 
-                //add OrganData component and store relevant data from Node
                 current.AddComponent<OrganData>().Init(node);
 
                 //place organ by transform matrix from Node
