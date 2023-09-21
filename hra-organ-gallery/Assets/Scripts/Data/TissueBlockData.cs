@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Assets.Scripts.Shared;
+using HRAOrganGallery.Assets.Scripts;
 
 namespace Assets.Scripts.Data
 {
@@ -25,6 +26,8 @@ namespace Assets.Scripts.Data
         [field: SerializeField]
         public string ReferenceOrgan;
 
+        [SerializeField] private ConsoleLogger _logger;
+
         public void Init(Node node)
         {
             JsonLdId = node.jsonLdId.Replace("\"", "");
@@ -33,17 +36,28 @@ namespace Assets.Scripts.Data
             ReferenceOrgan = Utils.CleanReferenceOrganName(GetReferenceOrgan(JsonLdId, SceneSetup.Instance.RuiLocationMapping));
         }
 
+
+        private void Awake()
+        {
+            _logger = FindObjectsOfType<ConsoleLogger>().Where(c => c.GetComponent<ConsoleLogger>().type == LoggerType.Data).First();
+        }
+
         private string GetReferenceOrgan(string jsonId, RuiLocationOrganMapping mapping)
         {
             try
             {
-                //the colon was renamed to large intestine! Hence the missing matches
-                Debug.Log(jsonId.Color("green"));
-                return mapping.mappings.First(m => m.rui_location.Replace("\"", "") == jsonId).reference_organ.Replace("\"", "");
+                //the colon was renamed to large intestine! Hence the missing matches?
+                
+                var result = mapping.mappings.First(m => m.rui_location.Replace("\"", "") == jsonId).reference_organ.Replace("\"", "");
+                //Debug.Log(jsonId.Color("green"));
+                string message = jsonId.Color("green");
+                _logger.Log(message, this);
+                return result.ToString();
             }
             catch
             {
-                Debug.Log(jsonId.Color("red"));
+                string message = jsonId.Color("red");
+                _logger.Log(message, this);
                 return "NO MATCH FOUND";
 
             }

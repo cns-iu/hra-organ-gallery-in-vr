@@ -27,6 +27,7 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
         [field: SerializeField] public RuiLocationOrganMapping RuiLocationMapping { get; private set; }//mapping to hold rui location to ref organ mapping
         [field: SerializeField] public NodeArray NodeArray { get; private set; } //node array to hold CCF API response for scene
 
+        [SerializeField] private Logger _logger;
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -127,24 +128,33 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
             }
         }
 
+        /// <summary>
+        /// A method to parent tissue blocks from a list to organs from a list
+        /// </summary>
+        /// <param name="tissueBlocks">A List of GameObjects holding tissue blocks</param>
+        /// <param name="organs">A List of GameObjects holding organs</param>
         private void ParentTissueBlocksToOrgans(List<GameObject> tissueBlocks, List<GameObject> organs)
         {
 
-            // assign donor sex to tissue block and parent to organ
+
             for (int i = 0; i < TissueBlocks.Count; i++)
             {
                 for (int j = 0; j < Organs.Count; j++)
                 {
+                    // match by reference_organ
                     if (TissueBlocks[i].GetComponent<TissueBlockData>().ReferenceOrgan == Organs[j].GetComponent<OrganData>().ReferenceOrgan)
                     {
                         TissueBlocks[i].transform.parent = Organs[j].transform;
                     }
+                    else //alt: match by UBERON ID; won't work, because it will parent the tissue block to an organ regardless of sex!
+                    {
+                        //if (TissueBlocks[i].GetComponent<TissueBlockData>().CcfAnnotations.Contains(Organs[j].GetComponent<OrganData>().RepresentationOf))
+                        //{
+                        //    TissueBlocks[i].transform.parent = Organs[j].transform;
+                        //}
+                    }
                 }
             }
-
-
-
-
             // trigger OnSceneBuilt event
             OnSceneBuilt?.Invoke();
         }
