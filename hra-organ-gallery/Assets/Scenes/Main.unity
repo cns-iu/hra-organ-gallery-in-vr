@@ -36578,56 +36578,6 @@ MonoBehaviour:
   <SceneGraph>k__BackingField: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Knee_R.glb
   <Sex>k__BackingField: Female
   <Tooltip>k__BackingField: Right Knee
---- !u!1 &1681216772
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1681216773}
-  - component: {fileID: 1681216774}
-  m_Layer: 0
-  m_Name: CCFAPISPARQLQuery
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1681216773
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681216772}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1758544889}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1681216774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681216772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2947542b83e7fd14b9eb4977fe59b9ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _queryResult:
-    triples: []
-  _url: http://grlc.io/api-git/hubmapconsortium/ccf-grlc/subdir/ccf//cells_located_in_as?endpoint=https%3A%2F%2Fccf-api.hubmapconsortium.org%2Fv1%2Fsparql?format=application/json
-  _apiResponse:
-    triples: []
-  _interactor: {fileID: 1081538770}
 --- !u!1 &1691979254
 GameObject:
   m_ObjectHideFlags: 0
@@ -37569,8 +37519,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 463948136}
-  - {fileID: 1902463535}
-  - {fileID: 1681216773}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1763426553 stripped
@@ -43303,75 +43251,6 @@ MonoBehaviour:
   <SceneGraph>k__BackingField: https://ccf-ontology.hubmapconsortium.org/objects/v1.4/3d-vh-m-palatine-tonsil-l.glb
   <Sex>k__BackingField: Male
   <Tooltip>k__BackingField: Left Palatine Tonsil
---- !u!1 &1902463534
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1902463535}
-  - component: {fileID: 1902463537}
-  - component: {fileID: 1902463536}
-  m_Layer: 0
-  m_Name: SceneBuilder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1902463535
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1902463534}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1758544889}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1902463536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1902463534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4b8d6617e063424eb2113548a76a00c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IdsOrgansToShow:
-  - http://purl.obolibrary.org/obo/UBERON_0002097
-  - http://purl.obolibrary.org/obo/UBERON_0000059
-  - http://purl.obolibrary.org/obo/UBERON_0000059
-  - http://purl.obolibrary.org/obo/UBERON_0000948
-  - http://purl.obolibrary.org/obo/UBERON_0004538
-  - http://purl.obolibrary.org/obo/UBERON_0004539
-  - http://purl.obolibrary.org/obo/UBERON_0002106
-  - http://purl.obolibrary.org/obo/UBERON_0001004
-  Url: 
-  ccfApiEndPoint: https://ccf-api.hubmapconsortium.org/v1/scene
-  uberonIds: []
---- !u!114 &1902463537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1902463534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccaf7247450655f42b0d519b94d057ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1935976101
 GameObject:
   m_ObjectHideFlags: 0
