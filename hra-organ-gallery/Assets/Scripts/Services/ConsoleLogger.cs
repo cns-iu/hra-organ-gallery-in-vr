@@ -27,7 +27,7 @@ namespace HRAOrganGallery.Assets.Scripts
         {
             if (!_showLogs) return;
 
-            Debug.Log($"{("[" + _prefix + "]" + sender.ToString()).Color(_hexColor)} says: " + message);
+            Debug.Log($"{("[" + _prefix + "] " + sender.ToString()).Color(_hexColor)} says: " + message);
         }
     }
 }
