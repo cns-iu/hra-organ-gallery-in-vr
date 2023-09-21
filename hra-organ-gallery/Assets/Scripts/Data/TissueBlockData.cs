@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Assets.Scripts.Shared;
 
 namespace Assets.Scripts.Data
 {
@@ -16,38 +17,37 @@ namespace Assets.Scripts.Data
         public string EntityId { get; set; }
 
         [field: SerializeField]
-        public string Name { get; set; }
-
-        [field: SerializeField]
-        public string Tooltip { get; set; }
-
-        [field: SerializeField]
         public string[] CcfAnnotations { get; set; }
 
         [field: SerializeField]
         public string HubmapId { get; set; }
 
         [field: SerializeField]
-        public string DonorSex;
-
-        [field: SerializeField]
         public string ReferenceOrgan;
-
-        public void Init(Node node, string sex = "")
-       => (EntityId, Name, CcfAnnotations)
-       = (node.entityId, node.name, node.ccf_annotations);
 
         public void Init(Node node)
         {
-            JsonLdId = node.jsonLdId; 
+            JsonLdId = node.jsonLdId.Replace("\"", "");
             EntityId = node.entityId;
-            Name = node.name;
             CcfAnnotations = node.ccf_annotations;
-            ReferenceOrgan = GetReferenceOrgan(JsonLdId, SceneSetup.Instance.RuiLocationMapping);
+            ReferenceOrgan = Utils.CleanReferenceOrganName(GetReferenceOrgan(JsonLdId, SceneSetup.Instance.RuiLocationMapping));
         }
 
-        private string GetReferenceOrgan(string jsonId, RuiLocationOrganMapping mapping) {
-            return mapping.mappings.First(m => m.rui_location == jsonId).reference_organ;
+        private string GetReferenceOrgan(string jsonId, RuiLocationOrganMapping mapping)
+        {
+            try
+            {
+                //the colon was renamed to large intestine! Hence the missing matches
+                Debug.Log(jsonId.Color("green"));
+                return mapping.mappings.First(m => m.rui_location.Replace("\"", "") == jsonId).reference_organ.Replace("\"", "");
+            }
+            catch
+            {
+                Debug.Log(jsonId.Color("red"));
+                return "NO MATCH FOUND";
+
+            }
+
         }
 
 

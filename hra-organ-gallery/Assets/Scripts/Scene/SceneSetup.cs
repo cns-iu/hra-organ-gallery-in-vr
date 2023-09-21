@@ -1,5 +1,5 @@
 using Assets.Scripts.Data;
-using Assets.Scripts.Utils;
+using Assets.Scripts.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,6 +65,7 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
             CreateAndPlaceTissueBlocks();
 
             //ParentTissueBlocksToOrgans(TissueBlocks, Organs);
+            ParentTissueBlocksToOrgans(TissueBlocks, Organs);
 
             //move all organs to central platform
             _parent.SetPositionAndRotation(_adjustedOrganOrigin.position, _adjustedOrganOrigin.rotation);
@@ -126,65 +127,26 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
             }
         }
 
-        async void ParentTissueBlocksToOrgans(List<GameObject> tissueBlocks, List<GameObject> organs)
+        private void ParentTissueBlocksToOrgans(List<GameObject> tissueBlocks, List<GameObject> organs)
         {
 
-            //// Add back to AssignEntityIdsToDonorSexLists if delay bug
-            //_maleEntityIds = await GetEntityIdsBySex("https://ccf-api.hubmapconsortium.org/v1/tissue-blocks?sex=male");
-            //_femaleEntityIds = await GetEntityIdsBySex("https://ccf-api.hubmapconsortium.org/v1/tissue-blocks?sex=female");
-
-            //// assign donor sex to organ
-            //await GetOrganSex();
-
-            //// assign donor sex to tissue block and parent to organ
-            //for (int i = 0; i < TissueBlocks.Count; i++)
-            //{
-            //    TissueBlockData tissueData = TissueBlocks[i].GetComponent<TissueBlockData>();
-            //    if (_maleEntityIds.Contains(tissueData.EntityId))
-            //    {
-            //        tissueData.DonorSex = "Male";
-            //    }
-            //    else
-            //    {
-            //        tissueData.DonorSex = "Female";
-            //    }
-
-            //    for (int j = 0; j < Organs.Count; j++)
-            //    {
-            //        OrganData organData = Organs[j].GetComponent<OrganData>();
-
-            //        foreach (var annotation in tissueData.CcfAnnotations)
-            //        {
-            //            if (organData.RepresentationOf == annotation && organData.DonorSex == tissueData.DonorSex)
-            //            {
-            //                TissueBlocks[i].transform.parent = Organs[j].transform.GetChild(0).transform;
-            //                break;
-            //            }
-            //        }
-            //    }
-            //}
-
-            //var tasks = new List<Task>();
-
-            //for (int i = 0; i < tissueBlocks.Count; i++)
-            //{
-            //    var progressHubmapIds = new Progress<bool>((value) =>
-            //    {
-            //        if (value) numberOfHubmapIds++;
-            //    });
-
-            //    tasks.Add(tissueBlocks[i].GetComponent<HuBMAPIDFetcher>().FromEntityIdGetHubmapId(progressHubmapIds));
-            //}
+            // assign donor sex to tissue block and parent to organ
+            for (int i = 0; i < TissueBlocks.Count; i++)
+            {
+                for (int j = 0; j < Organs.Count; j++)
+                {
+                    if (TissueBlocks[i].GetComponent<TissueBlockData>().ReferenceOrgan == Organs[j].GetComponent<OrganData>().ReferenceOrgan)
+                    {
+                        TissueBlocks[i].transform.parent = Organs[j].transform;
+                    }
+                }
+            }
 
 
-            ////tasks.Add(GetTissueBlocksWithCellTypes());
 
-            //tasks.Add(CCFAPISPARQLQuery.Instance.GetAllCellTypes());
 
-            //await Task.WhenAll(tasks);
-
-            //// trigger OnSceneBuilt event
-            //OnSceneBuilt?.Invoke();
+            // trigger OnSceneBuilt event
+            OnSceneBuilt?.Invoke();
         }
 
 

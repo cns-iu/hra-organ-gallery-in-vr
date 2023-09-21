@@ -23,39 +23,15 @@ namespace Assets.Scripts.Data
         public string Sex { get; set; }
 
         [field: SerializeField]
-        public Vector3 DefaultPosition { get; set; }
-
-        [field: SerializeField]
-        public Vector3 DefaultPositionExtruded { get; set; }
-
-        [field: SerializeField]
         public string Tooltip { get; set; }
-
-       
-
-        public void Init(Node node, string organSex = "")
-            => (ReferenceOrgan, RepresentationOf, SceneGraph, Tooltip, Sex)
-            = (node.reference_organ, node.representation_of, node.scenegraph, node.tooltip, organSex);
 
         public void Init(Node node)
         {
-            ReferenceOrgan = Clean(node.reference_organ);
+            ReferenceOrgan = Shared.Utils.CleanReferenceOrganName(node.reference_organ);
             RepresentationOf = node.representation_of;
             SceneGraph = node.scenegraph;
             Tooltip = node.tooltip;
             Sex = GetOrganSex(ReferenceOrgan, SceneSetup.Instance.OrganSexMapping);
-        }
-
-        public string Clean(string reference_organ)
-        {
-            if (reference_organ.Contains("V1."))
-            {
-                return reference_organ.Remove(reference_organ.IndexOf("V1."));
-            }
-            else
-            {
-                return reference_organ;
-            }
         }
 
         private string GetOrganSex(string referenceOrgan, OrganSexMapping mapping)

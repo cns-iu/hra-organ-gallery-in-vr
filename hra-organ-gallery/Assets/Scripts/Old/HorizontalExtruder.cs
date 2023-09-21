@@ -6,7 +6,7 @@ using System.IO;
 using UnityEngine.InputSystem;
 using Assets.Scripts.Data;
 using Assets.Scripts.Scene;
-using Assets.Scripts.Utils;
+using Assets.Scripts.Shared;
 
 public class HorizontalExtruder : MonoBehaviour
 {

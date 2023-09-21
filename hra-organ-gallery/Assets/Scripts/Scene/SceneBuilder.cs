@@ -7,7 +7,7 @@ using TMPro;
 using UnityEngine.InputSystem;
 using Unity.VisualScripting;
 using Assets.Scripts.Data;
-using Assets.Scripts.Utils;
+using Assets.Scripts.Shared;
 using Assets.Scripts.Interaction;
 using HRAOrganGallery;
 
