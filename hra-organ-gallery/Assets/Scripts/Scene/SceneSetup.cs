@@ -83,16 +83,10 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
             {
                 GameObject current = organs[i];
 
-                Debug.Log(current.name.Remove(current.name.IndexOf("_")));
-
                 Node node = NodeArray.nodes
                     .First(
-                    //if using low-LOD models
+                    //catches case when using low-LOD models
                     n => n.scenegraph.Split("/")[n.scenegraph.Split("/").Length - 1].Replace(".glb", string.Empty) == current.name.Replace("_0.2", "")
-
-                    //if using full-resolution models
-                    //n => n.scenegraph.Split("/")[n.scenegraph.Split("/").Length - 1].Replace(".glb", string.Empty) == current.name
-
                     );
 
                 current.AddComponent<OrganData>().Init(node);
