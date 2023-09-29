@@ -16,9 +16,11 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
 
         [Header("Scene")]
         public List<GameObject> TissueBlocks;
-        public List<GameObject> Organs;
-        [SerializeField] private Transform _parent;
-        [SerializeField] private Transform _adjustedOrganOrigin;
+        public List<GameObject> OrgansLowRes;
+        public List<GameObject> OrgansHighRes;
+        [SerializeField] private Transform _parentOrgansLowRes;
+        [SerializeField] private Transform _parentOrgansHighRes;
+        [SerializeField] private Transform _adjustedOrgansLowResOrigin;
 
         [Header("Prefabs and Setup")]
         [SerializeField] private GameObject _preTissueBlock;
@@ -40,9 +42,9 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
             }
 
             //add organs to list
-            for (int i = 0; i < _parent.childCount; i++)
+            for (int i = 0; i < _parentOrgansLowRes.childCount; i++)
             {
-                Organs.Add(_parent.GetChild(i).gameObject);
+                OrgansLowRes.Add(_parentOrgansLowRes.GetChild(i).gameObject);
             }
 
         }
@@ -60,16 +62,16 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
 
 
             //loop through organs in scene and response, add data, and place organs already in scene (match by scenegraphNode)
-            Organs = EnrichOrgans(Organs);
+            OrgansLowRes = EnrichOrgans(OrgansLowRes);
 
             //create and place tissue blocks, then parent them to organs
             CreateAndPlaceTissueBlocks();
 
             //ParentTissueBlocksToOrgans(TissueBlocks, Organs);
-            ParentTissueBlocksToOrgans(TissueBlocks, Organs);
+            ParentTissueBlocksToOrgans(TissueBlocks, OrgansLowRes);
 
             //move all organs to central platform
-            _parent.SetPositionAndRotation(_adjustedOrganOrigin.position, _adjustedOrganOrigin.rotation);
+            _parentOrgansLowRes.SetPositionAndRotation(_adjustedOrgansLowResOrigin.position, _adjustedOrgansLowResOrigin.rotation);
         }
 
         /// <summary>
@@ -125,7 +127,7 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
                 block.transform.localScale = reflected.lossyScale * 2f;
                 block.AddComponent<TissueBlockData>().Init(NodeArray.nodes[i]);
                 TissueBlocks.Add(block);
-                block.transform.parent = _parent;
+                block.transform.parent = _parentOrgansLowRes;
             }
         }
 
@@ -140,12 +142,12 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
 
             for (int i = 0; i < TissueBlocks.Count; i++)
             {
-                for (int j = 0; j < Organs.Count; j++)
+                for (int j = 0; j < OrgansLowRes.Count; j++)
                 {
                     // match by reference_organ
-                    if (TissueBlocks[i].GetComponent<TissueBlockData>().ReferenceOrgan == Organs[j].GetComponent<OrganData>().ReferenceOrgan)
+                    if (TissueBlocks[i].GetComponent<TissueBlockData>().ReferenceOrgan == OrgansLowRes[j].GetComponent<OrganData>().ReferenceOrgan)
                     {
-                        TissueBlocks[i].transform.parent = Organs[j].transform;
+                        TissueBlocks[i].transform.parent = OrgansLowRes[j].transform;
                     }
                     else //alt: match by UBERON ID; won't work, because it will parent the tissue block to an organ regardless of sex!
                     {

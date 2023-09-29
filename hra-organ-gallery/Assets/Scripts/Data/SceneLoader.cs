@@ -14,13 +14,13 @@ namespace HRAOrganGallery
     public class SceneLoader : MonoBehaviour, IApiResponseHandler<NodeArray>
     {
         public static SceneLoader Instance { get; private set; }
-        public NodeArray T { get; set; }
+        [field: SerializeField] public NodeArray T { get; set; }
 
-        private string _url;
+        [field: SerializeField] public string Url { get; set; }
 
         private void Awake()
         {
-            _url = SceneConfiguration.Instance.BuildUrl();
+            Url = SceneConfiguration.Instance.BuildUrl();
             if (Instance != null && Instance != this)
             {
                 Destroy(this);
@@ -40,7 +40,7 @@ namespace HRAOrganGallery
         public async Task GetNodes()
         {
             WebLoader httpClient = new WebLoader();
-            string response = await httpClient.Get(_url);
+            string response = await httpClient.Get(Url);
             Deserialize(response);
         }
 

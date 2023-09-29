@@ -9,16 +9,26 @@ namespace HRAOrganGallery
     public class HighResOrganLoader : MonoBehaviour, IApiResponseHandler<NodeArray>
     {
         public static HighResOrganLoader Instance;
-        public NodeArray T { get;set;}
+        [field: SerializeField] public NodeArray T { get; set; }
+
+        [field: SerializeField] public string Url { get; set; }
+
+        [SerializeField] private string _baseUrl = "https://ccf-api.hubmapconsortium.org/v1/reference-organ-scene?organ-iri=";
         public void Deserialize(string rawWebResponse)
         {
-            throw new System.NotImplementedException();
+            var result = rawWebResponse;
+
+            T = JsonUtility.FromJson<NodeArray>(
+                "{ \"nodes\":" +
+                result
+                + "}"
+                );
         }
 
         public async Task GetNodes()
         {
             WebLoader httpClient = new WebLoader();
-            string response = await httpClient.Get("https://ccf-api.hubmapconsortium.org/v1/reference-organ-scene?organ-iri=http://purl.obolibrary.org/obo/UBERON_0004539");
+            string response = await httpClient.Get(Url);
             Deserialize(response);
         }
 
@@ -28,13 +38,12 @@ namespace HRAOrganGallery
             return T;
         }
 
-        private async void Update()
+        //overload to set new URL depending on organ to load
+        public async Task<NodeArray> ShareData(string organ_iri)
         {
-            if (Input.GetKeyDown(KeyCode.C))
-
-            {
-               
-            }
+            Url = _baseUrl + organ_iri;
+            await GetNodes();
+            return T;
         }
 
         private void Awake()

@@ -8,7 +8,8 @@ namespace HRAOrganGallery
 {
     public interface IApiResponseHandler<TReturn>
     {
-        public TReturn T { get; set; }
+        [property: SerializeField] public TReturn T { get; set; }
+        [property: SerializeField] public string Url { get; set; }
         public void Deserialize(string rawWebResponse);
 
         /// <summary>

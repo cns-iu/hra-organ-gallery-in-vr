@@ -12,9 +12,9 @@ namespace HRAOrganGallery
     {
         public static OrganSexLoader Instance { get; private set; }
 
-        public OrganSexMapping T { get; set; }
+        [field: SerializeField] public OrganSexMapping T { get; set; }
 
-        [SerializeField] private string _url = "grlc.io/api-git/hubmapconsortium/ccf-grlc/subdir/ccf//ref-organ-to-sex?endpoint=https%3A%2F%2Fccf-api.hubmapconsortium.org%2Fv1%2Fsparql?format=application/json";
+        [field: SerializeField] public string Url { get; set; } = "grlc.io/api-git/hubmapconsortium/ccf-grlc/subdir/ccf//ref-organ-to-sex?endpoint=https%3A%2F%2Fccf-api.hubmapconsortium.org%2Fv1%2Fsparql?format=application/json";
 
         public void Deserialize(string rawWebResponse)
         {
@@ -30,7 +30,7 @@ namespace HRAOrganGallery
         public async Task GetNodes()
         {
             WebLoader httpClient = new WebLoader();
-            string response = await httpClient.Get(_url);
+            string response = await httpClient.Get(Url);
             Deserialize(response);
         }
 
