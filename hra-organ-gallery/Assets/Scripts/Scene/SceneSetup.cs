@@ -173,25 +173,6 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
         //    return result;
         //}
 
-        public async Task GetOrganSex()
-        {
-            //DataFetcher httpClient = _dataFetcher;
-            //NodeArray nodeArray = await httpClient.Get("https://ccf-api.hubmapconsortium.org/v1/reference-organs");
-            //// Debug.Log(nodeArray.nodes.Length);
-            //foreach (var organ in Organs)
-            //{
-            //    OrganData organData = organ.GetComponent<OrganData>();
-
-            //    foreach (var node in nodeArray.nodes)
-            //    {
-            //        // Debug.Log("file: " + node.reference_organ);
-            //        if (organData.SceneGraph == node.glbObject.file)
-            //        {
-            //            organData.DonorSex = node.sex;
-            //        }
-            //    }
-            //}
-        }
     }
 }
 

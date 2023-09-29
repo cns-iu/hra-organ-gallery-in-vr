@@ -11,7 +11,7 @@ namespace HRAOrganGallery
     public class TissueBlockRefOrganLoader : MonoBehaviour, IApiResponseHandler<RuiLocationOrganMapping>
     {
         public static TissueBlockRefOrganLoader Instance { get; private set; }
-        public RuiLocationOrganMapping ruiLocationMapping;
+        public RuiLocationOrganMapping T { get; set; }
 
         [SerializeField] private string _url = "grlc.io/api-git/hubmapconsortium/ccf-grlc/subdir/ccf//rui-location-to-ref-organ?endpoint=https%3A%2F%2Fccf-api.hubmapconsortium.org%2Fv1%2Fsparql?format=application/json";
 
@@ -19,7 +19,7 @@ namespace HRAOrganGallery
         {
             var result = rawWebResponse;
 
-            ruiLocationMapping = JsonUtility.FromJson<RuiLocationOrganMapping>(
+            T = JsonUtility.FromJson<RuiLocationOrganMapping>(
                "{ \"mappings\":" +
                result
                + "}"
@@ -36,7 +36,7 @@ namespace HRAOrganGallery
         public async Task<RuiLocationOrganMapping> ShareData()
         {
             await GetNodes();
-            return ruiLocationMapping;
+            return T;
         }
 
         private void Awake()

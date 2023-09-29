@@ -14,7 +14,7 @@ namespace HRAOrganGallery
     public class SceneLoader : MonoBehaviour, IApiResponseHandler<NodeArray>
     {
         public static SceneLoader Instance { get; private set; }
-        public NodeArray nodeArray;
+        public NodeArray T { get; set; }
 
         private string _url;
 
@@ -34,7 +34,7 @@ namespace HRAOrganGallery
         public async Task<NodeArray> ShareData()
         {
             await GetNodes();
-            return nodeArray;
+            return T;
         }
 
         public async Task GetNodes()
@@ -51,7 +51,7 @@ namespace HRAOrganGallery
                .Replace("@type", "jsonLdType")
                .Replace("\"object\":", "\"glbObject\":");
 
-            nodeArray = JsonUtility.FromJson<NodeArray>(
+            T = JsonUtility.FromJson<NodeArray>(
                 "{ \"nodes\":" +
                 result
                 + "}"
