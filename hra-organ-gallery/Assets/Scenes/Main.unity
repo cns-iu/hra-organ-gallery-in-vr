@@ -7795,6 +7795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   organSexMapping:
     pairs: []
+  _url: grlc.io/api-git/hubmapconsortium/ccf-grlc/subdir/ccf//ref-organ-to-sex?endpoint=https%3A%2F%2Fccf-api.hubmapconsortium.org%2Fv1%2Fsparql?format=application/json
 --- !u!114 &463948142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7809,6 +7810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ruiLocationMapping:
     mappings: []
+  _url: grlc.io/api-git/hubmapconsortium/ccf-grlc/subdir/ccf//rui-location-to-ref-organ?endpoint=https%3A%2F%2Fccf-api.hubmapconsortium.org%2Fv1%2Fsparql?format=application/json
 --- !u!1 &472350333 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3970068930786774850, guid: ad2d2a9e7c4e22245aaec95a5d040b0d,
@@ -33927,6 +33929,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1895888174}
+  - {fileID: 1678236103}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1356507228 stripped
@@ -36357,6 +36360,50 @@ MonoBehaviour:
   <SceneGraph>k__BackingField: https://ccf-ontology.hubmapconsortium.org/objects/v1.2/VH_F_Pelvis.glb
   <Sex>k__BackingField: Female
   <Tooltip>k__BackingField: Pelvis
+--- !u!1 &1678236102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1678236103}
+  - component: {fileID: 1678236104}
+  m_Layer: 0
+  m_Name: CSVLogger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1678236103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678236102}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1352979846}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1678236104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678236102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4dc428fb984e247bb5bbbb62edadbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1678690423
 PrefabInstance:
   m_ObjectHideFlags: 0

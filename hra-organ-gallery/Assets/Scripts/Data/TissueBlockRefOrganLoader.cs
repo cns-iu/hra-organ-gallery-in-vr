@@ -13,7 +13,7 @@ namespace HRAOrganGallery
         public static TissueBlockRefOrganLoader Instance { get; private set; }
         public RuiLocationOrganMapping ruiLocationMapping;
 
-        private string _url = "grlc.io/api-git/hubmapconsortium/ccf-grlc/subdir/ccf//rui-location-to-ref-organ?endpoint=https%3A%2F%2Fccf-api.hubmapconsortium.org%2Fv1%2Fsparql?format=application/json";
+        [SerializeField] private string _url = "grlc.io/api-git/hubmapconsortium/ccf-grlc/subdir/ccf//rui-location-to-ref-organ?endpoint=https%3A%2F%2Fccf-api.hubmapconsortium.org%2Fv1%2Fsparql?format=application/json";
 
         public void Deserialize(string rawWebResponse)
         {
