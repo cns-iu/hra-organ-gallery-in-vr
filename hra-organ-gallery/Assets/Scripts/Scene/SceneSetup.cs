@@ -41,12 +41,20 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
                 Instance = this;
             }
 
+            OrgansLowRes = AddToList(_parentOrgansLowRes, OrgansLowRes);
+            OrgansHighRes = AddToList(_parentOrgansHighRes, OrgansHighRes);
+
+        }
+
+        private List<GameObject> AddToList(Transform parent, List<GameObject> list)
+        {
             //add organs to list
-            for (int i = 0; i < _parentOrgansLowRes.childCount; i++)
+            for (int i = 0; i < parent.childCount; i++)
             {
-                OrgansLowRes.Add(_parentOrgansLowRes.GetChild(i).gameObject);
+                list.Add(parent.GetChild(i).gameObject);
             }
 
+            return list;
         }
 
 
@@ -63,6 +71,7 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
 
             //loop through organs in scene and response, add data, and place organs already in scene (match by scenegraphNode)
             OrgansLowRes = EnrichOrgans(OrgansLowRes);
+            OrgansHighRes = EnrichOrgans(OrgansHighRes);
 
             //create and place tissue blocks, then parent them to organs
             CreateAndPlaceTissueBlocks();

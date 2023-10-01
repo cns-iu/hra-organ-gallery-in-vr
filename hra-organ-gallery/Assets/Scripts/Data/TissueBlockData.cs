@@ -39,7 +39,15 @@ namespace Assets.Scripts.Data
 
         private void Awake()
         {
-            _logger = FindObjectsOfType<ConsoleLogger>().Where(c => c.GetComponent<ConsoleLogger>().type == LoggerType.Data).First();
+            try
+            {
+                _logger = FindObjectsOfType<ConsoleLogger>().Where(c => c.GetComponent<ConsoleLogger>().type == LoggerType.Data).First();
+            }
+            catch (System.Exception)
+            {
+
+            }
+
         }
 
         private string GetReferenceOrgan(string jsonId, RuiLocationOrganMapping mapping)
@@ -51,13 +59,13 @@ namespace Assets.Scripts.Data
                 var result = mapping.mappings.First(m => m.rui_location.Replace("\"", "") == jsonId).reference_organ.Replace("\"", "");
                 //Debug.Log(jsonId.Color("green"));
                 string message = jsonId.Color("green");
-                _logger.Log(message, this);
+                //_logger.Log(message, this);
                 return result.ToString();
             }
             catch
             {
                 string message = jsonId.Color("red");
-                _logger.Log(message, this);
+                //_logger.Log(message, this);
                 return "NO MATCH FOUND";
 
             }
