@@ -95,7 +95,16 @@ namespace HRAOrganGallery
             {
                 if (nodeArray.nodes[i].scenegraph != null) continue;
                 if (!nodeArray.nodes[i].ccf_annotations.Contains(nodeArray.nodes[0].representation_of)) continue;
-                Matrix4x4 reflected = Utils.ReflectZ() * MatrixExtensions.BuildMatrix(nodeArray.nodes[i].transformMatrix);
+
+                Node corresponding = new Node();
+
+                foreach (var other in SceneSetup.Instance.NodeArray.nodes)
+                {
+                    if (other.entityId == nodeArray.nodes[i].entityId) corresponding = other;
+                }
+
+
+                Matrix4x4 reflected = Utils.ReflectZ() * MatrixExtensions.BuildMatrix(corresponding.transformMatrix);
                 GameObject block = Instantiate(
                     pre_TissueBlock,
                     reflected.GetPosition(),
@@ -104,8 +113,6 @@ namespace HRAOrganGallery
                 block.transform.localScale = reflected.lossyScale * 2f;
                 block.AddComponent<TissueBlockData>().Init(nodeArray.nodes[i]);
                 block.transform.parent = organ;
-                block.gameObject.GetComponent<Renderer>().material.color = Color.red;
-                Debug.Log($"Block {nodeArray.nodes[i].entityId} is at {block.transform.position}");
             }
         }
 

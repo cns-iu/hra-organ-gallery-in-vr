@@ -121,7 +121,7 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
                 reflected.lossyScale.y,
                 -reflected.lossyScale.z
             );
-            Debug.Log("done for :" + organ.name);
+            //Debug.Log("done for :" + organ.name);
         }
 
         void CreateAndPlaceTissueBlocks()
@@ -139,7 +139,6 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
                 block.AddComponent<TissueBlockData>().Init(NodeArray.nodes[i]);
                 TissueBlocks.Add(block);
                 block.transform.parent = _parentOrgansLowRes;
-                Debug.Log($"Block {NodeArray.nodes[i].entityId} is at {block.transform.position}");
             }
         }
 
