@@ -30,18 +30,10 @@ namespace Assets.Scripts.Data
 
         public void Init(Node node)
         {
-            try
-            {
-                JsonLdId = node.jsonLdId.Replace("\"", "");
-                EntityId = node.entityId;
-                CcfAnnotations = node.ccf_annotations;
-                ReferenceOrgan = Utils.CleanReferenceOrganName(GetReferenceOrgan(JsonLdId, SceneSetup.Instance.RuiLocationMapping));
-            }
-            catch (System.Exception)
-            {
-
-            }
-         
+            JsonLdId = node.jsonLdId.Replace("\"", "");
+            EntityId = node.entityId;
+            CcfAnnotations = node.ccf_annotations;
+            ReferenceOrgan = Utils.CleanReferenceOrganName(GetReferenceOrgan(JsonLdId, SceneSetup.Instance.RuiLocationMapping));
         }
 
 
@@ -65,15 +57,14 @@ namespace Assets.Scripts.Data
                 //the colon was renamed to large intestine! Hence the missing matches?
 
                 var result = mapping.mappings.First(m => m.rui_location.Replace("\"", "") == jsonId).reference_organ.Replace("\"", "");
-                //Debug.Log(jsonId.Color("green"));
                 string message = jsonId.Color("green");
-                //_logger.Log(message, this);
+                _logger.Log(message, this);
                 return result.ToString();
             }
             catch
             {
                 string message = jsonId.Color("red");
-                //_logger.Log(message, this);
+                _logger.Log(message, this);
                 return "NO MATCH FOUND";
 
             }

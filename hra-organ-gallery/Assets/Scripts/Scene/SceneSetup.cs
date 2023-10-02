@@ -27,7 +27,7 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
 
         [field: SerializeField] public OrganSexMapping OrganSexMapping { get; private set; } //mapping to hold organ to sex mapping
         [field: SerializeField] public RuiLocationOrganMapping RuiLocationMapping { get; private set; }//mapping to hold rui location to ref organ mapping
-        [field: SerializeField] public NodeArray NodeArray { get; private set; } //node array to hold CCF API response for scene
+        [field: SerializeField] public NodeArray NodeArray { get; private set; } //node array to hold CCF API response for /scene
 
         [SerializeField] private Logger _logger;
         private void Awake()
@@ -66,7 +66,9 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
             //get scene from CCF API
             NodeArray = await SceneLoader.Instance.ShareData();
             OrganSexMapping = await OrganSexLoader.Instance.ShareData();
-            RuiLocationMapping = await TissueBlockRefOrganLoader.Instance.ShareData();
+
+            //commented out for now to save time in editor
+            //RuiLocationMapping = await TissueBlockRefOrganLoader.Instance.ShareData();
 
 
             //loop through organs in scene and response, add data, and place organs already in scene (match by scenegraphNode)
@@ -119,7 +121,7 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
                 reflected.lossyScale.y,
                 -reflected.lossyScale.z
             );
-
+            Debug.Log("done for :" + organ.name);
         }
 
         void CreateAndPlaceTissueBlocks()
@@ -137,6 +139,7 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
                 block.AddComponent<TissueBlockData>().Init(NodeArray.nodes[i]);
                 TissueBlocks.Add(block);
                 block.transform.parent = _parentOrgansLowRes;
+                Debug.Log($"Block {NodeArray.nodes[i].entityId} is at {block.transform.position}");
             }
         }
 

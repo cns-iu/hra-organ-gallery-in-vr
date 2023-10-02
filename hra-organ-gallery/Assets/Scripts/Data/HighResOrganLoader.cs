@@ -13,10 +13,16 @@ namespace HRAOrganGallery
 
         [field: SerializeField] public string Url { get; set; }
 
-        [SerializeField] private string _baseUrl = "https://ccf-api.hubmapconsortium.org/v1/reference-organ-scene?organ-iri=";
+        [SerializeField] private string _baseUrl = "https://ccf-api.hubmapconsortium.org/v1/reference-organ-scene";
+        [SerializeField] private string organQuery = "?organ-iri=";
+        [SerializeField] private string sexQuery = "&sex=";
+
         public void Deserialize(string rawWebResponse)
         {
-            var result = rawWebResponse;
+            var result = rawWebResponse
+             .Replace("@id", "jsonLdId")
+               .Replace("@type", "jsonLdType")
+               .Replace("\"object\":", "\"glbObject\":");
 
             T = JsonUtility.FromJson<NodeArray>(
                 "{ \"nodes\":" +
@@ -39,9 +45,9 @@ namespace HRAOrganGallery
         }
 
         //overload to set new URL depending on organ to load
-        public async Task<NodeArray> ShareData(string organ_iri)
+        public async Task<NodeArray> ShareData(string organ_iri, string sex = "")
         {
-            Url = _baseUrl + organ_iri;
+            Url = _baseUrl + organQuery+ organ_iri + sexQuery + sex;
             await GetNodes();
             return T;
         }
