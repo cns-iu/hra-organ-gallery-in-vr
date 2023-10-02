@@ -68,25 +68,15 @@ namespace HRAOrganGallery
                     {
                         //get the right sex (also from button)
                         organ.gameObject.SetActive(true);
+
+                        //set organ opacity
+                        Utils.SetOrganOpacity(organ, organ.GetComponent<OrganData>().Opacity);
+
                         CreateTissueBlocks(_highResOrganNodeArray, organ.transform);
                         organ.transform.position = _platform.position;
                     }
                 }
             }
-        }
-
-
-        void PlaceOrgan(GameObject organ, Node node) //-1, 1, -1 -> for scale
-        {
-            Matrix4x4 reflected = Utils.ReflectZ() * MatrixExtensions.BuildMatrix(node.transformMatrix);
-            organ.transform.position = reflected.GetPosition();
-            organ.transform.rotation = new Quaternion(0f, 0f, 0f, 1f); //hard-coded to avoid bug when running natively on Quest 2
-            organ.transform.localScale = new Vector3(
-                reflected.lossyScale.x,
-                reflected.lossyScale.y,
-                -reflected.lossyScale.z
-            );
-
         }
 
         private void CreateTissueBlocks(NodeArray nodeArray, Transform organ)

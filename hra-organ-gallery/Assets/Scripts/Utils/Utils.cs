@@ -45,6 +45,35 @@ namespace Assets.Scripts.Shared
         }
 
         /// <summary>
+        /// A method to set the opacity of an organ to a specific alpha value
+        /// </summary>
+        /// <param name="organ">The organ GameObject</param>
+        /// <param name="alpha">The desiored alpha value</param>
+        public static void SetOrganOpacity(GameObject organ, float alpha)
+        {
+            List<Transform> list = new List<Transform>();
+            list = LeavesFinder.FindLeaves(organ.transform, list);
+
+            foreach (var item in list)
+            {
+                Renderer renderer = item.GetComponent<MeshRenderer>();
+
+                if (renderer == null) continue;
+                Color updatedColor = renderer.material.color;
+                updatedColor.a = alpha;
+                renderer.material.color = updatedColor;
+
+                Shader standard;
+                //standard = Shader.Find("UniversalRenderPipeline/Lit");
+                standard = Shader.Find("GLTFUtility/URP/Standard Transparent (Metallic)");
+                renderer.material.shader = standard;
+                MaterialExtensions.ToFadeMode(renderer.material);
+            }
+
+
+        }
+
+        /// <summary>
         /// A class to read CSV files even when running on Android
         /// </summary>
         /// <param name="fileName">The name of the file to be read</param>
@@ -87,26 +116,6 @@ namespace Assets.Scripts.Shared
             return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
         }
 
-        public static void SetOrganOpacity(GameObject organWrapper, float alpha)
-        {
-            List<Transform> list = new List<Transform>();
-            list = LeavesFinder.FindLeaves(organWrapper.transform.GetChild(0), list);
-
-            foreach (var item in list)
-            {
-                Renderer renderer = item.GetComponent<MeshRenderer>();
-
-                if (renderer == null) continue;
-                Color updatedColor = renderer.material.color;
-                updatedColor.a = alpha;
-                renderer.material.color = updatedColor;
-
-                Shader standard;
-                standard = Shader.Find("Standard");
-                renderer.material.shader = standard;
-                renderer.material.ToFadeMode();
-            }
-        }
 
         public static string CleanReferenceOrganName(string name)
         {

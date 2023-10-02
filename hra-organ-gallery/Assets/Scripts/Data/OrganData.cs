@@ -25,6 +25,9 @@ namespace Assets.Scripts.Data
         [field: SerializeField]
         public string Tooltip { get; set; }
 
+        [field: SerializeField]
+        public float Opacity { get; set; }
+
         public void Init(Node node)
         {
             ReferenceOrgan = Shared.Utils.CleanReferenceOrganName(node.reference_organ);
@@ -32,6 +35,7 @@ namespace Assets.Scripts.Data
             SceneGraph = node.scenegraph;
             Tooltip = node.tooltip;
             Sex = GetOrganSex(ReferenceOrgan, SceneSetup.Instance.OrganSexMapping);
+            Opacity = node.opacity;
         }
 
         private string GetOrganSex(string referenceOrgan, OrganSexMapping mapping)
