@@ -30,10 +30,18 @@ namespace Assets.Scripts.Data
 
         public void Init(Node node)
         {
-            JsonLdId = node.jsonLdId.Replace("\"", "");
-            EntityId = node.entityId;
-            CcfAnnotations = node.ccf_annotations;
-            ReferenceOrgan = Utils.CleanReferenceOrganName(GetReferenceOrgan(JsonLdId, SceneSetup.Instance.RuiLocationMapping));
+            try
+            {
+                JsonLdId = node.jsonLdId.Replace("\"", "");
+                EntityId = node.entityId;
+                CcfAnnotations = node.ccf_annotations;
+                ReferenceOrgan = Utils.CleanReferenceOrganName(GetReferenceOrgan(JsonLdId, SceneSetup.Instance.RuiLocationMapping));
+            }
+            catch (System.Exception)
+            {
+
+            }
+         
         }
 
 
