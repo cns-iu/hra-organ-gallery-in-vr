@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2985615586740839679}
   - component: {fileID: 4480762098930172057}
   - component: {fileID: 139533925882649928}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: pre_TissueBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
