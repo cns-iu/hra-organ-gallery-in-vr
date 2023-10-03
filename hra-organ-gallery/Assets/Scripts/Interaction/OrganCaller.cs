@@ -14,8 +14,8 @@ namespace HRAOrganGallery
     public class OrganCaller : MonoBehaviour
     {
         //a series of properties to expose private variables to the keyboard buttons
-        public Sex DefaultSex { get { return _requestedSex; } private set { } }
-        public Laterality DefaultLaterality { get { return _requestedLaterality; } private set { } }
+        public Sex RequestedSex { get { return _requestedSex; } private set { } }
+        public Laterality RequestedLaterality { get { return _requestedLaterality; } private set { } }
         public string RequestedOrgan { get { return _requestedOrgan; } private set { } }
 
         public List<string> FemaleOnlyOrgans { get { return _femaleOnly; } private set { } }
@@ -30,7 +30,7 @@ namespace HRAOrganGallery
 
         [Header("Data")]
         [SerializeField] private NodeArray _highResOrganNodeArray;
-        [SerializeField] private string _requestedOrgan;
+        [SerializeField] private string _requestedOrgan = null;
         [SerializeField] private Sex _requestedSex = Sex.Male;
         [SerializeField] private Laterality _requestedLaterality = Laterality.Left;
         [SerializeField] private List<string> _possibleOrgans;

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace HRAOrganGallery
 {
@@ -21,19 +22,20 @@ namespace HRAOrganGallery
         //could be singleton but keeping it as is because we may have more than one organ platform/caller
         [SerializeField] private OrganCaller caller;
 
-        [SerializeField] private bool _locked = false;
+        [SerializeField] private bool _locked = true;
+        [SerializeField] private GameObject uIpanel;
 
         private void Awake()
         {
 
 
-            SexCallButton.OnClick += (sex) => { TurnOff(sex);};
+            SexCallButton.OnClick += (sex) => { TurnOff(sex); };
             Collider = GetComponent<BoxCollider>();
             InactiveMaterial = GetComponent<Renderer>().material;
             Renderer = GetComponent<Renderer>();
 
             //set active color if on by default
-            if (caller.GetComponent<OrganCaller>().DefaultSex == Feature) ChangeColor(ActiveMaterial);
+            if (caller.GetComponent<OrganCaller>().RequestedSex == Feature) ChangeColor(ActiveMaterial);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -51,12 +53,18 @@ namespace HRAOrganGallery
         private void Update()
         {
             CheckIfLock();
+            AutoSwitch();
+        }
+
+        public void AutoSwitch()
+        {
+            if (caller.RequestedSex == Feature) ChangeColor(ActiveMaterial); else { ChangeColor(InactiveMaterial); }
         }
 
         public void CheckIfLock()
         {
-            _locked = caller.FemaleOnlyOrgans.Contains(caller.RequestedOrgan) | caller.MaleOnlyOrgans.Contains(caller.RequestedOrgan);
-
+            _locked = caller.FemaleOnlyOrgans.Contains(caller.RequestedOrgan) | caller.MaleOnlyOrgans.Contains(caller.RequestedOrgan) | caller.RequestedOrgan == "";
+            uIpanel.SetActive(_locked);
         }
 
         private void ChangeColor(Material mat)

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace HRAOrganGallery
 {
@@ -20,7 +21,9 @@ namespace HRAOrganGallery
         //could be singleton but keeping it as is because we may have more than one organ platform/caller
         [SerializeField] private OrganCaller caller;
 
-        [SerializeField] private bool _locked = false;
+        [SerializeField] private bool _locked = true;
+        [SerializeField] private GameObject uIpanel;
+
 
         private void Awake()
         {
@@ -30,11 +33,12 @@ namespace HRAOrganGallery
             Renderer = GetComponent<Renderer>();
 
             //set active color if on by default
-            if (caller.GetComponent<OrganCaller>().DefaultLaterality == Feature) ChangeColor(ActiveMaterial);
+            if (caller.GetComponent<OrganCaller>().RequestedLaterality == Feature) ChangeColor(ActiveMaterial);
         }
 
         private void OnTriggerEnter(Collider other)
         {
+            if (_locked) return;
             ChangeColor(ActiveMaterial);
             OnClick?.Invoke(Feature);
         }
@@ -46,8 +50,8 @@ namespace HRAOrganGallery
 
         public void CheckIfLock()
         {
-            _locked = caller.FemaleOnlyOrgans.Contains(caller.RequestedOrgan) | caller.MaleOnlyOrgans.Contains(caller.RequestedOrgan);
-
+            _locked = !caller.TwoSidedOrgans.Contains(caller.RequestedOrgan) | caller.RequestedOrgan == "";
+            uIpanel.SetActive(_locked);
         }
 
         public void TurnOff(Laterality lat)
