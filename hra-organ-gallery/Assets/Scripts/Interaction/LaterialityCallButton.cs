@@ -15,9 +15,10 @@ namespace HRAOrganGallery
 
         [field: SerializeField] public Renderer Renderer { get; set; }
 
-        [field: SerializeField] public bool IsLocked { get; set; }
-
         [SerializeField] private LaterialityCallButton other;
+
+        //could be singleton but keeping it as is because we may have more than one organ platform/caller
+        [SerializeField] private OrganCaller caller;
 
         private void Awake()
         {
@@ -25,11 +26,13 @@ namespace HRAOrganGallery
             Collider = GetComponent<BoxCollider>();
             InactiveMaterial = GetComponent<Renderer>().material;
             Renderer = GetComponent<Renderer>();
+
+            //set active color if on by default
+            if (caller.GetComponent<OrganCaller>().DefaultLaterality == Feature) ChangeColor(ActiveMaterial);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            IsLocked = true;
             ChangeColor(ActiveMaterial);
             OnClick?.Invoke(Feature);
         }

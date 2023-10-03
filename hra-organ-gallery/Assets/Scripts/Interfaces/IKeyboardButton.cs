@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace HRAOrganGallery
 {
-    public enum Sex { Male, Female, None }
+    public enum Sex { Male, Female }
     public enum Laterality { Left, Right }
 
     /// <summary>
@@ -25,8 +25,6 @@ namespace HRAOrganGallery
         public Material InactiveMaterial { get; set; }
 
         public Renderer Renderer { get; set; }
-
-        public bool IsLocked { get; set; }
 
         private void TurnOff(TFeatureType f) { }
 

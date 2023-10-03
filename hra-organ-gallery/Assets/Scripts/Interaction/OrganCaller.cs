@@ -13,6 +13,9 @@ namespace HRAOrganGallery
 {
     public class OrganCaller : MonoBehaviour
     {
+        public Sex DefaultSex { get { return _requestedSex; } private set { } }
+        public Laterality DefaultLaterality { get { return _requestedLaterality; } private set { } }
+
         [Header("3D Objects")]
         [SerializeField] private Transform _currentOrgan;
         [SerializeField] private GameObject pre_TissueBlock;
@@ -93,11 +96,11 @@ namespace HRAOrganGallery
 
             //determine the new one based on user input
             _requestedOrgan = DetermineByLateriality(_possibleOrgans);
-            _requestedSex = _femaleOnly.Contains(_requestedOrgan) | _maleOnly.Contains(_requestedOrgan) ? Sex.None : _requestedSex;
+            if (_femaleOnly.Contains(_requestedOrgan)) { _requestedSex = Sex.Female; }
+            if (_maleOnly.Contains(_requestedOrgan)) { _requestedSex = Sex.Male; }
 
             //preparing the API call
-            string sexQueryParameter = _requestedSex == Sex.None ? "" : _requestedSex.ToString().ToLower();
-            _highResOrganNodeArray = await HighResOrganLoader.Instance.ShareData(_requestedOrgan, sexQueryParameter);
+            _highResOrganNodeArray = await HighResOrganLoader.Instance.ShareData(_requestedOrgan, _requestedSex.ToString().ToLower());
 
             //set flags
             bool isOrgan, isSex;

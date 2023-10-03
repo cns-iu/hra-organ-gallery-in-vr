@@ -47,7 +47,7 @@ namespace HRAOrganGallery
         //overload to set new URL depending on organ to load
         public async Task<NodeArray> ShareData(string organ_iri, string sex = "")
         {
-            Url = _baseUrl + organQuery+ organ_iri + sexQuery + sex;
+            Url = sex == "" ? _baseUrl + organQuery + organ_iri : _baseUrl + organQuery + organ_iri + sexQuery + sex;
             await GetNodes();
             return T;
         }

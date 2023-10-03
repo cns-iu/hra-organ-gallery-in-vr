@@ -16,9 +16,10 @@ namespace HRAOrganGallery
 
         [field: SerializeField] public Renderer Renderer { get; set; }
 
-        [field: SerializeField] public bool IsLocked { get; set; }
-
         [SerializeField] private SexCallButton other;
+
+        //could be singleton but keeping it as is because we may have more than one organ platform/caller
+        [SerializeField] private OrganCaller caller;
 
         private void Awake()
         {
@@ -26,6 +27,9 @@ namespace HRAOrganGallery
             Collider = GetComponent<BoxCollider>();
             InactiveMaterial = GetComponent<Renderer>().material;
             Renderer = GetComponent<Renderer>();
+
+            //set active color if on by default
+            if (caller.GetComponent<OrganCaller>().DefaultSex == Feature) ChangeColor(ActiveMaterial);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -36,6 +40,7 @@ namespace HRAOrganGallery
 
         public void TurnOff(Sex sex)
         {
+            Debug.Log($"getting {sex} and I am {Feature}");
             if (sex != Feature) ChangeColor(InactiveMaterial);
         }
 

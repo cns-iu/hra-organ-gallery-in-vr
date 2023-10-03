@@ -23,7 +23,6 @@ namespace HRAOrganGallery
         [field: SerializeField] public Material InactiveMaterial { get; set; }
         [field: SerializeField] public Renderer Renderer { get; set; }
 
-        [field: SerializeField] public bool IsLocked { get; set; }
 
         [SerializeField] private List<OrganCallButton> others;
 
