@@ -21,9 +21,13 @@ namespace HRAOrganGallery
         //could be singleton but keeping it as is because we may have more than one organ platform/caller
         [SerializeField] private OrganCaller caller;
 
+        [SerializeField] private bool _locked = false;
+
         private void Awake()
         {
-            SexCallButton.OnClick += (sex) => { TurnOff(sex); };
+
+
+            SexCallButton.OnClick += (sex) => { TurnOff(sex);};
             Collider = GetComponent<BoxCollider>();
             InactiveMaterial = GetComponent<Renderer>().material;
             Renderer = GetComponent<Renderer>();
@@ -34,14 +38,25 @@ namespace HRAOrganGallery
 
         private void OnTriggerEnter(Collider other)
         {
+            if (_locked) return;
             ChangeColor(ActiveMaterial);
             OnClick?.Invoke(Feature);
         }
 
         public void TurnOff(Sex sex)
         {
-            Debug.Log($"getting {sex} and I am {Feature}");
             if (sex != Feature) ChangeColor(InactiveMaterial);
+        }
+
+        private void Update()
+        {
+            CheckIfLock();
+        }
+
+        public void CheckIfLock()
+        {
+            _locked = caller.FemaleOnlyOrgans.Contains(caller.RequestedOrgan) | caller.MaleOnlyOrgans.Contains(caller.RequestedOrgan);
+
         }
 
         private void ChangeColor(Material mat)

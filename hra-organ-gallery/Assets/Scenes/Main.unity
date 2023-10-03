@@ -5049,6 +5049,7 @@ MonoBehaviour:
   <Renderer>k__BackingField: {fileID: 0}
   other: {fileID: 0}
   caller: {fileID: 1259461374}
+  _locked: 0
 --- !u!1001 &104476148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22357,6 +22358,7 @@ MonoBehaviour:
   <Renderer>k__BackingField: {fileID: 0}
   other: {fileID: 0}
   caller: {fileID: 1259461374}
+  _locked: 0
 --- !u!1 &691791146 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2490690066822375198, guid: 536010a946363054b9b7cf8c4101ee1b,
@@ -44335,6 +44337,7 @@ MonoBehaviour:
   <Renderer>k__BackingField: {fileID: 0}
   other: {fileID: 0}
   caller: {fileID: 1259461374}
+  _locked: 0
 --- !u!1 &1182694211 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3583511282850690880, guid: 7d8a5954bf9a357408d230316208e9de,
@@ -45444,6 +45447,25 @@ MonoBehaviour:
   - http://purl.obolibrary.org/obo/UBERON_0000995
   _maleOnly:
   - http://purl.obolibrary.org/obo/UBERON_0000079
+  _twoSidedOrgans:
+  - http://purl.obolibrary.org/obo/UBERON_0004548
+  - http://purl.obolibrary.org/obo/UBERON_0004549
+  - http://purl.org/sig/ont/fma/fma57991
+  - http://purl.org/sig/ont/fma/fma57987
+  - http://purl.org/sig/ont/fma/fma54974
+  - http://purl.org/sig/ont/fma/fma54973
+  - http://purl.obolibrary.org/obo/UBERON_0004548
+  - http://purl.obolibrary.org/obo/UBERON_0004549
+  - http://purl.obolibrary.org/obo/UBERON_0001303
+  - http://purl.obolibrary.org/obo/UBERON_0001302
+  - http://purl.obolibrary.org/obo/UBERON_0004538
+  - http://purl.obolibrary.org/obo/UBERON_0004539
+  - http://purl.org/sig/ont/fma/fma24978
+  - http://purl.org/sig/ont/fma/fma24977
+  - http://purl.org/sig/ont/fma/fma7214
+  - http://purl.org/sig/ont/fma/fma7213
+  - http://purl.obolibrary.org/obo/UBERON_0001223
+  - http://purl.obolibrary.org/obo/UBERON_0001222
 --- !u!1 &1264008353 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4549128047881638999, guid: cd51aba99a0bb5949bcec5a9c3f35687,
@@ -77332,6 +77354,7 @@ MonoBehaviour:
   <Renderer>k__BackingField: {fileID: 0}
   other: {fileID: 0}
   caller: {fileID: 1259461374}
+  _locked: 0
 --- !u!1 &2064555427 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8110972848924147246, guid: 7615f1110019a5143b0175ff4040ff5b,

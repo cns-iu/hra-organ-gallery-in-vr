@@ -20,6 +20,8 @@ namespace HRAOrganGallery
         //could be singleton but keeping it as is because we may have more than one organ platform/caller
         [SerializeField] private OrganCaller caller;
 
+        [SerializeField] private bool _locked = false;
+
         private void Awake()
         {
             LaterialityCallButton.OnClick += (lat) => { TurnOff(lat); };
@@ -35,6 +37,17 @@ namespace HRAOrganGallery
         {
             ChangeColor(ActiveMaterial);
             OnClick?.Invoke(Feature);
+        }
+
+        private void Update()
+        {
+            CheckIfLock();
+        }
+
+        public void CheckIfLock()
+        {
+            _locked = caller.FemaleOnlyOrgans.Contains(caller.RequestedOrgan) | caller.MaleOnlyOrgans.Contains(caller.RequestedOrgan);
+
         }
 
         public void TurnOff(Laterality lat)
