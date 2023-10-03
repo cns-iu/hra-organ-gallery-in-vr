@@ -28,6 +28,9 @@ namespace Assets.Scripts.Data
         [field: SerializeField]
         public float Opacity { get; set; }
 
+        [field: SerializeField]
+        public Vector3 DefaultPosition { get; set; }
+
         public void Init(Node node)
         {
             ReferenceOrgan = Shared.Utils.CleanReferenceOrganName(node.reference_organ);

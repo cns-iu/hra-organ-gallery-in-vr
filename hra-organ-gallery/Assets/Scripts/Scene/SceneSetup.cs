@@ -121,6 +121,8 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
                 reflected.lossyScale.y,
                 -reflected.lossyScale.z
             );
+
+            organ.GetComponent<OrganData>().DefaultPosition = organ.transform.position;
             //Debug.Log("done for :" + organ.name);
         }
 

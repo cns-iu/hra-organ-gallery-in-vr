@@ -1,35 +1,28 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace HRAOrganGallery
 {
-    /// <summary>
-    /// A class to describe an organ call button on the keyboard
-    /// </summary>
-    /// 
-
-
-    public class OrganCallButton : MonoBehaviour, IKeyboardButton<List<string>, List<string>>
+    public class SexCallButton : MonoBehaviour, IKeyboardButton<Sex, Sex>
     {
-        public static event Action<List<string>> OnCLick;
-        [field: SerializeField] public List<string> Feature { get; set; }
+        public static event Action<Sex> OnClick;
         [field: SerializeField] public BoxCollider Collider { get; set; }
+        [field: SerializeField] public Sex Feature { get; set; }
 
         [field: SerializeField] public Material ActiveMaterial { get; set; }
         [field: SerializeField] public Material InactiveMaterial { get; set; }
+
         [field: SerializeField] public Renderer Renderer { get; set; }
 
         [field: SerializeField] public bool IsLocked { get; set; }
 
-        [SerializeField] private List<OrganCallButton> others;
+        [SerializeField] private SexCallButton other;
 
         private void Awake()
         {
-            OrganCallButton.OnCLick += (iris) => { TurnOff(iris); };
+            SexCallButton.OnClick += (sex) => { TurnOff(sex); };
             Collider = GetComponent<BoxCollider>();
             InactiveMaterial = GetComponent<Renderer>().material;
             Renderer = GetComponent<Renderer>();
@@ -38,18 +31,17 @@ namespace HRAOrganGallery
         private void OnTriggerEnter(Collider other)
         {
             ChangeColor(ActiveMaterial);
-            OnCLick?.Invoke(Feature);
+            OnClick?.Invoke(Feature);
         }
 
-        public void TurnOff(List<string> iris)
+        public void TurnOff(Sex sex)
         {
-            if (iris != Feature) ChangeColor(InactiveMaterial);
+            if (sex != Feature) ChangeColor(InactiveMaterial);
         }
 
         private void ChangeColor(Material mat)
         {
             Renderer.material = mat;
         }
-
     }
 }

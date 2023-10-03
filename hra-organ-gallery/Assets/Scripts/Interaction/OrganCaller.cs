@@ -13,11 +13,32 @@ namespace HRAOrganGallery
 {
     public class OrganCaller : MonoBehaviour
     {
+        [Header("3D Objects")]
+        [SerializeField] private Transform _currentOrgan;
         [SerializeField] private GameObject pre_TissueBlock;
-        [SerializeField] private NodeArray _highResOrganNodeArray;
         [SerializeField] private Transform _platform;
-        private string _requestedOrgan;
-        private string _requestedSex;
+        [SerializeField] private Transform _defaultLocation;
+
+        [Header("Data")]
+        [SerializeField] private NodeArray _highResOrganNodeArray;
+        [SerializeField] private string _requestedOrgan;
+        [SerializeField] private Sex _requestedSex = Sex.Male;
+        [SerializeField] private Laterality _requestedLaterality = Laterality.Left;
+        [SerializeField] private List<string> _possibleOrgans;
+
+        [Header("Sex-exclusive Organs")]
+        [SerializeField] private List<string> _femaleOnly;
+        [SerializeField] private List<string> _maleOnly;
+
+        private void Awake()
+        {
+            //subscribe to all keyboard buttons
+            OrganCallButton.OnCLick += async (possibleOrgans) => { _possibleOrgans = possibleOrgans; await PickOrgan(); };
+            SexCallButton.OnClick += async (sex) => { _requestedSex = sex; await PickOrgan(); };
+            LaterialityCallButton.OnClick += async (laterality) => { _requestedLaterality = laterality; await PickOrgan(); };
+        }
+
+
 
         private async void Update()
         {
@@ -39,17 +60,44 @@ namespace HRAOrganGallery
                 //AssetDatabase.CreateAsset(l, $"Assets/ScriptableObjects/OrganList.asset");
                 //AssetDatabase.SaveAssets();
 
-
-
                 await PickOrgan();
             }
         }
 
+        private string DetermineByLateriality(List<string> iris)
+        {
+            if (iris.Count == 0) return iris[0];
+            else
+            {
+                if (_requestedLaterality == Laterality.Left)
+                {
+                    return iris[0];
+                }
+                else
+                {
+                    return iris[1];
+                }
+            }
+        }
 
+        void RemoveCurrentOrgan()
+        {
+            if (_currentOrgan != null) _currentOrgan.transform.position = _currentOrgan.GetComponent<OrganData>().DefaultPosition;
+
+        }
 
         async Task PickOrgan()
         {
-            _highResOrganNodeArray = await HighResOrganLoader.Instance.ShareData(IdentifyOrgan(), IdentifySex());
+            //remove the current organ
+            RemoveCurrentOrgan();
+
+            //determine the new one based on user input
+            _requestedOrgan = DetermineByLateriality(_possibleOrgans);
+            _requestedSex = _femaleOnly.Contains(_requestedOrgan) | _maleOnly.Contains(_requestedOrgan) ? Sex.None : _requestedSex;
+
+            //preparing the API call
+            string sexQueryParameter = _requestedSex == Sex.None ? "" : _requestedSex.ToString().ToLower();
+            _highResOrganNodeArray = await HighResOrganLoader.Instance.ShareData(_requestedOrgan, sexQueryParameter);
 
             //set flags
             bool isOrgan, isSex;
@@ -60,7 +108,7 @@ namespace HRAOrganGallery
                 {
 
                     isOrgan = organ.GetComponent<OrganData>().RepresentationOf == node.representation_of;
-                    isSex = organ.GetComponent<OrganData>().Sex.ToLower() == IdentifySex();
+                    isSex = organ.GetComponent<OrganData>().Sex.ToLower() == _requestedSex.ToString().ToLower();
 
                     //fetch the right organ
                     if (isOrgan && isSex)
@@ -73,6 +121,7 @@ namespace HRAOrganGallery
 
                         CreateTissueBlocks(_highResOrganNodeArray, organ.transform);
                         organ.transform.position = _platform.position;
+                        _currentOrgan = organ.transform;
                     }
                 }
             }
@@ -105,23 +154,9 @@ namespace HRAOrganGallery
             }
         }
 
-        string IdentifyOrgan()
-        {
-            // fill in code later where we get the ID associated with a button
-            _requestedOrgan = "http://purl.obolibrary.org/obo/UBERON_0004538";
-            return _requestedOrgan;
-        }
 
-        string IdentifySex()
-        {
-            _requestedSex = "female";
-            return _requestedSex;
-        }
 
-        private void Awake()
-        {
-            _platform = transform;
-        }
+
 
     }
 }
