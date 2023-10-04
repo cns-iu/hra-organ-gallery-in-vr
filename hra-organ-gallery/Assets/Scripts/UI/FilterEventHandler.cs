@@ -26,7 +26,7 @@ namespace Assets.Scripts.UI
 
         private void Start()
         {
-            toggles = GetComponent<OrganToggleGroup>().Toggles;
+            //toggles = GetComponent<OrganToggleGroup>().Toggles;
 
             filterButton.onClick.AddListener(
               () =>

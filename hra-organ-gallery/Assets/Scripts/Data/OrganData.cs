@@ -1,13 +1,18 @@
+using HRAOrganGallery;
+using HRAOrganGallery.Assets.Scripts.Scene;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Data
 {
-    public enum BodySystem { undefined, integumentary, nervous, respiratory, cardio, digestive, musculoskeletal, lymphatic, urinary, fetal, reproductive }
 
     public class OrganData : MonoBehaviour, IApiSettable
     {
+        [field: SerializeField]
+        public string ReferenceOrgan { get; set; }
+
         [field: SerializeField]
         public string RepresentationOf { get; set; }
 
@@ -15,21 +20,44 @@ namespace Assets.Scripts.Data
         public string SceneGraph { get; set; }
 
         [field: SerializeField]
-        public string DonorSex { get; set; }
+        public string Sex { get; set; }
 
         [field: SerializeField]
-        public BodySystem BodySystem { get; set; }
+        public string Tooltip { get; set; }
+
+        [field: SerializeField]
+        public float Opacity { get; set; }
 
         [field: SerializeField]
         public Vector3 DefaultPosition { get; set; }
 
-        [field: SerializeField]
-        public Vector3 DefaultPositionExtruded { get; set; }
-
-        [field: SerializeField]
-        public string Tooltip { get; set; }
         public void Init(Node node)
-            => (RepresentationOf, SceneGraph, Tooltip)
-            = (node.representation_of, node.scenegraph, node.tooltip);
+        {
+            ReferenceOrgan = Shared.Utils.CleanReferenceOrganName(node.reference_organ);
+            RepresentationOf = node.representation_of;
+            SceneGraph = node.scenegraph;
+            Tooltip = node.tooltip;
+            Sex = GetOrganSex(ReferenceOrgan, SceneSetup.Instance.OrganSexMapping);
+            Opacity = node.opacity;
+        }
+
+        private string GetOrganSex(string referenceOrgan, OrganSexMapping mapping)
+        {
+            try
+            {
+                return mapping.pairs.First(o => o.reference_organ.Replace("\"", "") == referenceOrgan).sex.Replace("\"", "");
+            }
+            catch
+            {
+                if (referenceOrgan.Contains("VHF"))
+                {
+                    return "Female";
+                }
+                else
+                {
+                    return "Male";
+                }
+            }
+        }
     }
 }

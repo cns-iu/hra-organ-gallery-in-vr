@@ -6,131 +6,131 @@ using System.IO;
 using UnityEngine.InputSystem;
 using Assets.Scripts.Data;
 using Assets.Scripts.Scene;
-using Assets.Scripts.Utils;
+using Assets.Scripts.Shared;
 
 public class HorizontalExtruder : MonoBehaviour
 {
-    public static event Action<List<SystemObjectPair>> OnBodySystemsReady;
+    //public static event Action<List<SystemObjectPair>> OnBodySystemsReady;
 
-    public List<SystemObjectPair> SystemsObjs = new List<SystemObjectPair>();
-
-
-
-    [SerializeField] private string bodySystemsData;
-
-    [SerializeField] private SceneBuilder sceneBuilder;
+    //public List<SystemObjectPair> SystemsObjs = new List<SystemObjectPair>();
 
 
 
-    private Dictionary<string, string> mappings = new Dictionary<string, string>();
-    private string[] systems;
+    //[SerializeField] private string bodySystemsData;
 
-    private void Awake()
-    {
-        ReadCsv();
-        systems = System.Enum.GetNames(typeof(BodySystem));
-    }
-
-    void ReadCsv()
-    {
-        using (var reader = Utils.ReadTextFile(bodySystemsData))
-        {
-            while (!reader.EndOfStream)
-            {
-                var line = reader.ReadLine();
-                string sceneGraph = line.Split(',')[0];
-
-                if (sceneGraph != "sceneGraph" && sceneGraph != "")
-                {
-                    mappings.Add(sceneGraph, line.Split(',')[2]);
-                }
-            }
-        }
-    }
-
-    private void OnEnable()
-    {
-        SceneBuilder.OnSceneBuilt += GetSystemAndDefaultPosition; //remove getting default pos + rot from Kumar's code once pulled in
-
-
-    }
+    //[SerializeField] private SceneBuilder sceneBuilder;
 
 
 
-    private void OnDestroy()
-    {
-        SceneBuilder.OnSceneBuilt -= GetSystemAndDefaultPosition;
+    //private Dictionary<string, string> mappings = new Dictionary<string, string>();
+    //private string[] systems;
 
-    }
+    //private void Awake()
+    //{
+    //    ReadCsv();
+    //    systems = System.Enum.GetNames(typeof(BodySystem));
+    //}
+
+    //void ReadCsv()
+    //{
+    //    using (var reader = Utils.ReadTextFile(bodySystemsData))
+    //    {
+    //        while (!reader.EndOfStream)
+    //        {
+    //            var line = reader.ReadLine();
+    //            string sceneGraph = line.Split(',')[0];
+
+    //            if (sceneGraph != "sceneGraph" && sceneGraph != "")
+    //            {
+    //                mappings.Add(sceneGraph, line.Split(',')[2]);
+    //            }
+    //        }
+    //    }
+    //}
+
+    //private void OnEnable()
+    //{
+    //    SceneBuilder.OnSceneBuilt += GetSystemAndDefaultPosition; //remove getting default pos + rot from Kumar's code once pulled in
+
+
+    //}
 
 
 
-    void SetAllActiveOrgansToDefaultPosition()
-    {
-        for (int i = 0; i < sceneBuilder.Organs.Count; i++)
-        {
-            sceneBuilder.Organs[i].transform.position = sceneBuilder.Organs[i].GetComponent<OrganData>().DefaultPosition;
-        }
-    }
+    //private void OnDestroy()
+    //{
+    //    SceneBuilder.OnSceneBuilt -= GetSystemAndDefaultPosition;
+
+    //}
 
 
-    void GetSystemAndDefaultPosition()
-    {
-        //OrganData[] organs = FindObjectsOfType<OrganData>();
-        List<OrganData> allOrgans = new List<OrganData>();
-        foreach (var o in sceneBuilder.Organs)
-        {
-            allOrgans.Add(o.GetComponent<OrganData>());
-        }
 
-        for (int i = 0; i < allOrgans.Count; i++)
-        {
-            OrganData organData = allOrgans[i];
-            _ = mappings.TryGetValue(organData.SceneGraph, out string system);
-            organData.BodySystem = (BodySystem)Enum.Parse(typeof(BodySystem), system);
-            organData.DefaultPosition = organData.gameObject.transform.position;
-        }
+    //void SetAllActiveOrgansToDefaultPosition()
+    //{
+    //    for (int i = 0; i < sceneBuilder.Organs.Count; i++)
+    //    {
+    //        sceneBuilder.Organs[i].transform.position = sceneBuilder.Organs[i].GetComponent<OrganData>().DefaultPosition;
+    //    }
+    //}
 
-        for (int i = 0; i < systems.Length; i++)
-        {
-            List<GameObject> gameObjects = new List<GameObject>();
 
-            foreach (var organData in allOrgans)
-            {
-                if (organData.BodySystem == (BodySystem)Enum.Parse(typeof(BodySystem), systems[i]))
-                {
-                    gameObjects.Add(organData.gameObject);
-                }
+    //void GetSystemAndDefaultPosition()
+    //{
+    //    //OrganData[] organs = FindObjectsOfType<OrganData>();
+    //    List<OrganData> allOrgans = new List<OrganData>();
+    //    foreach (var o in sceneBuilder.Organs)
+    //    {
+    //        allOrgans.Add(o.GetComponent<OrganData>());
+    //    }
 
-            }
-            SystemsObjs.Add(
-               new SystemObjectPair(systems[i], gameObjects));
-        }
+    //    for (int i = 0; i < allOrgans.Count; i++)
+    //    {
+    //        OrganData organData = allOrgans[i];
+    //        _ = mappings.TryGetValue(organData.SceneGraph, out string system);
+    //        organData.BodySystem = (BodySystem)Enum.Parse(typeof(BodySystem), system);
+    //        organData.DefaultPosition = organData.gameObject.transform.position;
+    //    }
 
-        AssignOrgansIntoSexedList();
-        OnBodySystemsReady?.Invoke(SystemsObjs);
-    }
+    //    for (int i = 0; i < systems.Length; i++)
+    //    {
+    //        List<GameObject> gameObjects = new List<GameObject>();
 
-    void AssignOrgansIntoSexedList()
-    {
-        for (int i = 0; i < SystemsObjs.Count; i++)
-        {
-            for (int n = 0; n < SystemsObjs[i].GameObjects.Count; n++)
-            {
-                switch (SystemsObjs[i].GameObjects[n].GetComponent<OrganData>().DonorSex.ToLower())
-                {
-                    case "male":
-                        SystemsObjs[i].GameObjectsBySex[0].Add(SystemsObjs[i].GameObjects[n]);
-                        break;
-                    case "female":
-                        SystemsObjs[i].GameObjectsBySex[1].Add(SystemsObjs[i].GameObjects[n]);
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-    }
+    //        foreach (var organData in allOrgans)
+    //        {
+    //            if (organData.BodySystem == (BodySystem)Enum.Parse(typeof(BodySystem), systems[i]))
+    //            {
+    //                gameObjects.Add(organData.gameObject);
+    //            }
+
+    //        }
+    //        SystemsObjs.Add(
+    //           new SystemObjectPair(systems[i], gameObjects));
+    //    }
+
+    //    AssignOrgansIntoSexedList();
+    //    OnBodySystemsReady?.Invoke(SystemsObjs);
+    //}
+
+    //void AssignOrgansIntoSexedList()
+    //{
+    //    for (int i = 0; i < SystemsObjs.Count; i++)
+    //    {
+    //        for (int n = 0; n < SystemsObjs[i].GameObjects.Count; n++)
+    //        {
+    //            switch (SystemsObjs[i].GameObjects[n].GetComponent<OrganData>().DonorSex.ToLower())
+    //            {
+    //                case "male":
+    //                    SystemsObjs[i].GameObjectsBySex[0].Add(SystemsObjs[i].GameObjects[n]);
+    //                    break;
+    //                case "female":
+    //                    SystemsObjs[i].GameObjectsBySex[1].Add(SystemsObjs[i].GameObjects[n]);
+    //                    break;
+    //                default:
+    //                    break;
+    //            }
+    //        }
+    //    }
+    //}
 }
 
 [Serializable]
