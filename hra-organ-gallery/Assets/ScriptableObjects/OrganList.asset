@@ -1,0 +1,147 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e41a198772ad0045baa066b522e9903, type: 3}
+  m_Name: OrganList
+  m_EditorClassIdentifier: 
+  OrganNames:
+  - name: Left Eye
+    iri: http://purl.obolibrary.org/obo/UBERON_0004548
+  - name: Right Eye
+    iri: http://purl.obolibrary.org/obo/UBERON_0004549
+  - name: Larynx
+    iri: http://purl.obolibrary.org/obo/UBERON_0001737
+  - name: Lung
+    iri: http://purl.obolibrary.org/obo/UBERON_0001004
+  - name: Main Bronchus
+    iri: http://purl.obolibrary.org/obo/UBERON_0002182
+  - name: Left Mammary Gland
+    iri: http://purl.org/sig/ont/fma/fma57991
+  - name: Right Mammary Gland
+    iri: http://purl.org/sig/ont/fma/fma57987
+  - name: Left Palatine Tonsil
+    iri: http://purl.org/sig/ont/fma/fma54974
+  - name: Right Palatine Tonsil
+    iri: http://purl.org/sig/ont/fma/fma54973
+  - name: Skin
+    iri: http://purl.obolibrary.org/obo/UBERON_0002097
+  - name: Trachea
+    iri: http://purl.obolibrary.org/obo/UBERON_0003126
+  - name: Left Eye
+    iri: http://purl.obolibrary.org/obo/UBERON_0004548
+  - name: Right Eye
+    iri: http://purl.obolibrary.org/obo/UBERON_0004549
+  - name: Larynx
+    iri: http://purl.obolibrary.org/obo/UBERON_0001737
+  - name: Lung
+    iri: http://purl.obolibrary.org/obo/UBERON_0001004
+  - name: Main Bronchus
+    iri: http://purl.obolibrary.org/obo/UBERON_0002182
+  - name: Left Palatine Tonsil
+    iri: http://purl.org/sig/ont/fma/fma54974
+  - name: Right Palatine Tonsil
+    iri: http://purl.org/sig/ont/fma/fma54973
+  - name: Trachea
+    iri: http://purl.obolibrary.org/obo/UBERON_0003126
+  - name: Brain
+    iri: http://purl.obolibrary.org/obo/UBERON_0000955
+  - name: Brain
+    iri: http://purl.obolibrary.org/obo/UBERON_0000955
+  - name: Lymph Node
+    iri: http://purl.obolibrary.org/obo/UBERON_0002509
+  - name: Lymph Node
+    iri: http://purl.obolibrary.org/obo/UBERON_0002509
+  - name: Large Intestine
+    iri: http://purl.obolibrary.org/obo/UBERON_0000059
+  - name: Large Intestine
+    iri: http://purl.obolibrary.org/obo/UBERON_0000059
+  - name: Blood Vasculature
+    iri: http://purl.obolibrary.org/obo/UBERON_0004537
+  - name: Left Fallopian Tube
+    iri: http://purl.obolibrary.org/obo/UBERON_0001303
+  - name: Right Fallopian Tube
+    iri: http://purl.obolibrary.org/obo/UBERON_0001302
+  - name: Heart
+    iri: http://purl.obolibrary.org/obo/UBERON_0000948
+  - name: Left Kidney
+    iri: http://purl.obolibrary.org/obo/UBERON_0004538
+  - name: Right Kidney
+    iri: http://purl.obolibrary.org/obo/UBERON_0004539
+  - name: Left Knee
+    iri: http://purl.org/sig/ont/fma/fma24978
+  - name: Right Knee
+    iri: http://purl.org/sig/ont/fma/fma24977
+  - name: Liver
+    iri: http://purl.obolibrary.org/obo/UBERON_0002107
+  - name: Left Ovary
+    iri: http://purl.org/sig/ont/fma/fma7214
+  - name: Right Ovary
+    iri: http://purl.org/sig/ont/fma/fma7213
+  - name: Pancreas
+    iri: http://purl.obolibrary.org/obo/UBERON_0001264
+  - name: Pelvis
+    iri: http://purl.obolibrary.org/obo/UBERON_0001270
+  - name: Placenta
+    iri: http://purl.obolibrary.org/obo/UBERON_0001987
+  - name: Small Intestine
+    iri: http://purl.obolibrary.org/obo/UBERON_0002108
+  - name: Spinal Cord
+    iri: http://purl.obolibrary.org/obo/UBERON_0002240
+  - name: Spleen
+    iri: http://purl.obolibrary.org/obo/UBERON_0002106
+  - name: Thymus
+    iri: http://purl.obolibrary.org/obo/UBERON_0002370
+  - name: Left Ureter
+    iri: http://purl.obolibrary.org/obo/UBERON_0001223
+  - name: Right Ureter
+    iri: http://purl.obolibrary.org/obo/UBERON_0001222
+  - name: Urinary Bladder
+    iri: http://purl.obolibrary.org/obo/UBERON_0001255
+  - name: Uterus
+    iri: http://purl.obolibrary.org/obo/UBERON_0000995
+  - name: Blood Vasculature
+    iri: http://purl.obolibrary.org/obo/UBERON_0004537
+  - name: Heart
+    iri: http://purl.obolibrary.org/obo/UBERON_0000948
+  - name: Left Kidney
+    iri: http://purl.obolibrary.org/obo/UBERON_0004538
+  - name: Right Kidney
+    iri: http://purl.obolibrary.org/obo/UBERON_0004539
+  - name: Left Knee
+    iri: http://purl.org/sig/ont/fma/fma24978
+  - name: Right Knee
+    iri: http://purl.org/sig/ont/fma/fma24977
+  - name: Liver
+    iri: http://purl.obolibrary.org/obo/UBERON_0002107
+  - name: Pancreas
+    iri: http://purl.obolibrary.org/obo/UBERON_0001264
+  - name: Pelvis
+    iri: http://purl.obolibrary.org/obo/UBERON_0001270
+  - name: Prostate
+    iri: http://purl.obolibrary.org/obo/UBERON_0000079
+  - name: Skin
+    iri: http://purl.obolibrary.org/obo/UBERON_0002097
+  - name: Small Intestine
+    iri: http://purl.obolibrary.org/obo/UBERON_0002108
+  - name: Spinal Cord
+    iri: http://purl.obolibrary.org/obo/UBERON_0002240
+  - name: Spleen
+    iri: http://purl.obolibrary.org/obo/UBERON_0002106
+  - name: Thymus
+    iri: http://purl.obolibrary.org/obo/UBERON_0002370
+  - name: Left Ureter
+    iri: http://purl.obolibrary.org/obo/UBERON_0001223
+  - name: Right Ureter
+    iri: http://purl.obolibrary.org/obo/UBERON_0001222
+  - name: Urethra
+    iri: http://purl.obolibrary.org/obo/UBERON_0001333
+  - name: Urinary Bladder
+    iri: http://purl.obolibrary.org/obo/UBERON_0001255

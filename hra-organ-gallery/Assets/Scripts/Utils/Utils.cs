@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
+using UnityEditor;
 using UnityEngine;
 
-namespace Assets.Scripts.Utils
+namespace Assets.Scripts.Shared
 {
     public static class Utils
     {
-
+        /// <summary>
+        /// A method to find leaves in a nested game object and append them all to a list
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="result"></param>
         public static void FindLeaves(Transform parent, List<Transform> result)
         {
             if (parent.childCount == 0)
@@ -39,6 +45,35 @@ namespace Assets.Scripts.Utils
         }
 
         /// <summary>
+        /// A method to set the opacity of an organ to a specific alpha value
+        /// </summary>
+        /// <param name="organ">The organ GameObject</param>
+        /// <param name="alpha">The desiored alpha value</param>
+        public static void SetOrganOpacity(GameObject organ, float alpha)
+        {
+            List<Transform> list = new List<Transform>();
+            list = LeavesFinder.FindLeaves(organ.transform, list);
+
+            foreach (var item in list)
+            {
+                Renderer renderer = item.GetComponent<MeshRenderer>();
+
+                if (renderer == null) continue;
+                Color updatedColor = renderer.material.color;
+                updatedColor.a = alpha;
+                renderer.material.color = updatedColor;
+
+                Shader standard;
+                //standard = Shader.Find("UniversalRenderPipeline/Lit");
+                standard = Shader.Find("GLTFUtility/URP/Standard Transparent (Metallic)");
+                renderer.material.shader = standard;
+                MaterialExtensions.ToFadeMode(renderer.material);
+            }
+
+
+        }
+
+        /// <summary>
         /// A class to read CSV files even when running on Android
         /// </summary>
         /// <param name="fileName">The name of the file to be read</param>
@@ -61,6 +96,12 @@ namespace Assets.Scripts.Utils
             return false;
         }
 
+        //A series of extension methods for strings (to print in console)
+        public static string Bold(this string str) => "<b>" + str + "</b>";
+        public static string Color(this string str, string clr) => string.Format("<color={0}>{1}</color>", clr, str);
+        public static string Italic(this string str) => "<i>" + str + "</i>";
+        public static string Size(this string str, int size) => string.Format("<size={0}>{1}</size>", size, str);
+
         /// <summary>
         /// Remaps a value from one range to another
         /// </summary>
@@ -75,28 +116,19 @@ namespace Assets.Scripts.Utils
             return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
         }
 
-        public static void SetOrganOpacity(GameObject organWrapper, float alpha)
+
+        public static string CleanReferenceOrganName(string name)
         {
-            List<Transform> list = new List<Transform>();
-            list = LeavesFinder.FindLeaves(organWrapper.transform.GetChild(0), list);
-
-            foreach (var item in list)
+            if (name.Contains("V1."))
             {
-                Renderer renderer = item.GetComponent<MeshRenderer>();
-
-                if (renderer == null) continue;
-                Color updatedColor = renderer.material.color;
-                updatedColor.a = alpha;
-                renderer.material.color = updatedColor;
-
-                Shader standard;
-                standard = Shader.Find("Standard");
-                renderer.material.shader = standard;
-                renderer.material.ToFadeMode();
+                return name.Remove(name.IndexOf("V1."));
             }
-
-
+            else
+            {
+                return name;
+            }
         }
+
         public static Vector3 ComputeCentroid(List<GameObject> list)
         {
             Vector3 total = Vector3.zero;

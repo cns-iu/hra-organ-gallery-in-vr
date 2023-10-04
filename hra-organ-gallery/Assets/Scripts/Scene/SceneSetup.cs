@@ -1,17 +1,10 @@
 using Assets.Scripts.Data;
-using Assets.Scripts.Interaction;
-using Assets.Scripts.Scene;
-using Assets.Scripts.Utils;
+using Assets.Scripts.Shared;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TMPro;
-using UnityEditor.Searcher;
 using UnityEngine;
-using UnityEngine.Windows;
-using static Assets.Scripts.Scene.SceneBuilder;
 
 namespace HRAOrganGallery.Assets.Scripts.Scene
 {
@@ -23,20 +16,20 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
 
         [Header("Scene")]
         public List<GameObject> TissueBlocks;
-        public List<GameObject> Organs;
-        [SerializeField] private Transform _parent;
-        [SerializeField] private Transform _adjustedOrganOrigin;
+        public List<GameObject> OrgansLowRes;
+        public List<GameObject> OrgansHighRes;
+        [SerializeField] private Transform _parentOrgansLowRes;
+        [SerializeField] private Transform _parentOrgansHighRes;
+        [SerializeField] private Transform _adjustedOrgansLowResOrigin;
 
         [Header("Prefabs and Setup")]
         [SerializeField] private GameObject _preTissueBlock;
-        [SerializeField] private DataFetcher _dataFetcher;
 
-        [Header("Data")]
-        [SerializeField] private NodeArray _nodeArray;
-        [SerializeField] private List<string> _maleEntityIds = new List<string>();
-        [SerializeField] private List<string> _femaleEntityIds = new List<string>();
-        [SerializeField] private int numberOfHubmapIds;
+        [field: SerializeField] public OrganSexMapping OrganSexMapping { get; private set; } //mapping to hold organ to sex mapping
+        [field: SerializeField] public RuiLocationOrganMapping RuiLocationMapping { get; private set; }//mapping to hold rui location to ref organ mapping
+        [field: SerializeField] public NodeArray NodeArray { get; private set; } //node array to hold CCF API response for /scene
 
+        [SerializeField] private Logger _logger;
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -48,15 +41,20 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
                 Instance = this;
             }
 
-            //get reference to DataFetcher
-            _dataFetcher = GetComponent<DataFetcher>();
+            OrgansLowRes = AddToList(_parentOrgansLowRes, OrgansLowRes);
+            OrgansHighRes = AddToList(_parentOrgansHighRes, OrgansHighRes);
 
+        }
+
+        private List<GameObject> AddToList(Transform parent, List<GameObject> list)
+        {
             //add organs to list
-            for (int i = 0; i < _parent.childCount; i++)
+            for (int i = 0; i < parent.childCount; i++)
             {
-                Organs.Add(_parent.GetChild(i).gameObject);
+                list.Add(parent.GetChild(i).gameObject);
             }
 
+            return list;
         }
 
 
@@ -65,18 +63,26 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
         /// </summary>
         private async void Start()
         {
-            _nodeArray = await SceneLoader.Instance.ShareData();
+            //get scene from CCF API
+            NodeArray = await SceneLoader.Instance.ShareData();
+            OrganSexMapping = await OrganSexLoader.Instance.ShareData();
+
+            //commented out for now to save time in editor
+            //RuiLocationMapping = await TissueBlockRefOrganLoader.Instance.ShareData();
+
 
             //loop through organs in scene and response, add data, and place organs already in scene (match by scenegraphNode)
-            Organs = EnrichOrgans(Organs);
+            OrgansLowRes = EnrichOrgans(OrgansLowRes);
+            OrgansHighRes = EnrichOrgans(OrgansHighRes);
 
             //create and place tissue blocks, then parent them to organs
             CreateAndPlaceTissueBlocks();
 
             //ParentTissueBlocksToOrgans(TissueBlocks, Organs);
+            ParentTissueBlocksToOrgans(TissueBlocks, OrgansLowRes);
 
             //move all organs to central platform
-            _parent.SetPositionAndRotation(_adjustedOrganOrigin.position, _adjustedOrganOrigin.rotation);
+            _parentOrgansLowRes.SetPositionAndRotation(_adjustedOrgansLowResOrigin.position, _adjustedOrgansLowResOrigin.rotation);
         }
 
         /// <summary>
@@ -90,12 +96,12 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
             {
                 GameObject current = organs[i];
 
-                Node node = _nodeArray.nodes
+                Node node = NodeArray.nodes
                     .First(
-                    n => n.scenegraph.Split("/")[n.scenegraph.Split("/").Length - 1].Replace(".glb", string.Empty) == current.name
+                    //catches case when using low-LOD models
+                    n => n.scenegraph.Split("/")[n.scenegraph.Split("/").Length - 1].Replace(".glb", string.Empty) == current.name.Replace("_0.2", "")
                     );
 
-                //add OrganData component and store relevant data from Node
                 current.AddComponent<OrganData>().Init(node);
 
                 //place organ by transform matrix from Node
@@ -116,128 +122,72 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
                 -reflected.lossyScale.z
             );
 
+            organ.GetComponent<OrganData>().DefaultPosition = organ.transform.position;
+            //Debug.Log("done for :" + organ.name);
         }
 
         void CreateAndPlaceTissueBlocks()
         {
-            for (int i = 0; i < _nodeArray.nodes.Length; i++)
+            for (int i = 0; i < NodeArray.nodes.Length; i++)
             {
-                if (_nodeArray.nodes[i].scenegraph != null) continue;
-                Matrix4x4 reflected = Utils.ReflectZ() * MatrixExtensions.BuildMatrix(_nodeArray.nodes[i].transformMatrix);
+                if (NodeArray.nodes[i].scenegraph != null) continue;
+                Matrix4x4 reflected = Utils.ReflectZ() * MatrixExtensions.BuildMatrix(NodeArray.nodes[i].transformMatrix);
                 GameObject block = Instantiate(
                     _preTissueBlock,
                     reflected.GetPosition(),
                     reflected.rotation
            );
                 block.transform.localScale = reflected.lossyScale * 2f;
-                block.AddComponent<TissueBlockData>().Init(_nodeArray.nodes[i]);
+                block.AddComponent<TissueBlockData>().Init(NodeArray.nodes[i]);
                 TissueBlocks.Add(block);
-                block.transform.parent = _parent;
+                block.transform.parent = _parentOrgansLowRes;
             }
         }
 
-        async void ParentTissueBlocksToOrgans(List<GameObject> tissueBlocks, List<GameObject> organs)
+        /// <summary>
+        /// A method to parent tissue blocks from a list to organs from a list
+        /// </summary>
+        /// <param name="tissueBlocks">A List of GameObjects holding tissue blocks</param>
+        /// <param name="organs">A List of GameObjects holding organs</param>
+        private void ParentTissueBlocksToOrgans(List<GameObject> tissueBlocks, List<GameObject> organs)
         {
-            // Add back to AssignEntityIdsToDonorSexLists if delay bug
-            _maleEntityIds = await GetEntityIdsBySex("https://ccf-api.hubmapconsortium.org/v1/tissue-blocks?sex=male");
-            _femaleEntityIds = await GetEntityIdsBySex("https://ccf-api.hubmapconsortium.org/v1/tissue-blocks?sex=female");
 
-            // assign donor sex to organ
-            await GetOrganSex();
 
-            // assign donor sex to tissue block and parent to organ
             for (int i = 0; i < TissueBlocks.Count; i++)
             {
-                TissueBlockData tissueData = TissueBlocks[i].GetComponent<TissueBlockData>();
-                if (_maleEntityIds.Contains(tissueData.EntityId))
+                for (int j = 0; j < OrgansLowRes.Count; j++)
                 {
-                    tissueData.DonorSex = "Male";
-                }
-                else
-                {
-                    tissueData.DonorSex = "Female";
-                }
-
-                for (int j = 0; j < Organs.Count; j++)
-                {
-                    OrganData organData = Organs[j].GetComponent<OrganData>();
-
-                    foreach (var annotation in tissueData.CcfAnnotations)
+                    // match by reference_organ
+                    if (TissueBlocks[i].GetComponent<TissueBlockData>().ReferenceOrgan == OrgansLowRes[j].GetComponent<OrganData>().ReferenceOrgan)
                     {
-                        if (organData.RepresentationOf == annotation && organData.DonorSex == tissueData.DonorSex)
-                        {
-                            TissueBlocks[i].transform.parent = Organs[j].transform.GetChild(0).transform;
-                            break;
-                        }
+                        TissueBlocks[i].transform.parent = OrgansLowRes[j].transform;
+                    }
+                    else //alt: match by UBERON ID; won't work, because it will parent the tissue block to an organ regardless of sex!
+                    {
+                        //if (TissueBlocks[i].GetComponent<TissueBlockData>().CcfAnnotations.Contains(Organs[j].GetComponent<OrganData>().RepresentationOf))
+                        //{
+                        //    TissueBlocks[i].transform.parent = Organs[j].transform;
+                        //}
                     }
                 }
             }
-
-            var tasks = new List<Task>();
-
-            for (int i = 0; i < tissueBlocks.Count; i++)
-            {
-                var progressHubmapIds = new Progress<bool>((value) =>
-                {
-                    if (value) numberOfHubmapIds++;
-                });
-
-                tasks.Add(tissueBlocks[i].GetComponent<HuBMAPIDFetcher>().FromEntityIdGetHubmapId(progressHubmapIds));
-            }
-
-
-            //tasks.Add(GetTissueBlocksWithCellTypes());
-
-            tasks.Add(CCFAPISPARQLQuery.Instance.GetAllCellTypes());
-
-            await Task.WhenAll(tasks);
-
             // trigger OnSceneBuilt event
             OnSceneBuilt?.Invoke();
         }
 
 
-        public async Task<List<string>> GetEntityIdsBySex(string url)
-        {
-            List<string> result = new List<string>();
-            DataFetcher httpClient = _dataFetcher;
-            NodeArray nodeArray = await httpClient.Get(url);
-            foreach (var node in nodeArray.nodes)
-            {
-                result.Add(node.jsonLdId);
-            }
-            return result;
-        }
+        //public async Task<List<string>> GetEntityIdsBySex(string url)
+        //{
+        //    List<string> result = new List<string>();
+        //    DataFetcher httpClient = _dataFetcher;
+        //    NodeArray nodeArray = await httpClient.Get(url);
+        //    foreach (var node in nodeArray.nodes)
+        //    {
+        //        result.Add(node.jsonLdId);
+        //    }
+        //    return result;
+        //}
 
-        public async Task GetOrganSex()
-        {
-            DataFetcher httpClient = _dataFetcher;
-            NodeArray nodeArray = await httpClient.Get("https://ccf-api.hubmapconsortium.org/v1/reference-organs");
-            // Debug.Log(nodeArray.nodes.Length);
-            foreach (var organ in Organs)
-            {
-                OrganData organData = organ.GetComponent<OrganData>();
-
-                foreach (var node in nodeArray.nodes)
-                {
-                    // Debug.Log("file: " + node.reference_organ);
-                    if (organData.SceneGraph == node.glbObject.file)
-                    {
-                        organData.DonorSex = node.sex;
-                    }
-                }
-            }
-        }
-    }
-
-    public class HubmapIdArray
-    {
-        [SerializeField] public HubmapIdHolder[] hubmapIdHolder;
-    }
-
-    public class HubmapIdHolder
-    {
-        public string hubmap_id;
     }
 }
 

@@ -8,16 +8,19 @@ using Assets.Scripts.Scene;
 
 namespace HRAOrganGallery
 {
-    public class SceneLoader : MonoBehaviour, IApiResponseHandler
+    /// <summary>
+    /// A class to load a scene from the CCF API at https://ccf-api.hubmapconsortium.org/v1/scene
+    /// </summary>
+    public class SceneLoader : MonoBehaviour, IApiResponseHandler<NodeArray>
     {
         public static SceneLoader Instance { get; private set; }
-        public NodeArray nodeArray;
+        [field: SerializeField] public NodeArray T { get; set; }
 
-        private string _url;
+        [field: SerializeField] public string Url { get; set; }
 
         private void Awake()
         {
-            _url = SceneConfiguration.Instance.BuildUrl();
+            Url = SceneConfiguration.Instance.BuildUrl();
             if (Instance != null && Instance != this)
             {
                 Destroy(this);
@@ -28,15 +31,16 @@ namespace HRAOrganGallery
             }
         }
 
-        public async Task<NodeArray> ShareData() {
+        public async Task<NodeArray> ShareData()
+        {
             await GetNodes();
-            return nodeArray;
+            return T;
         }
 
         public async Task GetNodes()
         {
             WebLoader httpClient = new WebLoader();
-            string response = await httpClient.Get(_url);
+            string response = await httpClient.Get(Url);
             Deserialize(response);
         }
 
@@ -47,13 +51,53 @@ namespace HRAOrganGallery
                .Replace("@type", "jsonLdType")
                .Replace("\"object\":", "\"glbObject\":");
 
-            nodeArray = JsonUtility.FromJson<NodeArray>(
+            T = JsonUtility.FromJson<NodeArray>(
                 "{ \"nodes\":" +
                 result
                 + "}"
                 );
         }
+    }
 
+    [Serializable]
+    public class NodeArray
+    {
+        [SerializeField] public Node[] nodes;
+    }
 
+    [Serializable]
+    public class Node
+    {
+        public string jsonLdId;
+        public string jsonLdType;
+        public string entityId;
+
+        public string[] ccf_annotations;
+        public string representation_of;
+        public string reference_organ;
+        public bool unpickable;
+        public bool wireframe;
+        public bool _lighting;
+        public string scenegraph;
+        public string scenegraphNode;
+        public bool zoomBasedOpacity;
+        public bool zoomToOnLoad;
+        public int[] color;
+        public float opacity;
+        public float[] transformMatrix;
+        public string name;
+        public string tooltip;
+        public float priority;
+
+        public int rui_rank;
+        public GLBObject glbObject; //for reference organs
+        public string sex; //for reference organs
+    }
+
+    [Serializable]
+    public class GLBObject
+    {
+        public string id;
+        public string file;
     }
 }

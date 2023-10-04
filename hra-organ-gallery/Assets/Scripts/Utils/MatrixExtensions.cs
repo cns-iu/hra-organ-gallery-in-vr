@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.Utils
+namespace Assets.Scripts.Shared
 {
     public static class MatrixExtensions
     {

@@ -1,3 +1,4 @@
+using HRAOrganGallery;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,9 +9,9 @@ using UnityEngine.Networking;
 namespace Assets.Scripts.Data
 {
     /// <summary>
-    /// This is a more general implementation of DataFetcher. Not tested yet. 
+    /// This is a more general implementation of the previous DataFetcher. 
     /// </summary>
-    public class WebLoader : MonoBehaviour
+    public class WebLoader
     {
         public async Task<string> Get(string url)
         {

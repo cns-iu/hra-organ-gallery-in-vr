@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62c9c65cf3354c93be831c8bc075510, type: 3}
   m_Name: SSAO
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   m_Settings:
     AOMethod: 1
     Downsample: 1
@@ -20,8 +20,8 @@ MonoBehaviour:
     Source: 0
     NormalSamples: 0
     Intensity: 0.5
-    DirectLightingStrength: 0.25
-    Radius: 0.25
+    DirectLightingStrength: 0.113
+    Radius: 0.1
     Samples: 2
     BlurQuality: 0
     Falloff: 100
@@ -73,6 +73,8 @@ MonoBehaviour:
     cameraMotionVector: {fileID: 4800000, guid: c56b7e0d4c7cb484e959caeeedae9bbf,
       type: 3}
     objectMotionVector: {fileID: 4800000, guid: 7b3ede40266cd49a395def176e1bc486,
+      type: 3}
+    dataDrivenLensFlare: {fileID: 4800000, guid: 6cda457ac28612740adb23da5d39ea92,
       type: 3}
   m_AssetVersion: 2
   m_OpaqueLayerMask:

@@ -25,12 +25,12 @@ namespace Assets.Scripts.Interaction
 
         private void OnEnable()
         {
-            SceneBuilder.OnSceneBuilt += () => _isSceneBuilt = true;
+            //SceneBuilder.OnSceneBuilt += () => _isSceneBuilt = true;
         }
 
         private void OnDestroy()
         {
-            SceneBuilder.OnSceneBuilt -= () => _isSceneBuilt = true;
+            //SceneBuilder.OnSceneBuilt -= () => _isSceneBuilt = true;
         }
 
         // Update is called once per frame

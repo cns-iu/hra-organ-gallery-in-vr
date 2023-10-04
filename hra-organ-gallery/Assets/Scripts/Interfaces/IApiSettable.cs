@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts.Data
+﻿using HRAOrganGallery;
+
+namespace Assets.Scripts.Data
 {
     public interface IApiSettable
     {
