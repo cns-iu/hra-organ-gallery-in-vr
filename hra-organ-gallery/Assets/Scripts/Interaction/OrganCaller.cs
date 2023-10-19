@@ -27,6 +27,7 @@ namespace HRAOrganGallery
         [SerializeField] private GameObject pre_TissueBlock;
         [SerializeField] private Transform _platform;
         [SerializeField] private Transform _defaultLocation;
+        [SerializeField] private List<GameObject> _organsLowRes;
 
         [Header("Data")]
         [SerializeField] private NodeArray _highResOrganNodeArray;
@@ -46,34 +47,13 @@ namespace HRAOrganGallery
         {
             //subscribe to all keyboard buttons
             OrganCallButton.OnCLick += async (possibleOrgans) => { _possibleOrgans = possibleOrgans; await PickOrgan(); };
-            SexCallButton.OnClick += async (sex) => { _requestedSex = sex; await PickOrgan(); };
+            SexCallButton.OnClick += async (sex) => { _requestedSex = sex; 
+                //EnableDisableButtons(sex.ToString().ToLower()); 
+                await PickOrgan(); };
             LaterialityCallButton.OnClick += async (laterality) => { _requestedLaterality = laterality; await PickOrgan(); };
-        }
 
-
-
-        private async void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.C))
-
-            {
-                //OrganList l = ScriptableObject.CreateInstance<OrganList>();
-
-                //foreach (var item in SceneSetup.Instance.OrgansHighRes)
-                //{
-                //    Pairs p = new Pairs();
-                //    p.name = item.GetComponent<OrganData>().Tooltip;
-                //    p.iri = item.GetComponent<OrganData>().RepresentationOf;
-                //    Debug.Log(p.name);
-                //    l.OrganNames.Add(p);
-
-                //}
-
-                //AssetDatabase.CreateAsset(l, $"Assets/ScriptableObjects/OrganList.asset");
-                //AssetDatabase.SaveAssets();
-
-                await PickOrgan();
-            }
+            //get low res organs from SceneSetup
+            _organsLowRes = SceneSetup.Instance.OrgansLowRes;
         }
 
         private string DetermineByLateriality(List<string> iris)
@@ -89,6 +69,17 @@ namespace HRAOrganGallery
                 {
                     return iris[1];
                 }
+            }
+        }
+
+        private void EnableDisableButtons(string currentSex)
+        {
+            //loop through low res organs and enable only the ones whose sex is selected
+            for (int i = 0; i < _organsLowRes.Count; i++)
+            {
+                GameObject _currentOrgan = _organsLowRes[i];
+                OrganData data = _currentOrgan.GetComponent<OrganData>();
+                _currentOrgan.gameObject.SetActive(data.Sex.ToLower() == currentSex);
             }
         }
 

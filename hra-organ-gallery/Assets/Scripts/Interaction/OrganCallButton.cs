@@ -19,8 +19,11 @@ namespace HRAOrganGallery
         [field: SerializeField] public List<string> Feature { get; set; }
         [field: SerializeField] public BoxCollider Collider { get; set; }
 
-        [field: SerializeField] public Material ActiveMaterial { get; set; }
-        [field: SerializeField] public Material InactiveMaterial { get; set; }
+        [field: SerializeField] public Material PressedMaterial { get; set; }
+        [field: SerializeField] public Material ReadyMaterial { get; set; }
+
+        [field: SerializeField] public Material DisabledMaterial { get; set;}
+
         [field: SerializeField] public Renderer Renderer { get; set; }
 
 
@@ -30,19 +33,19 @@ namespace HRAOrganGallery
         {
             OrganCallButton.OnCLick += (iris) => { TurnOff(iris); };
             Collider = GetComponent<BoxCollider>();
-            InactiveMaterial = GetComponent<Renderer>().material;
+            ReadyMaterial = GetComponent<Renderer>().material;
             Renderer = GetComponent<Renderer>();
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            ChangeColor(ActiveMaterial);
+            ChangeColor(PressedMaterial);
             OnCLick?.Invoke(Feature);
         }
 
         public void TurnOff(List<string> iris)
         {
-            if (iris != Feature) ChangeColor(InactiveMaterial);
+            if (iris != Feature) ChangeColor(ReadyMaterial);
         }
 
         private void ChangeColor(Material mat)

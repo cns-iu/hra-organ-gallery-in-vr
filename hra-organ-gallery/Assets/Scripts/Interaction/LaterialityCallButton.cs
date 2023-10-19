@@ -11,8 +11,8 @@ namespace HRAOrganGallery
         public static event Action<Laterality> OnClick;
         [field: SerializeField] public BoxCollider Collider { get; set; }
         [field: SerializeField] public Laterality Feature { get; set; }
-        [field: SerializeField] public Material ActiveMaterial { get; set; }
-        [field: SerializeField] public Material InactiveMaterial { get; set; }
+        [field: SerializeField] public Material PressedMaterial { get; set; }
+        [field: SerializeField] public Material ReadyMaterial { get; set; }
 
         [field: SerializeField] public Renderer Renderer { get; set; }
 
@@ -29,17 +29,17 @@ namespace HRAOrganGallery
         {
             LaterialityCallButton.OnClick += (lat) => { TurnOff(lat); };
             Collider = GetComponent<BoxCollider>();
-            InactiveMaterial = GetComponent<Renderer>().material;
+            ReadyMaterial = GetComponent<Renderer>().material;
             Renderer = GetComponent<Renderer>();
 
             //set active color if on by default
-            if (caller.GetComponent<OrganCaller>().RequestedLaterality == Feature) ChangeColor(ActiveMaterial);
+            if (caller.GetComponent<OrganCaller>().RequestedLaterality == Feature) ChangeColor(PressedMaterial);
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (_locked) return;
-            ChangeColor(ActiveMaterial);
+            ChangeColor(PressedMaterial);
             OnClick?.Invoke(Feature);
         }
 
@@ -56,7 +56,7 @@ namespace HRAOrganGallery
 
         public void TurnOff(Laterality lat)
         {
-            if (lat != Feature) ChangeColor(InactiveMaterial);
+            if (lat != Feature) ChangeColor(ReadyMaterial);
         }
 
         private void ChangeColor(Material mat)

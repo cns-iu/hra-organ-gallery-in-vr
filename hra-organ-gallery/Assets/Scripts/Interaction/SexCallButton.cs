@@ -12,8 +12,8 @@ namespace HRAOrganGallery
         [field: SerializeField] public BoxCollider Collider { get; set; }
         [field: SerializeField] public Sex Feature { get; set; }
 
-        [field: SerializeField] public Material ActiveMaterial { get; set; }
-        [field: SerializeField] public Material InactiveMaterial { get; set; }
+        [field: SerializeField] public Material PressedMaterial { get; set; }
+        [field: SerializeField] public Material ReadyMaterial { get; set; }
 
         [field: SerializeField] public Renderer Renderer { get; set; }
 
@@ -31,23 +31,23 @@ namespace HRAOrganGallery
 
             SexCallButton.OnClick += (sex) => { TurnOff(sex); };
             Collider = GetComponent<BoxCollider>();
-            InactiveMaterial = GetComponent<Renderer>().material;
+            ReadyMaterial = GetComponent<Renderer>().material;
             Renderer = GetComponent<Renderer>();
 
             //set active color if on by default
-            if (caller.GetComponent<OrganCaller>().RequestedSex == Feature) ChangeColor(ActiveMaterial);
+            if (caller.GetComponent<OrganCaller>().RequestedSex == Feature) ChangeColor(PressedMaterial);
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (_locked) return;
-            ChangeColor(ActiveMaterial);
+            ChangeColor(PressedMaterial);
             OnClick?.Invoke(Feature);
         }
 
         public void TurnOff(Sex sex)
         {
-            if (sex != Feature) ChangeColor(InactiveMaterial);
+            if (sex != Feature) ChangeColor(ReadyMaterial);
         }
 
         private void Update()
@@ -58,7 +58,7 @@ namespace HRAOrganGallery
 
         public void AutoSwitch()
         {
-            if (caller.RequestedSex == Feature) ChangeColor(ActiveMaterial); else { ChangeColor(InactiveMaterial); }
+            if (caller.RequestedSex == Feature) ChangeColor(PressedMaterial); else { ChangeColor(ReadyMaterial); }
         }
 
         public void CheckIfLock()

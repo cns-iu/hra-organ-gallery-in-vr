@@ -21,8 +21,8 @@ namespace HRAOrganGallery
         //A Collider so it can interact with the user's pointing device
         public BoxCollider Collider { get; set; }
         public TFeatureType Feature { get; set; }
-        public Material ActiveMaterial { get; set; }
-        public Material InactiveMaterial { get; set; }
+        public Material PressedMaterial { get; set; }
+        public Material ReadyMaterial { get; set; }
 
         public Renderer Renderer { get; set; }
 
