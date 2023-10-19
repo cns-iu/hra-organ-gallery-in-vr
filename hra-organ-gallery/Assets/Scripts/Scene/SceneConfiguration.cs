@@ -14,6 +14,8 @@ namespace Assets.Scripts.Scene
         [SerializeField]
         private List<string> uberonIds = new List<string>();
         [SerializeField] const string ontologyQueryString = "&ontology-terms=http://purl.obolibrary.org/obo/UBERON_";
+        [SerializeField] private List<string> _defaultOrgansToShow = new List<string>();
+        public List<string> DefaultOrgansToShow { get { return _defaultOrgansToShow; } set { } }
 
         private void Awake()
         {

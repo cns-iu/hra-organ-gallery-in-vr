@@ -14,7 +14,8 @@ namespace HRAOrganGallery
         [field: SerializeField] public string Url { get; set; }
 
         [SerializeField] private string _baseUrl = "https://ccf-api.hubmapconsortium.org/v1/reference-organ-scene";
-        [SerializeField] private string organQuery = "?organ-iri=";
+        [SerializeField] private string ontologyTermQuery = "?ontology-terms=";
+        [SerializeField] private string organQuery = "&organ-iri=";
         [SerializeField] private string sexQuery = "&sex=";
 
         public void Deserialize(string rawWebResponse)
@@ -47,7 +48,7 @@ namespace HRAOrganGallery
         //overload to set new URL depending on organ to load
         public async Task<NodeArray> ShareData(string organ_iri, string sex = "")
         {
-            Url = sex == "" ? _baseUrl + organQuery + organ_iri : _baseUrl + organQuery + organ_iri + sexQuery + sex;
+            Url = sex == "" ? _baseUrl + ontologyTermQuery + organ_iri + organQuery + organ_iri : _baseUrl + ontologyTermQuery + organ_iri + organQuery + organ_iri + sexQuery + sex;
             await GetNodes();
             return T;
         }
