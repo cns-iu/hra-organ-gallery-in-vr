@@ -28,6 +28,7 @@ namespace HRAOrganGallery
         [SerializeField] private Transform _platform;
         [SerializeField] private Transform _defaultLocation;
         [SerializeField] private List<GameObject> _organsLowRes;
+        [SerializeField] private float _organOpacity;
 
         [Header("Data")]
         [SerializeField] private NodeArray _highResOrganNodeArray;
@@ -43,13 +44,17 @@ namespace HRAOrganGallery
         [Header("Two-sided Organs")]
         [SerializeField] private List<string> _twoSidedOrgans;
 
+
         private void Awake()
         {
             //subscribe to all keyboard buttons
             OrganCallButton.OnCLick += async (possibleOrgans) => { _possibleOrgans = possibleOrgans; await PickOrgan(); };
-            SexCallButton.OnClick += async (sex) => { _requestedSex = sex; 
+            SexCallButton.OnClick += async (sex) =>
+            {
+                _requestedSex = sex;
                 //EnableDisableButtons(sex.ToString().ToLower()); 
-                await PickOrgan(); };
+                await PickOrgan();
+            };
             LaterialityCallButton.OnClick += async (laterality) => { _requestedLaterality = laterality; await PickOrgan(); };
 
             //get low res organs from SceneSetup
@@ -120,7 +125,11 @@ namespace HRAOrganGallery
                         organ.gameObject.SetActive(true);
 
                         //set organ opacity
+                        //uncomment if by API response
                         Utils.SetOrganOpacity(organ, organ.GetComponent<OrganData>().Opacity);
+
+                        //uncomment if set here
+                        Utils.SetOrganOpacity(organ, _organOpacity);
 
                         CreateTissueBlocks(_highResOrganNodeArray, organ.transform);
                         organ.transform.position = _platform.position;
