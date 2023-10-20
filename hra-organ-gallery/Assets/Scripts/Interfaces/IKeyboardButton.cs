@@ -19,7 +19,6 @@ namespace HRAOrganGallery
         public static event Action<TButtonPayloadType> OnCLick;
 
         //A Collider so it can interact with the user's pointing device
-        public BoxCollider Collider { get; set; }
         public TFeatureType Feature { get; set; }
         public Material PressedMaterial { get; set; }
         public Material ReadyMaterial { get; set; }

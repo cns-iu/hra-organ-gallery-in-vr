@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace HRAOrganGallery
 {
@@ -9,13 +10,18 @@ namespace HRAOrganGallery
     {
         [SerializeField] private List<GameObject> ToggleThis;
 
-        private void OnTriggerEnter(Collider other)
+        private void Awake()
         {
-            //toggle game object (parent) on and off
-            for (int i = 0; i < ToggleThis.Count; i++)
-            {
-                ToggleThis[i].SetActive(!ToggleThis[i].gameObject.activeSelf);
-            }
+            GetComponent<XRSimpleInteractable>().hoverEntered.AddListener(
+                (HoverEnterEventArgs args) =>
+                {
+                    //toggle game object (parent) on and off
+                    for (int i = 0; i < ToggleThis.Count; i++)
+                    {
+                        ToggleThis[i].SetActive(!ToggleThis[i].gameObject.activeSelf);
+                    }
+                }
+                );
         }
     }
 }
