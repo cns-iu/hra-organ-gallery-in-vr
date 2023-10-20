@@ -59,11 +59,11 @@ namespace HRAOrganGallery
 
         private void Update()
         {
-            //MustLock();
+            CheckIfLock();
             AutoSwitch();
         }
 
-        public void MustLock()
+        public void CheckIfLock()
         {
             _locked = !OrganCaller.Instance.TwoSidedOrgans.Contains(OrganCaller.Instance.RequestedOrgan) | OrganCaller.Instance.RequestedOrgan == "";
             uIpanel.SetActive(_locked);

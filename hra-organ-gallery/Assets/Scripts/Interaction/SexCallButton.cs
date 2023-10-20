@@ -21,6 +21,7 @@ namespace HRAOrganGallery
         [SerializeField] private SexCallButton other;
 
         [SerializeField] private bool _locked = true;
+        [SerializeField] private bool _hasUserMadeFirstTouch = false;
         [SerializeField] private GameObject uIpanel;
         [SerializeField] private XRSimpleInteractable _interactable;
 
@@ -64,7 +65,7 @@ namespace HRAOrganGallery
 
         private void Update()
         {
-            //MustLock();
+            CheckIfLock();
             AutoSwitch();
         }
 
@@ -73,7 +74,7 @@ namespace HRAOrganGallery
             if (OrganCaller.Instance.RequestedSex == Feature) ChangeColor(PressedMaterial); else { ChangeColor(ReadyMaterial); }
         }
 
-        public void MustLock()
+        public void CheckIfLock()
         {
             _locked = OrganCaller.Instance.FemaleOnlyOrgans.Contains(OrganCaller.Instance.RequestedOrgan) | OrganCaller.Instance.MaleOnlyOrgans.Contains(OrganCaller.Instance.RequestedOrgan) | OrganCaller.Instance.RequestedOrgan == "";
             uIpanel.SetActive(_locked);
