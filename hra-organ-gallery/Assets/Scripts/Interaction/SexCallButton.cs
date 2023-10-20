@@ -20,22 +20,19 @@ namespace HRAOrganGallery
 
         [SerializeField] private SexCallButton other;
 
-        //could be singleton but keeping it as is because we may have more than one organ platform/caller
-        [SerializeField] private OrganCaller caller;
-
         [SerializeField] private bool _locked = true;
         [SerializeField] private GameObject uIpanel;
         [SerializeField] private XRSimpleInteractable _interactable;
 
         private void Awake()
         {
-            SexCallButton.OnClick += (sex) => { TurnOff(sex); };
+            //SexCallButton.OnClick += (sex) => { TurnOff(sex); };
             Collider = GetComponent<BoxCollider>();
             ReadyMaterial = GetComponent<Renderer>().material;
             Renderer = GetComponent<Renderer>();
 
             //set active color if on by default
-            if (caller.GetComponent<OrganCaller>().RequestedSex == Feature) ChangeColor(PressedMaterial);
+            //if (OrganCaller.Instance.RequestedSex == Feature) ChangeColor(PressedMaterial);
         }
 
         private void Start()
@@ -49,6 +46,7 @@ namespace HRAOrganGallery
             _interactable.hoverEntered.AddListener(
                 (HoverEnterEventArgs args) =>
                 {
+                    if (_locked) return;
                     ChangeColor(PressedMaterial);
                     OnClick?.Invoke(Feature);
                 }
@@ -66,18 +64,18 @@ namespace HRAOrganGallery
 
         private void Update()
         {
-            CheckIfLock();
+            //MustLock();
             AutoSwitch();
         }
 
         public void AutoSwitch()
         {
-            if (caller.RequestedSex == Feature) ChangeColor(PressedMaterial); else { ChangeColor(ReadyMaterial); }
+            if (OrganCaller.Instance.RequestedSex == Feature) ChangeColor(PressedMaterial); else { ChangeColor(ReadyMaterial); }
         }
 
-        public void CheckIfLock()
+        public void MustLock()
         {
-            _locked = caller.FemaleOnlyOrgans.Contains(caller.RequestedOrgan) | caller.MaleOnlyOrgans.Contains(caller.RequestedOrgan) | caller.RequestedOrgan == "";
+            _locked = OrganCaller.Instance.FemaleOnlyOrgans.Contains(OrganCaller.Instance.RequestedOrgan) | OrganCaller.Instance.MaleOnlyOrgans.Contains(OrganCaller.Instance.RequestedOrgan) | OrganCaller.Instance.RequestedOrgan == "";
             uIpanel.SetActive(_locked);
         }
 

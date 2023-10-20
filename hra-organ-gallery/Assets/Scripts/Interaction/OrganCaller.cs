@@ -13,6 +13,9 @@ namespace HRAOrganGallery
 {
     public class OrganCaller : MonoBehaviour
     {
+        //singleton implementation
+        public static OrganCaller Instance;
+
         //a series of properties to expose private variables to the keyboard buttons
         public Sex RequestedSex { get { return _requestedSex; } private set { } }
         public Laterality RequestedLaterality { get { return _requestedLaterality; } private set { } }
@@ -59,6 +62,18 @@ namespace HRAOrganGallery
 
             //get low res organs from SceneSetup
             _organsLowRes = SceneSetup.Instance.OrgansLowRes;
+
+            //implement singleton instance
+
+            if (Instance != null && Instance != this)
+            {
+                Destroy(this);
+            }
+            else
+            {
+                Instance = this;
+            }
+
         }
 
         private string DetermineByLateriality(List<string> iris)
@@ -77,6 +92,7 @@ namespace HRAOrganGallery
             }
         }
 
+        //currently unused
         private void EnableDisableButtons(string currentSex)
         {
             //loop through low res organs and enable only the ones whose sex is selected
@@ -126,7 +142,7 @@ namespace HRAOrganGallery
 
                         //set organ opacity
                         //uncomment if by API response
-                        Utils.SetOrganOpacity(organ, organ.GetComponent<OrganData>().Opacity);
+                        //Utils.SetOrganOpacity(organ, organ.GetComponent<OrganData>().Opacity);
 
                         //uncomment if set here
                         Utils.SetOrganOpacity(organ, _organOpacity);
