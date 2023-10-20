@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace HRAOrganGallery
 {
@@ -24,11 +25,10 @@ namespace HRAOrganGallery
 
         [SerializeField] private bool _locked = true;
         [SerializeField] private GameObject uIpanel;
+        [SerializeField] private XRSimpleInteractable _interactable;
 
         private void Awake()
         {
-
-
             SexCallButton.OnClick += (sex) => { TurnOff(sex); };
             Collider = GetComponent<BoxCollider>();
             ReadyMaterial = GetComponent<Renderer>().material;
@@ -38,11 +38,25 @@ namespace HRAOrganGallery
             if (caller.GetComponent<OrganCaller>().RequestedSex == Feature) ChangeColor(PressedMaterial);
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void Start()
         {
-            if (_locked) return;
-            ChangeColor(PressedMaterial);
-            OnClick?.Invoke(Feature);
+            SetUpXRInteraction();
+        }
+
+        public void SetUpXRInteraction()
+        {
+            //subscribe to hover event
+            _interactable.hoverEntered.AddListener(
+                (HoverEnterEventArgs args) =>
+                {
+                    ChangeColor(PressedMaterial);
+                    OnClick?.Invoke(Feature);
+                }
+                );
+        }
+        private void OnValidate()
+        {
+            if (_interactable.colliders.Count == 0) _interactable.colliders.Add(GetComponent<BoxCollider>());
         }
 
         public void TurnOff(Sex sex)

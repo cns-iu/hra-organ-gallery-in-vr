@@ -48,7 +48,7 @@ namespace HRAOrganGallery
         private void Awake()
         {
             //subscribe to all keyboard buttons
-            OrganCallButton.OnCLick += async (possibleOrgans) => { _possibleOrgans = possibleOrgans; await PickOrgan(); };
+            OrganCallButton.OnClick += async (possibleOrgans) => { _possibleOrgans = possibleOrgans; await PickOrgan(); };
             SexCallButton.OnClick += async (sex) =>
             {
                 _requestedSex = sex;

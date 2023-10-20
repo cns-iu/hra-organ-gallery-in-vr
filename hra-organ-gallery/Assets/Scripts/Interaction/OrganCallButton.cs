@@ -16,7 +16,7 @@ namespace HRAOrganGallery
 
     public class OrganCallButton : MonoBehaviour, IKeyboardButton<List<string>, List<string>>
     {
-        public static event Action<List<string>> OnCLick;
+        public static event Action<List<string>> OnClick;
         [field: SerializeField] public List<string> Feature { get; set; }
 
         [field: SerializeField] public Material PressedMaterial { get; set; }
@@ -32,7 +32,7 @@ namespace HRAOrganGallery
 
         private void Awake()
         {
-            OrganCallButton.OnCLick += (iris) => { TurnOff(iris); };
+            OrganCallButton.OnClick += (iris) => { TurnOff(iris); };
             ReadyMaterial = GetComponent<Renderer>().material;
             Renderer = GetComponent<Renderer>();
 
@@ -45,12 +45,17 @@ namespace HRAOrganGallery
 
         private void Start()
         {
+            SetUpXRInteraction();
+        }
+
+        public void SetUpXRInteraction()
+        {
             //subscribe to hover event
             _interactable.hoverEntered.AddListener(
                 (HoverEnterEventArgs args) =>
                 {
                     ChangeColor(PressedMaterial);
-                    OnCLick?.Invoke(Feature);
+                    OnClick?.Invoke(Feature);
                 }
                 );
         }
