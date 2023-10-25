@@ -16,18 +16,19 @@ namespace HRAOrganGallery
     /// <typeparam name="TFeatureType">The type of button (organ IRI, sex, or laterality)</typeparam>
     public interface IKeyboardButton<TButtonPayloadType, TFeatureType>
     {
-        public static event Action<TButtonPayloadType> OnCLick;
+        public static event Action<TButtonPayloadType> OnClick;
 
         //A Collider so it can interact with the user's pointing device
-        public BoxCollider Collider { get; set; }
         public TFeatureType Feature { get; set; }
-        public Material ActiveMaterial { get; set; }
-        public Material InactiveMaterial { get; set; }
+        public Material PressedMaterial { get; set; }
+        public Material ReadyMaterial { get; set; }
 
         public Renderer Renderer { get; set; }
 
-        private void TurnOff(TFeatureType f) { }
+        public void TurnOff(TFeatureType f) { }
 
-        private void ChangeColor() { }
+        public void ChangeColor() { }
+
+        public void SetUpXRInteraction() { }
     }
 }

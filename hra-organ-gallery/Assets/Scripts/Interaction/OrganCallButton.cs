@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace HRAOrganGallery
 {
@@ -15,34 +16,58 @@ namespace HRAOrganGallery
 
     public class OrganCallButton : MonoBehaviour, IKeyboardButton<List<string>, List<string>>
     {
-        public static event Action<List<string>> OnCLick;
+        public static event Action<List<string>> OnClick;
         [field: SerializeField] public List<string> Feature { get; set; }
-        [field: SerializeField] public BoxCollider Collider { get; set; }
 
-        [field: SerializeField] public Material ActiveMaterial { get; set; }
-        [field: SerializeField] public Material InactiveMaterial { get; set; }
+        [field: SerializeField] public Material PressedMaterial { get; set; }
+        [field: SerializeField] public Material ReadyMaterial { get; set; }
+
+        [field: SerializeField] public Material DisabledMaterial { get; set; }
+
         [field: SerializeField] public Renderer Renderer { get; set; }
 
 
         [SerializeField] private List<OrganCallButton> others;
+        [SerializeField] private XRSimpleInteractable _interactable;
 
         private void Awake()
         {
-            OrganCallButton.OnCLick += (iris) => { TurnOff(iris); };
-            Collider = GetComponent<BoxCollider>();
-            InactiveMaterial = GetComponent<Renderer>().material;
+            OrganCallButton.OnClick += (iris) => { TurnOff(iris); };
+            ReadyMaterial = GetComponent<Renderer>().material;
             Renderer = GetComponent<Renderer>();
+
+            //get ref to simple interactable
+            _interactable = GetComponent<XRSimpleInteractable>();
+
+            //get collider
+            _interactable.colliders.Add(GetComponent<BoxCollider>());
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void Start()
         {
-            ChangeColor(ActiveMaterial);
-            OnCLick?.Invoke(Feature);
+            SetUpXRInteraction();
+        }
+
+        public void SetUpXRInteraction()
+        {
+            //subscribe to hover event
+            _interactable.hoverEntered.AddListener(
+                (HoverEnterEventArgs args) =>
+                {
+                    ChangeColor(PressedMaterial);
+                    OnClick?.Invoke(Feature);
+                }
+                );
+        }
+
+        private void OnValidate()
+        {
+            if (_interactable.colliders.Count == 0) _interactable.colliders.Add(GetComponent<BoxCollider>());
         }
 
         public void TurnOff(List<string> iris)
         {
-            if (iris != Feature) ChangeColor(InactiveMaterial);
+            if (iris != Feature) ChangeColor(ReadyMaterial);
         }
 
         private void ChangeColor(Material mat)

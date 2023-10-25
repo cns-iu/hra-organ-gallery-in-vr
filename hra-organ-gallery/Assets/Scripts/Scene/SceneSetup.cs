@@ -1,4 +1,5 @@
 using Assets.Scripts.Data;
+using Assets.Scripts.Scene;
 using Assets.Scripts.Shared;
 using System;
 using System.Collections.Generic;
@@ -70,7 +71,6 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
             //commented out for now to save time in editor
             //RuiLocationMapping = await TissueBlockRefOrganLoader.Instance.ShareData();
 
-
             //loop through organs in scene and response, add data, and place organs already in scene (match by scenegraphNode)
             OrgansLowRes = EnrichOrgans(OrgansLowRes);
             OrgansHighRes = EnrichOrgans(OrgansHighRes);
@@ -83,6 +83,23 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
 
             //move all organs to central platform
             _parentOrgansLowRes.SetPositionAndRotation(_adjustedOrgansLowResOrigin.position, _adjustedOrgansLowResOrigin.rotation);
+
+            //only show default organs to save FPS
+            HideUndesiredOrgansAndTissueBlocks(OrgansLowRes, TissueBlocks);
+        }
+
+        private void HideUndesiredOrgansAndTissueBlocks(List<GameObject> lowResOrgans, List<GameObject> tissueBlocks)
+        {
+            for (int i = 0; i < lowResOrgans.Count; i++)
+            {
+                lowResOrgans[i].SetActive(SceneConfiguration.Instance.DefaultOrgansToShow.Contains(lowResOrgans[i].GetComponent<OrganData>().RepresentationOf));
+            }
+
+            for (int i = 0; i < tissueBlocks.Count; i++)
+            {
+                TissueBlockData data = tissueBlocks[i].GetComponent<TissueBlockData>();
+                tissueBlocks[i].SetActive(data.CcfAnnotations.Intersect(SceneConfiguration.Instance.DefaultOrgansToShow).Any());
+            }
         }
 
         /// <summary>
@@ -90,7 +107,7 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
         /// </summary>
         /// <param name="organs">A list of GameObjects</param>
         /// <returns>An enriched list</returns>
-        List<GameObject> EnrichOrgans(List<GameObject> organs)
+        private List<GameObject> EnrichOrgans(List<GameObject> organs)
         {
             for (int i = 0; i < organs.Count; i++)
             {

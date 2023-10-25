@@ -13,6 +13,9 @@ namespace HRAOrganGallery
 {
     public class OrganCaller : MonoBehaviour
     {
+        //singleton implementation
+        public static OrganCaller Instance;
+
         //a series of properties to expose private variables to the keyboard buttons
         public Sex RequestedSex { get { return _requestedSex; } private set { } }
         public Laterality RequestedLaterality { get { return _requestedLaterality; } private set { } }
@@ -27,6 +30,8 @@ namespace HRAOrganGallery
         [SerializeField] private GameObject pre_TissueBlock;
         [SerializeField] private Transform _platform;
         [SerializeField] private Transform _defaultLocation;
+        [SerializeField] private List<GameObject> _organsLowRes;
+        [SerializeField] private float _organOpacity;
 
         [Header("Data")]
         [SerializeField] private NodeArray _highResOrganNodeArray;
@@ -42,38 +47,33 @@ namespace HRAOrganGallery
         [Header("Two-sided Organs")]
         [SerializeField] private List<string> _twoSidedOrgans;
 
+
         private void Awake()
         {
             //subscribe to all keyboard buttons
-            OrganCallButton.OnCLick += async (possibleOrgans) => { _possibleOrgans = possibleOrgans; await PickOrgan(); };
-            SexCallButton.OnClick += async (sex) => { _requestedSex = sex; await PickOrgan(); };
-            LaterialityCallButton.OnClick += async (laterality) => { _requestedLaterality = laterality; await PickOrgan(); };
-        }
-
-
-
-        private async void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.C))
-
+            OrganCallButton.OnClick += async (possibleOrgans) => { _possibleOrgans = possibleOrgans; await PickOrgan(); };
+            SexCallButton.OnClick += async (sex) =>
             {
-                //OrganList l = ScriptableObject.CreateInstance<OrganList>();
-
-                //foreach (var item in SceneSetup.Instance.OrgansHighRes)
-                //{
-                //    Pairs p = new Pairs();
-                //    p.name = item.GetComponent<OrganData>().Tooltip;
-                //    p.iri = item.GetComponent<OrganData>().RepresentationOf;
-                //    Debug.Log(p.name);
-                //    l.OrganNames.Add(p);
-
-                //}
-
-                //AssetDatabase.CreateAsset(l, $"Assets/ScriptableObjects/OrganList.asset");
-                //AssetDatabase.SaveAssets();
-
+                _requestedSex = sex;
+                //EnableDisableButtons(sex.ToString().ToLower()); 
                 await PickOrgan();
+            };
+            LaterialityCallButton.OnClick += async (laterality) => { _requestedLaterality = laterality; await PickOrgan(); };
+
+            //get low res organs from SceneSetup
+            _organsLowRes = SceneSetup.Instance.OrgansLowRes;
+
+            //implement singleton instance
+
+            if (Instance != null && Instance != this)
+            {
+                Destroy(this);
             }
+            else
+            {
+                Instance = this;
+            }
+
         }
 
         private string DetermineByLateriality(List<string> iris)
@@ -89,6 +89,18 @@ namespace HRAOrganGallery
                 {
                     return iris[1];
                 }
+            }
+        }
+
+        //currently unused
+        private void EnableDisableButtons(string currentSex)
+        {
+            //loop through low res organs and enable only the ones whose sex is selected
+            for (int i = 0; i < _organsLowRes.Count; i++)
+            {
+                GameObject _currentOrgan = _organsLowRes[i];
+                OrganData data = _currentOrgan.GetComponent<OrganData>();
+                _currentOrgan.gameObject.SetActive(data.Sex.ToLower() == currentSex);
             }
         }
 
@@ -129,7 +141,11 @@ namespace HRAOrganGallery
                         organ.gameObject.SetActive(true);
 
                         //set organ opacity
-                        Utils.SetOrganOpacity(organ, organ.GetComponent<OrganData>().Opacity);
+                        //uncomment if by API response
+                        //Utils.SetOrganOpacity(organ, organ.GetComponent<OrganData>().Opacity);
+
+                        //uncomment if set here
+                        Utils.SetOrganOpacity(organ, _organOpacity);
 
                         CreateTissueBlocks(_highResOrganNodeArray, organ.transform);
                         organ.transform.position = _platform.position;
