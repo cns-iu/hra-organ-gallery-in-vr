@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace HRAOrganGallery
 {
@@ -12,42 +13,54 @@ namespace HRAOrganGallery
         [field: SerializeField] public BoxCollider Collider { get; set; }
         [field: SerializeField] public Sex Feature { get; set; }
 
-        [field: SerializeField] public Material ActiveMaterial { get; set; }
-        [field: SerializeField] public Material InactiveMaterial { get; set; }
+        [field: SerializeField] public Material PressedMaterial { get; set; }
+        [field: SerializeField] public Material ReadyMaterial { get; set; }
 
         [field: SerializeField] public Renderer Renderer { get; set; }
 
         [SerializeField] private SexCallButton other;
 
-        //could be singleton but keeping it as is because we may have more than one organ platform/caller
-        [SerializeField] private OrganCaller caller;
-
         [SerializeField] private bool _locked = true;
+        [SerializeField] private bool _hasUserMadeFirstTouch = false;
         [SerializeField] private GameObject uIpanel;
+        [SerializeField] private XRSimpleInteractable _interactable;
 
         private void Awake()
         {
-
-
-            SexCallButton.OnClick += (sex) => { TurnOff(sex); };
+            //SexCallButton.OnClick += (sex) => { TurnOff(sex); };
             Collider = GetComponent<BoxCollider>();
-            InactiveMaterial = GetComponent<Renderer>().material;
+            ReadyMaterial = GetComponent<Renderer>().material;
             Renderer = GetComponent<Renderer>();
 
             //set active color if on by default
-            if (caller.GetComponent<OrganCaller>().RequestedSex == Feature) ChangeColor(ActiveMaterial);
+            //if (OrganCaller.Instance.RequestedSex == Feature) ChangeColor(PressedMaterial);
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void Start()
         {
-            if (_locked) return;
-            ChangeColor(ActiveMaterial);
-            OnClick?.Invoke(Feature);
+            SetUpXRInteraction();
+        }
+
+        public void SetUpXRInteraction()
+        {
+            //subscribe to hover event
+            _interactable.hoverEntered.AddListener(
+                (HoverEnterEventArgs args) =>
+                {
+                    if (_locked) return;
+                    ChangeColor(PressedMaterial);
+                    OnClick?.Invoke(Feature);
+                }
+                );
+        }
+        private void OnValidate()
+        {
+            if (_interactable.colliders.Count == 0) _interactable.colliders.Add(GetComponent<BoxCollider>());
         }
 
         public void TurnOff(Sex sex)
         {
-            if (sex != Feature) ChangeColor(InactiveMaterial);
+            if (sex != Feature) ChangeColor(ReadyMaterial);
         }
 
         private void Update()
@@ -58,12 +71,12 @@ namespace HRAOrganGallery
 
         public void AutoSwitch()
         {
-            if (caller.RequestedSex == Feature) ChangeColor(ActiveMaterial); else { ChangeColor(InactiveMaterial); }
+            if (OrganCaller.Instance.RequestedSex == Feature) ChangeColor(PressedMaterial); else { ChangeColor(ReadyMaterial); }
         }
 
         public void CheckIfLock()
         {
-            _locked = caller.FemaleOnlyOrgans.Contains(caller.RequestedOrgan) | caller.MaleOnlyOrgans.Contains(caller.RequestedOrgan) | caller.RequestedOrgan == "";
+            _locked = OrganCaller.Instance.FemaleOnlyOrgans.Contains(OrganCaller.Instance.RequestedOrgan) | OrganCaller.Instance.MaleOnlyOrgans.Contains(OrganCaller.Instance.RequestedOrgan) | OrganCaller.Instance.RequestedOrgan == "";
             uIpanel.SetActive(_locked);
         }
 
