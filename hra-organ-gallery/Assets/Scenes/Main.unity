@@ -7780,11 +7780,9 @@ MonoBehaviour:
   _defaultOrgansToShow:
   - http://purl.obolibrary.org/obo/UBERON_0002097
   - http://purl.obolibrary.org/obo/UBERON_0000079
-  - http://purl.org/sig/ont/fma/fma57991
   - http://purl.obolibrary.org/obo/UBERON_0000995
   - http://purl.obolibrary.org/obo/UBERON_0001303
   - http://purl.org/sig/ont/fma/fma7214
-  - http://purl.org/sig/ont/fma/fma57987
   - http://purl.obolibrary.org/obo/UBERON_0001302
   - http://purl.obolibrary.org/obo/UBERON_0001302
   - http://purl.org/sig/ont/fma/fma7213
@@ -52637,7 +52635,7 @@ PrefabInstance:
     - target: {fileID: 1847791695669142127, guid: ead42e0472b7547fbba6c229aeaf37d3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 32.000122
+      value: 32.000244
       objectReference: {fileID: 0}
     - target: {fileID: 1847791695669142127, guid: ead42e0472b7547fbba6c229aeaf37d3,
         type: 3}
