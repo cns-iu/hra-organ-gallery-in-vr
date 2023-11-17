@@ -14,6 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: AndreasBueckle
   productName: HRA Organ Gallery
+
   defaultCursor:
     fileID: 0
   cursorHotspot:
@@ -26,6 +27,7 @@ PlayerSettings:
     a: 1
   m_ShowUnitySplashScreen: 0
   m_ShowUnitySplashLogo: 0
+
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 1
   m_SplashScreenLogoStyle: 1
