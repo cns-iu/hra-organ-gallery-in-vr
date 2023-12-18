@@ -112,7 +112,7 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
             for (int i = 0; i < organs.Count; i++)
             {
                 GameObject current = organs[i];
-
+                Debug.Log(current.name);
                 Node node = NodeArray.nodes
                     .First(
                     //catches case when using low-LOD models

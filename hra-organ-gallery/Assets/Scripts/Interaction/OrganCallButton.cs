@@ -35,12 +35,6 @@ namespace HRAOrganGallery
             OrganCallButton.OnClick += (iris) => { TurnOff(iris); };
             ReadyMaterial = GetComponent<Renderer>().material;
             Renderer = GetComponent<Renderer>();
-
-            //get ref to simple interactable
-            _interactable = GetComponent<XRSimpleInteractable>();
-
-            //get collider
-            _interactable.colliders.Add(GetComponent<BoxCollider>());
         }
 
         private void Start()
@@ -50,19 +44,19 @@ namespace HRAOrganGallery
 
         public void SetUpXRInteraction()
         {
+            //get ref to simple interactable
+            _interactable = GetComponent<XRSimpleInteractable>();
+
+            //get collider
+            _interactable.colliders.Add(GetComponent<BoxCollider>());
+
             //subscribe to hover event
             _interactable.hoverEntered.AddListener(
                 (HoverEnterEventArgs args) =>
-                {
-                    ChangeColor(PressedMaterial);
+                {                    ChangeColor(PressedMaterial);
                     OnClick?.Invoke(Feature);
                 }
                 );
-        }
-
-        private void OnValidate()
-        {
-            if (_interactable.colliders.Count == 0) _interactable.colliders.Add(GetComponent<BoxCollider>());
         }
 
         public void TurnOff(List<string> iris)
