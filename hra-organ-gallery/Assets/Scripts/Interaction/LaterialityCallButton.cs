@@ -52,10 +52,6 @@ namespace HRAOrganGallery
                 }
                 );
         }
-        private void OnValidate()
-        {
-            if (_interactable.colliders.Count == 0) _interactable.colliders.Add(GetComponent<BoxCollider>());
-        }
 
         private void Update()
         {

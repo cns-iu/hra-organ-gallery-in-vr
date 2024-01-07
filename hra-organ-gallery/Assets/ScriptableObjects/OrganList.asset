@@ -57,10 +57,6 @@ MonoBehaviour:
     iri: http://purl.obolibrary.org/obo/UBERON_0000955
   - name: Lymph Node
     iri: http://purl.obolibrary.org/obo/UBERON_0002509
-  - name: Lymph Node
-    iri: http://purl.obolibrary.org/obo/UBERON_0002509
-  - name: Large Intestine
-    iri: http://purl.obolibrary.org/obo/UBERON_0000059
   - name: Large Intestine
     iri: http://purl.obolibrary.org/obo/UBERON_0000059
   - name: Blood Vasculature
