@@ -52156,7 +52156,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3192311319530026369}
-  - component: {fileID: 3192311319530026370}
   m_Layer: 0
   m_Name: Keyboard
   m_TagString: Untagged
@@ -53503,59 +53502,6 @@ Transform:
   - {fileID: 543450653185329155}
   m_Father: {fileID: 1259461373}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3192311319530026370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2812091800284294971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7492bfe5b63718a4e8fdcc93028d3d2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _currentOrgan: {fileID: 0}
-  pre_TissueBlock: {fileID: 903711217248147082, guid: c6652058aa66a5240945d30ad6c2b0cc,
-    type: 3}
-  _platform: {fileID: 1975905363}
-  _defaultLocation: {fileID: 0}
-  _organsLowRes: []
-  _organOpacity: 0.8
-  _highResOrganNodeArray:
-    nodes: []
-  _requestedOrgan: 
-  _requestedSex: 0
-  _requestedLaterality: 0
-  _possibleOrgans: []
-  _femaleOnly:
-  - http://purl.org/sig/ont/fma/fma57991
-  - http://purl.org/sig/ont/fma/fma57987
-  - http://purl.obolibrary.org/obo/UBERON_0001303
-  - http://purl.obolibrary.org/obo/UBERON_0001302
-  - http://purl.obolibrary.org/obo/UBERON_0001987
-  - http://purl.obolibrary.org/obo/UBERON_0000995
-  _maleOnly:
-  - http://purl.obolibrary.org/obo/UBERON_0000079
-  _twoSidedOrgans:
-  - http://purl.obolibrary.org/obo/UBERON_0004548
-  - http://purl.obolibrary.org/obo/UBERON_0004549
-  - http://purl.org/sig/ont/fma/fma57991
-  - http://purl.org/sig/ont/fma/fma57987
-  - http://purl.org/sig/ont/fma/fma54974
-  - http://purl.org/sig/ont/fma/fma54973
-  - http://purl.obolibrary.org/obo/UBERON_0004548
-  - http://purl.obolibrary.org/obo/UBERON_0004549
-  - http://purl.obolibrary.org/obo/UBERON_0001303
-  - http://purl.obolibrary.org/obo/UBERON_0001302
-  - http://purl.obolibrary.org/obo/UBERON_0004538
-  - http://purl.obolibrary.org/obo/UBERON_0004539
-  - http://purl.org/sig/ont/fma/fma24978
-  - http://purl.org/sig/ont/fma/fma24977
-  - http://purl.org/sig/ont/fma/fma7214
-  - http://purl.org/sig/ont/fma/fma7213
-  - http://purl.obolibrary.org/obo/UBERON_0001223
-  - http://purl.obolibrary.org/obo/UBERON_0001222
 --- !u!1 &3196404548012605220
 GameObject:
   m_ObjectHideFlags: 0

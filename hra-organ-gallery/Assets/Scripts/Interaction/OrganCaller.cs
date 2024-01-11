@@ -178,6 +178,7 @@ namespace HRAOrganGallery
            );
                 block.transform.localScale = reflected.lossyScale * 2f;
                 block.AddComponent<TissueBlockData>().Init(nodeArray.nodes[i]);
+                Debug.Log("tissue block created");
                 block.transform.parent = organ;
             }
         }
