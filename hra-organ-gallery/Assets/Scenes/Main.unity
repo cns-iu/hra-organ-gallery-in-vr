@@ -7082,7 +7082,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IdsOrgansToShow: []
   Url: 
-  ccfApiEndPoint: https://ccf-api.hubmapconsortium.org/v1/scene
+  ccfApiEndPoint: https://apps.humanatlas.io/hra-api/v1/scene
   uberonIds: []
   _defaultOrgansToShow:
   - http://purl.obolibrary.org/obo/UBERON_0002097
@@ -7157,7 +7157,7 @@ MonoBehaviour:
   <T>k__BackingField:
     nodes: []
   <Url>k__BackingField: 
-  _baseUrl: https://apps.humanatlas.io/hra-api/v1/scene
+  _baseUrl: https://apps.humanatlas.io/hra-api/v1/reference-organ-scene
   ontologyTermQuery: ?ontology-terms=
   organQuery: '&organ-iri='
   sexQuery: '&sex='
