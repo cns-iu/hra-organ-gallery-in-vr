@@ -112,14 +112,28 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
             for (int i = 0; i < organs.Count; i++)
             {
                 GameObject current = organs[i];
+                //Debug.Log(current.name);
 
-                Node node = NodeArray.nodes
+                Node node = new Node();
+
+                try
+                {
+                    node = NodeArray.nodes
                     .First(
                     //catches case when using low-LOD models
-                    n => n.scenegraph.Split("/")[n.scenegraph.Split("/").Length - 1].Replace(".glb", string.Empty) == current.name.Replace("_0.2", "")
+                    n => n.scenegraph.Split("/")[n.scenegraph.Split("/").Length - 1].Replace(".glb", string.Empty).ToLower() == current.name.Replace("_0.2", "").ToLower()
                     );
 
-                current.AddComponent<OrganData>().Init(node);
+                    current.AddComponent<OrganData>().Init(node);
+                }
+                catch (Exception)
+                {
+
+                    Debug.Log($"could not find data for {current}");
+                }
+
+
+
 
                 //place organ by transform matrix from Node
                 PlaceOrgan(current, node);

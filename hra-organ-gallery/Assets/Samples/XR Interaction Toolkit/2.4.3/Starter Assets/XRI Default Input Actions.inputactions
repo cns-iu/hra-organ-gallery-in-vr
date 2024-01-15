@@ -2197,6 +2197,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Custom",
+            "id": "1c3c9041-20eb-4437-aced-b02fbb7446a2",
+            "actions": [
+                {
+                    "name": "ExplodeTissueBlocks",
+                    "type": "Value",
+                    "id": "73ea218e-b397-45aa-a913-35272b0c95d9",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "AdjustSphereSize",
+                    "type": "Value",
+                    "id": "6b4e0f58-a3bb-4894-99da-1253196a65b0",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d3f95e31-99a0-4bf0-bb9c-32b9f0789d1e",
+                    "path": "<XRController>{RightHand}/primary2DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AdjustSphereSize",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a4a5370c-1e88-4ceb-b7fa-7280667b77d7",
+                    "path": "<XRController>{LeftHand}/primary2DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExplodeTissueBlocks",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

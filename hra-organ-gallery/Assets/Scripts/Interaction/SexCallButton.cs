@@ -28,9 +28,14 @@ namespace HRAOrganGallery
         private void Awake()
         {
             //SexCallButton.OnClick += (sex) => { TurnOff(sex); };
-            Collider = GetComponent<BoxCollider>();
+            
             ReadyMaterial = GetComponent<Renderer>().material;
             Renderer = GetComponent<Renderer>();
+
+            // get collider
+            _interactable = GetComponent<XRSimpleInteractable>();
+            Collider = GetComponent<BoxCollider>();
+            _interactable.colliders.Add(Collider);
 
             //set active color if on by default
             //if (OrganCaller.Instance.RequestedSex == Feature) ChangeColor(PressedMaterial);
@@ -53,11 +58,7 @@ namespace HRAOrganGallery
                 }
                 );
         }
-        private void OnValidate()
-        {
-            if (_interactable.colliders.Count == 0) _interactable.colliders.Add(GetComponent<BoxCollider>());
-        }
-
+        
         public void TurnOff(Sex sex)
         {
             if (sex != Feature) ChangeColor(ReadyMaterial);

@@ -17,8 +17,8 @@ PlayerSettings:
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
-  m_ShowUnitySplashScreen: 0
-  m_ShowUnitySplashLogo: 0
+  m_ShowUnitySplashScreen: 1
+  m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 1
   m_SplashScreenLogoStyle: 1
@@ -54,7 +54,7 @@ PlayerSettings:
   mipStripping: 0
   numberOfMipsStripped: 0
   numberOfMipsStrippedPerMipmapLimitGroup: {}
-  m_StackTraceTypes: 010000000100000001000000010000000100000001000000
+  m_StackTraceTypes: fe0000000100000001000000010000000100000001000000
   iosShowActivityIndicatorOnLoading: -1
   androidShowActivityIndicatorOnLoading: -1
   iosUseCustomAppBackgroundBehavior: 0
@@ -134,8 +134,11 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 0.8.2
-  preloadedAssets: []
+  bundleVersion: 0.8.3
+  preloadedAssets:
+  - {fileID: -8111579241685870785, guid: 556c37121ce32ea4a9479e99bd798bb7, type: 2}
+  - {fileID: 11400000, guid: 702e3f4a17ff9e7428a077b9934d8bb2, type: 2}
+  - {fileID: 4889071715761210034, guid: 64349189c9b13df40af43e39bcbe5cfe, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -148,7 +151,7 @@ PlayerSettings:
   enableOpenGLProfilerGPURecorders: 1
   useHDRDisplay: 0
   hdrBitDepth: 0
-  m_ColorGamuts: 00000000
+  m_ColorGamuts: 
   targetPixelDensity: 30
   resolutionScalingMode: 0
   resetResolutionOnWindowResize: 0
@@ -164,7 +167,7 @@ PlayerSettings:
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 34
+  AndroidBundleVersionCode: 35
   AndroidMinSdkVersion: 29
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 0
@@ -515,8 +518,8 @@ PlayerSettings:
     m_APIs: 10000000
     m_Automatic: 1
   - m_BuildTarget: AndroidPlayer
-    m_APIs: 0b000000
-    m_Automatic: 0
+    m_APIs: 150000000b000000
+    m_Automatic: 1
   m_BuildTargetVRSettings: []
   m_DefaultShaderChunkSizeInMB: 16
   m_DefaultShaderChunkCount: 0
@@ -562,7 +565,7 @@ PlayerSettings:
   switchUseCPUProfiler: 0
   switchUseGOLDLinker: 0
   switchLTOSetting: 0
-  switchApplicationID: 0x01004b9000490000
+  switchApplicationID: 72140675890085890
   switchNSODependencies: 
   switchCompilerFlags: 
   switchTitleNames_0: 
@@ -703,8 +706,8 @@ PlayerSettings:
   ps4ParentalLevel: 11
   ps4ContentID: ED1633-NPXX51362_00-0000000000000000
   ps4Category: 0
-  ps4MasterVersion: 01.00
-  ps4AppVersion: 01.00
+  ps4MasterVersion: 1
+  ps4AppVersion: 1
   ps4AppType: 0
   ps4ParamSfxPath: 
   ps4VideoOutPixelFormat: 0
@@ -841,7 +844,7 @@ PlayerSettings:
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateNotAfter: ddf016fdb8b9952c
   metroApplicationDescription: hra-organ-gallery
   wsaImages: {}
   metroTileShortName: 
@@ -911,11 +914,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 
+  cloudProjectId: 6b812770-d480-46a3-aea4-48b98c7655cc
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: hra-organ-gallery
+  organizationId: cyberinfrastructure-for-network-science-center
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
