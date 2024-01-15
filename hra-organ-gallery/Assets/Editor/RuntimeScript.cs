@@ -15,16 +15,21 @@ public class RuntimeScript : MonoBehaviour
     public void OnPreprocessBuild(BuildReport report)
     {
         Debug.Log("Disabling objects before building...");
-        DisableObjects();
+        SetObjectState(false);
     }
 
-    void DisableObjects()
+    public void OnPostprocessBuild(BuildReport report) {
+        Debug.Log("Enabling objects after building...");
+        SetObjectState(true);
+    }
+
+    void SetObjectState(bool newState)
     {
         GameObject[] objectsToDisable = GameObject.FindGameObjectsWithTag("EditorOnly");
 
         foreach (GameObject obj in objectsToDisable)
         {
-            obj.SetActive(false);
+            obj.SetActive(newState);
         }
     }
 #endif
