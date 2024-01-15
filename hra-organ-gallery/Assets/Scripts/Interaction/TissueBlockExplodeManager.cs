@@ -1,3 +1,4 @@
+using HRAOrganGallery;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,14 @@ public class TissueBlockExplodeManager : MonoBehaviour
     private void Awake()
     {
         SetUpLines();
+
+        //subscribe to event when organ is picked and placed
+        //OrganCaller.OrganPicked += ActivateLines;
+    }
+
+    private void OnDestroy()
+    {
+        //OrganCaller.OrganPicked -= ActivateLines;
     }
 
     private void Update()
@@ -23,6 +32,7 @@ public class TissueBlockExplodeManager : MonoBehaviour
     private void ActivateLines()
     {
         _renderer.enabled = true;
+        DefaultPosition = transform.position;
     }
 
     private void SetUpLines()

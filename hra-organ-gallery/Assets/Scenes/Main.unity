@@ -5177,8 +5177,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.06643525, y: 0.06659996, z: 0.054026995}
-  m_Center: {x: -0.0017823749, y: -0.02170002, z: -0.05564102}
+  m_Size: {x: 0.11755562, y: 0.06659996, z: 0.08199256}
+  m_Center: {x: 0.00009583965, y: -0.02170002, z: -0.041657794}
 --- !u!54 &280044178
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9109,8 +9109,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.06643525, y: 0.06659996, z: 0.054026995}
-  m_Center: {x: -0.0017823749, y: -0.02170002, z: -0.05564102}
+  m_Size: {x: 0.11755562, y: 0.06659996, z: 0.08199256}
+  m_Center: {x: 0.00009583965, y: -0.02170002, z: -0.041657794}
 --- !u!1 &560459528
 GameObject:
   m_ObjectHideFlags: 0
@@ -30176,7 +30176,7 @@ GameObject:
   - component: {fileID: 1090970538}
   - component: {fileID: 1090970541}
   - component: {fileID: 1090970540}
-  - component: {fileID: 1090970539}
+  - component: {fileID: 1090970546}
   - component: {fileID: 1090970545}
   - component: {fileID: 1090970544}
   - component: {fileID: 1090970542}
@@ -30204,29 +30204,6 @@ Transform:
   - {fileID: 1070656242}
   m_Father: {fileID: 6582688198078860317}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1090970539
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090970537}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.6
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1090970540
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -30295,8 +30272,8 @@ MonoBehaviour:
   m_AllowTwoHandedScaling: 1
   m_ThresholdMoveRatioForScale: 0.01
   m_ClampScaling: 1
-  m_MinimumScaleRatio: 0.1
-  m_MaximumScaleRatio: 3
+  m_MinimumScaleRatio: 0.3
+  m_MaximumScaleRatio: 1.8
   m_ScaleMultiplier: 0.25
 --- !u!114 &1090970544
 MonoBehaviour:
@@ -30474,6 +30451,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &1090970546
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090970537}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.1205367, y: 2.0000007, z: 1.148605}
+  m_Center: {x: -0.0029294104, y: 3.513201e-20, z: 0.006431165}
 --- !u!1001 &1095715885
 PrefabInstance:
   m_ObjectHideFlags: 0

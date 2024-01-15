@@ -5,10 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.UI;
+using System;
 
 namespace HRAOrganGallery
 {
@@ -16,6 +14,9 @@ namespace HRAOrganGallery
     {
         //singleton implementation
         public static OrganCaller Instance;
+
+        //event once organ is picked and placed
+        public static event Action OrganPicked;
 
         //a series of properties to expose private variables to the keyboard buttons
         public Sex RequestedSex { get { return _requestedSex; } private set { } }
@@ -71,14 +72,23 @@ namespace HRAOrganGallery
             GetGrabRingDefault();
 
             //subscribe to all keyboard buttons
-            OrganCallButton.OnClick += async (possibleOrgans) => { _possibleOrgans = possibleOrgans; await PickOrgan(); };
+            OrganCallButton.OnClick += async (possibleOrgans) =>
+            {
+                _possibleOrgans = possibleOrgans; await PickOrgan(); OrganPicked.Invoke();
+            };
+
             SexCallButton.OnClick += async (sex) =>
             {
                 _requestedSex = sex;
                 //EnableDisableButtons(sex.ToString().ToLower()); 
                 await PickOrgan();
+                OrganPicked.Invoke();
             };
-            LaterialityCallButton.OnClick += async (laterality) => { _requestedLaterality = laterality; await PickOrgan(); };
+
+            LaterialityCallButton.OnClick += async (laterality) =>
+            {
+                _requestedLaterality = laterality; await PickOrgan(); OrganPicked.Invoke();
+            };
 
             //reset organ when reset button is clicked
             AfterInteractResetOrgan.OnOrganResetClicked += () =>
