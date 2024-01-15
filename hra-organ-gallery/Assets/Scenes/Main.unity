@@ -29111,7 +29111,7 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189,
         type: 3}
@@ -30449,10 +30449,10 @@ MonoBehaviour:
   m_ConstrainedAxisDisplacementMode: 1
   m_TwoHandedRotationMode: 1
   m_AllowTwoHandedScaling: 1
-  m_ThresholdMoveRatioForScale: 0.01
+  m_ThresholdMoveRatioForScale: 0.1
   m_ClampScaling: 1
-  m_MinimumScaleRatio: 0.3
-  m_MaximumScaleRatio: 1.8
+  m_MinimumScaleRatio: 0.01
+  m_MaximumScaleRatio: 1
   m_ScaleMultiplier: 0.25
 --- !u!114 &1090970544
 MonoBehaviour:
@@ -44491,7 +44491,7 @@ PrefabInstance:
     - target: {fileID: 1847791695669142127, guid: ead42e0472b7547fbba6c229aeaf37d3,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 32
+      value: 31.999756
       objectReference: {fileID: 0}
     - target: {fileID: 1847791695669142127, guid: ead42e0472b7547fbba6c229aeaf37d3,
         type: 3}
@@ -45161,7 +45161,7 @@ PrefabInstance:
     - target: {fileID: 7662076761675301960, guid: ead42e0472b7547fbba6c229aeaf37d3,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7662076761675301960, guid: ead42e0472b7547fbba6c229aeaf37d3,
         type: 3}
