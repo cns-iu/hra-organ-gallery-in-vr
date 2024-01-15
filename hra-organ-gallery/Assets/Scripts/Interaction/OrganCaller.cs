@@ -32,6 +32,10 @@ namespace HRAOrganGallery
         [SerializeField] private Transform _defaultLocation;
         [SerializeField] private List<GameObject> _organsLowRes;
         [SerializeField] private float _organOpacity;
+        [SerializeField] private Transform _parentOrgansHighRes;
+        [SerializeField] private Transform _grabRing;
+        [SerializeField] private Vector3 _grabRingDefaultPosition;
+        [SerializeField] private Quaternion _grabRingDefaultRotation;
 
         [Header("Data")]
         [SerializeField] private NodeArray _highResOrganNodeArray;
@@ -50,6 +54,19 @@ namespace HRAOrganGallery
 
         private void Awake()
         {
+            //implement singleton instance
+            if (Instance != null && Instance != this)
+            {
+                Destroy(this);
+            }
+            else
+            {
+                Instance = this;
+            }
+
+            //get default position and rotation for grab ring
+            GetGrabRingDefault();
+
             //subscribe to all keyboard buttons
             OrganCallButton.OnClick += async (possibleOrgans) => { _possibleOrgans = possibleOrgans; await PickOrgan(); };
             SexCallButton.OnClick += async (sex) =>
@@ -62,18 +79,6 @@ namespace HRAOrganGallery
 
             //get low res organs from SceneSetup
             _organsLowRes = SceneSetup.Instance.OrgansLowRes;
-
-            //implement singleton instance
-
-            if (Instance != null && Instance != this)
-            {
-                Destroy(this);
-            }
-            else
-            {
-                Instance = this;
-            }
-
         }
 
         private string DetermineByLateriality(List<string> iris)
@@ -106,14 +111,32 @@ namespace HRAOrganGallery
 
         void RemoveCurrentOrgan()
         {
-            if (_currentOrgan != null) _currentOrgan.transform.position = _currentOrgan.GetComponent<OrganData>().DefaultPosition;
+            if (_currentOrgan != null)
+            {
+                _currentOrgan.transform.position = _currentOrgan.GetComponent<OrganData>().DefaultPosition;
+                _currentOrgan.transform.parent = _parentOrgansHighRes;
+            }
+        }
 
+        private void GetGrabRingDefault()
+        {
+            _grabRingDefaultPosition = _grabRing.position;
+            _grabRingDefaultRotation = _grabRing.rotation;
+        }
+
+        private void SetGrabRingDefault()
+        {
+            _grabRing.position = _grabRingDefaultPosition;
+            _grabRing.rotation = _grabRingDefaultRotation;
         }
 
         async Task PickOrgan()
         {
-            //remove the current organ
+            //remove the current organ and unchild it from the ring
             RemoveCurrentOrgan();
+
+            //reset ring
+            SetGrabRingDefault();
 
             //determine the new one based on user input
             _requestedOrgan = DetermineByLateriality(_possibleOrgans);
@@ -150,6 +173,9 @@ namespace HRAOrganGallery
                         CreateTissueBlocks(_highResOrganNodeArray, organ.transform);
                         organ.transform.position = _platform.position;
                         _currentOrgan = organ.transform;
+
+                        //child organ to ring
+                        _currentOrgan.transform.parent = _grabRing;
                     }
                 }
             }
