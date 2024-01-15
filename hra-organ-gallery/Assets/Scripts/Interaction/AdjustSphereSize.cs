@@ -1,3 +1,4 @@
+using HRAOrganGallery;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,9 @@ public class AdjustSphereSize : MonoBehaviour
     [SerializeField] private float _rate;
     [SerializeField] private float _min;
     [SerializeField] private float _max;
+
+    //set ability to use given mode switch
+    [SerializeField] private bool _canUse = false;
     public float SphereSizeMax { get { return _max / 2f; } }
     private Transform _sphere;
 
@@ -18,6 +22,10 @@ public class AdjustSphereSize : MonoBehaviour
     {
         _sphere = GetComponent<Transform>();
         _increaseSphereSize.action.performed += SetSphereSize;
+        UserInputStateManager.OnStateChanged += (UserInputState newState) =>
+        {
+            _canUse = newState == UserInputState.TissueBlockExplode;
+        };
     }
 
     private void OnDestroy()
@@ -29,6 +37,7 @@ public class AdjustSphereSize : MonoBehaviour
 
     private void SetSphereSize(InputAction.CallbackContext ctx)
     {
+        if (!_canUse) return;
         float inputValue = _rate * ctx.action.ReadValue<Vector2>().y;
 
         _sphere.localScale += new Vector3(inputValue, inputValue, inputValue);

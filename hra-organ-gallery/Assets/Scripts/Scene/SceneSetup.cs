@@ -132,9 +132,6 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
                     Debug.Log($"could not find data for {current}");
                 }
 
-
-
-
                 //place organ by transform matrix from Node
                 PlaceOrgan(current, node);
             }
