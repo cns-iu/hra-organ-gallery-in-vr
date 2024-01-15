@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 namespace HRAOrganGallery
@@ -33,9 +34,11 @@ namespace HRAOrganGallery
         [SerializeField] private List<GameObject> _organsLowRes;
         [SerializeField] private float _organOpacity;
         [SerializeField] private Transform _parentOrgansHighRes;
-        [SerializeField] private Transform _grabRing;
-        [SerializeField] private Vector3 _grabRingDefaultPosition;
-        [SerializeField] private Quaternion _grabRingDefaultRotation;
+        [SerializeField] private Transform _grabber;
+        [SerializeField] private Vector3 _grabberDefaultPosition;
+        [SerializeField] private Quaternion _grabberDefaultRotation;
+        [SerializeField] private Vector3 _grabberDefaultScale;
+        [SerializeField] private float _grabberResetTime = 1.5f;
 
         [Header("Data")]
         [SerializeField] private NodeArray _highResOrganNodeArray;
@@ -76,6 +79,13 @@ namespace HRAOrganGallery
                 await PickOrgan();
             };
             LaterialityCallButton.OnClick += async (laterality) => { _requestedLaterality = laterality; await PickOrgan(); };
+
+            //reset organ when reset button is clicked
+            AfterInteractResetOrgan.OnOrganResetClicked += () =>
+            {
+                //SetGrabRingDefault(); 
+                StartCoroutine(SmoothResetGrabber());
+            };
 
             //get low res organs from SceneSetup
             _organsLowRes = SceneSetup.Instance.OrgansLowRes;
@@ -118,16 +128,39 @@ namespace HRAOrganGallery
             }
         }
 
+
+        private IEnumerator SmoothResetGrabber()
+        {
+            Vector3 grabberStartPosition = _grabber.position;
+            Quaternion grabberStartRotation = _grabber.rotation;
+            Vector3 grabberStartScale = _grabber.localScale;
+
+            float elapsedTime = 0f;
+
+            while (elapsedTime < _grabberResetTime)
+            {
+                float t = elapsedTime / _grabberResetTime;
+                _grabber.position = Vector3.Slerp(grabberStartPosition, _grabberDefaultPosition, t);
+                _grabber.rotation = Quaternion.Slerp(grabberStartRotation, _grabberDefaultRotation, t);
+                _grabber.localScale = Vector3.Slerp(grabberStartScale, _grabberDefaultScale, t);
+
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+        }
+
         private void GetGrabRingDefault()
         {
-            _grabRingDefaultPosition = _grabRing.position;
-            _grabRingDefaultRotation = _grabRing.rotation;
+            _grabberDefaultPosition = _grabber.position;
+            _grabberDefaultRotation = _grabber.rotation;
+            _grabberDefaultScale = _grabber.localScale;
         }
 
         private void SetGrabRingDefault()
         {
-            _grabRing.position = _grabRingDefaultPosition;
-            _grabRing.rotation = _grabRingDefaultRotation;
+            _grabber.position = _grabberDefaultPosition;
+            _grabber.rotation = _grabberDefaultRotation;
+            _grabber.localScale = _grabberDefaultScale;
         }
 
         async Task PickOrgan()
@@ -175,7 +208,7 @@ namespace HRAOrganGallery
                         _currentOrgan = organ.transform;
 
                         //child organ to ring
-                        _currentOrgan.transform.parent = _grabRing;
+                        _currentOrgan.transform.parent = _grabber;
                     }
                 }
             }

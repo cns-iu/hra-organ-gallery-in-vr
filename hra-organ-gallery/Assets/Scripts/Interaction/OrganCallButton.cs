@@ -51,8 +51,8 @@ namespace HRAOrganGallery
             _interactable.colliders.Add(GetComponent<BoxCollider>());
 
             //subscribe to select event
-            _interactable.selectEntered.AddListener(
-                (SelectEnterEventArgs args) =>
+            _interactable.activated.AddListener(
+                (ActivateEventArgs args) =>
                 {
                     ChangeColor(PressedMaterial);
                     OnClick?.Invoke(Feature);

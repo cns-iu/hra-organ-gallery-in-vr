@@ -43,8 +43,8 @@ namespace HRAOrganGallery
         public void SetUpXRInteraction()
         {
             //subscribe to select event
-            _interactable.selectEntered.AddListener(
-                (SelectEnterEventArgs args) =>
+            _interactable.activated.AddListener(
+                (ActivateEventArgs args) =>
                 {
                     ChangeColor(PressedMaterial);
                     OnClick?.Invoke(Feature);
