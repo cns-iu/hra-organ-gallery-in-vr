@@ -1,13 +1,17 @@
 #if UNITY_EDITOR
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
 #endif
 
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation;
 
 public class RuntimeScript : MonoBehaviour
 #if UNITY_EDITOR
     , IPreprocessBuildWithReport
+    , IPostprocessBuildWithReport
 #endif
 {
 #if UNITY_EDITOR
@@ -15,15 +19,23 @@ public class RuntimeScript : MonoBehaviour
     public void OnPreprocessBuild(BuildReport report)
     {
         Debug.Log("Disabling objects before building...");
-        SetObjectState(false);
+        SetComponentState(false);
     }
 
-    //note that thuis currenlt does not work as GameObject.FindGameObjectsWithTag("EditorOnly") only returns active game objects, not inactive ones
-    public void OnPostprocessBuild(BuildReport report) {
+    public void OnPostprocessBuild(BuildReport report)
+    {
         Debug.Log("Enabling objects after building...");
-        SetObjectState(true);
+        SetComponentState(true);
     }
 
+    //use this to turn off the XRDeviceSimulator
+    void SetComponentState(bool newState)
+    {
+        List<XRDeviceSimulator> simulators = GameObject.FindObjectsOfType<XRDeviceSimulator>().ToList();
+        simulators.ForEach(s => { s.enabled = newState; });
+    }
+
+    //use this to turn off entire game objects. Note that FindGameObjectsWithTag will not find inactive game objects
     void SetObjectState(bool newState)
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag("EditorOnly");
