@@ -9,12 +9,13 @@ namespace HRAOrganGallery
     /// <summary>
     /// A class that handles turning XR interactables on and off
     /// </summary>
-    public class ManipulateManager : MonoBehaviour
+    public class ManipulateManager : MonoBehaviour, IHandleSwitchStateChange
     {
 
         [SerializeField] private XRGeneralGrabTransformer _generalGrab;
         [SerializeField] private XRGrabInteractable _grab;
-        private void Awake()
+
+        public void HandleSwitchStateChange()
         {
             UserInputStateManager.OnStateChanged += (UserInputState newState) =>
             {
@@ -23,6 +24,11 @@ namespace HRAOrganGallery
                 _generalGrab.enabled = isActive;
                 _grab.enabled = isActive;
             };
+        }
+
+        private void Awake()
+        {
+            HandleSwitchStateChange();
         }
     }
 }

@@ -5778,6 +5778,7 @@ GameObject:
   m_Component:
   - component: {fileID: 288342724}
   - component: {fileID: 288342729}
+  - component: {fileID: 288342731}
   - component: {fileID: 288342730}
   - component: {fileID: 288342728}
   - component: {fileID: 288342727}
@@ -5899,6 +5900,7 @@ MonoBehaviour:
   _rate: 0.01
   _min: 0.01
   _max: 0.5
+  _canUse: 0
 --- !u!135 &288342729
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5927,7 +5929,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 288342723}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b924c9f78b4aa342a99d25b2a96240f, type: 3}
   m_Name: 
@@ -5940,6 +5942,20 @@ MonoBehaviour:
   _tissueBlocks: []
   _rate: 0.1
   _explodingValue: 0
+--- !u!114 &288342731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288342723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe5c131e6b656845a07cbe17640208d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _exploder: {fileID: 288342730}
+  _adjustSphereSize: {fileID: 288342728}
 --- !u!1 &290030592 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3256925658145332874, guid: 09f703ec4725dec4f8f429b6bd581e09,

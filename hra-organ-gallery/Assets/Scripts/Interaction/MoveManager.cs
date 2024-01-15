@@ -8,10 +8,11 @@ namespace HRAOrganGallery
     /// <summary>
     /// A class that handles turning XR locmotion on and off
     /// </summary>
-    public class MoveManager : MonoBehaviour
+    public class MoveManager : MonoBehaviour, IHandleSwitchStateChange
     {
         [SerializeField] private List<LocomotionProvider> _providers;
-        private void Awake()
+
+        public void HandleSwitchStateChange()
         {
             UserInputStateManager.OnStateChanged += (UserInputState newState) =>
             {
@@ -20,6 +21,11 @@ namespace HRAOrganGallery
                     p.enabled = (newState == UserInputState.Movement);
                 });
             };
+        }
+
+        private void Awake()
+        {
+            HandleSwitchStateChange();
         }
     }
 }
