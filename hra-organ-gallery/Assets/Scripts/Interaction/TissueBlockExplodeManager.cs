@@ -1,6 +1,5 @@
+using Assets.Scripts.Data;
 using HRAOrganGallery;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TissueBlockExplodeManager : MonoBehaviour
@@ -10,6 +9,9 @@ public class TissueBlockExplodeManager : MonoBehaviour
     private LineRenderer _renderer;
     [SerializeField] private Material lineMaterial;
 
+    [SerializeField] private bool isTissueBlockModeActive = false;
+    [SerializeField] private bool isOrganPicked = false;
+
 
     private void Awake()
     {
@@ -17,11 +19,25 @@ public class TissueBlockExplodeManager : MonoBehaviour
 
         //subscribe to event when organ is picked and placed
         //OrganCaller.OrganPicked += ActivateLines;
+        UserInputStateManager.OnStateChanged += (newState) =>
+        {
+            isTissueBlockModeActive = newState == UserInputState.TissueBlockExplode;
+        };
+
+        OrganCaller.OnOrganPicked += (data) =>
+        {
+            //check oif tissue block has been parented yet
+            OrganData parentData;
+            if (transform.parent.TryGetComponent<OrganData>(out parentData))
+            {
+                isOrganPicked = parentData.ReferenceOrgan == GetComponent<TissueBlockData>().ReferenceOrgan;
+            }
+        };
     }
 
     private void OnDestroy()
     {
-        //OrganCaller.OrganPicked -= ActivateLines;
+
     }
 
     private void Update()

@@ -1,5 +1,13 @@
 # Changelog for the HRA Organ Gallery
 
+## 0.8.4 - 2024-01-15
+
+### Added in 0.8.4
+
+* Added a mode switch so between movement and tissue block explode
+* This is to clearly separate user input schemes for the joy stick
+* Fine-tuned grab scaling for organ cylinder
+
 ## 0.8.3 - 2024-01-14
 
 ### Added in 0.8.3
