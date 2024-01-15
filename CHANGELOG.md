@@ -1,4 +1,15 @@
 # Changelog for the HRA Organ Gallery
+
+## 0.8.3 - 2024-01-14
+
+### Added in 0.8.3
+
+* Complete redesign of entire application
+* Uses anatomical theater now
+* Added keyboard to let user select organ
+* Added continuous move with tunneling vignette for movement
+* Added ability to move, rotate, scale selected organ
+
 ## 0.6.5 - 2023-07-07
 
 ### Added in 0.6.5

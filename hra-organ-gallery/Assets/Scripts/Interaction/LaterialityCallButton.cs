@@ -42,11 +42,10 @@ namespace HRAOrganGallery
 
         public void SetUpXRInteraction()
         {
-            //subscribe to hover event
-            _interactable.hoverEntered.AddListener(
-                (HoverEnterEventArgs args) =>
+            //subscribe to select event
+            _interactable.selectEntered.AddListener(
+                (SelectEnterEventArgs args) =>
                 {
-                    if (_locked) return;
                     ChangeColor(PressedMaterial);
                     OnClick?.Invoke(Feature);
                 }

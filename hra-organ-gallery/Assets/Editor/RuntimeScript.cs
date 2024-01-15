@@ -18,6 +18,7 @@ public class RuntimeScript : MonoBehaviour
         SetObjectState(false);
     }
 
+    //note that thuis currenlt does not work as GameObject.FindGameObjectsWithTag("EditorOnly") only returns active game objects, not inactive ones
     public void OnPostprocessBuild(BuildReport report) {
         Debug.Log("Enabling objects after building...");
         SetObjectState(true);
@@ -25,9 +26,9 @@ public class RuntimeScript : MonoBehaviour
 
     void SetObjectState(bool newState)
     {
-        GameObject[] objectsToDisable = GameObject.FindGameObjectsWithTag("EditorOnly");
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("EditorOnly");
 
-        foreach (GameObject obj in objectsToDisable)
+        foreach (GameObject obj in objects)
         {
             obj.SetActive(newState);
         }

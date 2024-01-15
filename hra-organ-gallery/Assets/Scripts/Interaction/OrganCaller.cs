@@ -5,9 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
+using System;
 
 namespace HRAOrganGallery
 {
@@ -15,6 +14,9 @@ namespace HRAOrganGallery
     {
         //singleton implementation
         public static OrganCaller Instance;
+
+        //event once organ is picked and placed
+        public static event Action OrganPicked;
 
         //a series of properties to expose private variables to the keyboard buttons
         public Sex RequestedSex { get { return _requestedSex; } private set { } }
@@ -32,6 +34,12 @@ namespace HRAOrganGallery
         [SerializeField] private Transform _defaultLocation;
         [SerializeField] private List<GameObject> _organsLowRes;
         [SerializeField] private float _organOpacity;
+        [SerializeField] private Transform _parentOrgansHighRes;
+        [SerializeField] private Transform _grabber;
+        [SerializeField] private Vector3 _grabberDefaultPosition;
+        [SerializeField] private Quaternion _grabberDefaultRotation;
+        [SerializeField] private Vector3 _grabberDefaultScale;
+        [SerializeField] private float _grabberResetTime = 1.5f;
 
         [Header("Data")]
         [SerializeField] private NodeArray _highResOrganNodeArray;
@@ -50,21 +58,7 @@ namespace HRAOrganGallery
 
         private void Awake()
         {
-            //subscribe to all keyboard buttons
-            OrganCallButton.OnClick += async (possibleOrgans) => { _possibleOrgans = possibleOrgans; await PickOrgan(); };
-            SexCallButton.OnClick += async (sex) =>
-            {
-                _requestedSex = sex;
-                //EnableDisableButtons(sex.ToString().ToLower()); 
-                await PickOrgan();
-            };
-            LaterialityCallButton.OnClick += async (laterality) => { _requestedLaterality = laterality; await PickOrgan(); };
-
-            //get low res organs from SceneSetup
-            _organsLowRes = SceneSetup.Instance.OrgansLowRes;
-
             //implement singleton instance
-
             if (Instance != null && Instance != this)
             {
                 Destroy(this);
@@ -74,6 +68,37 @@ namespace HRAOrganGallery
                 Instance = this;
             }
 
+            //get default position and rotation for grab ring
+            GetGrabRingDefault();
+
+            //subscribe to all keyboard buttons
+            OrganCallButton.OnClick += async (possibleOrgans) =>
+            {
+                _possibleOrgans = possibleOrgans; await PickOrgan(); OrganPicked.Invoke();
+            };
+
+            SexCallButton.OnClick += async (sex) =>
+            {
+                _requestedSex = sex;
+                //EnableDisableButtons(sex.ToString().ToLower()); 
+                await PickOrgan();
+                OrganPicked.Invoke();
+            };
+
+            LaterialityCallButton.OnClick += async (laterality) =>
+            {
+                _requestedLaterality = laterality; await PickOrgan(); OrganPicked.Invoke();
+            };
+
+            //reset organ when reset button is clicked
+            AfterInteractResetOrgan.OnOrganResetClicked += () =>
+            {
+                //SetGrabRingDefault(); 
+                StartCoroutine(SmoothResetGrabber());
+            };
+
+            //get low res organs from SceneSetup
+            _organsLowRes = SceneSetup.Instance.OrgansLowRes;
         }
 
         private string DetermineByLateriality(List<string> iris)
@@ -106,14 +131,55 @@ namespace HRAOrganGallery
 
         void RemoveCurrentOrgan()
         {
-            if (_currentOrgan != null) _currentOrgan.transform.position = _currentOrgan.GetComponent<OrganData>().DefaultPosition;
+            if (_currentOrgan != null)
+            {
+                _currentOrgan.transform.position = _currentOrgan.GetComponent<OrganData>().DefaultPosition;
+                _currentOrgan.transform.parent = _parentOrgansHighRes;
+            }
+        }
 
+
+        private IEnumerator SmoothResetGrabber()
+        {
+            Vector3 grabberStartPosition = _grabber.position;
+            Quaternion grabberStartRotation = _grabber.rotation;
+            Vector3 grabberStartScale = _grabber.localScale;
+
+            float elapsedTime = 0f;
+
+            while (elapsedTime < _grabberResetTime)
+            {
+                float t = elapsedTime / _grabberResetTime;
+                _grabber.position = Vector3.Slerp(grabberStartPosition, _grabberDefaultPosition, t);
+                _grabber.rotation = Quaternion.Slerp(grabberStartRotation, _grabberDefaultRotation, t);
+                _grabber.localScale = Vector3.Slerp(grabberStartScale, _grabberDefaultScale, t);
+
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+        }
+
+        private void GetGrabRingDefault()
+        {
+            _grabberDefaultPosition = _grabber.position;
+            _grabberDefaultRotation = _grabber.rotation;
+            _grabberDefaultScale = _grabber.localScale;
+        }
+
+        private void SetGrabRingDefault()
+        {
+            _grabber.position = _grabberDefaultPosition;
+            _grabber.rotation = _grabberDefaultRotation;
+            _grabber.localScale = _grabberDefaultScale;
         }
 
         async Task PickOrgan()
         {
-            //remove the current organ
+            //remove the current organ and unchild it from the ring
             RemoveCurrentOrgan();
+
+            //reset ring
+            SetGrabRingDefault();
 
             //determine the new one based on user input
             _requestedOrgan = DetermineByLateriality(_possibleOrgans);
@@ -150,6 +216,9 @@ namespace HRAOrganGallery
                         CreateTissueBlocks(_highResOrganNodeArray, organ.transform);
                         organ.transform.position = _platform.position;
                         _currentOrgan = organ.transform;
+
+                        //child organ to ring
+                        _currentOrgan.transform.parent = _grabber;
                     }
                 }
             }
