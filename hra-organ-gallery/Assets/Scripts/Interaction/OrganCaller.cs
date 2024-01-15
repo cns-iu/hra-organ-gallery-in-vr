@@ -16,7 +16,7 @@ namespace HRAOrganGallery
         public static OrganCaller Instance;
 
         //event once organ is picked and placed
-        public static event Action OrganPicked;
+        public static event Action<OrganData> OnOrganPicked;
 
         //a series of properties to expose private variables to the keyboard buttons
         public Sex RequestedSex { get { return _requestedSex; } private set { } }
@@ -74,7 +74,7 @@ namespace HRAOrganGallery
             //subscribe to all keyboard buttons
             OrganCallButton.OnClick += async (possibleOrgans) =>
             {
-                _possibleOrgans = possibleOrgans; await PickOrgan(); OrganPicked.Invoke();
+                _possibleOrgans = possibleOrgans; await PickOrgan();
             };
 
             SexCallButton.OnClick += async (sex) =>
@@ -82,12 +82,11 @@ namespace HRAOrganGallery
                 _requestedSex = sex;
                 //EnableDisableButtons(sex.ToString().ToLower()); 
                 await PickOrgan();
-                OrganPicked.Invoke();
             };
 
             LaterialityCallButton.OnClick += async (laterality) =>
             {
-                _requestedLaterality = laterality; await PickOrgan(); OrganPicked.Invoke();
+                _requestedLaterality = laterality; await PickOrgan();
             };
 
             //reset organ when reset button is clicked
@@ -222,6 +221,9 @@ namespace HRAOrganGallery
                     }
                 }
             }
+
+            //raise event
+            OnOrganPicked.Invoke(_currentOrgan.GetComponent<OrganData>());
         }
 
         private void CreateTissueBlocks(NodeArray nodeArray, Transform organ)
