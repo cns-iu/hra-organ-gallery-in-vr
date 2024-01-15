@@ -18,8 +18,8 @@ namespace HRAOrganGallery
 
         private void Awake()
         {
-            GetComponent<XRSimpleInteractable>().activated.AddListener(
-                (ActivateEventArgs args) => { 
+            GetComponent<XRSimpleInteractable>().selectEntered.AddListener(
+                (SelectEnterEventArgs args) => { 
                     OnOrganResetClicked.Invoke();
                     StartCoroutine(LightUp());
                 }
