@@ -19,20 +19,13 @@ public class RuntimeScript : MonoBehaviour
     public void OnPreprocessBuild(BuildReport report)
     {
         Debug.Log("Disabling objects before building...");
-        SetComponentState(false);
+        SetObjectState(false);
     }
 
     public void OnPostprocessBuild(BuildReport report)
     {
         Debug.Log("Enabling objects after building...");
-        SetComponentState(true);
-    }
-
-    //use this to turn off the XRDeviceSimulator
-    void SetComponentState(bool newState)
-    {
-        List<XRDeviceSimulator> simulators = GameObject.FindObjectsOfType<XRDeviceSimulator>().ToList();
-        simulators.ForEach(s => { s.enabled = newState; });
+        SetObjectState(true);
     }
 
     //use this to turn off entire game objects. Note that FindGameObjectsWithTag will not find inactive game objects

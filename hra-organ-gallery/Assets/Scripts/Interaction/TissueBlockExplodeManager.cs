@@ -1,6 +1,4 @@
 using HRAOrganGallery;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TissueBlockExplodeManager : MonoBehaviour
@@ -17,6 +15,7 @@ public class TissueBlockExplodeManager : MonoBehaviour
 
         //subscribe to event when organ is picked and placed
         //OrganCaller.OrganPicked += ActivateLines;
+        //UserInputStateManager.StateChanged += 
     }
 
     private void OnDestroy()
