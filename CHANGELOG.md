@@ -1,6 +1,4 @@
-# Changelog
-
-Changelog for the HRA Organ Gallery
+# Changelog for the HRA Organ Gallery
 
 ## 0.8.3 - 2024-01-14
 
@@ -12,10 +10,13 @@ Changelog for the HRA Organ Gallery
 * Added continuous move with tunneling vignette for movement
 * Added ability to move, rotate, scale selected organ
 
-### Added in 0.6.4
+## 0.6.5 - 2023-07-07
 
-* Improved user interface for cell type panel
-* Removed annotations for VR controllers (will likely replace in a future version)
+### Added in 0.6.5
+
+* Improved loading time on scene setup
+* Removed minor bugs
+* Cleaned code and improved documentation
 
 ## 0.6.4 - 2023-03-24
 
