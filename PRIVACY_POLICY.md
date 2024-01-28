@@ -9,5 +9,5 @@ This app collects no data about the user. The user makes API calls on the client
 Since no data is being collected about the user, none is used by the developer. 
 
 ## User Data Deletion
-Since no data is being collected about the user, a mechanism to allow the user to requested celetion is not necessary. However, the user can reach the developer Andreas Bueckle at [abueckle@iu.edu](mailto:abueckle@iu.edu). 
+Since no data is being collected about the user, a mechanism to allow the user to requested deletion is not necessary. However, the user can reach the developer Andreas Bueckle at [abueckle@iu.edu](mailto:abueckle@iu.edu). 
 
