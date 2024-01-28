@@ -21,7 +21,6 @@ namespace HRAOrganGallery
 
         [SerializeField] private LaterialityCallButton other;
         [SerializeField] private bool _locked = true;
-        [SerializeField] private GameObject uIpanel;
         [SerializeField] private XRSimpleInteractable _interactable;
 
 

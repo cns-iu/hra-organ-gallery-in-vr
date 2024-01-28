@@ -23,8 +23,6 @@ namespace HRAOrganGallery
         [SerializeField] private SexCallButton other;
 
         [SerializeField] private bool _locked = true;
-        [SerializeField] private bool _hasUserMadeFirstTouch = false;
-        [SerializeField] private GameObject uIpanel;
         [SerializeField] private XRSimpleInteractable _interactable;
 
         private void Awake()
