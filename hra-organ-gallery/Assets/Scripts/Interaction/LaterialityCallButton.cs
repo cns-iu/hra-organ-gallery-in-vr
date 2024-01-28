@@ -27,7 +27,6 @@ namespace HRAOrganGallery
 
         private void Awake()
         {
-            //LaterialityCallButton.OnClick += (lat) => { TurnOff(lat); };
             Collider = GetComponent<BoxCollider>();
             ReadyMaterial = GetComponent<Renderer>().material;
             Renderer = GetComponent<Renderer>();
@@ -65,25 +64,25 @@ namespace HRAOrganGallery
 
         private void SetVisibility(OrganData data)
         {
+            //determine if locked
             _locked = !OrganCaller.Instance.TwoSidedOrgans.Contains(OrganCaller.Instance.RequestedOrgan) | OrganCaller.Instance.RequestedOrgan == "";
 
+            //set interactable
+            _interactable.enabled = !_locked;
+
+            //set color
             if (_locked) ChangeColor(DisabledMaterial);
             else
             {
                 ChangeColor(ReadyMaterial);
             }
 
-            _interactable.enabled = !_locked;
+
         }
 
         public void AutoSwitch(OrganData data)
         {
             if (OrganCaller.Instance.RequestedLaterality == Feature) ChangeColor(PressedMaterial); else { ChangeColor(ReadyMaterial); }
-        }
-
-        public void TurnOff(Laterality lat)
-        {
-            if (lat != Feature) ChangeColor(ReadyMaterial);
         }
 
         private void ChangeColor(Material mat)

@@ -29,8 +29,6 @@ namespace HRAOrganGallery
 
         private void Awake()
         {
-            //SexCallButton.OnClick += (sex) => { TurnOff(sex); };
-
             ReadyMaterial = GetComponent<Renderer>().material;
             Renderer = GetComponent<Renderer>();
 
@@ -70,19 +68,19 @@ namespace HRAOrganGallery
 
         private void SetVisibility(OrganData data)
         {
+            //determine if locked
             _locked = OrganCaller.Instance.FemaleOnlyOrgans.Contains(OrganCaller.Instance.RequestedOrgan) | OrganCaller.Instance.MaleOnlyOrgans.Contains(OrganCaller.Instance.RequestedOrgan) | OrganCaller.Instance.RequestedOrgan == "";
+
+            //set interactable
+            _interactable.enabled = !_locked;
+
+            //set color
             if (_locked) ChangeColor(DisabledMaterial);
             else
             {
                 ChangeColor(ReadyMaterial);
             }
 
-            _interactable.enabled = !_locked;
-        }
-
-        public void TurnOff(Sex sex)
-        {
-            if (sex != Feature) ChangeColor(ReadyMaterial);
         }
 
         public void AutoSwitch(OrganData data)
