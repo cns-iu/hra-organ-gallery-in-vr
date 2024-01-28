@@ -29,14 +29,9 @@ namespace HRAOrganGallery
 
         private void Awake()
         {
-            ReadyMaterial = GetComponent<Renderer>().material;
-            Renderer = GetComponent<Renderer>();
-
-            // get collider
             _interactable = GetComponent<XRSimpleInteractable>();
             Collider = GetComponent<BoxCollider>();
             _interactable.colliders.Add(Collider);
-
             Renderer = GetComponent<Renderer>();
 
             OrganCaller.OnOrganPicked += SetVisibility;

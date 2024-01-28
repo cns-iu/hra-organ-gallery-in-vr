@@ -27,12 +27,10 @@ namespace HRAOrganGallery
 
         private void Awake()
         {
+            _interactable.GetComponent<XRSimpleInteractable>();
             Collider = GetComponent<BoxCollider>();
-            ReadyMaterial = GetComponent<Renderer>().material;
+            _interactable.colliders.Add(Collider);
             Renderer = GetComponent<Renderer>();
-
-            //set active color if on by default
-            //if (OrganCaller.Instance.RequestedLaterality == Feature) ChangeColor(PressedMaterial);
 
             OrganCaller.OnOrganPicked += SetVisibility;
             OrganCaller.OnOrganPicked += AutoSwitch;
