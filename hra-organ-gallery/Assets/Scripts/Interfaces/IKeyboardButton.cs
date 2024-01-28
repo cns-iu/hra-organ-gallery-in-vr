@@ -25,6 +25,7 @@ namespace HRAOrganGallery
 
         public Renderer Renderer { get; set; }
 
+        public void SetVisibility() { }
         public void TurnOff(TFeatureType f) { }
 
         public void ChangeColor() { }

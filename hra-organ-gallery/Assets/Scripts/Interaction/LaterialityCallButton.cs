@@ -1,3 +1,4 @@
+using Assets.Scripts.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace HRAOrganGallery
         [field: SerializeField] public BoxCollider Collider { get; set; }
         [field: SerializeField] public Laterality Feature { get; set; }
         [field: SerializeField] public Material PressedMaterial { get; set; }
+        [field: SerializeField] public Material DisabledMaterial { get; set; }
         [field: SerializeField] public Material ReadyMaterial { get; set; }
 
         [field: SerializeField] public Renderer Renderer { get; set; }
@@ -25,13 +27,21 @@ namespace HRAOrganGallery
 
         private void Awake()
         {
-            LaterialityCallButton.OnClick += (lat) => { TurnOff(lat); };
             Collider = GetComponent<BoxCollider>();
             ReadyMaterial = GetComponent<Renderer>().material;
             Renderer = GetComponent<Renderer>();
 
             //set active color if on by default
             //if (OrganCaller.Instance.RequestedLaterality == Feature) ChangeColor(PressedMaterial);
+
+            OrganCaller.OnOrganPicked += SetVisibility;
+            OrganCaller.OnOrganPicked += AutoSwitch;
+        }
+
+        private void OnDestroy()
+        {
+            OrganCaller.OnOrganPicked -= SetVisibility;
+            OrganCaller.OnOrganPicked -= AutoSwitch;
         }
 
 
@@ -52,26 +62,28 @@ namespace HRAOrganGallery
                 );
         }
 
-        private void Update()
+        private void SetVisibility(OrganData data)
         {
-            CheckIfLock();
-            AutoSwitch();
-        }
-
-        public void CheckIfLock()
-        {
+            //determine if locked
             _locked = !OrganCaller.Instance.TwoSidedOrgans.Contains(OrganCaller.Instance.RequestedOrgan) | OrganCaller.Instance.RequestedOrgan == "";
-            uIpanel.SetActive(_locked);
+
+            //set interactable
+            _interactable.enabled = !_locked;
+
+            //set color
+            if (_locked) ChangeColor(DisabledMaterial);
+            else
+            {
+                ChangeColor(ReadyMaterial);
+            }
+
+
         }
 
-        public void AutoSwitch()
+        public void AutoSwitch(OrganData data)
         {
+            if (_locked) return;
             if (OrganCaller.Instance.RequestedLaterality == Feature) ChangeColor(PressedMaterial); else { ChangeColor(ReadyMaterial); }
-        }
-
-        public void TurnOff(Laterality lat)
-        {
-            if (lat != Feature) ChangeColor(ReadyMaterial);
         }
 
         private void ChangeColor(Material mat)
