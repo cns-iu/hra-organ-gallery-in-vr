@@ -2269,7 +2269,6 @@ MonoBehaviour:
   <Renderer>k__BackingField: {fileID: 0}
   other: {fileID: 1163075672}
   _locked: 0
-  uIpanel: {fileID: 1320301492}
   _interactable: {fileID: 8949885271416623074}
 --- !u!1001 &111809778
 PrefabInstance:
@@ -11480,12 +11479,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 664942604}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &669476094 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2374368179245130788, guid: 8ee77cb701df726448fe21c482d30c93,
-    type: 3}
-  m_PrefabInstance: {fileID: 2138086217480318046}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &670605175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11849,8 +11842,6 @@ MonoBehaviour:
   <Renderer>k__BackingField: {fileID: 0}
   other: {fileID: 2061393330}
   _locked: 0
-  _hasUserMadeFirstTouch: 0
-  uIpanel: {fileID: 669476094}
   _interactable: {fileID: 8305574002907037505}
 --- !u!1001 &695882989
 PrefabInstance:
@@ -32299,7 +32290,6 @@ MonoBehaviour:
   <Renderer>k__BackingField: {fileID: 0}
   other: {fileID: 101618318}
   _locked: 0
-  uIpanel: {fileID: 1320301492}
   _interactable: {fileID: 7078015578222043185}
 --- !u!1001 &1176421200
 PrefabInstance:
@@ -34352,12 +34342,6 @@ Material:
     - _Color: {r: 0.6862, g: 0.38429996, b: 0.38429996, a: 0.8}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!1 &1320301492 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2374368179245130788, guid: 8ee77cb701df726448fe21c482d30c93,
-    type: 3}
-  m_PrefabInstance: {fileID: 4387101205608098990}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1320301493 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6719888651704287290, guid: 8ee77cb701df726448fe21c482d30c93,
@@ -47528,8 +47512,6 @@ MonoBehaviour:
   <Renderer>k__BackingField: {fileID: 0}
   other: {fileID: 681809194}
   _locked: 0
-  _hasUserMadeFirstTouch: 0
-  uIpanel: {fileID: 669476094}
   _interactable: {fileID: 8446725854189380383}
 --- !u!1001 &2070189906
 PrefabInstance:
@@ -73718,7 +73700,6 @@ MonoBehaviour:
   <Renderer>k__BackingField: {fileID: 0}
   other: {fileID: 0}
   _locked: 1
-  uIpanel: {fileID: 1320301492}
   _interactable: {fileID: 662451085}
 --- !u!33 &7078015578222043184
 MeshFilter:
@@ -78364,8 +78345,6 @@ MonoBehaviour:
   <Renderer>k__BackingField: {fileID: 0}
   other: {fileID: 0}
   _locked: 1
-  _hasUserMadeFirstTouch: 0
-  uIpanel: {fileID: 669476094}
   _interactable: {fileID: 1930162565}
 --- !u!4 &8305984009285565972
 Transform:
@@ -79152,8 +79131,6 @@ MonoBehaviour:
   <Renderer>k__BackingField: {fileID: 0}
   other: {fileID: 0}
   _locked: 1
-  _hasUserMadeFirstTouch: 0
-  uIpanel: {fileID: 669476094}
   _interactable: {fileID: 514699276}
 --- !u!4 &8447442538936903086
 Transform:
@@ -81331,7 +81308,6 @@ MonoBehaviour:
   <Renderer>k__BackingField: {fileID: 0}
   other: {fileID: 0}
   _locked: 1
-  uIpanel: {fileID: 1320301492}
   _interactable: {fileID: 198669476}
 --- !u!4 &8949885271416623073
 Transform:

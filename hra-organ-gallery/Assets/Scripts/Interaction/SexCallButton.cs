@@ -78,6 +78,7 @@ namespace HRAOrganGallery
 
         public void AutoSwitch(OrganData data)
         {
+            if (_locked) return;
             if (OrganCaller.Instance.RequestedSex == Feature) ChangeColor(PressedMaterial); else { ChangeColor(ReadyMaterial); }
         }
 
