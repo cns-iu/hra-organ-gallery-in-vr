@@ -1,3 +1,4 @@
+using Assets.Scripts.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace HRAOrganGallery
         [field: SerializeField] public Sex Feature { get; set; }
 
         [field: SerializeField] public Material PressedMaterial { get; set; }
+        [field: SerializeField] public Material DisabledMaterial { get; set; }
         [field: SerializeField] public Material ReadyMaterial { get; set; }
 
         [field: SerializeField] public Renderer Renderer { get; set; }
@@ -21,24 +23,23 @@ namespace HRAOrganGallery
         [SerializeField] private SexCallButton other;
 
         [SerializeField] private bool _locked = true;
-        [SerializeField] private bool _hasUserMadeFirstTouch = false;
-        [SerializeField] private GameObject uIpanel;
         [SerializeField] private XRSimpleInteractable _interactable;
 
         private void Awake()
         {
-            //SexCallButton.OnClick += (sex) => { TurnOff(sex); };
-            
-            ReadyMaterial = GetComponent<Renderer>().material;
-            Renderer = GetComponent<Renderer>();
-
-            // get collider
             _interactable = GetComponent<XRSimpleInteractable>();
             Collider = GetComponent<BoxCollider>();
             _interactable.colliders.Add(Collider);
+            Renderer = GetComponent<Renderer>();
 
-            //set active color if on by default
-            //if (OrganCaller.Instance.RequestedSex == Feature) ChangeColor(PressedMaterial);
+            OrganCaller.OnOrganPicked += SetVisibility;
+            OrganCaller.OnOrganPicked += AutoSwitch;
+        }
+
+        private void OnDestroy()
+        {
+            OrganCaller.OnOrganPicked -= SetVisibility;
+            OrganCaller.OnOrganPicked -= AutoSwitch;
         }
 
         private void Start()
@@ -57,27 +58,28 @@ namespace HRAOrganGallery
                 }
                 );
         }
-        
-        public void TurnOff(Sex sex)
-        {
-            if (sex != Feature) ChangeColor(ReadyMaterial);
-        }
 
-        private void Update()
+        private void SetVisibility(OrganData data)
         {
-            CheckIfLock();
-            AutoSwitch();
-        }
-
-        public void AutoSwitch()
-        {
-            if (OrganCaller.Instance.RequestedSex == Feature) ChangeColor(PressedMaterial); else { ChangeColor(ReadyMaterial); }
-        }
-
-        public void CheckIfLock()
-        {
+            //determine if locked
             _locked = OrganCaller.Instance.FemaleOnlyOrgans.Contains(OrganCaller.Instance.RequestedOrgan) | OrganCaller.Instance.MaleOnlyOrgans.Contains(OrganCaller.Instance.RequestedOrgan) | OrganCaller.Instance.RequestedOrgan == "";
-            uIpanel.SetActive(_locked);
+
+            //set interactable
+            _interactable.enabled = !_locked;
+
+            //set color
+            if (_locked) ChangeColor(DisabledMaterial);
+            else
+            {
+                ChangeColor(ReadyMaterial);
+            }
+
+        }
+
+        public void AutoSwitch(OrganData data)
+        {
+            if (_locked) return;
+            if (OrganCaller.Instance.RequestedSex == Feature) ChangeColor(PressedMaterial); else { ChangeColor(ReadyMaterial); }
         }
 
         private void ChangeColor(Material mat)

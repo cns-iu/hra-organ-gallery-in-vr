@@ -1,3 +1,4 @@
+using Assets.Scripts.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,13 +23,15 @@ namespace HRAOrganGallery
         public TFeatureType Feature { get; set; }
         public Material PressedMaterial { get; set; }
         public Material ReadyMaterial { get; set; }
-
+        public Material DisabledMaterial { get; set; }
         public Renderer Renderer { get; set; }
 
-        public void TurnOff(TFeatureType f) { }
+        public void SetUpXRInteraction() { }
+        public void SetVisibility() { }
+        public void AutoSwitch() { }
 
         public void ChangeColor() { }
 
-        public void SetUpXRInteraction() { }
+
     }
 }
