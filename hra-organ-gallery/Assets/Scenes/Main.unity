@@ -1141,6 +1141,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1480304649}
     m_Modifications:
+    - target: {fileID: -8818673867479754424, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1126221218}
+    - target: {fileID: -8766676941976277568, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 571187227}
+    - target: {fileID: -7724554343837152904, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 173142629}
+    - target: {fileID: -6892420798393312876, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 995111444}
+    - target: {fileID: -4686589848104827535, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1636545819}
+    - target: {fileID: -4385869191666647547, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1542955493}
     - target: {fileID: -4357795843931474248, guid: 1d173c961ba7ee241bee81d37f9b35a5,
         type: 3}
       propertyPath: m_Name
@@ -1151,6 +1181,86 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4238308021281041060, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1455334581}
+    - target: {fileID: -4227995035505388868, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 815849230}
+    - target: {fileID: -3652657037741348395, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 741741649}
+    - target: {fileID: -2853007448316427675, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1653249197}
+    - target: {fileID: -1283455336529871139, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1729407367}
+    - target: {fileID: -1148408547877549259, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 952969041}
+    - target: {fileID: 1212988989597749121, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2105931839}
+    - target: {fileID: 1342878949022818885, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1025854081}
+    - target: {fileID: 1652993725456556904, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1311283669}
+    - target: {fileID: 2901178129529077632, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 387064167}
+    - target: {fileID: 3662436639841715958, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1208590929}
+    - target: {fileID: 4367222857433765400, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1481094928}
+    - target: {fileID: 5186449938142709285, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 494859361}
+    - target: {fileID: 6348630759660228528, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2134869043}
+    - target: {fileID: 7015180033773383688, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1628307266}
+    - target: {fileID: 8439537729254235539, guid: 1d173c961ba7ee241bee81d37f9b35a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 188520631}
     - target: {fileID: 8789335133407729860, guid: 1d173c961ba7ee241bee81d37f9b35a5,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -2153,12 +2263,12 @@ MonoBehaviour:
   <Feature>k__BackingField: 1
   <PressedMaterial>k__BackingField: {fileID: 2100000, guid: 9de968ffd9d55324fbc2b2887799ffcf,
     type: 2}
+  <DisabledMaterial>k__BackingField: {fileID: 0}
   <ReadyMaterial>k__BackingField: {fileID: 2100000, guid: bb2349beb796aad448affe936049327a,
     type: 2}
   <Renderer>k__BackingField: {fileID: 0}
   other: {fileID: 1163075672}
   _locked: 0
-  uIpanel: {fileID: 1320301492}
   _interactable: {fileID: 8949885271416623074}
 --- !u!1001 &111809778
 PrefabInstance:
@@ -3281,7 +3391,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 493c655d712e1c242b4f4a185c4b7ba6, type: 2}
+  - {fileID: 2100000, guid: bb2349beb796aad448affe936049327a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3505,6 +3615,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 171994382}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &173142629
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidneycortex_medulla_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.8549, g: 0.6705, b: 0.61959994, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!114 &181456302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3652,6 +3831,75 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0048700804, y: 0.00098, z: 0.0048205093}
   m_Center: {x: 0, y: 0.000000029802322, z: -0.000000029802322}
+--- !u!21 &188520631
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidney_pyramids_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.6862, g: 0.38429996, b: 0.38429996, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!114 &198669476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3659,7 +3907,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3223183112749608829}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
   m_Name: 
@@ -3986,7 +4234,7 @@ Transform:
   m_GameObject: {fileID: 211974736}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.099, y: 0.523, z: -6.942}
+  m_LocalPosition: {x: -7.9745398, y: 0.523, z: -6.87596}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6919,6 +7167,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1375510383}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &387064167
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidney_pyramids_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.6862, g: 0.38429996, b: 0.38429996, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &387109488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8049,7 +8366,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 493c655d712e1c242b4f4a185c4b7ba6, type: 2}
+  - {fileID: 2100000, guid: bb2349beb796aad448affe936049327a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8079,6 +8396,75 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469042681}
   m_Mesh: {fileID: 5903716995365422195, guid: 11a85f609a168f04d93656879dd66d13, type: 3}
+--- !u!21 &494859361
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidney_pyramids_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.6862, g: 0.38429996, b: 0.38429996, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &506309091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8266,7 +8652,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8446725854602714796}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
   m_Name: 
@@ -9498,6 +9884,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 565017381}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &571187227
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidney_pyramids_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.6862, g: 0.38429996, b: 0.38429996, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &574281665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10822,7 +11277,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6980270319939876116}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
   m_Name: 
@@ -11023,12 +11478,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -6242395780517142970, guid: 5dc454beff0901743b75aebf4d15d42c,
     type: 3}
   m_PrefabInstance: {fileID: 664942604}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &669476094 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2374368179245130788, guid: 8ee77cb701df726448fe21c482d30c93,
-    type: 3}
-  m_PrefabInstance: {fileID: 2138086217480318046}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &670605175
 PrefabInstance:
@@ -11387,13 +11836,12 @@ MonoBehaviour:
   <Feature>k__BackingField: 0
   <PressedMaterial>k__BackingField: {fileID: 2100000, guid: 9de968ffd9d55324fbc2b2887799ffcf,
     type: 2}
+  <DisabledMaterial>k__BackingField: {fileID: 0}
   <ReadyMaterial>k__BackingField: {fileID: 2100000, guid: bb2349beb796aad448affe936049327a,
     type: 2}
   <Renderer>k__BackingField: {fileID: 0}
   other: {fileID: 2061393330}
   _locked: 0
-  _hasUserMadeFirstTouch: 0
-  uIpanel: {fileID: 669476094}
   _interactable: {fileID: 8305574002907037505}
 --- !u!1001 &695882989
 PrefabInstance:
@@ -12297,6 +12745,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 737515164}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &741741649
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidneycortex_medulla_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.8549, g: 0.6705, b: 0.61959994, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &744519998
 GameObject:
   m_ObjectHideFlags: 0
@@ -13227,7 +13744,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 493c655d712e1c242b4f4a185c4b7ba6, type: 2}
+  - {fileID: 2100000, guid: bb2349beb796aad448affe936049327a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16004,6 +16521,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 811038195}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &815849230
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidneycapsule_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.32539997, g: 0.10579998, b: 0.101899944, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &838997951
 GameObject:
   m_ObjectHideFlags: 0
@@ -17690,6 +18276,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 945889280}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &952969041
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidneycortex_medulla_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.8549, g: 0.6705, b: 0.61959994, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!114 &953278016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18418,6 +19073,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 989536680}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &995111444
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidneycortex_medulla_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.8549, g: 0.6705, b: 0.61959994, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &995734430
 GameObject:
   m_ObjectHideFlags: 0
@@ -23632,6 +24356,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1024884592}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1025854081
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidneycortex_medulla_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.8549, g: 0.6705, b: 0.61959994, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &1025907866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29111,7 +29904,7 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189,
         type: 3}
@@ -29456,7 +30249,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 493c655d712e1c242b4f4a185c4b7ba6, type: 2}
+  - {fileID: 2100000, guid: bb2349beb796aad448affe936049327a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -29597,11 +30390,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 493c655d712e1c242b4f4a185c4b7ba6, type: 2}
+      objectReference: {fileID: 2100000, guid: bb2349beb796aad448affe936049327a, type: 2}
     - target: {fileID: 919132149155446097, guid: 11a85f609a168f04d93656879dd66d13,
         type: 3}
       propertyPath: m_Name
       value: grabringHigh
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530701255766440318, guid: 11a85f609a168f04d93656879dd66d13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29911,8 +30709,8 @@ Transform:
   - {fileID: 6878276038125061260}
   - {fileID: 7764039939872137641}
   - {fileID: 1129447963}
-  - {fileID: 1259461373}
   - {fileID: 6412107034142119423}
+  - {fileID: 1259461373}
   - {fileID: 6582688198078860317}
   - {fileID: 211974737}
   - {fileID: 464507830}
@@ -30375,7 +31173,7 @@ Transform:
   m_GameObject: {fileID: 1090970537}
   serializedVersion: 2
   m_LocalRotation: {x: -0.89206696, y: 4.462313e-11, z: -0.4519034, w: -2.2605258e-11}
-  m_LocalPosition: {x: -162.63, y: -52.87, z: 108.58}
+  m_LocalPosition: {x: -157.7, y: -52.9, z: 106}
   m_LocalScale: {x: 23.710627, y: 17.635231, z: 23.710629}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -30938,6 +31736,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1125612156}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1126221218
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidneycortex_medulla_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.8549, g: 0.6705, b: 0.61959994, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &1128068145
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31417,12 +32284,12 @@ MonoBehaviour:
   <Feature>k__BackingField: 0
   <PressedMaterial>k__BackingField: {fileID: 2100000, guid: 9de968ffd9d55324fbc2b2887799ffcf,
     type: 2}
+  <DisabledMaterial>k__BackingField: {fileID: 0}
   <ReadyMaterial>k__BackingField: {fileID: 2100000, guid: bb2349beb796aad448affe936049327a,
     type: 2}
   <Renderer>k__BackingField: {fileID: 0}
   other: {fileID: 101618318}
   _locked: 0
-  uIpanel: {fileID: 1320301492}
   _interactable: {fileID: 7078015578222043185}
 --- !u!1001 &1176421200
 PrefabInstance:
@@ -31586,7 +32453,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 493c655d712e1c242b4f4a185c4b7ba6, type: 2}
+  - {fileID: 2100000, guid: bb2349beb796aad448affe936049327a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -32089,6 +32956,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1204410528}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1208590929
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidney_pyramids_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.6862, g: 0.38429996, b: 0.38429996, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &1209303594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33337,12 +34273,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1310398410}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1320301492 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2374368179245130788, guid: 8ee77cb701df726448fe21c482d30c93,
-    type: 3}
-  m_PrefabInstance: {fileID: 4387101205608098990}
+--- !u!21 &1311283669
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_Name: kidney_pyramids_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.6862, g: 0.38429996, b: 0.38429996, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!224 &1320301493 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6719888651704287290, guid: 8ee77cb701df726448fe21c482d30c93,
@@ -34012,11 +35011,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 493c655d712e1c242b4f4a185c4b7ba6, type: 2}
+      objectReference: {fileID: 2100000, guid: bb2349beb796aad448affe936049327a, type: 2}
     - target: {fileID: 919132149155446097, guid: 11a85f609a168f04d93656879dd66d13,
         type: 3}
       propertyPath: m_Name
       value: grabringLow
+      objectReference: {fileID: 0}
+    - target: {fileID: 5530701255766440318, guid: 11a85f609a168f04d93656879dd66d13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -35782,6 +36786,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1450334596}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1455334581
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidneycapsule_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.32539997, g: 0.10579998, b: 0.101899944, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!114 &1455960956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35982,7 +37055,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 493c655d712e1c242b4f4a185c4b7ba6, type: 2}
+  - {fileID: 2100000, guid: bb2349beb796aad448affe936049327a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -36433,6 +37506,75 @@ Transform:
   - {fileID: 1634568192}
   m_Father: {fileID: 1067749552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1481094928
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidneycortex_medulla_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.8549, g: 0.6705, b: 0.61959994, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!114 &1499446508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37296,7 +38438,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 493c655d712e1c242b4f4a185c4b7ba6, type: 2}
+  - {fileID: 2100000, guid: bb2349beb796aad448affe936049327a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -37326,6 +38468,75 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532541783}
   m_Mesh: {fileID: 5903716995365422195, guid: 11a85f609a168f04d93656879dd66d13, type: 3}
+--- !u!21 &1542955493
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidneycortex_medulla_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.8549, g: 0.6705, b: 0.61959994, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &1545281066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37478,7 +38689,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 493c655d712e1c242b4f4a185c4b7ba6, type: 2}
+  - {fileID: 2100000, guid: bb2349beb796aad448affe936049327a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -38613,6 +39824,75 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c73c61690276ed479f992390517efcc, type: 3}
+--- !u!21 &1628307266
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidneycortex_medulla_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.8549, g: 0.6705, b: 0.61959994, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1 &1632147592
 GameObject:
   m_ObjectHideFlags: 0
@@ -38895,6 +40175,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1634568191}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1636545819
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidney_pyramids_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.6862, g: 0.38429996, b: 0.38429996, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &1644009164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39015,6 +40364,75 @@ Transform:
   - {fileID: 893497066}
   m_Father: {fileID: 678953671}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1653249197
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidney_pyramids_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.6862, g: 0.38429996, b: 0.38429996, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &1653776955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40454,6 +41872,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1722757447}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1729407367
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidney_pyramids_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.6862, g: 0.38429996, b: 0.38429996, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &1745195406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42879,7 +44366,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4133544999706038632}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
   m_Name: 
@@ -45161,7 +46648,7 @@ PrefabInstance:
     - target: {fileID: 7662076761675301960, guid: ead42e0472b7547fbba6c229aeaf37d3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7662076761675301960, guid: ead42e0472b7547fbba6c229aeaf37d3,
         type: 3}
@@ -46019,13 +47506,12 @@ MonoBehaviour:
   <Feature>k__BackingField: 1
   <PressedMaterial>k__BackingField: {fileID: 2100000, guid: 9de968ffd9d55324fbc2b2887799ffcf,
     type: 2}
+  <DisabledMaterial>k__BackingField: {fileID: 0}
   <ReadyMaterial>k__BackingField: {fileID: 2100000, guid: bb2349beb796aad448affe936049327a,
     type: 2}
   <Renderer>k__BackingField: {fileID: 0}
   other: {fileID: 681809194}
   _locked: 0
-  _hasUserMadeFirstTouch: 0
-  uIpanel: {fileID: 669476094}
   _interactable: {fileID: 8446725854189380383}
 --- !u!1001 &2070189906
 PrefabInstance:
@@ -46491,6 +47977,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2100236867}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &2105931839
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidneycortex_medulla_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.8549, g: 0.6705, b: 0.61959994, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &2107340963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46827,6 +48382,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2129971121}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &2134869043
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: kidneycortex_medulla_mat (Instance)
+  m_Shader: {fileID: -6465566751694194690, guid: bb6606ffd3868dd46a773758ff6901fc,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHABLEND_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0
+    - _BumpScale: 1
+    - _Metallic: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Roughness: 0.24930353
+    m_Colors:
+    - _Color: {r: 0.8549, g: 0.6705, b: 0.61959994, a: 0.8}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
 --- !u!1001 &2136115493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54830,7 +56454,7 @@ PrefabInstance:
     - target: {fileID: 2374368179245130788, guid: 8ee77cb701df726448fe21c482d30c93,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6719888651704287290, guid: 8ee77cb701df726448fe21c482d30c93,
         type: 3}
@@ -56427,7 +58051,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 8d1c08cd29d661f4db5e4215269b1b17, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -56952,7 +58576,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 8d1c08cd29d661f4db5e4215269b1b17, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -61952,7 +63576,7 @@ PrefabInstance:
     - target: {fileID: 2374368179245130788, guid: 8ee77cb701df726448fe21c482d30c93,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6719888651704287290, guid: 8ee77cb701df726448fe21c482d30c93,
         type: 3}
@@ -71142,7 +72766,7 @@ Transform:
   m_GameObject: {fileID: 5349077452542706790}
   serializedVersion: 2
   m_LocalRotation: {x: -0.9961788, y: 0.000000007488687, z: -0.08733708, w: 4.5534196e-10}
-  m_LocalPosition: {x: -162.5, y: -35.3, z: 108.9}
+  m_LocalPosition: {x: -157.6, y: -35.3, z: 106.3}
   m_LocalScale: {x: 39.37008, y: 39.37008, z: 39.370083}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -71311,7 +72935,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 8d1c08cd29d661f4db5e4215269b1b17, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -72069,12 +73693,13 @@ MonoBehaviour:
   <Feature>k__BackingField: 0
   <PressedMaterial>k__BackingField: {fileID: 2100000, guid: 9de968ffd9d55324fbc2b2887799ffcf,
     type: 2}
+  <DisabledMaterial>k__BackingField: {fileID: 2100000, guid: 8d1c08cd29d661f4db5e4215269b1b17,
+    type: 2}
   <ReadyMaterial>k__BackingField: {fileID: 2100000, guid: bb2349beb796aad448affe936049327a,
     type: 2}
   <Renderer>k__BackingField: {fileID: 0}
   other: {fileID: 0}
   _locked: 1
-  uIpanel: {fileID: 1320301492}
   _interactable: {fileID: 662451085}
 --- !u!33 &7078015578222043184
 MeshFilter:
@@ -76675,7 +78300,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 8d1c08cd29d661f4db5e4215269b1b17, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76713,13 +78338,13 @@ MonoBehaviour:
   <Feature>k__BackingField: 0
   <PressedMaterial>k__BackingField: {fileID: 2100000, guid: 9de968ffd9d55324fbc2b2887799ffcf,
     type: 2}
+  <DisabledMaterial>k__BackingField: {fileID: 2100000, guid: 8d1c08cd29d661f4db5e4215269b1b17,
+    type: 2}
   <ReadyMaterial>k__BackingField: {fileID: 2100000, guid: bb2349beb796aad448affe936049327a,
     type: 2}
   <Renderer>k__BackingField: {fileID: 0}
   other: {fileID: 0}
   _locked: 1
-  _hasUserMadeFirstTouch: 0
-  uIpanel: {fileID: 669476094}
   _interactable: {fileID: 1930162565}
 --- !u!4 &8305984009285565972
 Transform:
@@ -77499,13 +79124,13 @@ MonoBehaviour:
   <Feature>k__BackingField: 1
   <PressedMaterial>k__BackingField: {fileID: 2100000, guid: 9de968ffd9d55324fbc2b2887799ffcf,
     type: 2}
+  <DisabledMaterial>k__BackingField: {fileID: 2100000, guid: 8d1c08cd29d661f4db5e4215269b1b17,
+    type: 2}
   <ReadyMaterial>k__BackingField: {fileID: 2100000, guid: bb2349beb796aad448affe936049327a,
     type: 2}
   <Renderer>k__BackingField: {fileID: 0}
   other: {fileID: 0}
   _locked: 1
-  _hasUserMadeFirstTouch: 0
-  uIpanel: {fileID: 669476094}
   _interactable: {fileID: 514699276}
 --- !u!4 &8447442538936903086
 Transform:
@@ -79676,12 +81301,13 @@ MonoBehaviour:
   <Feature>k__BackingField: 1
   <PressedMaterial>k__BackingField: {fileID: 2100000, guid: 9de968ffd9d55324fbc2b2887799ffcf,
     type: 2}
+  <DisabledMaterial>k__BackingField: {fileID: 2100000, guid: 8d1c08cd29d661f4db5e4215269b1b17,
+    type: 2}
   <ReadyMaterial>k__BackingField: {fileID: 2100000, guid: bb2349beb796aad448affe936049327a,
     type: 2}
   <Renderer>k__BackingField: {fileID: 0}
   other: {fileID: 0}
   _locked: 1
-  uIpanel: {fileID: 1320301492}
   _interactable: {fileID: 198669476}
 --- !u!4 &8949885271416623073
 Transform:
