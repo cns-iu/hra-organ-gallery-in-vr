@@ -1,5 +1,19 @@
 # Changelog for the HRA Organ Gallery
 
+## 0.8.6 - 2024-02-07
+
+### Added in 0.8.6
+
+* Changed keyboard label font to Metropolis
+* Added new skybox from [https://polyhaven.com/a/autumn_field](https://polyhaven.com/a/autumn_field) or [https://polyhaven.com/a/qwantani_puresky](https://polyhaven.com/a/qwantani_puresky)
+
+## 0.8.5 - 2024-02-02
+
+### Added in 0.8.5
+
+* Fixed bugs with keyboard
+* Changed grip color from yellow to blue
+
 ## 0.8.4 - 2024-01-15
 
 ### Added in 0.8.4
