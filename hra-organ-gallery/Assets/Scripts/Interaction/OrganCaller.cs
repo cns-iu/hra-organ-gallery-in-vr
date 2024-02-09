@@ -47,6 +47,7 @@ namespace HRAOrganGallery
         [SerializeField] private Sex _requestedSex = Sex.Male;
         [SerializeField] private Laterality _requestedLaterality = Laterality.Left;
         [SerializeField] private List<string> _possibleOrgans;
+        [field: SerializeField] public int NumberOfTissueBlocksInSelected { get; private set; }
 
         [Header("Sex-exclusive Organs")]
         [SerializeField] private List<string> _femaleOnly;
@@ -134,6 +135,8 @@ namespace HRAOrganGallery
             {
                 _currentOrgan.transform.position = _currentOrgan.GetComponent<OrganData>().DefaultPosition;
                 _currentOrgan.transform.parent = _parentOrgansHighRes;
+                //enable the organ
+                _currentOrgan.gameObject.SetActive(false);
             }
         }
 
@@ -202,7 +205,7 @@ namespace HRAOrganGallery
                     //fetch the right organ
                     if (isOrgan && isSex)
                     {
-                        //get the right sex (also from button)
+                        //enable the organ
                         organ.gameObject.SetActive(true);
 
                         //set organ opacity
@@ -221,6 +224,9 @@ namespace HRAOrganGallery
                     }
                 }
             }
+
+            //set _numTissueBlocks
+            NumberOfTissueBlocksInSelected = _highResOrganNodeArray.nodes.Length - 1;
 
             //raise event
             OnOrganPicked.Invoke(_currentOrgan.GetComponent<OrganData>());
