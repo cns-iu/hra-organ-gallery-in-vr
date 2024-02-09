@@ -8,7 +8,7 @@
 * Added new skybox from [https://polyhaven.com/a/autumn_field](https://polyhaven.com/a/autumn_field) or [https://polyhaven.com/a/qwantani_puresky](https://polyhaven.com/a/qwantani_puresky)
 * Changed lighting across scene, moved floor up towards dome
 * Implemented HRA Style Guide (colors, basic iconography)
-* Added dynamic content to monitor
+* Added dynamic content to monitor (selected organ, number of tissue blocks, etc.)
 
 ## 0.8.5 - 2024-02-02
 
