@@ -47,6 +47,7 @@ namespace HRAOrganGallery
         [SerializeField] private Sex _requestedSex = Sex.Male;
         [SerializeField] private Laterality _requestedLaterality = Laterality.Left;
         [SerializeField] private List<string> _possibleOrgans;
+        [field: SerializeField] public int NumberOfTissueBlocksInSelected { get; private set; }
 
         [Header("Sex-exclusive Organs")]
         [SerializeField] private List<string> _femaleOnly;
@@ -221,6 +222,9 @@ namespace HRAOrganGallery
                     }
                 }
             }
+
+            //set _numTissueBlocks
+            NumberOfTissueBlocksInSelected = _highResOrganNodeArray.nodes.Length - 1;
 
             //raise event
             OnOrganPicked.Invoke(_currentOrgan.GetComponent<OrganData>());
