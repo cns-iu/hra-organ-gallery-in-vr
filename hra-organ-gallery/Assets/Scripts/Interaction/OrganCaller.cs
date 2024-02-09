@@ -135,6 +135,8 @@ namespace HRAOrganGallery
             {
                 _currentOrgan.transform.position = _currentOrgan.GetComponent<OrganData>().DefaultPosition;
                 _currentOrgan.transform.parent = _parentOrgansHighRes;
+                //enable the organ
+                _currentOrgan.gameObject.SetActive(false);
             }
         }
 
@@ -203,7 +205,7 @@ namespace HRAOrganGallery
                     //fetch the right organ
                     if (isOrgan && isSex)
                     {
-                        //get the right sex (also from button)
+                        //enable the organ
                         organ.gameObject.SetActive(true);
 
                         //set organ opacity
