@@ -15,6 +15,11 @@ namespace HRAOrganGallery
     {
         public static event Action<UserInputState> OnStateChanged;
 
+        [Header("Materials")]
+        [SerializeField] private Material _readyMaterial;
+        [SerializeField] private Material _pressedMaterial;
+        [SerializeField] private Renderer _renderer;
+
         [Header("State")]
         [SerializeField] private XRSimpleInteractable _switch;
         [SerializeField] private UserInputState _state = UserInputState.Movement;
@@ -25,6 +30,10 @@ namespace HRAOrganGallery
         [SerializeField] private Transform _explodePosition;
         private void Awake()
         {
+            //get materials
+            _renderer = GetComponent<Renderer>();
+            _readyMaterial = _renderer.material;
+
             //get interactable
             _switch = GetComponent<XRSimpleInteractable>();
 
@@ -60,6 +69,8 @@ namespace HRAOrganGallery
                     break;
             }
 
+            _renderer.material = _pressedMaterial;
+
             while (elapsedTime < _switchTime)
             {
                 elapsedTime += Time.deltaTime;
@@ -69,6 +80,8 @@ namespace HRAOrganGallery
                 _switch.gameObject.transform.position = Vector3.Lerp(movements[0], movements[1], t);
                 yield return null;
             }
+
+            _renderer.material = _readyMaterial;
         }
     }
 }

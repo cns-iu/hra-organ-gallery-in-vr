@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Organ Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8300cabf377dc064383236ac342aad5b, type: 2}
-  m_sharedMaterial: {fileID: -5149407285562576673, guid: 8300cabf377dc064383236ac342aad5b,
+  m_fontAsset: {fileID: 11400000, guid: ea45cf26a972c7540bb260cb9ef0b2e5, type: 2}
+  m_sharedMaterial: {fileID: -7169325082349725780, guid: ea45cf26a972c7540bb260cb9ef0b2e5,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

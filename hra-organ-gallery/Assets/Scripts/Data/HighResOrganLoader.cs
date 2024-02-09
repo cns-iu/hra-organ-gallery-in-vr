@@ -13,7 +13,7 @@ namespace HRAOrganGallery
 
         [field: SerializeField] public string Url { get; set; }
 
-        [SerializeField] private string _baseUrl = "https://ccf-api.hubmapconsortium.org/v1/reference-organ-scene";
+        [SerializeField] private string _baseUrl = "https://apps.humanatlas.io/hra-api/v1/reference-organ-scene";
         [SerializeField] private string ontologyTermQuery = "?ontology-terms=";
         [SerializeField] private string organQuery = "&organ-iri=";
         [SerializeField] private string sexQuery = "&sex=";
