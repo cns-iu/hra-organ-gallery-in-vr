@@ -28,6 +28,8 @@ namespace HRAOrganGallery
         [SerializeField] private float _switchTime;
         [SerializeField] private Transform _movementPostion;
         [SerializeField] private Transform _explodePosition;
+
+        private IKeyboardHover _keyboardHoverResponse;
         private void Awake()
         {
             //get materials
@@ -37,6 +39,9 @@ namespace HRAOrganGallery
             //get interactable
             _switch = GetComponent<XRSimpleInteractable>();
 
+            //get keyboard hover response
+            _keyboardHoverResponse = GetComponentInChildren<IKeyboardHover>();
+
             _switch.selectEntered.AddListener(
                 (SelectEnterEventArgs args) =>
                 {
@@ -44,6 +49,16 @@ namespace HRAOrganGallery
                     StartCoroutine(MoveSwitch());
                     OnStateChanged.Invoke(_state);
                 }
+                );
+
+            //subscribe to hover enter event
+            _switch.hoverEntered.AddListener(
+                (HoverEnterEventArgs args) => { _keyboardHoverResponse.OnHoverEnter(); }
+                );
+
+            //subscribe to hover exit event
+            _switch.hoverExited.AddListener(
+                (HoverExitEventArgs args) => { _keyboardHoverResponse.OnHoverExit(); }
                 );
         }
 

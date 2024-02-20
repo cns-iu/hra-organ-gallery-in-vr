@@ -29,7 +29,6 @@ namespace HRAOrganGallery
         public void SetUpXRInteraction() { }
         public void SetVisibility() { }
         public void AutoSwitch() { }
-
         public void ChangeColor() { }
 
 

@@ -25,16 +25,18 @@ namespace HRAOrganGallery
         [field: SerializeField] public Material DisabledMaterial { get; set; }
 
         [field: SerializeField] public Renderer Renderer { get; set; }
-
-
+        
         [SerializeField] private List<OrganCallButton> others;
         [SerializeField] private XRSimpleInteractable _interactable;
+        private IKeyboardHover _keyboardHoverResponse;
+
 
         private void Awake()
         {
             OrganCallButton.OnClick += (iris) => { TurnOff(iris); };
             ReadyMaterial = GetComponent<Renderer>().material;
             Renderer = GetComponent<Renderer>();
+            _keyboardHoverResponse = GetComponentInChildren<IKeyboardHover>();
         }
 
         private void Start()
@@ -57,6 +59,16 @@ namespace HRAOrganGallery
                     ChangeColor(PressedMaterial);
                     OnClick?.Invoke(Feature);
                 }
+                );
+
+            //subscribe to hover enter event
+            _interactable.hoverEntered.AddListener(
+                (HoverEnterEventArgs args) => { _keyboardHoverResponse.OnHoverEnter(); }
+                );
+
+            //subscribe to hover exit event
+            _interactable.hoverExited.AddListener(
+                (HoverExitEventArgs args) => { _keyboardHoverResponse.OnHoverExit(); }
                 );
         }
 

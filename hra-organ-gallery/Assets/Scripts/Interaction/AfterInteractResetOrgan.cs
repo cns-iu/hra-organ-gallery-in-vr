@@ -15,14 +15,28 @@ namespace HRAOrganGallery
         [field: SerializeField] public Material ReadyMaterial { get; set; }
 
         private float lightTime = 2f;
+        private IKeyboardHover _keyboardHoverResponse;
 
         private void Awake()
         {
+            //get keyboard hover response
+            _keyboardHoverResponse = GetComponentInChildren<IKeyboardHover>();
+
             GetComponent<XRSimpleInteractable>().selectEntered.AddListener(
                 (SelectEnterEventArgs args) => { 
                     OnOrganResetClicked.Invoke();
                     StartCoroutine(LightUp());
                 }
+                );
+
+            //subscribe to hover enter event
+            GetComponent<XRSimpleInteractable>().hoverEntered.AddListener(
+                (HoverEnterEventArgs args) => { _keyboardHoverResponse.OnHoverEnter(); }
+                );
+
+            //subscribe to hover exit event
+            GetComponent<XRSimpleInteractable>().hoverExited.AddListener(
+                (HoverExitEventArgs args) => { _keyboardHoverResponse.OnHoverExit(); }
                 );
         }
 

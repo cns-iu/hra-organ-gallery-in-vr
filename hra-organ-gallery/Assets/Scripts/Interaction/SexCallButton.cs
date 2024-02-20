@@ -25,12 +25,16 @@ namespace HRAOrganGallery
         [SerializeField] private bool _locked = true;
         [SerializeField] private XRSimpleInteractable _interactable;
 
+        private IKeyboardHover _keyboardHoverResponse;
+        [SerializeField] private ParticleSystem _player;
+
         private void Awake()
         {
             _interactable = GetComponent<XRSimpleInteractable>();
             Collider = GetComponent<BoxCollider>();
             _interactable.colliders.Add(Collider);
             Renderer = GetComponent<Renderer>();
+            _keyboardHoverResponse = GetComponentInChildren<IKeyboardHover>();
 
             OrganCaller.OnOrganPicked += SetVisibility;
             OrganCaller.OnOrganPicked += AutoSwitch;
@@ -56,6 +60,16 @@ namespace HRAOrganGallery
                     ChangeColor(PressedMaterial);
                     OnClick?.Invoke(Feature);
                 }
+                );
+
+            //subscribe to hover enter event
+            _interactable.hoverEntered.AddListener(
+                (HoverEnterEventArgs args) => { _keyboardHoverResponse.OnHoverEnter(); }
+                );
+
+            //subscribe to hover exit event
+            _interactable.hoverExited.AddListener(
+                (HoverExitEventArgs args) => { _keyboardHoverResponse.OnHoverExit(); }
                 );
         }
 
