@@ -22,8 +22,13 @@ namespace HRAOrganGallery
         private void EnableDisable(bool collides)
         {
             _isCollidingWithPriority = collides;
-            _grabCylinderCollider.enabled = !_isCollidingWithPriority;
-            Debug.Log($"{_grabCylinderCollider} was set to {_grabCylinderCollider.enabled}.");
+            
+            //ignore collision if we are colliding with a high priority collider, e.g., on the keyboard
+            Physics.IgnoreCollision(_grabCylinderCollider, GetComponent<Collider>(), _isCollidingWithPriority);
+
+            //old code to turn off entire collider --too brutish
+            //_grabCylinderCollider.enabled = !_isCollidingWithPriority;
+
         }
     }
 }
