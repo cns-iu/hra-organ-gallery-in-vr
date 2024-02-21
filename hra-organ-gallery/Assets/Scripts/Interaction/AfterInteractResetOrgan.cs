@@ -11,6 +11,8 @@ namespace HRAOrganGallery
     {
         public static event Action OnOrganResetClicked;
 
+        public static event Action<bool> OnCollideWithPriorityLayer;
+
         [field: SerializeField] public Material PressedMaterial { get; set; }
         [field: SerializeField] public Material ReadyMaterial { get; set; }
 
@@ -23,7 +25,8 @@ namespace HRAOrganGallery
             _keyboardHoverResponse = GetComponentInChildren<IKeyboardHover>();
 
             GetComponent<XRSimpleInteractable>().selectEntered.AddListener(
-                (SelectEnterEventArgs args) => { 
+                (SelectEnterEventArgs args) =>
+                {
                     OnOrganResetClicked.Invoke();
                     StartCoroutine(LightUp());
                 }
@@ -31,16 +34,25 @@ namespace HRAOrganGallery
 
             //subscribe to hover enter event
             GetComponent<XRSimpleInteractable>().hoverEntered.AddListener(
-                (HoverEnterEventArgs args) => { _keyboardHoverResponse.OnHoverEnter(); }
+                (HoverEnterEventArgs args) =>
+                {
+                    _keyboardHoverResponse.OnHoverEnter();
+                    OnCollideWithPriorityLayer(true);
+                }
                 );
 
             //subscribe to hover exit event
             GetComponent<XRSimpleInteractable>().hoverExited.AddListener(
-                (HoverExitEventArgs args) => { _keyboardHoverResponse.OnHoverExit(); }
+                (HoverExitEventArgs args) =>
+                {
+                    _keyboardHoverResponse.OnHoverExit();
+                    OnCollideWithPriorityLayer(false);
+                }
                 );
         }
 
-        private IEnumerator LightUp() {
+        private IEnumerator LightUp()
+        {
             float elapsedTime = 0f;
 
             GetComponent<MeshRenderer>().material = PressedMaterial;
@@ -52,5 +64,9 @@ namespace HRAOrganGallery
             GetComponent<MeshRenderer>().material = ReadyMaterial;
         }
 
+        public void IsCollidingWithPriority(bool isColliding)
+        {
+
+        }
     }
 }
