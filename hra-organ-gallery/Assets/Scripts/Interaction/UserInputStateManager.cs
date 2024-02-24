@@ -11,9 +11,11 @@ namespace HRAOrganGallery
     /// <summary>
     /// A class to handle user input states, i.e., movement vs. tissue block explode interaction
     /// </summary>
-    public class UserInputStateManager : MonoBehaviour
+    public class UserInputStateManager : MonoBehaviour, IPauseCollision
     {
         public static event Action<UserInputState> OnStateChanged;
+        public static event Action<bool> OnCollideWithPriorityLayer;
+
 
         [Header("Materials")]
         [SerializeField] private Material _readyMaterial;
@@ -53,12 +55,12 @@ namespace HRAOrganGallery
 
             //subscribe to hover enter event
             _switch.hoverEntered.AddListener(
-                (HoverEnterEventArgs args) => { _keyboardHoverResponse.OnHoverEnter(); }
+                (HoverEnterEventArgs args) => { _keyboardHoverResponse.OnHoverEnter(); OnCollideWithPriorityLayer(true); }
                 );
 
             //subscribe to hover exit event
             _switch.hoverExited.AddListener(
-                (HoverExitEventArgs args) => { _keyboardHoverResponse.OnHoverExit(); }
+                (HoverExitEventArgs args) => { _keyboardHoverResponse.OnHoverExit(); OnCollideWithPriorityLayer(false); }
                 );
         }
 

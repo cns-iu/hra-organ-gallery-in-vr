@@ -12,11 +12,13 @@ namespace HRAOrganGallery
         private void Awake()
         {
             AfterInteractResetOrgan.OnCollideWithPriorityLayer += EnableDisable;
+            UserInputStateManager.OnCollideWithPriorityLayer += EnableDisable;
         }
 
         private void OnDestroy()
         {
             AfterInteractResetOrgan.OnCollideWithPriorityLayer -= EnableDisable;
+            UserInputStateManager.OnCollideWithPriorityLayer -= EnableDisable;
         }
 
         private void EnableDisable(bool collides)

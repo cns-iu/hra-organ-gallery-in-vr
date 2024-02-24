@@ -7,7 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace HRAOrganGallery
 {
-    public class AfterInteractResetOrgan : MonoBehaviour
+    public class AfterInteractResetOrgan : MonoBehaviour, IPauseCollision
     {
         public static event Action OnOrganResetClicked;
 
