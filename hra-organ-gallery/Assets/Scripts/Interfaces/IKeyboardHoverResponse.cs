@@ -6,7 +6,7 @@ namespace HRAOrganGallery
 {
     public interface IKeyboardHoverResponse
     {
-        void OnHoverEnter() { }
-        void OnHoverExit() { }
+        void OnHoverEnter();
+        void OnHoverExit();
     }
 }
