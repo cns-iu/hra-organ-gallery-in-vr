@@ -1950,7 +1950,6 @@ Transform:
   m_Children:
   - {fileID: 1339545565}
   - {fileID: 1935976102}
-  - {fileID: 272877483}
   - {fileID: 1050582124}
   - {fileID: 2025667381}
   m_Father: {fileID: 1034546282}
@@ -5909,7 +5908,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 77826197}
+    m_TransformParent: {fileID: 1254046694}
     m_Modifications:
     - target: {fileID: 4908482800022540039, guid: 0db95ecb63e771c4599dab6815b73460,
         type: 3}
@@ -6060,6 +6059,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: pre_FPSDisplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908482800323263199, guid: 0db95ecb63e771c4599dab6815b73460,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4908482801316582204, guid: 0db95ecb63e771c4599dab6815b73460,
         type: 3}
@@ -36520,6 +36524,7 @@ Transform:
   - {fileID: 211974737}
   - {fileID: 464507830}
   - {fileID: 370673850}
+  - {fileID: 272877483}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1259461372
