@@ -1,5 +1,15 @@
 # Changelog for the HRA Organ Gallery
 
+## 0.9 - 2024-02-24
+
+### Added in 0.9
+
+* Adjusted entire setting, now plain white skybox with grid floor
+* Removed low-res organs in the middle, left only skin
+* Now showing and adding highlight to currently selected hi-res organ in the middle
+* Prettified keyboard button highlight on hover
+* Optimized FPS
+
 ## 0.8.6 - 2024-02-09
 
 ### Added in 0.8.6
