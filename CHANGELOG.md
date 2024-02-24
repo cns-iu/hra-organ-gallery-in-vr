@@ -4,7 +4,7 @@
 
 ### Added in 0.9
 
-* Adjust entire setting, now plan white skybox with grid floor
+* Adjusted entire setting, now plain white skybox with grid floor
 * Removed low-res organs in the middle, left only skin
 * Now showing and adding highlight to currently selected hi-res organ in the middle
 * Prettified keyboard button highlight on hover
