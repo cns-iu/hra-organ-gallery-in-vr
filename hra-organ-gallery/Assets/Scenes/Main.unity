@@ -25855,11 +25855,11 @@ MonoBehaviour:
   m_TwoHandedRotationMode: 1
   m_AllowOneHandedScaling: 1
   m_AllowTwoHandedScaling: 1
-  m_OneHandedScaleSpeed: 0.5
+  m_OneHandedScaleSpeed: 1
   m_ThresholdMoveRatioForScale: 0.1
   m_ClampScaling: 1
   m_MinimumScaleRatio: 0.01
-  m_MaximumScaleRatio: 1
+  m_MaximumScaleRatio: 4
   m_ScaleMultiplier: 0.25
 --- !u!114 &1090970544
 MonoBehaviour:
