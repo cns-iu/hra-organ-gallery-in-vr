@@ -2219,6 +2219,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ShowHideControllerAnnotations",
+                    "type": "Value",
+                    "id": "2934e744-f861-41b8-8624-dff2dc55e8c2",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -2241,6 +2250,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ExplodeTissueBlocks",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "60666192-355a-49e5-bce5-8b7c1df2a2e2",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShowHideControllerAnnotations",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
