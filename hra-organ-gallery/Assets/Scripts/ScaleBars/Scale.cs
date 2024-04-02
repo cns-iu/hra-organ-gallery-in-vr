@@ -15,7 +15,7 @@ namespace HRAOrganGallery
         private Transform duplicateScaleBar;
         [SerializeField]
         private GameObject scaleBarPrefab;
-        private TMPro 
+        //private TMPro 
         //[SerializeField]
         //private TMPro 
 
