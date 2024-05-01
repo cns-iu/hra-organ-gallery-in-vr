@@ -7,6 +7,7 @@ namespace HRAOrganGallery
 {
     public class Scale : MonoBehaviour
     {
+
         //[SerializeField]
         //private TMPro 
 
