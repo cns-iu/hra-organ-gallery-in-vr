@@ -8,9 +8,10 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace HRAOrganGallery
 {
-    public class LaterialityCallButton : MonoBehaviour, IKeyboardButton<Laterality, Laterality>
+    public class LaterialityCallButton : MonoBehaviour, IKeyboardButton<Laterality, Laterality>, IPauseCollision
     {
         public static event Action<Laterality> OnClick;
+        public static event Action<bool> OnCollideWithPriorityLayer;
         [field: SerializeField] public BoxCollider Collider { get; set; }
         [field: SerializeField] public Laterality Feature { get; set; }
         [field: SerializeField] public Material PressedMaterial { get; set; }
@@ -21,13 +22,13 @@ namespace HRAOrganGallery
 
         [SerializeField] private LaterialityCallButton other;
         [SerializeField] private bool _locked = true;
-        [SerializeField] private XRSimpleInteractable _interactable;
+        [SerializeField] private XRBaseInteractable _interactable;
         private IKeyboardHover _keyboardHoverResponse;
 
 
         private void Awake()
         {
-            _interactable.GetComponent<XRSimpleInteractable>();
+            _interactable.GetComponent<XRBaseInteractable>();
             Collider = GetComponent<BoxCollider>();
             _interactable.colliders.Add(Collider);
             Renderer = GetComponent<Renderer>();
@@ -62,12 +63,12 @@ namespace HRAOrganGallery
 
             //subscribe to hover enter event
             _interactable.hoverEntered.AddListener(
-                (HoverEnterEventArgs args) => { _keyboardHoverResponse.OnHoverEnter(); }
+                (HoverEnterEventArgs args) => { _keyboardHoverResponse.OnHoverEnter(); OnCollideWithPriorityLayer?.Invoke(true); }
                 );
 
             //subscribe to hover exit event
             _interactable.hoverExited.AddListener(
-                (HoverExitEventArgs args) => { _keyboardHoverResponse.OnHoverExit(); }
+                (HoverExitEventArgs args) => { _keyboardHoverResponse.OnHoverExit(); OnCollideWithPriorityLayer?.Invoke(false); }
                 );
         }
 
