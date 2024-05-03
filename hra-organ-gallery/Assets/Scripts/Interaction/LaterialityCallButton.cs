@@ -21,13 +21,13 @@ namespace HRAOrganGallery
 
         [SerializeField] private LaterialityCallButton other;
         [SerializeField] private bool _locked = true;
-        [SerializeField] private XRSimpleInteractable _interactable;
+        [SerializeField] private XRBaseInteractable _interactable;
         private IKeyboardHover _keyboardHoverResponse;
 
 
         private void Awake()
         {
-            _interactable.GetComponent<XRSimpleInteractable>();
+            _interactable.GetComponent<XRBaseInteractable>();
             Collider = GetComponent<BoxCollider>();
             _interactable.colliders.Add(Collider);
             Renderer = GetComponent<Renderer>();

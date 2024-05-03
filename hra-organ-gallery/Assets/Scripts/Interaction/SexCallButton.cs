@@ -23,14 +23,14 @@ namespace HRAOrganGallery
         [SerializeField] private SexCallButton other;
 
         [SerializeField] private bool _locked = true;
-        [SerializeField] private XRSimpleInteractable _interactable;
+        [SerializeField] private XRBaseInteractable _interactable;
 
         private IKeyboardHover _keyboardHoverResponse;
         [SerializeField] private ParticleSystem _player;
 
         private void Awake()
         {
-            _interactable = GetComponent<XRSimpleInteractable>();
+            _interactable = GetComponent<XRBaseInteractable>();
             Collider = GetComponent<BoxCollider>();
             _interactable.colliders.Add(Collider);
             Renderer = GetComponent<Renderer>();

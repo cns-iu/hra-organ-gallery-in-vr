@@ -27,7 +27,7 @@ namespace HRAOrganGallery
         [field: SerializeField] public Renderer Renderer { get; set; }
         
         [SerializeField] private List<OrganCallButton> others;
-        [SerializeField] private XRSimpleInteractable _interactable;
+        [SerializeField] private XRBaseInteractable _interactable;
         private IKeyboardHover _keyboardHoverResponse;
 
 
@@ -47,7 +47,7 @@ namespace HRAOrganGallery
         public void SetUpXRInteraction()
         {
             //get ref to simple interactable
-            _interactable = GetComponent<XRSimpleInteractable>();
+            _interactable = GetComponent<XRBaseInteractable>();
 
             //get collider
             _interactable.colliders.Add(GetComponent<BoxCollider>());

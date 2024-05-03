@@ -11,7 +11,7 @@ namespace HRAOrganGallery
     /// <summary>
     /// A class to handle user input states, i.e., movement vs. tissue block explode interaction
     /// </summary>
-    public class UserInputStateManager : MonoBehaviour, IPauseCollision
+    public class UserInputStateManager : MonoBehaviour
     {
         public static UserInputStateManager Instance { get; private set; }
         public static event Action<UserInputState> OnStateChanged;
@@ -25,7 +25,7 @@ namespace HRAOrganGallery
         {
             inputStateButtons.ForEach(i =>
             {
-                i.GetComponent<XRSimpleInteractable>().selectEntered.AddListener(
+                i.GetComponent<XRBaseInteractable>().selectEntered.AddListener(
                 (SelectEnterEventArgs args) =>
                 {
                     i.OnSelect();

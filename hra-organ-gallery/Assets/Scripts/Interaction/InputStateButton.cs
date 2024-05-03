@@ -20,7 +20,7 @@ namespace HRAOrganGallery
         [SerializeField] private Renderer _renderer;
 
         [Header("Interaction")]
-        [SerializeField] private XRSimpleInteractable _interactable;
+        [SerializeField] private XRBaseInteractable _interactable;
         [SerializeField] private IKeyboardHover _keyboardHoverResponse;
 
         private void Awake()
@@ -32,7 +32,7 @@ namespace HRAOrganGallery
             _keyboardHoverResponse = GetComponent<IKeyboardHover>();
 
             //get interactable
-            _interactable = GetComponent<XRSimpleInteractable>();
+            _interactable = GetComponent<XRBaseInteractable>();
 
             //subscribe to state change event for delecting
             UserInputStateManager.OnStateChanged += OnDeselect;
