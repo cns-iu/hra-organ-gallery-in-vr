@@ -8,9 +8,10 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace HRAOrganGallery
 {
-    public class SexCallButton : MonoBehaviour, IKeyboardButton<Sex, Sex>
+    public class SexCallButton : MonoBehaviour, IKeyboardButton<Sex, Sex>, IPauseCollision
     {
         public static event Action<Sex> OnClick;
+        public static event Action<bool> OnCollideWithPriorityLayer;
         [field: SerializeField] public BoxCollider Collider { get; set; }
         [field: SerializeField] public Sex Feature { get; set; }
 
@@ -23,14 +24,14 @@ namespace HRAOrganGallery
         [SerializeField] private SexCallButton other;
 
         [SerializeField] private bool _locked = true;
-        [SerializeField] private XRSimpleInteractable _interactable;
+        [SerializeField] private XRBaseInteractable _interactable;
 
         private IKeyboardHover _keyboardHoverResponse;
         [SerializeField] private ParticleSystem _player;
 
         private void Awake()
         {
-            _interactable = GetComponent<XRSimpleInteractable>();
+            _interactable = GetComponent<XRBaseInteractable>();
             Collider = GetComponent<BoxCollider>();
             _interactable.colliders.Add(Collider);
             Renderer = GetComponent<Renderer>();
@@ -64,12 +65,12 @@ namespace HRAOrganGallery
 
             //subscribe to hover enter event
             _interactable.hoverEntered.AddListener(
-                (HoverEnterEventArgs args) => { _keyboardHoverResponse.OnHoverEnter(); }
+                (HoverEnterEventArgs args) => { _keyboardHoverResponse.OnHoverEnter(); OnCollideWithPriorityLayer?.Invoke(true); }
                 );
 
             //subscribe to hover exit event
             _interactable.hoverExited.AddListener(
-                (HoverExitEventArgs args) => { _keyboardHoverResponse.OnHoverExit(); }
+                (HoverExitEventArgs args) => { _keyboardHoverResponse.OnHoverExit(); OnCollideWithPriorityLayer?.Invoke(false); }
                 );
         }
 

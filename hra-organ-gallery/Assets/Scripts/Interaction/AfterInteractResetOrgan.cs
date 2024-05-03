@@ -24,7 +24,7 @@ namespace HRAOrganGallery
             //get keyboard hover response
             _keyboardHoverResponse = GetComponentInChildren<IKeyboardHover>();
 
-            GetComponent<XRSimpleInteractable>().selectEntered.AddListener(
+            GetComponent<XRBaseInteractable>().selectEntered.AddListener(
                 (SelectEnterEventArgs args) =>
                 {
                     OnOrganResetClicked.Invoke();
@@ -33,20 +33,20 @@ namespace HRAOrganGallery
                 );
 
             //subscribe to hover enter event
-            GetComponent<XRSimpleInteractable>().hoverEntered.AddListener(
+            GetComponent<XRBaseInteractable>().hoverEntered.AddListener(
                 (HoverEnterEventArgs args) =>
                 {
                     _keyboardHoverResponse.OnHoverEnter();
-                    OnCollideWithPriorityLayer(true);
+                    OnCollideWithPriorityLayer?.Invoke(true);
                 }
                 );
 
             //subscribe to hover exit event
-            GetComponent<XRSimpleInteractable>().hoverExited.AddListener(
+            GetComponent<XRBaseInteractable>().hoverExited.AddListener(
                 (HoverExitEventArgs args) =>
                 {
                     _keyboardHoverResponse.OnHoverExit();
-                    OnCollideWithPriorityLayer(false);
+                    OnCollideWithPriorityLayer?.Invoke(false);
                 }
                 );
         }
