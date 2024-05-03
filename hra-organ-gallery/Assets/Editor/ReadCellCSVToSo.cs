@@ -17,9 +17,10 @@ namespace HRAOrganGallery
         private static int _readIterator = 1; //**decrease** to read in **more** rows from the cell position CSV file
         private static string savedAssetFolder = "Assets/Resources";
 
-        //comment out to avoid accidental trigger; uncomment for usage
+        /// <summary>
+        /// A static method that is called when the corresponding menu emtry is selected
+        /// </summary>
         [MenuItem("Utilities/IngestCellPositions")]
-
 
         public static void ReadCellCSV()
         {
@@ -42,9 +43,7 @@ namespace HRAOrganGallery
 
 
                         SOCellPositionList.Cell newCell = new SOCellPositionList.Cell();
-                        newCell.Init(new Vector3(float.Parse(x), float.Parse(y), float.Parse(z)), label);
-
-                        Debug.Log($"Got: position = {newCell._position}, label = {newCell._label}");
+                        newCell.Init(x, y, label, z);
 
                         list.cells.Add(newCell);
                     }
