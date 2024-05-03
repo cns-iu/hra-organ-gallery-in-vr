@@ -14,9 +14,10 @@ namespace HRAOrganGallery
     /// 
 
 
-    public class OrganCallButton : MonoBehaviour, IKeyboardButton<List<string>, List<string>>
+    public class OrganCallButton : MonoBehaviour, IKeyboardButton<List<string>, List<string>>, IPauseCollision
     {
         public static event Action<List<string>> OnClick;
+        public static event Action<bool> OnCollideWithPriorityLayer;
         [field: SerializeField] public List<string> Feature { get; set; }
 
         [field: SerializeField] public Material PressedMaterial { get; set; }
@@ -63,12 +64,12 @@ namespace HRAOrganGallery
 
             //subscribe to hover enter event
             _interactable.hoverEntered.AddListener(
-                (HoverEnterEventArgs args) => { _keyboardHoverResponse.OnHoverEnter(); }
+                (HoverEnterEventArgs args) => { _keyboardHoverResponse.OnHoverEnter(); OnCollideWithPriorityLayer?.Invoke(true); }
                 );
 
             //subscribe to hover exit event
             _interactable.hoverExited.AddListener(
-                (HoverExitEventArgs args) => { _keyboardHoverResponse.OnHoverExit(); }
+                (HoverExitEventArgs args) => { _keyboardHoverResponse.OnHoverExit(); OnCollideWithPriorityLayer?.Invoke(false); }
                 );
         }
 

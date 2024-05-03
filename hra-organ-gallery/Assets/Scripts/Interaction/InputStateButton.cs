@@ -42,7 +42,7 @@ namespace HRAOrganGallery
                 (HoverEnterEventArgs args) =>
                 {
                     _keyboardHoverResponse.OnHoverEnter();
-                    OnCollideWithPriorityLayer(true);
+                    OnCollideWithPriorityLayer?.Invoke(true);
                 }
                 );
 
@@ -51,7 +51,7 @@ namespace HRAOrganGallery
                 (HoverExitEventArgs args) =>
                 {
                     _keyboardHoverResponse.OnHoverExit();
-                    OnCollideWithPriorityLayer(false);
+                    OnCollideWithPriorityLayer?.Invoke(false);
                 }
                 );
 

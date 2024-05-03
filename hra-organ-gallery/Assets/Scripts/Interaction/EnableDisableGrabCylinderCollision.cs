@@ -20,12 +20,18 @@ namespace HRAOrganGallery
         {
             AfterInteractResetOrgan.OnCollideWithPriorityLayer += AdjustRaycastMask;
             InputStateButton.OnCollideWithPriorityLayer += AdjustRaycastMask;
+            OrganCallButton.OnCollideWithPriorityLayer += AdjustRaycastMask;
+            LaterialityCallButton.OnCollideWithPriorityLayer += AdjustRaycastMask;
+            SexCallButton.OnCollideWithPriorityLayer += AdjustRaycastMask;
         }
 
         private void OnDestroy()
         {
             AfterInteractResetOrgan.OnCollideWithPriorityLayer -= AdjustRaycastMask;
             InputStateButton.OnCollideWithPriorityLayer -= AdjustRaycastMask;
+            OrganCallButton.OnCollideWithPriorityLayer -= AdjustRaycastMask;
+            LaterialityCallButton.OnCollideWithPriorityLayer -= AdjustRaycastMask;
+            SexCallButton.OnCollideWithPriorityLayer -= AdjustRaycastMask;
         }
 
         private void AdjustRaycastMask(bool isCollidingWithPriorityLayer)
