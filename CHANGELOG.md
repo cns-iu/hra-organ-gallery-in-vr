@@ -1,5 +1,12 @@
 # Changelog for the HRA Organ Gallery
 
+## 0.10.0 - 2024-05-06
+
+### Added in 0.10.0
+
+* Added ray interactors instead of direct interactors for keyboard input and grab cylinder interactions
+* Added code to ingest 3D cell positions; cell visualization planned for upcoming release
+
 ## 0.9.2 - 2024-03-04
 
 ### Added in 0.9.2
