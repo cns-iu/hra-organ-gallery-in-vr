@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f616ddb91fc4942b605d614744a044, type: 3}
+  m_Name: phenotypes_melanoma_in_situ-nodes_frequency
+  m_EditorClassIdentifier: 
+  pairs:
+  - type: Unknown
+    frequency: 4178
+  - type: Macrophage
+    frequency: 1545
+  - type: Tumor
+    frequency: 1146
+  - type: keratinocytes
+    frequency: 918
+  - type: Dendritic cells
+    frequency: 801
+  - type: CD11B+ CD11C- cells
+    frequency: 751
+  - type: Tissue T
+    frequency: 602
+  - type: CD8 T
+    frequency: 492
+  - type: Endothelial
+    frequency: 386
+  - type: T reg
+    frequency: 218
+  - type: CD4 T
+    frequency: 218
+  - type: B cells
+    frequency: 21
+  - type: Langerhan cells
+    frequency: 13
