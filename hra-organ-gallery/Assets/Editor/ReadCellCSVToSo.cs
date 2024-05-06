@@ -13,8 +13,9 @@ namespace HRAOrganGallery
     public class ReadCellCSVToSo : MonoBehaviour
     {
         private static string sourceFolder = "Assets/Resources/SingleCellsNodesEdges";
-        private static string sourceFileName = "phenotypes_melanoma_in_situ-nodes";
+        private static string sourceFileName = "layer_29-nodes";
         private static int _readIterator = 1; //**decrease** to read in **more** rows from the cell position CSV file
+        private static int _numerOfColumns = 3;
         private static string savedAssetFolder = "Assets/Resources";
 
         /// <summary>
@@ -36,16 +37,32 @@ namespace HRAOrganGallery
                 {
                     if (iterator % _readIterator == 0)
                     {
-                        string x = line.Split(',')[0];
-                        string y = line.Split(',')[1];
-                        string z = line.Split(',')[2];
-                        string label = line.Split(',')[3];
+                        if (line.Split(',').Length == 4)
+                        {
+                            string x = line.Split(',')[0];
+                            string y = line.Split(',')[1];
+                            string z = line.Split(',')[2];
+                            string label = line.Split(',')[3];
 
 
-                        SOCellPositionList.Cell newCell = new SOCellPositionList.Cell();
-                        newCell.Init(x, y, label, z);
+                            SOCellPositionList.Cell newCell = new SOCellPositionList.Cell();
+                            newCell.Init(x, y, label, z);
 
-                        list.cells.Add(newCell);
+                            list.cells.Add(newCell);
+                        }
+                        else if (line.Split(',').Length == 3)
+                        {
+                            string x = line.Split(',')[0];
+                            string y = line.Split(',')[1];
+                            string label = line.Split(',')[2];
+
+
+                            SOCellPositionList.Cell newCell = new SOCellPositionList.Cell();
+                            newCell.Init(x, y, label);
+
+                            list.cells.Add(newCell);
+                        }
+
                     }
                 }
 
@@ -54,7 +71,7 @@ namespace HRAOrganGallery
             });
 
 
-            AssetDatabase.CreateAsset(list, $"Assets/Resources/{sourceFileName}.asset");
+            AssetDatabase.CreateAsset(list, $"{savedAssetFolder}/{sourceFileName}.asset");
             AssetDatabase.SaveAssets();
         }
     }

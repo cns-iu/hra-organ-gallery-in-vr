@@ -25,10 +25,10 @@ namespace HRAOrganGallery
             /// <summary>
             /// An constructor-style function to handle the setup of variables once the class has been instantiated
             /// </summary>
-            /// <param name="xArg"></param>
-            /// <param name="yArg"></param>
-            /// <param name="labelArg"></param>
-            /// <param name="zArg"></param>
+            /// <param name="xArg">x position</param>
+            /// <param name="yArg">y position</param>
+            /// <param name="labelArg">cell label</param>
+            /// <param name="zArg">z position (0 by default)</param>
             public void Init(string xArg, string yArg, string labelArg, string zArg = "0.0")
             {
                 //fill variables
