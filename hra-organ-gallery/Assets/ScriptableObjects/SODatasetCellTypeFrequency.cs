@@ -15,15 +15,15 @@ namespace HRAOrganGallery
             pairs = pairs.OrderBy(o => o.frequency).Reverse().ToList();
         }
 
-        [Serializable]
-        public class CellTypeFrequencyPair
-        {
-            public string type;
-            public int frequency;
-
-            public void Init(string cellType, int cellFrequency) => (type, frequency) = (cellType, cellFrequency);
-        }
+       
     }
 
+    [Serializable]
+    public class CellTypeFrequencyPair
+    {
+        public string type;
+        public int frequency;
 
+        public void Init(string cellType, int cellFrequency) => (type, frequency) = (cellType, cellFrequency);
+    }
 }

@@ -14,15 +14,16 @@ namespace HRAOrganGallery
     public class ReadCellCSVToSo : MonoBehaviour
     {
         //***Adjust this dependeing on the number of columns in the CSV you wish to ingest***
-        private static int _numerOfColumns = 4;
+        private static int _numerOfColumns = 3;
 
         //***filln the file name here***
-        private static string sourceFileName = "phenotypes_melanoma_in_situ-nodes";
+        private static string sourceFileName = "layer_29-nodes";
+
+        //***decrease** to read in **more** rows from the cell position CSV file***
+        private static int _readIterator = 1; 
 
         private static string sourceFolder = "Assets/Resources/SingleCellsNodesEdges";
         private static string frequencyPostfix = "_frequency";
-        private static int _readIterator = 1; //**decrease** to read in **more** rows from the cell position CSV file
-        
         private static bool _createDatasetCellTypeFrequency = true;
         private static string savedAssetFolder = "Assets/Resources";
 
@@ -116,7 +117,7 @@ namespace HRAOrganGallery
             //populate Scriptable Object from dict
             foreach (var kvp in frequencyDictionary)
             {
-                SODatasetCellTypeFrequency.CellTypeFrequencyPair pair = new SODatasetCellTypeFrequency.CellTypeFrequencyPair();
+                CellTypeFrequencyPair pair = new CellTypeFrequencyPair();
                 pair.Init(kvp.Key, kvp.Value);
 
                 frequencySO.pairs.Add(pair);

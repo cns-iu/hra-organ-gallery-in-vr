@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46e1ad7b21ccb6b408edc32002b13967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxNumberOfCells: 0
   _cellList: {fileID: 11400000, guid: 0a770db55da8f884089022d5f99ea29a, type: 2}
   _parent: {fileID: 1578665931}
   _preDot: {fileID: 1763571771044503377, guid: 5a37b1692e52e9944857e67e2efc6a84, type: 3}

@@ -13,10 +13,12 @@ namespace HRAOrganGallery
     {
 
         [Header("Cells and Data")]
+        [SerializeField] private int _maxNumberOfCells;
         [SerializeField] private SOCellPositionList _cellList; //SO with list of all cells
         [SerializeField] private Transform _parent; //parent  to hold all cells
         [SerializeField] private GameObject _preDot; //prefab for cells/dots
         [SerializeField] private SODatasetCellTypeFrequency _cellTypeFrequency;
+        
 
         [Header("Scaling")]
         [SerializeField] private float _maxDesiredWidth; //set this yourself
