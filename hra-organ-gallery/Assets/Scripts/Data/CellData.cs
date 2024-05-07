@@ -12,7 +12,7 @@ namespace HRAOrganGallery
         [field: SerializeField]
         public Color Color { get; set; }
 
-        private string _cellType;
+        private string _type;
         private Color _color;
     }
 }

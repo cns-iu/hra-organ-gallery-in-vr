@@ -14,10 +14,10 @@ namespace HRAOrganGallery
     public class ReadCellCSVToSo : MonoBehaviour
     {
         //***Adjust this dependeing on the number of columns in the CSV you wish to ingest***
-        private static int _numerOfColumns = 3;
+        private static int _numerOfColumns = 4;
 
         //***filln the file name here***
-        private static string sourceFileName = "layer_29-nodes";
+        private static string sourceFileName = "phenotypes_melanoma_in_situ-nodes";
 
         //***decrease** to read in **more** rows from the cell position CSV file***
         private static int _readIterator = 1; 
@@ -54,7 +54,7 @@ namespace HRAOrganGallery
                             string label = line.Split(',')[3];
 
 
-                            SOCellPositionList.Cell newCell = new SOCellPositionList.Cell();
+                            Cell newCell = new Cell();
                             newCell.Init(x, y, label, z);
 
                             list.cells.Add(newCell);
@@ -66,7 +66,7 @@ namespace HRAOrganGallery
                             string label = line.Split(',')[2];
 
 
-                            SOCellPositionList.Cell newCell = new SOCellPositionList.Cell();
+                            Cell newCell = new Cell();
                             newCell.Init(x, y, label);
 
                             list.cells.Add(newCell);
@@ -101,13 +101,13 @@ namespace HRAOrganGallery
             //go through all cells and populate dict with kvps
             list.cells.ForEach(c =>
             {
-                if (frequencyDictionary.ContainsKey(c.label))
+                if (frequencyDictionary.ContainsKey(c.type))
                 {
-                    frequencyDictionary[c.label]++;
+                    frequencyDictionary[c.type]++;
                 }
                 else
                 {
-                    frequencyDictionary.Add(c.label, 1);
+                    frequencyDictionary.Add(c.type, 1);
                 }
             });
 
@@ -128,5 +128,64 @@ namespace HRAOrganGallery
 
             return frequencySO;
         }
+
+
+
+        private void PrepareCellNumbers()
+        {
+            //instantiate cells for n entries in _cellTypeFrequency.GetRatioedPairs()
+            //SODatasetCellTypeFrequency ratioedFrequency = _cellTypeFrequency.GetRatioedPairs(_maxNumberOfCells);
+            //ratioedFrequency.pairs.ForEach(pair =>
+            //{
+            //    Debug.Log($"ratioed frequency for {pair.type} is {pair.frequency}");
+            //});
+
+            //Dictionary<string, int> counter = new Dictionary<string, int>();
+
+            //foreach (var c in _fullCellList.cells)
+            //{
+            //    //add counter entry if needed, otherwise update counter value
+            //    if (!counter.ContainsKey(c.type)) counter.Add(c.type, 1);
+
+            //    //if contingent for this cell type is full, continue to next iteration
+            //    if (counter[c.type] == ratioedFrequency.pairs.Where(p => c.type == p.type).First().frequency) continue;
+
+            //    //copy cell over to ratioed list
+            //    Cell copyCell = new Cell();
+            //    copyCell.type = c.type;
+            //    copyCell.position = c.position;
+
+            //    _ratioedCellList.cells.Add(copyCell);
+
+            //    //increase counter
+            //    counter[c.type]++;
+            //}
+
+            ////foreach (var p in ratioedFrequency.pairs)
+            ////{
+
+
+
+            //    else counter[p.type]++;
+
+            //    //instantiate new cell and add to cell list to visualize
+            //    _fullCellList.cells.ForEach(
+            //        c =>
+            //        {
+            //            //if(c.label == )
+            //        }
+            //        );
+            //}
+
+            //ratioedFrequency.pairs.ForEach(
+            //    p =>
+            //    {
+
+            //    });
+        }
     }
+
+
+
 }
+

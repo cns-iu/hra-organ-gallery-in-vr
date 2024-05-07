@@ -1,8 +1,11 @@
 using Assets.Scripts.Shared;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using UnityEngine;
+using static Assets.Scripts.Interaction.CCFAPISPARQLQuery;
 
 namespace HRAOrganGallery
 {
@@ -13,12 +16,13 @@ namespace HRAOrganGallery
     {
 
         [Header("Cells and Data")]
-        [SerializeField] private int _maxNumberOfCells;
-        [SerializeField] private SOCellPositionList _cellList; //SO with list of all cells
+        [SerializeField] private float _maxNumberOfCells = 4000;
+        [SerializeField] private SOCellPositionList _fullCellList; //SO with list of all cells
+        [SerializeField] private SOCellPositionList _ratioedCellList;
         [SerializeField] private Transform _parent; //parent  to hold all cells
         [SerializeField] private GameObject _preDot; //prefab for cells/dots
         [SerializeField] private SODatasetCellTypeFrequency _cellTypeFrequency;
-        
+
 
         [Header("Scaling")]
         [SerializeField] private float _maxDesiredWidth; //set this yourself
@@ -31,6 +35,7 @@ namespace HRAOrganGallery
 
         private void Awake()
         {
+
             PrepareScaling();
 
             BuildVisualization();
@@ -39,7 +44,7 @@ namespace HRAOrganGallery
         private void PrepareScaling()
         {
             //get max 2D bounding 
-            _maxVectorOriginal = GetMaxDimensions(_cellList);
+            _maxVectorOriginal = GetMaxDimensions(_fullCellList);
 
             //set width, height, depth
             _scalingFactor = _maxDesiredWidth / _maxVectorOriginal.x;
@@ -48,13 +53,14 @@ namespace HRAOrganGallery
         private void BuildVisualization()
         {
             //instantiale cells for each entry in the cell list
-            _cellList.cells.ForEach(
+            //_fullCellList.cells.ForEach(
+            _fullCellList.cells.ForEach(
                 cell =>
                     {
                         GameObject cellObj = MakeCell(cell);
 
                         //get label, get rank in frequency
-                        int rank = _cellTypeFrequency.pairs.FindIndex(p => p.type == cell.label);
+                        int rank = _cellTypeFrequency.pairs.FindIndex(p => p.type == cell.type);
 
                         //create new var to hold assigned color
                         Color color;
@@ -111,7 +117,7 @@ namespace HRAOrganGallery
             return result;
         }
 
-        private GameObject MakeCell(SOCellPositionList.Cell cell)
+        private GameObject MakeCell(Cell cell)
         {
             GameObject cellObj = Instantiate(_preDot, cell.position, Quaternion.identity);
 
@@ -119,7 +125,7 @@ namespace HRAOrganGallery
             cellObj.AddComponent<CellData>();
 
             //set label from list entry
-            cellObj.GetComponent<CellData>().CellType = cell.label;
+            cellObj.GetComponent<CellData>().CellType = cell.type;
 
             //set color from color scheme
             cellObj.GetComponent<CellData>().Color = Color.yellow;
@@ -127,10 +133,5 @@ namespace HRAOrganGallery
             //cellObj.GetComponent<Renderer>().material.color = AssignColor(cell.cellLabel);
             return cellObj;
         }
-
-        //private Color AssignColor(string type)
-        //{
-        //    return _cellColorMapping.listOfTypeColorCountTriple.Where(t => t.cellType == type).ToList()[0].cellColor;
-        //}
     }
 }
