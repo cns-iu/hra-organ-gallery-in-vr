@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Tests/Dev Room HRA Powers of Ten.unity
-    guid: 615825002f4385e43ba6d17c29fc74b1
-  - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: 4c5bbf13e18d02640945f1726a681f72
+  - enabled: 1
+    path: Assets/Scenes/Tests/Dev Room HRA Powers of Ten.unity
+    guid: 615825002f4385e43ba6d17c29fc74b1
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 702e3f4a17ff9e7428a077b9934d8bb2,
       type: 2}

@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: ThemeSettings_ModernMenuUI
   m_EditorClassIdentifier: 
   custom1:
-    graphic1: {r: 0.1254902, g: 0.11764706, b: 0.23921569, a: 1}
+    graphic1: {r: 0.9019608, g: 0.91764706, b: 0.9411765, a: 1}
     text1:
       serializedVersion: 2
       rgba: 4293978854
   custom2:
-    graphic2: {r: 0, g: 0.6677432, b: 1, a: 1}
+    graphic2: {r: 0.9019608, g: 0.91764706, b: 0.9411765, a: 1}
     text2:
       serializedVersion: 2
-      rgba: 4294966499
+      rgba: 4293978854
   custom3:
-    graphic3: {r: 0.26606238, g: 1, b: 0, a: 1}
+    graphic3: {r: 0.9019608, g: 0.91764706, b: 0.9411765, a: 1}
     text3:
       serializedVersion: 2
-      rgba: 4293066721
+      rgba: 4293978854
   currentColor: {r: 1, g: 0.6862745, b: 0, a: 1}
   textColor:
     serializedVersion: 2
