@@ -18,7 +18,7 @@ namespace HRAOrganGallery
 
         [Header("Data")]
         [SerializeField] private CellLegend _legend;
-        [SerializeField] private CellTypeToColorMapping _mapping;
+        [SerializeField] private CellTypeToColorMapping _mapping = new CellTypeToColorMapping();
 
         private void Start()
         {

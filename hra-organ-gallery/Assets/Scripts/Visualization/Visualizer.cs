@@ -123,6 +123,9 @@ namespace HRAOrganGallery
             //set color from color scheme
             cellObj.GetComponent<CellData>().Color = Color.yellow;
 
+            //add self increase
+            cellObj.AddComponent<OnConditionIncreaseSeIf>().Init(cell.type);
+
             //cellObj.GetComponent<Renderer>().material.color = AssignColor(cell.cellLabel);
             return cellObj;
         }
