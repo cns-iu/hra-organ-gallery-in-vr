@@ -283,7 +283,7 @@ MonoBehaviour:
   _adjustedParentPosition: {fileID: 453600589}
   _maxVectorOriginal: {x: 0, y: 0, z: 0}
   _scalingFactor: 1
-  _colorScheme: {fileID: 11400000, guid: 7a5e146782db66844942b51e381e7442, type: 2}
+  _colorScheme: {fileID: 11400000, guid: 4c58b3a7c61990649bf693368740cc81, type: 2}
 --- !u!4 &323796080
 Transform:
   m_ObjectHideFlags: 0
@@ -315,7 +315,7 @@ MonoBehaviour:
     pairs: []
   _visualizer: {fileID: 0}
   _cellTypeFrequency: {fileID: 11400000, guid: 1472e5c5e31e4844bb94e3ac89b695bf, type: 2}
-  _colorValues: {fileID: 11400000, guid: 7a5e146782db66844942b51e381e7442, type: 2}
+  _colorValues: {fileID: 11400000, guid: 4c58b3a7c61990649bf693368740cc81, type: 2}
 --- !u!114 &323796082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,17 +544,17 @@ PrefabInstance:
     - target: {fileID: 2981618978019225546, guid: 0332740c5e0776d4a9d5b552b469daf7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.079
       objectReference: {fileID: 0}
     - target: {fileID: 2981618978019225546, guid: 0332740c5e0776d4a9d5b552b469daf7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.521
       objectReference: {fileID: 0}
     - target: {fileID: 2981618978019225546, guid: 0332740c5e0776d4a9d5b552b469daf7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.055
       objectReference: {fileID: 0}
     - target: {fileID: 2981618978019225546, guid: 0332740c5e0776d4a9d5b552b469daf7,
         type: 3}
@@ -1678,7 +1678,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.1254902, g: 0.11764706, b: 0, a: 1}
+  m_BackGroundColor: {r: 0.12156863, g: 0.11764706, b: 0.15294118, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
