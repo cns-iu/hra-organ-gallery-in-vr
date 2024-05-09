@@ -16,11 +16,12 @@ namespace HRAOrganGallery
     {
 
         [Header("Cells and Data")]
+        public SODatasetCellTypeFrequency cellTypeFrequency;
         [SerializeField] private float _maxNumberOfCells = 4000;
         [SerializeField] private SOCellPositionList _fullCellList; //SO with list of all cells
         [SerializeField] private Transform _parent; //parent  to hold all cells
         [SerializeField] private GameObject _preDot; //prefab for cells/dots
-        [SerializeField] private SODatasetCellTypeFrequency _cellTypeFrequency;
+        
 
         [Header("Scaling")]
         [SerializeField] private float _maxDesiredWidth; //set this yourself
@@ -56,7 +57,7 @@ namespace HRAOrganGallery
                         GameObject cellObj = MakeCell(cell);
 
                         //get label, get rank in frequency
-                        int rank = _cellTypeFrequency.pairs.FindIndex(p => p.type == cell.type);
+                        int rank = cellTypeFrequency.pairs.FindIndex(p => p.type == cell.type);
 
                         //create new var to hold assigned color
                         Color color;

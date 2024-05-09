@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -12,18 +13,20 @@ namespace HRAOrganGallery
         [SerializeField] private GameObject _pre_LegendEntry;
         [SerializeField] private Transform _verticalLayout;
         private Transform _credits;
-        private TMP_Text _TmpText;
-        private Image _legendKeySpriteRenderer;
 
 
         [Header("Data")]
         [SerializeField] private CellLegend _legend;
+        [SerializeField] private SODatasetCellTypeFrequency _frequency;
         [SerializeField] private CellTypeToColorMapping _mapping = new CellTypeToColorMapping();
 
         private void Start()
         {
             //get credits
             _credits = _verticalLayout.GetChild(0);
+
+            //get frequency
+            _frequency = GetComponent<Visualizer>().cellTypeFrequency;
 
             //get kegend
             _legend = GetComponent<CellLegend>();
@@ -42,7 +45,9 @@ namespace HRAOrganGallery
         private void CreateKeyAndText(string cellType, Color color)
         {
             GameObject entry = Instantiate(_pre_LegendEntry, _verticalLayout);
-            entry.GetComponentInChildren<TMP_Text>().text = cellType;
+            entry.GetComponentInChildren<TMP_Text>().text = cellType 
+                + $" ({_frequency.pairs.Where(p => p.type == cellType).First().frequency.ToString("#,#")})"
+                ;
             entry.GetComponentInChildren<SpriteRenderer>().color = color;
         }
 
