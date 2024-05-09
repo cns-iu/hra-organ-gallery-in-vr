@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3621804595337263225
+--- !u!1 &4022450416272420641
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,32 +8,31 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2708623837541067835}
+  - component: {fileID: 2307908200763243363}
   m_Layer: 0
-  m_Name: pre_ButtonFloorLabel
+  m_Name: pre_Header
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!4 &2708623837541067835
+--- !u!4 &2307908200763243363
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3621804595337263225}
+  m_GameObject: {fileID: 4022450416272420641}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.70710677, y: 0.000000045762466, z: -0.0000000061722596,
-    w: 0.70710677}
-  m_LocalPosition: {x: -0.00021, y: 0.00114, z: -0.01149}
-  m_LocalScale: {x: 0.0059828903, y: 0.0019283429, z: 0.0001532795}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.00475, y: 0.00114, z: -0.01372}
+  m_LocalScale: {x: 0.0059828903, y: 0.0019283426, z: 0.00015327947}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5578350265495336208}
+  - {fileID: 5259053462614729288}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!1 &7690521427986794960
+--- !u!1 &8010664855903182472
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,9 +40,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5578350265495336208}
-  - component: {fileID: 3401622725110803095}
-  - component: {fileID: 5975479036677441614}
+  - component: {fileID: 5259053462614729288}
+  - component: {fileID: 3072964132620631503}
+  - component: {fileID: 6304067262501199638}
   m_Layer: 0
   m_Name: Locked
   m_TagString: Untagged
@@ -51,40 +50,40 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!224 &5578350265495336208
+--- !u!224 &5259053462614729288
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7690521427986794960}
+  m_GameObject: {fileID: 8010664855903182472}
   m_LocalRotation: {x: -0.000000010536712, y: 1, z: -0.00000005960463, w: 0.000000010536708}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.8}
   m_LocalScale: {x: 0.0074078776, y: 0.02298373, z: 0.28914854}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2708623837541067835}
+  m_Father: {fileID: 2307908200763243363}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.167, y: 0}
+  m_AnchoredPosition: {x: -0.125, y: 0.04}
   m_SizeDelta: {x: 132.7141, y: 43.5001}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &3401622725110803095
+--- !u!222 &3072964132620631503
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7690521427986794960}
+  m_GameObject: {fileID: 8010664855903182472}
   m_CullTransparentMesh: 1
---- !u!114 &5975479036677441614
+--- !u!114 &6304067262501199638
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7690521427986794960}
+  m_GameObject: {fileID: 8010664855903182472}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -98,7 +97,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10<sup>1</sup>
+  m_text: Level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea45cf26a972c7540bb260cb9ef0b2e5, type: 2}
   m_sharedMaterial: {fileID: -7169325082349725780, guid: ea45cf26a972c7540bb260cb9ef0b2e5,
@@ -126,8 +125,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -162,7 +161,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0.27846527, w: 0}
+  m_margin: {x: 0, y: 0, z: -88.34768, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
