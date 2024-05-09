@@ -18,11 +18,9 @@ namespace HRAOrganGallery
         [Header("Cells and Data")]
         [SerializeField] private float _maxNumberOfCells = 4000;
         [SerializeField] private SOCellPositionList _fullCellList; //SO with list of all cells
-        [SerializeField] private SOCellPositionList _ratioedCellList;
         [SerializeField] private Transform _parent; //parent  to hold all cells
         [SerializeField] private GameObject _preDot; //prefab for cells/dots
         [SerializeField] private SODatasetCellTypeFrequency _cellTypeFrequency;
-
 
         [Header("Scaling")]
         [SerializeField] private float _maxDesiredWidth; //set this yourself
@@ -35,7 +33,6 @@ namespace HRAOrganGallery
 
         private void Awake()
         {
-
             PrepareScaling();
 
             BuildVisualization();
@@ -53,7 +50,6 @@ namespace HRAOrganGallery
         private void BuildVisualization()
         {
             //instantiale cells for each entry in the cell list
-            //_fullCellList.cells.ForEach(
             _fullCellList.cells.ForEach(
                 cell =>
                     {
@@ -83,9 +79,6 @@ namespace HRAOrganGallery
 
                         //and parent it to the parent transform, then move the parent
                         cellObj.transform.parent = _parent;
-
-                        //add LookAtcomponent
-                        cellObj.AddComponent<LookAtUser>();
                     }
                 );
 
