@@ -76,7 +76,7 @@ namespace HRAOrganGallery
                         }
 
                         //assign color
-                        cellObj.GetComponent<Renderer>().material.color = color;
+                        cellObj.GetComponent<SpriteRenderer>().color = color;
 
                         //scale position
                         cellObj.transform.position = ScalePosition(cellObj.transform.position);
