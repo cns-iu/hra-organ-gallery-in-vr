@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 4451382116735969201}
   - component: {fileID: 3802016770278335180}
   m_Layer: 5
-  m_Name: VerticalLayout
+  m_Name: pre_VerticalLayout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,6 +282,11 @@ PrefabInstance:
     - target: {fileID: 5206668379868315107, guid: 817319833dd713d45af5c2121e9649c7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5388246411556146967, guid: 817319833dd713d45af5c2121e9649c7,
+        type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5389521700824258581, guid: 817319833dd713d45af5c2121e9649c7,

@@ -1,5 +1,14 @@
 # Changelog for the HRA Organ Gallery
 
+## 0.11.0 - 2024-05-09
+
+### Added in 0.11.0
+
+* Added new scene for showing skin 3D data: 
+  * Source: Human melanoma in-situ with 3D confocal imaging, doi: [10.1101/2023.11.10.566670](https://doi.org/10.1101/2023.11.10.566670), courtesy of: Clarence Yapp, Harvard Medical School
+* Shown are ~11,000 cells of 13 cell types in 3D. They can be grabbed, moved, rotated, and scaled with dual hand input
+* Added functionality to second elevator button to access scene
+
 ## 0.10.0 - 2024-05-06
 
 ### Added in 0.10.0
