@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f616ddb91fc4942b605d614744a044, type: 3}
+  m_Name: layer_29-nodes_frequency
+  m_EditorClassIdentifier: 
+  pairs:
+  - type: Immature Goblet
+    frequency: 21641
+  - type: TA2
+    frequency: 6628
+  - type: Cancer Associated Fibroblasts
+    frequency: 5745
+  - type: CD8+
+    frequency: 4799
+  - type: Stem
+    frequency: 4579
+  - type: Myofibroblasts/Smooth Muscle 1
+    frequency: 4558
+  - type: CyclingTA
+    frequency: 4382
+  - type: Endothelial
+    frequency: 3211
+  - type: Pericytes
+    frequency: 2975
+  - type: Immature Enterocytes
+    frequency: 2603
+  - type: Unknown_lowcount
+    frequency: 2542
+  - type: Macrophages
+    frequency: 2369
+  - type: TA1
+    frequency: 2322
+  - type: Mast
+    frequency: 1994
+  - type: CD4+
+    frequency: 1738
+  - type: Best4+ Enterocytes
+    frequency: 1612
+  - type: Goblet
+    frequency: 1345
+  - type: Enterocyte Progenitors
+    frequency: 1309
+  - type: Myofibroblasts/Smooth Muscle 3
+    frequency: 1249
+  - type: Plasma
+    frequency: 1193
+  - type: Glia
+    frequency: 965
+  - type: Naive B
+    frequency: 919
+  - type: Crypt Fibroblasts 4
+    frequency: 889
+  - type: GC
+    frequency: 744
+  - type: Enterocytes
+    frequency: 619
+  - type: Crypt Fibroblasts 3
+    frequency: 601
+  - type: Tuft
+    frequency: 461
+  - type: Adipocytes
+    frequency: 448
+  - type: Crypt Fibroblasts 1
+    frequency: 408
+  - type: Villus Fibroblasts WNT5B+
+    frequency: 364
+  - type: Memory B
+    frequency: 253
+  - type: Naive T
+    frequency: 245
+  - type: Enteroendocrine
+    frequency: 239
+  - type: Myofibroblasts/Smooth Muscle 2
+    frequency: 210
+  - type: Lymphatic endothelial cells
+    frequency: 103
+  - type: Crypt Fibroblasts 2
+    frequency: 64
+  - type: Neurons
+    frequency: 12
+  - type: DC
+    frequency: 11
+  - type: Tregs
+    frequency: 2
