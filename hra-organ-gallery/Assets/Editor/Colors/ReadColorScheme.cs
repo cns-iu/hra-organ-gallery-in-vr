@@ -9,7 +9,7 @@ using System.Linq;
 public class ReadColorScheme : MonoBehaviour
 {
     //enter the file name here
-    private static string fileName = "material_500";
+    private static string fileName = "hra_colors_ushma";
 
     private static string colorTextFilePath = "Assets/Resources/ColorSchemes/";
     private static string extension = ".txt";

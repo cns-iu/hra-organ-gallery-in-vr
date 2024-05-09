@@ -1,5 +1,12 @@
 # Changelog for the HRA Organ Gallery
 
+## 0.11.1 - 2024-05-09
+
+### Added in 0.11.1
+
+* Adjusted elevator labels
+* Applied new color scheme to cells
+
 ## 0.11.0 - 2024-05-09
 
 ### Added in 0.11.0
