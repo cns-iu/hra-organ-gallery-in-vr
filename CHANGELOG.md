@@ -1,8 +1,8 @@
 # Changelog for the HRA Organ Gallery
 
-## 0.11.3 - 2024XXXXX
+## 0.11.2 - 2024XXXXX
 
-### Added in 0.11.3
+### Added in 0.11.2
 
 * Adjusted elevator labels
 * Adjusted sizing for endothelial cells
