@@ -713,10 +713,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8872764659076132742}
     m_Modifications:
+    - target: {fileID: 681805788580658854, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 1653138016570065912, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
         type: 3}
       propertyPath: m_text
-      value: Under construction
+      value: Small FTUs
       objectReference: {fileID: 0}
     - target: {fileID: 7028709194494896013, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
         type: 3}
@@ -871,10 +876,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8872764659076132742}
     m_Modifications:
+    - target: {fileID: 681805788580658854, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.36
+      objectReference: {fileID: 0}
     - target: {fileID: 1653138016570065912, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
         type: 3}
       propertyPath: m_text
-      value: Human melanoma
+      value: ...
       objectReference: {fileID: 0}
     - target: {fileID: 7028709194494896013, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
         type: 3}
@@ -950,10 +960,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8872764659076132742}
     m_Modifications:
+    - target: {fileID: 681805788580658854, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.36
+      objectReference: {fileID: 0}
     - target: {fileID: 1653138016570065912, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
         type: 3}
       propertyPath: m_text
-      value: Under construction
+      value: ...
       objectReference: {fileID: 0}
     - target: {fileID: 7028709194494896013, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
         type: 3}
@@ -1029,10 +1044,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8872764659076132742}
     m_Modifications:
+    - target: {fileID: 681805788580658854, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.36
+      objectReference: {fileID: 0}
     - target: {fileID: 1653138016570065912, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
         type: 3}
       propertyPath: m_text
-      value: Under construction
+      value: Proteins
       objectReference: {fileID: 0}
     - target: {fileID: 7028709194494896013, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
         type: 3}
@@ -1363,10 +1383,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8872764659076132742}
     m_Modifications:
+    - target: {fileID: 681805788580658854, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 1653138016570065912, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
         type: 3}
       propertyPath: m_text
-      value: Under construction
+      value: Cells
       objectReference: {fileID: 0}
     - target: {fileID: 7028709194494896013, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
         type: 3}
@@ -1631,7 +1656,7 @@ PrefabInstance:
     - target: {fileID: 1653138016570065912, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
         type: 3}
       propertyPath: m_text
-      value: Whole body
+      value: Whole Body
       objectReference: {fileID: 0}
     - target: {fileID: 7028709194494896013, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
         type: 3}
@@ -2059,10 +2084,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8872764659076132742}
     m_Modifications:
+    - target: {fileID: 681805788580658854, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.34
+      objectReference: {fileID: 0}
     - target: {fileID: 1653138016570065912, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
         type: 3}
       propertyPath: m_text
-      value: Under construction
+      value: Organ
       objectReference: {fileID: 0}
     - target: {fileID: 7028709194494896013, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
         type: 3}
@@ -2655,10 +2685,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8872764659076132742}
     m_Modifications:
+    - target: {fileID: 681805788580658854, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.24
+      objectReference: {fileID: 0}
     - target: {fileID: 1653138016570065912, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
         type: 3}
       propertyPath: m_text
-      value: Under construction
+      value: Large FTUs
       objectReference: {fileID: 0}
     - target: {fileID: 7028709194494896013, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
         type: 3}
@@ -2734,10 +2769,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8872764659076132742}
     m_Modifications:
+    - target: {fileID: 681805788580658854, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 1653138016570065912, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
         type: 3}
       propertyPath: m_text
-      value: Under construction
+      value: Small Organ
       objectReference: {fileID: 0}
     - target: {fileID: 7028709194494896013, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
         type: 3}
@@ -2992,7 +3032,7 @@ PrefabInstance:
     - target: {fileID: 1653138016570065912, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
         type: 3}
       propertyPath: m_text
-      value: Human melanoma
+      value: "Cell groups\n~760 \u03BCm"
       objectReference: {fileID: 0}
     - target: {fileID: 7028709194494896013, guid: cd57dfbbe77d4f9449a4e2be63aff6fd,
         type: 3}
