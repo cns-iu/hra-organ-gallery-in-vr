@@ -1,5 +1,14 @@
 # Changelog for the HRA Organ Gallery
 
+## 0.11.3 - 2024XXXXX
+
+### Added in 0.11.3
+
+* Adjusted elevator labels
+* Adjusted sizing for endothelial cells
+* Adjust colors for endothelial cells
+* Changes to material on mammary glands
+
 ## 0.11.1 - 2024-05-09
 
 ### Added in 0.11.1
