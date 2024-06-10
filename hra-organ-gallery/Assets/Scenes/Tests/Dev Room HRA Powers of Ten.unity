@@ -3119,8 +3119,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2340305493712730342, guid: 790962dd6cbbf43b5bf78735dd41f3c6,
         type: 3}
+      propertyPath: m_text
+      value: '<b>Human melanoma in-situ with 3D confocal imaging</b>
+
+        <b>Approx.
+        size</b>: 763 x 385 x 51 microns
+
+        <b>Source</b>: 10.1101/2023.11.10.566670
+
+        <b>Courtesy
+        of<b>: Clarence Yapp, Harvard Medical School'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2340305493712730342, guid: 790962dd6cbbf43b5bf78735dd41f3c6,
+        type: 3}
       propertyPath: m_fontSize
-      value: 194.8
+      value: 162.3
       objectReference: {fileID: 0}
     - target: {fileID: 2340305493712730342, guid: 790962dd6cbbf43b5bf78735dd41f3c6,
         type: 3}
