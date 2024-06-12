@@ -24,26 +24,29 @@ namespace HRAOrganGallery
 
         private void HandleIPointerEnterHandler(string hoveredCellType)
         {
-            if (hoveredCellType.Contains(GetComponent<CellData>().CellType) && !GetComponent<CellData>().CellType.Contains("Endothelial"))
+            if (hoveredCellType.Contains(GetComponent<CellData>().CellType))
                 Increase();
         }
 
         private void HandleIPointerExitHandler(string unHoveredCellType)
         {
-            if (unHoveredCellType.Contains(GetComponent<CellData>().CellType) && !GetComponent<CellData>().CellType.Contains("Endothelial"))
+            if (unHoveredCellType.Contains(GetComponent<CellData>().CellType))
                 Decrease();
         }
 
         private void Start()
         {
             _defaultScale = transform.localScale;
-            if (GetComponent<CellData>().CellType.Contains( "Endothelial"))
-                Increase();
+            if (GetComponent<CellData>().CellType.Contains("Endothelial")) _defaultScale = transform.localScale * 2f; transform.localScale = _defaultScale;
         }
 
         public void Init(string type) => (_cellType) = (type);
 
-        private void Increase() { transform.localScale = _defaultScale * 3f; }
+        private void Increase()
+        {
+            if (!GetComponent<CellData>().CellType.Contains("Endothelial")) transform.localScale = _defaultScale * 3f;
+            else transform.localScale = _defaultScale * 1.5f;
+        }
 
         private void Decrease() { transform.localScale = _defaultScale; }
     }

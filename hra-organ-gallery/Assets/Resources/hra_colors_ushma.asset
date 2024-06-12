@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: hra_colors_ushma
   m_EditorClassIdentifier: 
   values:
-  - hexValue: '#FF0043'
-    color: {r: 1, g: 0, b: 0.2627451, a: 1}
   - hexValue: '#D8D7DB'
     color: {r: 0.84705883, g: 0.84313726, b: 0.85882354, a: 1}
+  - hexValue: '#BAD2E7'
+    color: {r: 0.7294118, g: 0.8235294, b: 0.90588236, a: 1}
   - hexValue: '#70A5A8'
     color: {r: 0.4392157, g: 0.64705884, b: 0.65882355, a: 1}
   - hexValue: '#CD8490'
@@ -29,8 +29,8 @@ MonoBehaviour:
     color: {r: 0.9137255, g: 0.89411765, b: 0.9529412, a: 1}
   - hexValue: '#D6B6D7'
     color: {r: 0.8392157, g: 0.7137255, b: 0.84313726, a: 1}
-  - hexValue: '#BAD2E7'
-    color: {r: 0.7294118, g: 0.8235294, b: 0.90588236, a: 1}
+  - hexValue: '#FF0043'
+    color: {r: 1, g: 0, b: 0.2627451, a: 1}
   - hexValue: '#8DC599'
     color: {r: 0.5529412, g: 0.77254903, b: 0.6, a: 1}
   - hexValue: '#F9CE8D'
