@@ -1,6 +1,13 @@
 # Changelog for the HRA Organ Gallery
 
-## 0.11.2 - 2024XXXXX
+## Known issues
+* You need an internet connection to use the application. 
+* Some framerate drops occur while organs are loaded (~5-10 seconds after application starts)
+* Rendering issues cause lack of transparency between organs and tissue blocks 
+* Jagged edges along text labels and background can occur
+* Wrongly registered tissue blocks appear to float in space or poke outside of the organ
+
+## 0.11.2 - 2024-05-14
 
 ### Added in 0.11.2
 
@@ -130,17 +137,6 @@
 * App now pulls organs and tissue blocks dynamically from [CCF API](https://ccf-api.hubmapconsortium.org)
 * Added basic extrusion system to lay out organs in 2D by body system and individually with input from controller
 * Basic dev UI display showing number of tissue blocks, matching cell type counts founds on GitHub, and tissue blocks with such cell type counts
-
-#### Known issues
-* You need an internet connection to use the application. 
-* Framerate drops occur when more than 3-4 organs are in the viewport at once
-* Extreme framerate drops occur while organs are loaded (~5-10 seconds after application starts)
-* Rendering issues cause lack of transparency between organs and tissue blocks 
-* Jagged edges along text labels and background
-* Wrongly registered tissue blocks appear to float in space when extruded
-* Light sources sometimes flicker in and out
-* When collapsing organs back into the body, there is a joystick value mismatch, causing the organs to partially come out again
-* The mammary glands are placed close to our outside of the boundaries of the teleportable floor when fully extruded 
 
 ## 0.5 - 2022-01-05
 
