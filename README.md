@@ -11,7 +11,7 @@ To download the most up to date GLB files for the organs of the HRA, please visi
 
 ## Become a test user
 
-If you would like to become a **test user**, please download the application at [https://www.meta.com/experiences/5696814507101529/](https://www.meta.com/experiences/5696814507101529/). Information for testers can be found [here](INFORMATION_FOR_TESTERS.MD).
+If you would like to become a **test user**, please download the application at [https://www.meta.com/experiences/5696814507101529/](https://www.meta.com/experiences/5696814507101529/). Information for testers can be found [here](INFORMATION_FOR_TESTERS.MD). A paper describing the concept of the application is available [here](https://doi.org/10.3389/fbinf.2023.1162723).
 
 For more information about the Common Coordinate Framework (CCF) used to map tissue blocks from 800+ of donors to single reference organs (as of HRA v2.1), see the Human Reference Atlas Portal at [https://humanatlas.io/](https://humanatlas.io/).
 
