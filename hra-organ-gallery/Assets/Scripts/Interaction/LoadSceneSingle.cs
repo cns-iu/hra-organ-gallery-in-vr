@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace HRAOrganGallery
 {
-    public class LoadSceneSingle : MonoBehaviour
+    public class LoadSceneSingle : SceneManagementUtils
     {
         private XRGrabInteractable _interactable;
         [SerializeField] private string _sceneToLoad;
@@ -16,9 +17,11 @@ namespace HRAOrganGallery
             GetComponent<XRGrabInteractable>().selectEntered.AddListener(
             (SelectEnterEventArgs args) =>
             {
-                SceneManager.LoadScene(_sceneToLoad, LoadSceneMode.Single);
+                StartCoroutine(LoadScene(_sceneToLoad));
             }
             );
         }
+
+      
     }
 }
