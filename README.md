@@ -4,20 +4,16 @@
 
 Source: [https://www.doi.org/10.3389/fbinf.2023.1162723](https://www.doi.org/10.3389/fbinf.2023.1162723)
 
-Welcome to this repo! The Human Reference Atlas (HRA) Organ Gallery ([https://humanatlas.io/vr-organ-gallery](https://humanatlas.io/vr-organ-gallery)) lets the user explore 55 human organs and 100s of tissue blocks (as of the HRA v1.4), presented in real-world size and 3D. The organ models were developed to map trillions of cells for the [Human BioMolecular Atlas Program (HuBMAP)](https://commonfund.nih.gov/hubmap). 
+Welcome to this repo! The Human Reference Atlas (HRA) Organ Gallery ([https://humanatlas.io/vr-organ-gallery](https://humanatlas.io/vr-organ-gallery)) lets the user explore 65 human organs and 800+ of tissue blocks (as of the HRA v2.1), presented in real-world size and 3D. The organ models were developed to map trillions of cells for the [Human BioMolecular Atlas Program (HuBMAP)](https://commonfund.nih.gov/hubmap), the [Cellular Senescence Network (SenNet)](https://sennetconsortium.org/), and similar efforts. 
 
 ## Organs
-To download the most up to date GLB files for the organs of the HRA, please use this [GitHub repository](https://github.com/cns-iu/hra-glb-download). 
+To download the most up to date GLB files for the organs of the HRA, please visit the [HRA 3D Reference Object Library](https://humanatlas.io/3d-reference-library).
 
 ## Become a test user
 
-If you would like to become a **test user**, please email Andreas Bueckle at [abueckle@iu.edu](mailto:abueckle@iu.edu). Information for testers can be found [here](INFORMATION_FOR_TESTERS.MD).
+If you would like to become a **test user**, please download the application at [https://www.meta.com/experiences/5696814507101529/](https://www.meta.com/experiences/5696814507101529/). Information for testers can be found [here](INFORMATION_FOR_TESTERS.MD). A paper describing the concept of the application is available [here](https://doi.org/10.3389/fbinf.2023.1162723).
 
-For more information about the Common Coordinate Framework (CCF) used to map tissue blocks from 100s of donors to single reference organs, see the Human Reference Atlas Portal at [https://humanatlas.io/](https://humanatlas.io/).
-
-## Video demo
-
-We present the HRA Organ Gallery v0.6.5 in this demo: [https://youtu.be/R5-5Kgumz9w](https://youtu.be/R5-5Kgumz9w)
+For more information about the Common Coordinate Framework (CCF) used to map tissue blocks from 800+ of donors to single reference organs (as of HRA v2.1), see the Human Reference Atlas Portal at [https://humanatlas.io/](https://humanatlas.io/).
 
 ## Changelog
 
@@ -25,10 +21,7 @@ See the [Changelog](CHANGELOG.md) for the latest developments.
 
 ## Credits
 
-This software is developed by [Andreas Bueckle](https://www.andreas-bueckle.com) and the Red Pill Blue Pill team (including Alejandra Tapia Batres) at the [Cyberinfrastructure for Network Science Center at Indiana University](http://cns.iu.edu/). 
-
-The dragon model in the scene was provided by:
-"Low Poly Dragon" [(https://skfb.ly/6XtXN)](https://skfb.ly/6XtXN) by louieoliva is licensed under Creative Commons Attribution [(http://creativecommons.org/licenses/by/4.0/)](http://creativecommons.org/licenses/by/4.0/).
+This software is developed by [Andreas Bueckle](https://www.andreas-bueckle.com) and his team at the [Cyberinfrastructure for Network Science Center at Indiana University](http://cns.iu.edu/). 
 
 ## Data 
 
@@ -54,7 +47,7 @@ M. P. Snyder et al., "The human body at cellular resolution: the NIH Human Biomo
 
 ## Other software credits
 
-Cyberinfrastructure for Network Science Center. "Registration User Interface." [https://hubmapconsortium.github.io/ccf-ui/rui/](https://hubmapconsortium.github.io/ccf-ui/rui/) (accessed Jan 11, 2023).
+Cyberinfrastructure for Network Science Center. "Registration User Interface." [https://apps.humanatlas.io/rui](https://apps.humanatlas.io/rui) (accessed Jan 11, 2023).
 
-Cyberinfrastructure for Network Science Center. "Exploration User Interface." [https://portal.hubmapconsortium.org/ccf-eui](https://portal.hubmapconsortium.org/ccf-eui)  (accessed Jan 11, 2023).
+Cyberinfrastructure for Network Science Center. "Exploration User Interface." [https://apps.humanatlas.io/eui/](https://apps.humanatlas.io/eui)  (accessed Jan 11, 2023).
 
