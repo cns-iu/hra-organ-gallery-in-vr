@@ -121,7 +121,10 @@ namespace HRAOrganGallery.Assets.Scripts.Scene
                     node = NodeArray.nodes
                     .First(
                     //catches case when using low-LOD models
-                    n => n.scenegraph.Split("/")[n.scenegraph.Split("/").Length - 1].Replace(".glb", string.Empty).ToLower() == current.name.Replace("_0.2", "").ToLower()
+                    n =>
+                    {
+                        return n.scenegraph.Split("/")[n.scenegraph.Split("/").Length - 1].Replace(".glb", string.Empty).ToLower() == current.name.Replace("_lod_20", "").ToLower();
+                    }
                     );
 
                     current.AddComponent<OrganData>().Init(node);
