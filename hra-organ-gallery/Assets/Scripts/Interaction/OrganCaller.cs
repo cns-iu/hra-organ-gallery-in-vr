@@ -192,7 +192,7 @@ namespace HRAOrganGallery
             _highResOrganNodeArray = await HighResOrganLoader.Instance.ShareData(_requestedOrgan, _requestedSex.ToString().ToLower());
 
             //set flags
-            bool isOrgan, isSex;
+            bool isOrgan, isSex = false;
 
             foreach (var organ in SceneSetup.Instance.OrgansHighRes)
             {
@@ -205,6 +205,7 @@ namespace HRAOrganGallery
                     //fetch the right organ
                     if (isOrgan && isSex)
                     {
+
                         //enable the organ
                         organ.gameObject.SetActive(true);
 
@@ -236,11 +237,7 @@ namespace HRAOrganGallery
         {
             for (int i = 0; i < nodeArray.nodes.Length; i++)
             {
-                Debug.Log(nodeArray);
                 if (nodeArray.nodes[i].scenegraph != null) continue;
-                nodeArray.nodes[i].ccf_annotations.ToList().ForEach(
-                a => Debug.Log(a)
-                    );
                 if (!nodeArray.nodes[i].ccf_annotations.Contains(nodeArray.nodes[0].representation_of)) continue;
 
                 Node corresponding = new Node();
