@@ -49,7 +49,7 @@ namespace Assets.Scripts.Data
             }
             catch
             {
-                if (referenceOrgan.Contains("VHF"))
+                if (referenceOrgan.Contains("female"))
                 {
                     return "Female";
                 }

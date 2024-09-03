@@ -17,6 +17,10 @@ namespace HRAOrganGallery
         public string ScaleBarLabel { get { return _scaleBarLabel; } set { _scaleBarLabel = value; } }
         [SerializeField] private string _scaleBarLabel;
 
+        private GameObject scaleBarPrefab;
+        private GameObject scaleBar;
+        private Transform duplicateScaleBar;
+        private float _scaleBarScale;
         private TextMeshProUGUI duplicateScaleText;
 
         private Vector3 initialOrganScale;

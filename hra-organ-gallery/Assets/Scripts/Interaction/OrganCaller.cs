@@ -192,7 +192,7 @@ namespace HRAOrganGallery
             _highResOrganNodeArray = await HighResOrganLoader.Instance.ShareData(_requestedOrgan, _requestedSex.ToString().ToLower());
 
             //set flags
-            bool isOrgan, isSex;
+            bool isOrgan, isSex = false;
 
             foreach (var organ in SceneSetup.Instance.OrgansHighRes)
             {
@@ -205,6 +205,7 @@ namespace HRAOrganGallery
                     //fetch the right organ
                     if (isOrgan && isSex)
                     {
+
                         //enable the organ
                         organ.gameObject.SetActive(true);
 
