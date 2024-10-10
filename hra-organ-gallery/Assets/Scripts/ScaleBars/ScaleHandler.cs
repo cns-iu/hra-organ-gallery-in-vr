@@ -11,22 +11,30 @@ namespace HRAOrganGallery
     /// </summary>
     public class ScaleHandler : MonoBehaviour
     {
+        private Vector3 originalScale;
 
-        private void Update()
+        private void OnEnable()
         {
-            RescaleOnGrabCylinderScale();
+            BroadcastGrabCylinderScale.OnScaleChanged += RescaleOnGrabCylinderScale;
         }
 
-        private void RescaleOnGrabCylinderScale()
+        private void OnDestroy()
         {
-            Debug.Log(BroadcastGrabCylinderScale.Instance.Scale);
-            Vector3 adjustedScale = new Vector3(
-                transform.localScale.x * BroadcastGrabCylinderScale.Instance.Scale.x,
-                transform.localScale.y * BroadcastGrabCylinderScale.Instance.Scale.y,
-                transform.localScale.z * BroadcastGrabCylinderScale.Instance.Scale.z
+            BroadcastGrabCylinderScale.OnScaleChanged -= RescaleOnGrabCylinderScale;
+        }
+
+        private void Awake()
+        {
+            originalScale = transform.localScale;
+        }
+
+        private void RescaleOnGrabCylinderScale(float scalingFactor)
+        {
+            transform.localScale = new Vector3(
+                originalScale.x * scalingFactor,
+                originalScale.y * scalingFactor,
+                originalScale.z * scalingFactor
                 );
-            
-            transform.localScale = adjustedScale;
         }
     }
 

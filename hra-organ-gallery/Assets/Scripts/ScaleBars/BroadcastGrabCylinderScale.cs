@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,15 +11,10 @@ namespace HRAOrganGallery
     public class BroadcastGrabCylinderScale : MonoBehaviour
     {
         public static BroadcastGrabCylinderScale Instance;
-        public Vector3 Scale { get {
-                return new Vector3(
-                    transform.localScale.x / _originalSize.x,
-                    transform.localScale.y / _originalSize.y,
-                    transform.localScale.z / _originalSize.z
-                    );
-            } }
+        public static Action<float> OnScaleChanged;
 
-        private Vector3 _originalSize;
+        private Vector3 _originalScale;
+        private Vector3 _previousScale;
 
         private void Awake()
         {
@@ -31,7 +27,20 @@ namespace HRAOrganGallery
             DontDestroyOnLoad(gameObject);
 
             //get original scale
-            _originalSize = transform.localScale;
+            _originalScale = transform.localScale;
+            _previousScale = transform.localScale;
+        }
+
+        private void Update()
+        {
+            if (_previousScale != transform.localScale)
+            {
+                float scalingFactor = transform.localScale.x / _originalScale.x;
+                OnScaleChanged?.Invoke(scalingFactor);
+                Debug.Log(scalingFactor);
+                _previousScale = transform.localScale;
+            }
+
         }
     }
 }
