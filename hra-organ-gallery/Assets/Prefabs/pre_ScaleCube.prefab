@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4311017290496619667}
   - component: {fileID: 4301680400491904668}
   - component: {fileID: 3901520780393530106}
+  - component: {fileID: 7686813206268703516}
   m_Layer: 0
   m_Name: pre_ScaleCube
   m_TagString: Untagged
@@ -110,8 +111,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -156,7 +157,7 @@ MonoBehaviour:
   m_InteractionLayers:
     m_Bits: 4294967295
   m_DistanceCalculationMode: 0
-  m_SelectMode: 1
+  m_SelectMode: 0
   m_FocusMode: 1
   m_CustomReticle: {fileID: 0}
   m_AllowGazeInteraction: 0
@@ -301,7 +302,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 752ac8a2a855bd347b601f97d089d451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayTexts: []
+--- !u!114 &7686813206268703516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2917670514572399584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81340542b0d1164418914c80d8481314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6819900138872074063
 GameObject:
   m_ObjectHideFlags: 0

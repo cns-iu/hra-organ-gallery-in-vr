@@ -37,7 +37,6 @@ namespace HRAOrganGallery
             {
                 float scalingFactor = transform.localScale.x / _originalScale.x;
                 OnScaleChanged?.Invoke(scalingFactor);
-                Debug.Log(scalingFactor);
                 _previousScale = transform.localScale;
             }
 
