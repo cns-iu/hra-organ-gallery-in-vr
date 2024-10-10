@@ -39,7 +39,7 @@ namespace HRAOrganGallery
         [SerializeField] private Vector3 _grabberDefaultPosition;
         [SerializeField] private Quaternion _grabberDefaultRotation;
         [SerializeField] private Vector3 _grabberDefaultScale;
-        [SerializeField] private float _grabberResetTime = 1.5f;
+        [SerializeField] private float _grabberResetTime = 2f;
 
         [Header("Data")]
         [SerializeField] private NodeArray _highResOrganNodeArray;
@@ -94,7 +94,7 @@ namespace HRAOrganGallery
             AfterInteractResetOrgan.OnOrganResetClicked += () =>
             {
                 //SetGrabRingDefault(); 
-                StartCoroutine(SmoothResetGrabber());
+                //StartCoroutine(SmoothResetGrabber());
             };
 
             //get low res organs from SceneSetup
