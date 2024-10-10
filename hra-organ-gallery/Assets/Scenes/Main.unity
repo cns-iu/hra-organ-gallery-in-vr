@@ -1956,7 +1956,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1b4e45e8295a084ba3568b5c02dd9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _grabCylinderCollider: {fileID: 1090970546}
+  _colliders:
+  - {fileID: 1090970550}
+  - {fileID: 7772826692568851092}
   _isCollidingWithPriority: 0
 --- !u!114 &101284158
 MonoBehaviour:
@@ -5038,7 +5040,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1b4e45e8295a084ba3568b5c02dd9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _grabCylinderCollider: {fileID: 1090970546}
+  _colliders:
+  - {fileID: 1090970550}
+  - {fileID: 7772826692568851092}
   _isCollidingWithPriority: 0
 --- !u!1 &280468199
 GameObject:
@@ -22604,7 +22608,6 @@ GameObject:
   - component: {fileID: 1090970538}
   - component: {fileID: 1090970541}
   - component: {fileID: 1090970540}
-  - component: {fileID: 1090970546}
   - component: {fileID: 1090970545}
   - component: {fileID: 1090970547}
   - component: {fileID: 1090970544}
@@ -22889,27 +22892,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &1090970546
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090970537}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 1.1205367, y: 2.0000007, z: 1.148605}
-  m_Center: {x: -0.0029294104, y: 3.513201e-20, z: 0.006431165}
 --- !u!114 &1090970547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51255,6 +51237,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1662609717}
     m_Modifications:
+    - target: {fileID: 908763275268839596, guid: 1c49d587f3c004d7eac0a09009f417c6,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2460869124807912912, guid: 1c49d587f3c004d7eac0a09009f417c6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -51305,10 +51292,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2713147329729623589, guid: 1c49d587f3c004d7eac0a09009f417c6,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2917670514572399584, guid: 1c49d587f3c004d7eac0a09009f417c6,
         type: 3}
       propertyPath: m_Name
       value: pre_ScaleCube
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989844709964967284, guid: 1c49d587f3c004d7eac0a09009f417c6,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572872023598111356, guid: 1c49d587f3c004d7eac0a09009f417c6,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4301680400491904668, guid: 1c49d587f3c004d7eac0a09009f417c6,
         type: 3}
@@ -51320,6 +51322,16 @@ PrefabInstance:
       propertyPath: m_StartingMultipleGrabTransformers.Array.data[0]
       value: 
       objectReference: {fileID: 1090970542}
+    - target: {fileID: 6260337371449787351, guid: 1c49d587f3c004d7eac0a09009f417c6,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7928968684825441804, guid: 1c49d587f3c004d7eac0a09009f417c6,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -72692,6 +72704,12 @@ Transform:
 --- !u!4 &7772826692568851088 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2460869124807912912, guid: 1c49d587f3c004d7eac0a09009f417c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2638221018620440180}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &7772826692568851092 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 4311017290496619667, guid: 1c49d587f3c004d7eac0a09009f417c6,
     type: 3}
   m_PrefabInstance: {fileID: 2638221018620440180}
   m_PrefabAsset: {fileID: 0}
