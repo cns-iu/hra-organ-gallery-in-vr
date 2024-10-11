@@ -13,10 +13,10 @@ namespace HRAOrganGallery
     ]
     public class SOLevelIndex : ScriptableObject
     {
-        public int index;
+        public int power;
 
         public string label;
 
-        public string scale;
+        public string scaleSemantic;
     }
 }
