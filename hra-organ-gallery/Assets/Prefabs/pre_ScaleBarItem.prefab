@@ -248,6 +248,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2981618978019225546}
+  - component: {fileID: 3866499565089857739}
   m_Layer: 0
   m_Name: pre_ScaleBarItem
   m_TagString: Untagged
@@ -272,6 +273,18 @@ Transform:
   - {fileID: 8683960429271268083}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3866499565089857739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3990944226125526616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752ac8a2a855bd347b601f97d089d451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5379790008661944440
 GameObject:
   m_ObjectHideFlags: 0
