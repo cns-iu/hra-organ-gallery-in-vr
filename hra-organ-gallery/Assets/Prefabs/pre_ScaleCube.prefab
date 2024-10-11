@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4301680400491904668}
   - component: {fileID: 3901520780393530106}
   - component: {fileID: 7686813206268703516}
+  - component: {fileID: 755153359833074583}
   m_Layer: 2
   m_Name: pre_ScaleCube
   m_TagString: Untagged
@@ -314,6 +315,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81340542b0d1164418914c80d8481314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &755153359833074583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2917670514572399584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88d1a34c70c0f4d6cbdcb57839fb194f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6819900138872074063
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +472,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 921051207466263514, guid: 4d3f77a3418d0a64e9bac3a97888dd69,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7115454649026226758, guid: 4d3f77a3418d0a64e9bac3a97888dd69,
         type: 3}
       propertyPath: m_Pivot.x
@@ -592,6 +610,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 921051207466263514, guid: 4d3f77a3418d0a64e9bac3a97888dd69,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7115454649026226758, guid: 4d3f77a3418d0a64e9bac3a97888dd69,
         type: 3}
@@ -727,6 +750,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 921051207466263514, guid: 4d3f77a3418d0a64e9bac3a97888dd69,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7115454649026226758, guid: 4d3f77a3418d0a64e9bac3a97888dd69,
         type: 3}
       propertyPath: m_Pivot.x
@@ -860,6 +888,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 921051207466263514, guid: 4d3f77a3418d0a64e9bac3a97888dd69,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7115454649026226758, guid: 4d3f77a3418d0a64e9bac3a97888dd69,
         type: 3}
@@ -995,6 +1028,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 921051207466263514, guid: 4d3f77a3418d0a64e9bac3a97888dd69,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7115454649026226758, guid: 4d3f77a3418d0a64e9bac3a97888dd69,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1128,6 +1166,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 921051207466263514, guid: 4d3f77a3418d0a64e9bac3a97888dd69,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7115454649026226758, guid: 4d3f77a3418d0a64e9bac3a97888dd69,
         type: 3}
