@@ -5,7 +5,13 @@
 * Some framerate drops occur while organs are loaded (~5-10 seconds after application starts)
 * Rendering issues cause lack of transparency between organs and tissue blocks 
 * Jagged edges along text labels and background can occur
-* Wrongly registered tissue blocks appear to float in space or poke outside of the organ
+
+## 0.11.3 - 2024-10-10
+
+### Added in 0.11.3
+
+* Added a scale cube that resizes with the grab cylinder
+* The scale bar over the user's left wrist now also rescales with the grab cylinder
 
 ## 0.11.2 - 2024-05-14
 
