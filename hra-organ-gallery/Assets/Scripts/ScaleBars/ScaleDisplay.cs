@@ -11,7 +11,7 @@ namespace HRAOrganGallery
     {
         private List<TMP_Text> _texts = new List<TMP_Text>();
 
-        private void Awake()
+        private void Start()
         {
             _texts = GetComponentsInChildren<TMP_Text>().ToList();
 
@@ -28,7 +28,7 @@ namespace HRAOrganGallery
                     .levels
                     .Where(l => l.label == sceneName)
                     .First()
-                    .scale;
+                    .scaleSemantic;
 
             //set all texts
             _texts
