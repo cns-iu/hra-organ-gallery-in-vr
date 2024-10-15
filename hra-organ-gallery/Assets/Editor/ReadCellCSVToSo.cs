@@ -105,9 +105,9 @@ namespace HRAOrganGallery
                                 string label = line.Split(',')[3];
 
                                 Cell newCell = new Cell();
-                                newCell.Init (x, y, label, z);
+                                newCell.Init(x, y, label, z);
 
-                                list.cells.Add (newCell);
+                                list.cells.Add(newCell);
                             }
                             else if (line.Split(',').Length == 3)
                             {
@@ -116,9 +116,9 @@ namespace HRAOrganGallery
                                 string label = line.Split(',')[2];
 
                                 Cell newCell = new Cell();
-                                newCell.Init (x, y, label);
+                                newCell.Init(x, y, label);
 
-                                list.cells.Add (newCell);
+                                list.cells.Add(newCell);
                             }
                         }
                     }
@@ -130,7 +130,7 @@ namespace HRAOrganGallery
             if (_createDatasetCellTypeFrequency)
             {
                 AssetDatabase
-                    .CreateAsset(GetCellTypeFrequency(list),
+                    .CreateAsset(Utils.GetCellTypeFrequency(list),
                     $"{savedAssetFolder}/{sourceFileName}{frequencyPostfix}.asset");
                 AssetDatabase.SaveAssets();
             }
@@ -139,51 +139,6 @@ namespace HRAOrganGallery
                 .CreateAsset(list,
                 $"{savedAssetFolder}/{sourceFileName}.asset");
             AssetDatabase.SaveAssets();
-        }
-
-        /// <summary>
-        /// Get cell type frequency as a Scritpable Object
-        /// </summary>
-        /// <param name="list">a SOCellPositionList</param>
-        /// <returns>SODatasetCellTypeFrequency as SO</returns>
-        private static SODatasetCellTypeFrequency
-        GetCellTypeFrequency(SOCellPositionList list)
-        {
-            Dictionary<string, int> frequencyDictionary =
-                new Dictionary<string, int>();
-
-            //go through all cells and populate dict with kvps
-            list
-                .cells
-                .ForEach(c =>
-                {
-                    if (frequencyDictionary.ContainsKey(c.type))
-                    {
-                        frequencyDictionary[c.type]++;
-                    }
-                    else
-                    {
-                        frequencyDictionary.Add(c.type, 1);
-                    }
-                });
-
-            //create Scriptable Object
-            SODatasetCellTypeFrequency frequencySO =
-                ScriptableObject.CreateInstance<SODatasetCellTypeFrequency>();
-
-            //populate Scriptable Object from dict
-            foreach (var kvp in frequencyDictionary)
-            {
-                CellTypeFrequencyPair pair = new CellTypeFrequencyPair();
-                pair.Init(kvp.Key, kvp.Value);
-
-                frequencySO.pairs.Add (pair);
-            }
-
-            //sort list by cell frequency
-            frequencySO.SortByCellFrequency();
-
-            return frequencySO;
         }
     }
 }

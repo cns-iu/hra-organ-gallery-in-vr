@@ -186,5 +186,50 @@ namespace Assets.Scripts.Shared
             descriptionStyle.wordWrap = true;
             return descriptionStyle;
         }
+
+        /// <summary>
+        /// Get cell type frequency as a Scritpable Object
+        /// </summary>
+        /// <param name="list">a SOCellPositionList</param>
+        /// <returns>SODatasetCellTypeFrequency as SO</returns>
+        public static SODatasetCellTypeFrequency
+        GetCellTypeFrequency(SOCellPositionList list)
+        {
+            Dictionary<string, int> frequencyDictionary =
+                new Dictionary<string, int>();
+
+            //go through all cells and populate dict with kvps
+            list
+                .cells
+                .ForEach(c =>
+                {
+                    if (frequencyDictionary.ContainsKey(c.type))
+                    {
+                        frequencyDictionary[c.type]++;
+                    }
+                    else
+                    {
+                        frequencyDictionary.Add(c.type, 1);
+                    }
+                });
+
+            //create Scriptable Object
+            SODatasetCellTypeFrequency frequencySO =
+                ScriptableObject.CreateInstance<SODatasetCellTypeFrequency>();
+
+            //populate Scriptable Object from dict
+            foreach (var kvp in frequencyDictionary)
+            {
+                CellTypeFrequencyPair pair = new CellTypeFrequencyPair();
+                pair.Init(kvp.Key, kvp.Value);
+
+                frequencySO.pairs.Add(pair);
+            }
+
+            //sort list by cell frequency
+            frequencySO.SortByCellFrequency();
+
+            return frequencySO;
+        }
     }
 }
