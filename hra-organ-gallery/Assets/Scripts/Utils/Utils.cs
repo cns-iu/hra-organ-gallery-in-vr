@@ -125,7 +125,27 @@ namespace Assets.Scripts.Shared
             return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
         }
 
+        /// <summary>
+        /// A static function to mirror a game object
+        /// </summary>
+        /// <param name="go">Game object to mirror</param>
+        /// <returns>An updated position</returns>
+        public static Vector3 AdjustPosition(GameObject go)
+        {
+            Matrix4x4 reflected = Utils.ReflectX() * Matrix4x4.TRS(
+                go.transform.position,
+                go.transform.rotation,
+                go.transform.localScale
+                );
 
+            return reflected.GetPosition();
+        }
+
+        /// <summary>
+        /// A class to remove version prefixes from organ names
+        /// </summary>
+        /// <param name="name">A string for the reference organ name</param>
+        /// <returns></returns>
         public static string CleanReferenceOrganName(string name)
         {
             if (name.Contains("V1."))
@@ -136,6 +156,21 @@ namespace Assets.Scripts.Shared
             {
                 return name;
             }
+        }
+
+        /// <summary>
+        /// A static function to mirror a transform matrix
+        /// </summary>
+        /// <returns>an updated Matrix4x4</returns>
+        public static Matrix4x4 ReflectX()
+        {
+            var result = new Matrix4x4(
+                new Vector4(-1, 0, 0, 0),
+                new Vector4(0, 1, 0, 0),
+                new Vector4(0, 0, 1, 0),
+                new Vector4(0, 0, 0, 1)
+            );
+            return result;
         }
 
         public static Vector3 ComputeCentroid(List<GameObject> list)
