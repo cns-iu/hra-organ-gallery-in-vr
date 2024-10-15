@@ -57,7 +57,7 @@ namespace HRAOrganGallery
                         GameObject cellObj = MakeCell(cell);
 
                         //get label, get rank in frequency
-                        int rank = cellTypeFrequency.pairs.FindIndex(p => p.type == cell.type);
+                        int rank = cellTypeFrequency.pairs.FindIndex(p => p.type == cell.label);
 
                         //create new var to hold assigned color
                         Color color;
@@ -119,13 +119,13 @@ namespace HRAOrganGallery
             cellObj.AddComponent<CellData>();
 
             //set label from list entry
-            cellObj.GetComponent<CellData>().CellType = cell.type;
+            cellObj.GetComponent<CellData>().CellType = cell.label;
 
             //set color from color scheme
             cellObj.GetComponent<CellData>().Color = Color.yellow;
 
             //add self increase
-            cellObj.AddComponent<OnConditionIncreaseSeIf>().Init(cell.type);
+            cellObj.AddComponent<OnConditionIncreaseSeIf>().Init(cell.label);
 
             //cellObj.GetComponent<Renderer>().material.color = AssignColor(cell.cellLabel);
             return cellObj;

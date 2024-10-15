@@ -203,13 +203,13 @@ namespace Assets.Scripts.Shared
                 .cells
                 .ForEach(c =>
                 {
-                    if (frequencyDictionary.ContainsKey(c.type))
+                    if (frequencyDictionary.ContainsKey(c.label))
                     {
-                        frequencyDictionary[c.type]++;
+                        frequencyDictionary[c.label]++;
                     }
                     else
                     {
-                        frequencyDictionary.Add(c.type, 1);
+                        frequencyDictionary.Add(c.label, 1);
                     }
                 });
 

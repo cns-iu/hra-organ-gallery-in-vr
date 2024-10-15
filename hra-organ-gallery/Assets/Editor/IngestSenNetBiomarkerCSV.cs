@@ -93,10 +93,10 @@ namespace HRAOrganGallery
                     {
                         if (iterator % _readIterator == 0)
                         {
-                            string x = line.Split(',')[2];
+                            string x = line.Split(',')[1];
                             string y = "0";
-                            string z = line.Split(',')[3];
-                            string label = line.Split(',')[1];
+                            string z = line.Split(',')[2];
+                            string label = line.Split(',')[0];
 
                             Cell newCell = new Cell();
                             newCell.Init(x, y, label, z);

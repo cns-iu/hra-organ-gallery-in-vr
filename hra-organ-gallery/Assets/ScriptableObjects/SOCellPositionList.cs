@@ -20,7 +20,7 @@ using UnityEngine;
     public class Cell
     {
         public Vector3 position;
-        public string type;
+        public string label;
         private string x, y, z;
 
         /// <summary>
@@ -33,7 +33,7 @@ using UnityEngine;
         public void Init(string xArg, string yArg, string labelArg, string zArg = "0.0")
         {
             //fill variables
-            (x, y, type, z) = (xArg, yArg, labelArg, zArg);
+            (x, y, label, z) = (xArg, yArg, labelArg, zArg);
 
             //make position
             position = new Vector3(float.Parse(x), float.Parse(y), float.Parse(z));
