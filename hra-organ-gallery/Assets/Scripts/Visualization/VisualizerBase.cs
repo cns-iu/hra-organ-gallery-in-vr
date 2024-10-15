@@ -14,7 +14,10 @@ public abstract class VisualizerBase : MonoBehaviour
 
     [Header("Scaling")]
     [SerializeField]
-    protected float _maxDesiredWidth; //set this yourself
+    protected float _maxDesiredWidth = 1f; //set this yourself
+
+    [SerializeField]
+    protected float _scalingFactor = 1f; //set this yourself
 
     [SerializeField]
     protected Transform _adjustedParentPosition; //set this yourself

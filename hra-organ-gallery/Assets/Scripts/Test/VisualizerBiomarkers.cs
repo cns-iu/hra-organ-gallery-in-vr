@@ -12,7 +12,7 @@ namespace HRAOrganGallery
     /// <summary>
     /// A class to visualize cells in 3D with "biomarker trees" as bars
     /// </summary>
-    public class VisualizerBiomarkers : MonoBehaviour
+    public class VisualizerBiomarkers : Visualizer3D
     {
         [Header("3D Objects")]
         [SerializeField]
@@ -46,7 +46,7 @@ namespace HRAOrganGallery
         private void Awake()
         {
             CreateCells();
-            //CreateBars (cells);
+            CreateBars (cells);
         }
 
         private void CreateCells()

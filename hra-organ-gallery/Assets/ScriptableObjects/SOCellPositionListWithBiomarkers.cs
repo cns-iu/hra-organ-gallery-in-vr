@@ -3,25 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-    /// <summary>
-    /// A Scriptable Object to hold a list of Cells
-    /// </summary>
-    public class SOCellPositionList : ScriptableObject
+namespace HRAOrganGallery
+{
+    public class SOCellPositionListWithBiomarkers : ScriptableObject
     {
-        public List<Cell> cells = new List<Cell>();
-
-       
+        public List<CellWithBiomarkers> cells = new List<CellWithBiomarkers>();
     }
 
-    /// <summary>
-    /// A helper class defining a cell in 3D
-    /// </summary>
-    [Serializable]
-    public class Cell
+    public class CellWithBiomarkers : Cell
     {
-        public Vector3 position;
-        public string label;
-        protected string x, y, z;
+        //public Vector3 position;
+        //public string label;
+        //private string x, y, z;
+        public List<BiomarkerValuePair> biomarkers = new List<BiomarkerValuePair>();
 
         /// <summary>
         /// An constructor-style function to handle the setup of variables once the class has been instantiated
@@ -30,7 +24,7 @@ using UnityEngine;
         /// <param name="yArg">y position</param>
         /// <param name="labelArg">cell label</param>
         /// <param name="zArg">z position (0 by default)</param>
-        public void Init(string xArg, string yArg, string labelArg, string zArg = "0.0")
+        public void Init(string xArg, string yArg, string labelArg, List<BiomarkerValuePair> biomarkers, string zArg = "0.0")
         {
             //fill variables
             (x, y, label, z) = (xArg, yArg, labelArg, zArg);
@@ -40,3 +34,10 @@ using UnityEngine;
         }
     }
 
+    [Serializable]
+    public class BiomarkerValuePair
+    {
+        public string label;
+        public float value;
+    }
+}

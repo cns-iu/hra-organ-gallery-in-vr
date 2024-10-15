@@ -26,9 +26,6 @@ public class Visualizer3D : VisualizerBase
     [SerializeField]
     protected Vector3 _maxVectorOriginal;
 
-    [SerializeField]
-    protected float _scalingFactor;
-
     private void Awake()
     {
         PrepareScaling();
