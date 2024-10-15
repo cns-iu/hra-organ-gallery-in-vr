@@ -1,23 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using System.IO;
 using Assets.Scripts.Shared;
+using System.Linq;
 
 namespace HRAOrganGallery
 {
-    /// <summary>
-    /// A editor class to read in a CSV file with nodes (cells), saving them into a ScriptableObject of type SOCellPositionList
-    /// </summary>
-    public class ReadCellCSVToSo : EditorWindow
+    public class IngestSenNetBiomarkerCSV : EditorWindow
     {
         //Adjust this depending on the number of columns in the CSV you wish to ingest***
         private static int _numberOfColumns = 4;
 
         //fill in the file name here
-        private static string sourceFileName = "3d_cell_positions";
+        private static string sourceFileName = "CU034-U54-HRA-058-A_coords_scores";
 
         //decrease to read in **more** rows from the cell position CSV file
         private static int _readIterator = 1;
@@ -34,16 +31,16 @@ namespace HRAOrganGallery
 
         private string
             description =
-                "Read a CSV file with 3D cell positions and types to a Scriptable Object.";
+                "Ingest a list of cells with columns for different senescence biomarkers.";
 
         /// <summary>
         /// A static method that is called when the corresponding menu emtry is selected
         /// </summary>
-        [MenuItem("Tools/2. Visualize hra-pop Data/2. IngestCellPositions")]
+        [MenuItem("Tools/4. Visualize Biomarkers/1. Ingest SenNet Biomarker CSV")]
         public static void ShowWindow()
         {
             GetWindow
-            <ReadCellCSVToSo>("Ingest Cell Positions as Scriptable Object");
+            <IngestSenNetBiomarkerCSV>("Ingest Cell and Senescence Biomarkers as Scriptable Object");
         }
 
         private void OnGUI()
@@ -82,8 +79,7 @@ namespace HRAOrganGallery
         {
             List<string> allLines =
                 File
-                    .ReadAllLines($"{sourceFolder}/{sourceFileName}.csv")
-                    .ToList();
+                    .ReadAllLines($"{sourceFolder}/{sourceFileName}.csv").ToList();
             SOCellPositionList list =
                 ScriptableObject.CreateInstance<SOCellPositionList>();
 
@@ -93,33 +89,19 @@ namespace HRAOrganGallery
             allLines
                 .ForEach(line =>
                 {
-                    if (line.Split(',')[0] != "x")
+                    if (line.Split(',')[0] != "barcode")
                     {
                         if (iterator % _readIterator == 0)
                         {
-                            if (line.Split(',').Length == 4)
-                            {
-                                string x = line.Split(',')[0];
-                                string y = line.Split(',')[1];
-                                string z = line.Split(',')[2];
-                                string label = line.Split(',')[3];
+                            string x = line.Split(',')[2];
+                            string y = "0";
+                            string z = line.Split(',')[3];
+                            string label = line.Split(',')[1];
 
-                                Cell newCell = new Cell();
-                                newCell.Init (x, y, label, z);
+                            Cell newCell = new Cell();
+                            newCell.Init(x, y, label, z);
 
-                                list.cells.Add (newCell);
-                            }
-                            else if (line.Split(',').Length == 3)
-                            {
-                                string x = line.Split(',')[0];
-                                string y = line.Split(',')[1];
-                                string label = line.Split(',')[2];
-
-                                Cell newCell = new Cell();
-                                newCell.Init (x, y, label);
-
-                                list.cells.Add (newCell);
-                            }
+                            list.cells.Add(newCell);
                         }
                     }
 
@@ -177,7 +159,7 @@ namespace HRAOrganGallery
                 CellTypeFrequencyPair pair = new CellTypeFrequencyPair();
                 pair.Init(kvp.Key, kvp.Value);
 
-                frequencySO.pairs.Add (pair);
+                frequencySO.pairs.Add(pair);
             }
 
             //sort list by cell frequency
@@ -187,3 +169,4 @@ namespace HRAOrganGallery
         }
     }
 }
+

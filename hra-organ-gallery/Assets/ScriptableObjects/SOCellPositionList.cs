@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HRAOrganGallery
-{
     /// <summary>
     /// A Scriptable Object to hold a list of Cells
     /// </summary>
@@ -42,4 +40,3 @@ namespace HRAOrganGallery
         }
     }
 
-}

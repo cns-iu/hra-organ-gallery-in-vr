@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.github-glitchenzo.nugetforunity": {
+      "version": "4.1.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
     "com.pathightree.spacenavigator-driver": {
       "version": "https://github.com/PatHightree/SpaceNavigator.git",
       "depth": 0,

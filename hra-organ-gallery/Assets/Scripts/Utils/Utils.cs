@@ -7,6 +7,15 @@ using UnityEngine;
 
 namespace Assets.Scripts.Shared
 {
+    /// <summary>
+    /// An enum to capture cell type annotation tools
+    /// </summary>
+    public enum CellTypeAnnotationTool
+    {
+        Azimuth,
+        CellTypist,
+        PopV
+    }
     public static class Utils
     {
         /// <summary>
