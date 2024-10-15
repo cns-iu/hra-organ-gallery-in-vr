@@ -2544,16 +2544,18 @@ MonoBehaviour:
   _parent: {fileID: 0}
   _maxDesiredWidth: 1
   _scalingFactor: 1
-  _adjustedParentPosition: {fileID: 0}
-  _colorScheme: {fileID: 0}
+  _adjustedParentPosition: {fileID: 1545769823}
+  _colorScheme: {fileID: 11400000, guid: be10d3702eaa8a841920583d2bbc0d07, type: 2}
   _maxNumberOfCells: 4000
   _fullCellList: {fileID: 0}
-  _preDot: {fileID: 0}
+  _preDot: {fileID: 1763571771044503377, guid: f9a83dece806345cab66d4879d4cd997, type: 3}
   _maxVectorOriginal: {x: 0, y: 0, z: 0}
-  prefabDot: {fileID: 0}
-  prefabBar: {fileID: 0}
+  prefabDot: {fileID: 3430073639665117259, guid: f9a83dece806345cab66d4879d4cd997,
+    type: 3}
+  prefabBar: {fileID: 6640931608516057641, guid: 5b9aa5b4fc16d7e47a6dc24bdeae9620,
+    type: 3}
   radius: 0.1
-  list: {fileID: 11400000, guid: 42fd3007272a86e43a56fcb8aee12125, type: 2}
+  cellList: {fileID: 11400000, guid: 42fd3007272a86e43a56fcb8aee12125, type: 2}
   numberOfCells: 1
   numberOfBiomarkerSets: 1
 --- !u!1 &1355991420
@@ -2661,7 +2663,7 @@ Transform:
   m_GameObject: {fileID: 1545769822}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.813906, y: 1.029, z: -6.677}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

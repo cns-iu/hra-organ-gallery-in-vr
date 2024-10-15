@@ -5,13 +5,13 @@ using UnityEngine;
 using System.IO;
 using Assets.Scripts.Shared;
 using System.Linq;
+using Unity.VisualScripting;
+using UnityEngine.UIElements;
 
 namespace HRAOrganGallery
 {
     public class IngestSenNetBiomarkerCSV : EditorWindow
     {
-        //Adjust this depending on the number of columns in the CSV you wish to ingest***
-        private static int _numberOfColumns = 4;
 
         //fill in the file name here
         private static string sourceFileName = "CU034-U54-HRA-058-A_coords_scores";
@@ -21,13 +21,7 @@ namespace HRAOrganGallery
 
         private static string sourceFolder = "Assets/Resources/";
 
-        private static string frequencyPostfix = "_frequency";
-
         private static string savedAssetFolder = "Assets/Resources";
-
-        private static bool _createDatasetCellTypeFrequency = true;
-        private int selectedOption = 0; // Index of the selected option
-        private string[] options = new string[] { "TRUE", "FALSE" };
 
         private string
             description =
@@ -53,21 +47,10 @@ namespace HRAOrganGallery
 
             sourceFileName = EditorGUILayout.TextField("Source File Name", sourceFileName);
             sourceFolder = EditorGUILayout.TextField("Source Folder", sourceFolder);
-            frequencyPostfix = EditorGUILayout.TextField("Frequency Postfix", frequencyPostfix);
             savedAssetFolder = EditorGUILayout.TextField("Save to Folder", savedAssetFolder);
 
             //not super elegant and safe yet --needs fix
-            _numberOfColumns = int.Parse(EditorGUILayout.TextField("Number of Columns", _numberOfColumns.ToString()));
-
-            //not super elegant and safe yet --needs fix
             _readIterator = int.Parse(EditorGUILayout.TextField("Read Iterator", _readIterator.ToString()));
-
-            // Display the dropdown menu
-            selectedOption = EditorGUILayout.Popup("Select Option", selectedOption, options);
-            // Convert the selected option to a boolean
-            _createDatasetCellTypeFrequency = selectedOption == 0;
-            // Display the current selection as a label
-            EditorGUILayout.LabelField("Create Frequency for Cell Types (Generates Scriptable Object)?" + (_createDatasetCellTypeFrequency ? "TRUE" : "FALSE"));
 
             if (GUILayout.Button("Transform to Scriptable Object"))
             {
@@ -80,8 +63,8 @@ namespace HRAOrganGallery
             List<string> allLines =
                 File
                     .ReadAllLines($"{sourceFolder}/{sourceFileName}.csv").ToList();
-            SOCellPositionList list =
-                ScriptableObject.CreateInstance<SOCellPositionList>();
+            SOCellPositionListWithBiomarkers list =
+                ScriptableObject.CreateInstance<SOCellPositionListWithBiomarkers>();
 
             // initialize counter to name each asset individually
             int iterator = 0;
@@ -93,14 +76,32 @@ namespace HRAOrganGallery
                     {
                         if (iterator % _readIterator == 0)
                         {
+                            //extract individual strings from CSV
                             string x = line.Split(',')[1];
                             string y = "0";
                             string z = line.Split(',')[2];
                             string label = line.Split(',')[0];
+                            //List<string> linesWithBiomarkers = line.Split(',')[3..11].ToList();
+                            //linesWithBiomarkers.ForEach(bioMarker => { Debug.Log($"{bioMarker}"); });
 
-                            Cell newCell = new Cell();
-                            newCell.Init(x, y, label, z);
+                            //instantiate new cell
+                            CellWithBiomarkers newCell = new CellWithBiomarkers();
 
+                            //construct biomarker value pair list
+                            List<BiomarkerValuePair> biomarkers = new List<BiomarkerValuePair>();
+
+                            //determine label based on column
+                            for (int i = 3; i <= 10; i++)
+                            {
+                                BiomarkerValuePair newPair = new BiomarkerValuePair(newCell.biomarkerColumnLookup[i], float.Parse(line.Split(',')[i]));
+                                biomarkers.Add(newPair);
+                            }
+
+
+                            //init new cell
+                            newCell.Init(x, y, label, biomarkers, z);
+
+                            //add to list of cells
                             list.cells.Add(newCell);
                         }
                     }
@@ -109,21 +110,16 @@ namespace HRAOrganGallery
                     iterator++;
                 });
 
-            if (_createDatasetCellTypeFrequency)
-            {
-                AssetDatabase
-                    .CreateAsset(Utils.GetCellTypeFrequency(list),
-                    $"{savedAssetFolder}/{sourceFileName}{frequencyPostfix}.asset");
-                AssetDatabase.SaveAssets();
-            }
-
             AssetDatabase
                 .CreateAsset(list,
                 $"{savedAssetFolder}/{sourceFileName}.asset");
             AssetDatabase.SaveAssets();
         }
 
-        
+        private void LookupBiomarkerLabel()
+        {
+
+        }
     }
 }
 

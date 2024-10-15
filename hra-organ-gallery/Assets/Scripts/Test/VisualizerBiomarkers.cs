@@ -12,7 +12,7 @@ namespace HRAOrganGallery
     /// <summary>
     /// A class to visualize cells in 3D with "biomarker trees" as bars
     /// </summary>
-    public class VisualizerBiomarkers : Visualizer3D
+    public class VisualizerBiomarkers : VisualizerBase
     {
         [Header("3D Objects")]
         [SerializeField]
@@ -30,12 +30,7 @@ namespace HRAOrganGallery
 
         [Header("Data")]
         [SerializeField]
-        private SOCellPositionList list;
-
-        [SerializeField]
-        private Dictionary<string, float>
-            biomarkerDict =
-                new Dictionary<string, float> { { "Biomarker 1", 0.3f } };
+        private SOCellPositionListWithBiomarkers cellList;
 
         [SerializeField]
         private int numberOfCells = 1000;
@@ -46,13 +41,17 @@ namespace HRAOrganGallery
         private void Awake()
         {
             CreateCells();
-            CreateBars (cells);
+            //CreateBars (cells);
         }
 
         private void CreateCells()
         {
-            for (int i = 0; i < list.cells.Count; i++)
+            for (int i = 0; i < cellList.cells.Count; i++)
             {
+                CellWithBiomarkers currentCell = cellList.cells[i];
+                Debug.Log($"Now making {currentCell.label} at {currentCell.position} with {currentCell.biomarkers.Count}");
+
+                //refactor this so it now uses data from the CellWithBiomarkers class from currentCell
                 Transform newCell =
                     GameObject
                         .Instantiate(prefabDot,
@@ -62,7 +61,7 @@ namespace HRAOrganGallery
                         Quaternion.identity);
                 newCell.Rotate(new Vector3(-90, 0, 0));
                 newCell.localScale = new Vector3(.15f, .15f, .15f);
-                cells.Add (newCell);
+                cells.Add(newCell);
             }
         }
 
@@ -140,6 +139,16 @@ namespace HRAOrganGallery
             }
 
             return pointsOnCircle;
+        }
+
+        public override void PrepareScaling()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void BuildVisualization()
+        {
+            throw new NotImplementedException();
         }
     }
 }
