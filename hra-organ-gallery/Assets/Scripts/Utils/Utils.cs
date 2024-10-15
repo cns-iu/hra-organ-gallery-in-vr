@@ -162,5 +162,20 @@ namespace Assets.Scripts.Shared
                 return value;
             }
         }
+
+        /// <summary>
+        /// A class that returns a style for showing descriptions in `EditorWindows`s
+        /// </summary>
+        /// <returns>A GUIStyle for descriptions in 1EditorWindows`s</returns>
+        public static GUIStyle GetStyleForDescription()
+        {
+
+            // Define a custom GUIStyle for word wrapping
+            GUIStyle descriptionStyle = new GUIStyle(
+                 EditorStyles.label
+                );
+            descriptionStyle.wordWrap = true;
+            return descriptionStyle;
+        }
     }
 }
