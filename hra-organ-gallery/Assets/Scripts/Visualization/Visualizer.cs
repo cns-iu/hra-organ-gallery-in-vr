@@ -65,7 +65,6 @@ namespace HRAOrganGallery
                         //get color by rank forem _colorScheme
                         try
                         {
-                            Debug.Log(rank);
                             color = _colorScheme.values[rank].color;
                         }
                         catch (System.Exception e)
