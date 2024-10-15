@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using UnityEngine;
 using Assets.Scripts.Shared;
+using HRAOrganGallery;
 
 /// <summary>
 /// A class to visualize an asset of type SOCellPositionList in 3D as a point cloud
@@ -74,7 +75,7 @@ public class Visualizer3D : VisualizerBase
                 cellObj.GetComponent<SpriteRenderer>().color = color;
 
                 //scale position
-                // cellObj.transform.position = ScalePosition(cellObj.transform.position);
+                cellObj.transform.position = ScalePosition(cellObj.transform.position);
                 //and parent it to the parent transform, then move the parent
                 cellObj.transform.parent = _parent;
             });
@@ -130,9 +131,6 @@ public class Visualizer3D : VisualizerBase
         GameObject cellObj =
             Instantiate(_preDot, cell.position, Quaternion.identity);
 
-        //adjust position
-        cellObj.transform.position = Utils.AdjustPosition(cellObj);
-
         //add CellData component to hold data, assign values to properties
         cellObj.AddComponent<CellData>();
 
@@ -141,6 +139,9 @@ public class Visualizer3D : VisualizerBase
 
         //set color from color scheme
         cellObj.GetComponent<CellData>().Color = Color.yellow;
+
+        //add self increase
+        cellObj.AddComponent<OnConditionIncreaseSeIf>().Init(cell.label);
 
         //cellObj.GetComponent<Renderer>().material.color = AssignColor(cell.cellLabel);
         return cellObj;
