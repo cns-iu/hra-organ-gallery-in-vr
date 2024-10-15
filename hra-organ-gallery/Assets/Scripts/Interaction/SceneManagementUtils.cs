@@ -25,7 +25,7 @@ namespace HRAOrganGallery
             while (!asyncOperation.isDone)
             {
                 //Output the current progress
-                Debug.Log("Loading progress: " + (asyncOperation.progress * 100) + "%");
+                // Debug.Log("Loading progress: " + (asyncOperation.progress * 100) + "%");
                 //m_Text.text = "Loading progress: " + (asyncOperation.progress * 100) + "%";
 
                 // Check if the load has finished

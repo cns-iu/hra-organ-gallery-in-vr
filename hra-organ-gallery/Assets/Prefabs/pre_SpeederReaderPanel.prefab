@@ -3134,21 +3134,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4864167309337271867, guid: 5e6484718d2fd4746a96c3c366bfa62e,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 33.494038
-      objectReference: {fileID: 0}
-    - target: {fileID: 4864167309337271867, guid: 5e6484718d2fd4746a96c3c366bfa62e,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 98.494064
-      objectReference: {fileID: 0}
-    - target: {fileID: 4864167309337271867, guid: 5e6484718d2fd4746a96c3c366bfa62e,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 53.24289
-      objectReference: {fileID: 0}
-    - target: {fileID: 4864167309337271867, guid: 5e6484718d2fd4746a96c3c366bfa62e,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.09
       objectReference: {fileID: 0}
@@ -3202,15 +3187,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: pre_ElevatorButton (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 8068997104243981763, guid: 5e6484718d2fd4746a96c3c366bfa62e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: bb2349beb796aad448affe936049327a, type: 2}
-    m_RemovedComponents:
-    - {fileID: 6339715625207033362, guid: 5e6484718d2fd4746a96c3c366bfa62e, type: 3}
-    - {fileID: 3473209073955229436, guid: 5e6484718d2fd4746a96c3c366bfa62e, type: 3}
-    - {fileID: 3400006898519610153, guid: 5e6484718d2fd4746a96c3c366bfa62e, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
