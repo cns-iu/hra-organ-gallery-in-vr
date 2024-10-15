@@ -2542,8 +2542,8 @@ MonoBehaviour:
     type: 3}
   prefabBar: {fileID: 6640931608516057641, guid: 5b9aa5b4fc16d7e47a6dc24bdeae9620,
     type: 3}
-  radius: 0.1
-  list: {fileID: 0}
+  radius: 0.05
+  list: {fileID: 11400000, guid: 42fd3007272a86e43a56fcb8aee12125, type: 2}
   numberOfCells: 100
   numberOfBiomarkerSets: 2
 --- !u!1 &1355991420

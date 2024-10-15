@@ -46,12 +46,12 @@ namespace HRAOrganGallery
         private void Awake()
         {
             CreateCells();
-            CreateBars (cells);
+            //CreateBars (cells);
         }
 
         private void CreateCells()
         {
-            for (int i = 0; i < numberOfCells; i++)
+            for (int i = 0; i < list.cells.Count; i++)
             {
                 Transform newCell =
                     GameObject
