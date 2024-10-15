@@ -312,7 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapping:
     pairs: []
-  _visualizer: {fileID: 0}
+  _visualizer: {fileID: 323796079}
   _cellTypeFrequency: {fileID: 11400000, guid: 1472e5c5e31e4844bb94e3ac89b695bf, type: 2}
   _colorValues: {fileID: 11400000, guid: 4c58b3a7c61990649bf693368740cc81, type: 2}
 --- !u!114 &323796082
@@ -331,7 +331,7 @@ MonoBehaviour:
     type: 3}
   _verticalLayout: {fileID: 1144310551}
   _legend: {fileID: 0}
-  _frequency: {fileID: 0}
+  _frequency: {fileID: 11400000, guid: 1472e5c5e31e4844bb94e3ac89b695bf, type: 2}
   _mapping:
     pairs: []
 --- !u!1 &345256382

@@ -65,11 +65,13 @@ namespace HRAOrganGallery
                         //get color by rank forem _colorScheme
                         try
                         {
+                            Debug.Log(rank);
                             color = _colorScheme.values[rank].color;
                         }
-                        catch (System.Exception)
+                        catch (System.Exception e)
                         {
                             color = Color.red;
+                            Debug.Log($"Exception: {e}, applying {color} to all cells");
                         }
 
                         //assign color
