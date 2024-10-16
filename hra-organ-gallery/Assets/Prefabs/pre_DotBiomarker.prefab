@@ -10,12 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 3430073639665117259}
   - component: {fileID: 2177603495975750486}
+  - component: {fileID: 2378529059730857857}
+  - component: {fileID: 1415343727972318723}
   m_Layer: 0
   m_Name: pre_DotBiomarker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3430073639665117259
 Transform:
@@ -84,3 +86,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2378529059730857857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763571771044503377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2f5eb4dbcffe446a455de82e9e5b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newRotation: {x: -90, y: 0, z: 0}
+--- !u!114 &1415343727972318723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763571771044503377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d9a4738886eb8438d901f9b774cc23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newScale: {x: 0.15, y: 0.15, z: 0.15}

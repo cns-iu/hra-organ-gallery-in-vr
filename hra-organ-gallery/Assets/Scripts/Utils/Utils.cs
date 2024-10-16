@@ -216,7 +216,7 @@ namespace Assets.Scripts.Shared
 
             // Define a custom GUIStyle for word wrapping
             GUIStyle descriptionStyle = new GUIStyle(
-                 EditorStyles.label
+                 //EditorStyles.label
                 );
             descriptionStyle.wordWrap = true;
             return descriptionStyle;
