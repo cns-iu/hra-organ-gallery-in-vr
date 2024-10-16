@@ -24,7 +24,7 @@ namespace HRAOrganGallery
         [SerializeField]
         private float radius = .1f;
 
-        List<Transform> cells = new List<Transform>();
+        List<Transform> cellsObjects = new List<Transform>();
 
         List<(float, float)> pointsOnCircle = new List<(float, float)>();
 
@@ -36,32 +36,40 @@ namespace HRAOrganGallery
         private int numberOfCells = 1000;
 
         [SerializeField]
-        private int numberOfBiomarkerSets = 8;
+        private int numberOfBiomarkersToDisplay = 8;
 
         private void Awake()
         {
-            CreateCells();
-            //CreateBars (cells);
+            BuildVisualization();
         }
 
-        private void CreateCells()
+        public override void PrepareScaling()
         {
-            for (int i = 0; i < cellList.cells.Count; i++)
+            throw new NotImplementedException();
+        }
+
+        public override void BuildVisualization()
+        {
+            CreateCells(cellList);
+            //CreateBars (cellsObjects);
+        }
+
+        private void CreateCells(SOCellPositionListWithBiomarkers cellsWithBiomarkers)
+        {
+            for (int i = 0; i < cellsWithBiomarkers.cells.Count; i++)
             {
                 CellWithBiomarkers currentCell = cellList.cells[i];
-                Debug.Log($"Now making {currentCell.label} at {currentCell.position} with {currentCell.biomarkers.Count}");
-
+                //Debug.Log($"Now making {currentCell.label} at {currentCell.position} with {currentCell.biomarkers.Count}");
+                
                 //refactor this so it now uses data from the CellWithBiomarkers class from currentCell
                 Transform newCell =
                     GameObject
                         .Instantiate(prefabDot,
-                        new Vector3(Random.Range(-3.0f, 3.0f),
-                            0,
-                            Random.Range(-3.0f, 3.0f)),
+                       currentCell.position * _scalingFactor,
                         Quaternion.identity);
                 newCell.Rotate(new Vector3(-90, 0, 0));
                 newCell.localScale = new Vector3(.15f, .15f, .15f);
-                cells.Add(newCell);
+                cellsObjects.Add(newCell);
             }
         }
 
@@ -73,7 +81,7 @@ namespace HRAOrganGallery
                     float cx = c.position.x; // X coordinate of the center
                     float cz = c.position.z; // Y coordinate of the center
 
-                    int n = numberOfBiomarkerSets; // Number of points (e.g., 8 points for equal division)
+                    int n = numberOfBiomarkersToDisplay; // Number of points (e.g., 8 points for equal division)
 
                     pointsOnCircle = GetCirclePoints(cx, cz, radius, n);
 
@@ -128,7 +136,7 @@ namespace HRAOrganGallery
             for (int i = 0; i < n; i++)
             {
                 // Calculate the angle for each point
-                float angle = 2 * Mathf.PI * i / numberOfBiomarkerSets;
+                float angle = 2 * Mathf.PI * i / numberOfBiomarkersToDisplay;
 
                 // Calculate x and y coordinates
                 float x = cx + radius * Mathf.Cos(angle);
@@ -139,16 +147,6 @@ namespace HRAOrganGallery
             }
 
             return pointsOnCircle;
-        }
-
-        public override void PrepareScaling()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void BuildVisualization()
-        {
-            throw new NotImplementedException();
         }
     }
 }
