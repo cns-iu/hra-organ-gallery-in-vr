@@ -1,13 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using Unity.Mathematics;
-
-using Random = UnityEngine.Random;
-
-using static Assets.Scripts.Interaction.CCFAPISPARQLQuery;
 
 namespace HRAOrganGallery
 {
@@ -89,6 +82,12 @@ namespace HRAOrganGallery
                         currentCell.position * _scalingFactor,
                         Quaternion.identity);
 
+                newCell
+                    .gameObject
+                    .AddComponent<CellDataWithBiomarkers>()
+                    .Init("No Known Cell Type",
+                    Color.white,
+                    currentCell.biomarkers);
                 cellsObjects.Add (newCell);
             }
         }
@@ -101,6 +100,7 @@ namespace HRAOrganGallery
             // Create a new mesh
             lineMesh = new Mesh();
 
+            //draw biomarker trees for each cell
             cells
                 .ForEach(c =>
                 {
@@ -108,17 +108,35 @@ namespace HRAOrganGallery
                     float cz = c.position.z; // Z coordinate of the center
 
                     int n = numberOfBiomarkersToDisplay; // Number of points
+                    
+                    //initialize list to hold x and z values
                     List<(float, float)> pointsOnCircle =
                         new List<(float, float)>();
+
+                    //get List of tuples with coords
                     pointsOnCircle = GetCirclePoints(cx, cz, radius, n);
 
+                    // make counter for iterating through biomarkers
+                    int counter = 0;
+
+                    //draw trees for each biomarker around cell
                     pointsOnCircle
                         .ForEach(p =>
                         {
-                            vertices.Add(new Vector3(p.Item1, 0, p.Item2));
-                            vertices
-                                .Add(new Vector3(p.Item1, 0, p.Item2) +
-                                new Vector3(0, .5f, 0));
+                            CellDataWithBiomarkers data =
+                                c.GetComponent<CellDataWithBiomarkers>();
+                            float height = data.biomarkers[counter].value;
+
+                            Vector3 v0 = new Vector3(p.Item1, 0, p.Item2);
+                            Vector3 v1 =
+                                new Vector3(p.Item1, 0, p.Item2) +
+                                new Vector3(0, height, 0);
+
+                            //add vertices to list that holds all vertices
+                            vertices.Add (v0);
+                            vertices.Add (v1);
+
+                            counter++;
                         });
                 });
 
