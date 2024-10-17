@@ -514,8 +514,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b>Provenance for biomarkers</b>: \n\n<b>Resistance to Apoptosis, DDR,
-    SASP, Cell Cycle Arrest</b>: https://www.nature.com/articles/s41580-024-00738-8\n\n<b>Fridman</b>:
+  m_text: "<b>Provenance for senescence hallmarks</b>: \n\n<b>Resistance to Apoptosis,
+    DDR, SASP, Cell Cycle Arrest</b>: https://www.nature.com/articles/s41580-024-00738-8\n\n<b>Fridman</b>:
     Curated senescence list from 2008: https://pubmed.ncbi.nlm.nih.gov/18711403/\n\n<b>Senmayo</b>:
     https://www.nature.com/articles/s41467-022-32552-1"
   m_isRightToLeft: 0
@@ -754,7 +754,7 @@ PrefabInstance:
     - target: {fileID: 2340305493712730342, guid: 790962dd6cbbf43b5bf78735dd41f3c6,
         type: 3}
       propertyPath: m_text
-      value: "<b>8 Biomarker values for Visium slide in brain, male</b>\n\n<b>Approx.
+      value: "<b>8 senescence hallmarks for Visium slide in male brain</b>\n\n<b>Approx.
         size</b>:  6.5 x 6.5 mm\n\n<b>Source</b>: SenNet ID SNT956.RQLW.577\n\n<b>Slide
         information</b>: There are a total of 4992 total spots per capture area and
         each spot is 55 \xB5m in diameter with a 100 \xB5m center to center distance
