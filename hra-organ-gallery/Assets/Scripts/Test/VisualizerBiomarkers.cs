@@ -11,6 +11,8 @@ namespace HRAOrganGallery
     /// </summary>
     public class VisualizerBiomarkers : VisualizerBase
     {
+        public static VisualizerBiomarkers Instance;
+
         [Header("3D Objects")]
         [SerializeField]
         private Transform prefabDot;
@@ -42,16 +44,30 @@ namespace HRAOrganGallery
         private int numberOfBiomarkersToDisplay = 8;
 
         [Header("Visual Encoding")]
-        private List<Color> treeColors = new List<Color>();
-
         [SerializeField]
         private float scalingFactorHeight = 3f;
 
+        [SerializeField] private List<(string, HexColorPair)> legend = new List<(string, HexColorPair)>();
+
         private Dictionary<string, int> biomarkerColorLookup = new Dictionary<string, int>();
+
+        [SerializeField] public CellTypeToColorMapping mapping = new CellTypeToColorMapping();
+
+        private List<Color> treeColors = new List<Color>();
 
         private void Start()
         {
             BuildVisualization();
+        }
+
+        private void Awake()
+        {
+            if (Instance == null)
+                Instance = this;
+            else
+                Destroy(gameObject);
+
+            DontDestroyOnLoad(gameObject);
         }
 
         public override void PrepareScaling()
@@ -62,6 +78,7 @@ namespace HRAOrganGallery
         public override void BuildVisualization()
         {
             InvertBiomarkerLookup(); //create a color lookup by biomarker
+            CreateColorMap();
             CreateCells(cellList); //creates a list of cell game objects
             AdjustParent(_parent); //moves all cells to preselected position
             CreateBars(cellsObjects); //uses those game objects to draw biomarker trees
@@ -70,11 +87,19 @@ namespace HRAOrganGallery
         private void InvertBiomarkerLookup()
         {
             // Invert the dictionary
-
-
             foreach (var kvp in CellWithBiomarkers.biomarkerColumnLookup)
             {
                 biomarkerColorLookup.Add(kvp.Value, kvp.Key);
+            }
+
+        }
+
+        private void CreateColorMap()
+        {
+
+            foreach (var kvp in biomarkerColorLookup)
+            {
+                mapping.pairs.Add(new CellTypeColorPair(kvp.Key, _colorScheme.values[kvp.Value].color));
             }
         }
 
@@ -190,10 +215,12 @@ namespace HRAOrganGallery
 
             //get color by biomarker
             //get index from dict
-            int index = biomarkerColorLookup[biomarkerLabel] - 1;
+            int index = biomarkerColorLookup[biomarkerLabel];
 
             //get color from inverted lookup
             Color color = _colorScheme.values[index].color;
+
+            legend.Add((biomarkerLabel, new HexColorPair("", color)));
 
             //add colors to treeColors list
             treeColors.Add(color);

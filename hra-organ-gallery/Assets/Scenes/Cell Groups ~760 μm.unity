@@ -14,8 +14,8 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.1254902, g: 0.11764706, b: 0.23921569, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
@@ -258,7 +258,7 @@ PrefabInstance:
     - target: {fileID: 7865906066983335889, guid: 307633caba4d4e546bc53f794cc96555,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.5850935
+      value: -10.37
       objectReference: {fileID: 0}
     - target: {fileID: 7865906066983335889, guid: 307633caba4d4e546bc53f794cc96555,
         type: 3}
@@ -268,7 +268,7 @@ PrefabInstance:
     - target: {fileID: 7865906066983335889, guid: 307633caba4d4e546bc53f794cc96555,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.9155154
+      value: -5.34
       objectReference: {fileID: 0}
     - target: {fileID: 7865906066983335889, guid: 307633caba4d4e546bc53f794cc96555,
         type: 3}
@@ -466,6 +466,74 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1001 &347766871
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1530515240}
+    m_Modifications:
+    - target: {fileID: 996198403594990065, guid: 355724f54248cf84ca3ca6a496254287,
+        type: 3}
+      propertyPath: m_Name
+      value: pre_GridFloor
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787876618322678590, guid: 355724f54248cf84ca3ca6a496254287,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787876618322678590, guid: 355724f54248cf84ca3ca6a496254287,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787876618322678590, guid: 355724f54248cf84ca3ca6a496254287,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787876618322678590, guid: 355724f54248cf84ca3ca6a496254287,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787876618322678590, guid: 355724f54248cf84ca3ca6a496254287,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787876618322678590, guid: 355724f54248cf84ca3ca6a496254287,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787876618322678590, guid: 355724f54248cf84ca3ca6a496254287,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787876618322678590, guid: 355724f54248cf84ca3ca6a496254287,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787876618322678590, guid: 355724f54248cf84ca3ca6a496254287,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787876618322678590, guid: 355724f54248cf84ca3ca6a496254287,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 355724f54248cf84ca3ca6a496254287, type: 3}
 --- !u!1 &392886423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,6 +1169,7 @@ Transform:
   - {fileID: 1578665931}
   - {fileID: 1642730096}
   - {fileID: 236763442}
+  - {fileID: 1636723241}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1578665930
@@ -1375,6 +1444,12 @@ MonoBehaviour:
   m_MinimumScaleRatio: 0.147
   m_MaximumScaleRatio: 7.68
   m_ScaleMultiplier: 0.46
+--- !u!4 &1636723241 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7787876618322678590, guid: 355724f54248cf84ca3ca6a496254287,
+    type: 3}
+  m_PrefabInstance: {fileID: 347766871}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1642730095
 PrefabInstance:
   m_ObjectHideFlags: 0
