@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: 2_LargeFTUs
   m_EditorClassIdentifier: 
   power: -3
-  label: Large FTUs
-  scaleSemantic: 1 mm
+  levelName: Large FTUs
+  scaleGlobal: 1 mm
+  scaleLocalMeasure: "100 \u03BCm"

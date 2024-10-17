@@ -15,8 +15,11 @@ namespace HRAOrganGallery
     {
         public int power;
 
-        public string label;
+        public string levelName;
 
-        public string scaleSemantic;
+        public string scaleGlobal;
+
+        public string scaleLocalMeasure;
+
     }
 }

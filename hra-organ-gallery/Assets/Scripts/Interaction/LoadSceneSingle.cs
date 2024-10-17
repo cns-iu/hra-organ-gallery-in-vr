@@ -20,7 +20,7 @@ namespace HRAOrganGallery
                 .selectEntered
                 .AddListener((SelectEnterEventArgs args) =>
                 {
-                    StartCoroutine(LoadScene(_levelIndex.label));
+                    StartCoroutine(LoadScene(_levelIndex.levelName));
                 });
         }
     }

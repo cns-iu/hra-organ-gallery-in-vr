@@ -7,8 +7,10 @@ using UnityEngine.SceneManagement;
 
 namespace HRAOrganGallery
 {
+    public enum ScaleType { Global, Local}
     public class ScaleDisplay : MonoBehaviour
     {
+        [SerializeField] private ScaleType scaleType;
         private List<TMP_Text> _texts = new List<TMP_Text>();
 
         private void Start()
@@ -20,15 +22,36 @@ namespace HRAOrganGallery
             // Get the name of the active scene
             string sceneName = activeScene.name;
 
+            //initialize variable to hold text for scale
+            string scale = "SCALE";
+
             //Get the label from the level index
-            string scale =
-                ElevatorLevelManager
+            switch (scaleType)
+            {
+                case ScaleType.Global:
+                    scale = ElevatorLevelManager
                     .Instance
                     .LevelList
                     .levels
-                    .Where(l => l.label == sceneName)
+                    .Where(l => l.levelName == sceneName)
                     .First()
-                    .scaleSemantic;
+                    .scaleGlobal;
+
+                    break;
+                case ScaleType.Local:
+                    scale = ElevatorLevelManager
+                    .Instance
+                    .LevelList
+                    .levels
+                    .Where(l => l.levelName == sceneName)
+                    .First()
+                    .scaleLocalMeasure;
+                    break;
+                default:
+                    break;
+            }
+            
+               
 
             //set all texts
             _texts
