@@ -741,7 +741,7 @@ MonoBehaviour:
   _colorScheme: {fileID: 11400000, guid: be10d3702eaa8a841920583d2bbc0d07, type: 2}
   prefabDot: {fileID: 3430073639665117259, guid: f9a83dece806345cab66d4879d4cd997,
     type: 3}
-  radius: 0.1
+  radius: 0.025
   lineMaterial: {fileID: 2100000, guid: 7237a34514d994b18ae775fe7919a9bb, type: 2}
   lineMesh: {fileID: 0}
   cellList: {fileID: 11400000, guid: 42fd3007272a86e43a56fcb8aee12125, type: 2}

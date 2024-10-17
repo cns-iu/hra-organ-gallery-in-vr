@@ -111,4 +111,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d9a4738886eb8438d901f9b774cc23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newScale: {x: 0.15, y: 0.15, z: 0.15}
+  newScale: {x: 0.05, y: 0.05, z: 0.05}
