@@ -87,8 +87,7 @@ namespace HRAOrganGallery
 
         void CreateBars(List<Transform> cells)
         {
-
-
+            //initialize array for vertices
             vertices = new Vector3[numberOfBiomarkersToDisplay * numberOfCellsShown * 2]; // Two vertices per line
 
             // Create a new mesh
@@ -103,13 +102,13 @@ namespace HRAOrganGallery
                         //vertices[iterator] = new Vector3(p.Item1, 0, p.Item2);
                         //vertices[iterator + 1] = new Vector3(p.Item1, 1, p.Item2);
 
-                        vertices[iterator] = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10));
-
+                        // vertices[iterator] = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10));
+                        vertices[iterator] = c.transform.position;
+                        vertices[iterator+1] = c.transform.position + new Vector3(0,1,0);
                         //vertices[iterator] = new Vector3(0,0,0);
                         //vertices[iterator + 1] = new Vector3(0, 1, 0);
 
-
-                        iterator++;
+                        iterator+=2;
 
                         float cx = c.position.x; // X coordinate of the center
                         float cz = c.position.z; // Y coordinate of the center
@@ -135,8 +134,8 @@ namespace HRAOrganGallery
             }
 
             // Assign vertices to mesh
-            Debug.Log(iterator);
-            Debug.Log(vertices.Length);
+            Debug.Log($"iterator: {iterator}");
+            Debug.Log($"vertices.Length: {vertices.Length}");
             lineMesh.vertices = vertices;
 
             // Set mesh to use line topology
