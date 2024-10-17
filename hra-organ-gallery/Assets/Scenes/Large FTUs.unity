@@ -2554,9 +2554,9 @@ MonoBehaviour:
   lineMaterial: {fileID: 2100000, guid: 7237a34514d994b18ae775fe7919a9bb, type: 2}
   lineMesh: {fileID: 0}
   cellList: {fileID: 11400000, guid: 42fd3007272a86e43a56fcb8aee12125, type: 2}
-  showAllCells: 0
-  numberOfCellsShown: 400
-  numberOfBiomarkersToDisplay: 2
+  showAllCells: 1
+  numberOfCellsShown: 200
+  numberOfBiomarkersToDisplay: 8
 --- !u!1 &1355991420
 GameObject:
   m_ObjectHideFlags: 0

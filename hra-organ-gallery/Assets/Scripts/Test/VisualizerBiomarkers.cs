@@ -6,6 +6,7 @@ using UnityEngine;
 using Unity.Mathematics;
 
 using Random = UnityEngine.Random;
+
 using static Assets.Scripts.Interaction.CCFAPISPARQLQuery;
 
 namespace HRAOrganGallery
@@ -27,24 +28,28 @@ namespace HRAOrganGallery
 
         List<Transform> cellsObjects = new List<Transform>();
 
-        List<(float, float)> pointsOnCircle = new List<(float, float)>();
+        [SerializeField]
+        private Material lineMaterial;
 
-        [SerializeField] private Material lineMaterial;
-        [SerializeField] private Mesh lineMesh;
-        private Vector3[] vertices;
+        [SerializeField]
+        private Mesh lineMesh;
+
+        private List<Vector3> vertices;
 
         [Header("Data")]
         [SerializeField]
         private SOCellPositionListWithBiomarkers cellList;
 
-        [SerializeField] private bool showAllCells = false;
+        [SerializeField]
+        private bool showAllCells = false;
 
-        [SerializeField] private int numberOfCellsShown = 10;
+        [SerializeField]
+        private int numberOfCellsShown = 10;
 
         [SerializeField]
         private int numberOfBiomarkersToDisplay = 8;
 
-        private void Awake()
+        private void Start()
         {
             BuildVisualization();
         }
@@ -56,115 +61,77 @@ namespace HRAOrganGallery
 
         public override void BuildVisualization()
         {
-            CreateCells(cellList); //creates a list of cell game objects
-            CreateBars(cellsObjects); //uses those game objects to draw biomarker trees
+            CreateCells (cellList); //creates a list of cell game objects
+            CreateBars (cellsObjects); //uses those game objects to draw biomarker trees
         }
 
-        private void CreateCells(SOCellPositionListWithBiomarkers cellsWithBiomarkers)
+        private void CreateCells(
+            SOCellPositionListWithBiomarkers cellsWithBiomarkers
+        )
         {
-            numberOfCellsShown = showAllCells ? cellsWithBiomarkers.cells.Count : numberOfCellsShown;
+            numberOfCellsShown =
+                showAllCells
+                    ? cellsWithBiomarkers.cells.Count
+                    : numberOfCellsShown;
 
-            int M = cellsWithBiomarkers.cells.Count;  // Total size
-            int k = M / numberOfCellsShown;     // Fractional divisor
+            int M = cellsWithBiomarkers.cells.Count; // Total size
+            int k = M / numberOfCellsShown; // Fractional divisor
             int timesToLoop = M / k; // Number of times to loop
-            int step = k;  // Step size
+            int step = k; // Step size
 
             for (int i = 0; i < M; i += step)
             {
                 CellWithBiomarkers currentCell = cellList.cells[i];
 
-                //refactor this so it now uses data from the CellWithBiomarkers class from currentCell
                 Transform newCell =
                     GameObject
                         .Instantiate(prefabDot,
-                       currentCell.position * _scalingFactor,
+                        currentCell.position * _scalingFactor,
                         Quaternion.identity);
 
-
-                cellsObjects.Add(newCell);
+                cellsObjects.Add (newCell);
             }
         }
 
         void CreateBars(List<Transform> cells)
         {
             //initialize array for vertices
-            vertices = new Vector3[numberOfBiomarkersToDisplay * numberOfCellsShown * 2]; // Two vertices per line
+            vertices = new List<Vector3>(); // Two vertices per line
 
             // Create a new mesh
             lineMesh = new Mesh();
 
-            //create iterator for adding vertices
-            int iterator = 0;
-
             cells
-                    .ForEach(c =>
-                    {
-                        //vertices[iterator] = new Vector3(p.Item1, 0, p.Item2);
-                        //vertices[iterator + 1] = new Vector3(p.Item1, 1, p.Item2);
+                .ForEach(c =>
+                {
+                    float cx = c.position.x; // X coordinate of the center
+                    float cz = c.position.z; // Z coordinate of the center
 
-                        // vertices[iterator] = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10));
-                        vertices[iterator] = c.transform.position;
-                        vertices[iterator+1] = c.transform.position + new Vector3(0,1,0);
-                        //vertices[iterator] = new Vector3(0,0,0);
-                        //vertices[iterator + 1] = new Vector3(0, 1, 0);
+                    int n = numberOfBiomarkersToDisplay; // Number of points
+                    List<(float, float)> pointsOnCircle =
+                        new List<(float, float)>();
+                    pointsOnCircle = GetCirclePoints(cx, cz, radius, n);
 
-                        iterator+=2;
-
-                        float cx = c.position.x; // X coordinate of the center
-                        float cz = c.position.z; // Y coordinate of the center
-
-                        int n = numberOfBiomarkersToDisplay; // Number of points (e.g., 8 points for equal division)
-
-                        pointsOnCircle = GetCirclePoints(cx, cz, radius, n);
-
-                        pointsOnCircle
-                            .ForEach(p =>
-                            {
-                                //vertices[i] = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10));
-                                //vertices[iterator] = new Vector3(p.Item1, 0, p.Item2);
-                                //vertices[iterator + 1] = new Vector3(p.Item1, 1, p.Item2);
-                                //iterator += 2;
-                            });
-                    });
-
-            // Generate random line vertices
-            for (int i = 0; i < vertices.Length; i++)
-            {
-                //vertices[i] = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10));
-            }
+                    pointsOnCircle
+                        .ForEach(p =>
+                        {
+                            vertices.Add(new Vector3(p.Item1, 0, p.Item2));
+                            vertices
+                                .Add(new Vector3(p.Item1, 0, p.Item2) +
+                                new Vector3(0, .5f, 0));
+                        });
+                });
 
             // Assign vertices to mesh
-            Debug.Log($"iterator: {iterator}");
-            Debug.Log($"vertices.Length: {vertices.Length}");
-            lineMesh.vertices = vertices;
+            lineMesh.vertices = vertices.ToArray();
 
             // Set mesh to use line topology
-            int[] indices = new int[numberOfBiomarkersToDisplay * numberOfCellsShown * 2];
+            int[] indices = new int[vertices.Count];
+
+            // Debug.Log(indices.Length);
             for (int i = 0; i < indices.Length; i++) indices[i] = i;
 
             lineMesh.SetIndices(indices, MeshTopology.Lines, 0);
-
-            //old implementation
-            //cells
-            //        .ForEach(c =>
-            //        {
-            //            float cx = c.position.x; // X coordinate of the center
-            //            float cz = c.position.z; // Y coordinate of the center
-
-            //            int n = numberOfBiomarkersToDisplay; // Number of points (e.g., 8 points for equal division)
-
-            //            pointsOnCircle = GetCirclePoints(cx, cz, radius, n);
-
-            //            pointsOnCircle
-            //                .ForEach(p =>
-            //                {
-            //                    Transform bar =
-            //                        GameObject
-            //                            .Instantiate(prefabBar,
-            //                            new Vector3(p.Item1, 0, p.Item2),
-            //                            Quaternion.identity);
-            //                });
-            //        });
         }
 
         void OnRenderObject()
@@ -174,25 +141,23 @@ namespace HRAOrganGallery
             Graphics.DrawMeshNow(lineMesh, Matrix4x4.identity);
         }
 
-
         private List<(float, float)>
-        GetCirclePoints(float cx, float cy, float radius, int n)
+        GetCirclePoints(float cx, float cz, float radius, int n)
         {
-            //List<(float, float)> points = new List<(float, double)>();
+            List<(float, float)> result = new List<(float, float)>();
             for (int i = 0; i < n; i++)
             {
                 // Calculate the angle for each point
                 float angle = 2 * Mathf.PI * i / numberOfBiomarkersToDisplay;
 
-                // Calculate x and y coordinates
+                // Calculate x and z coordinates
                 float x = cx + radius * Mathf.Cos(angle);
-                float y = cy + radius * Mathf.Sin(angle);
+                float z = cz + radius * Mathf.Sin(angle);
 
                 // Add the point to the list
-                pointsOnCircle.Add((x, y));
+                result.Add((x, z));
             }
-
-            return pointsOnCircle;
+            return result;
         }
     }
 }
