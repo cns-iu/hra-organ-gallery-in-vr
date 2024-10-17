@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace HRAOrganGallery
 {
@@ -12,9 +13,6 @@ namespace HRAOrganGallery
         [Header("3D Objects")]
         [SerializeField]
         private Transform prefabDot;
-
-        [SerializeField]
-        private Transform prefabBar;
 
         [SerializeField]
         private float radius = .1f;
@@ -42,6 +40,12 @@ namespace HRAOrganGallery
         [SerializeField]
         private int numberOfBiomarkersToDisplay = 8;
 
+        [Header("Visual Encoding")]
+        private List<Color> treeColors = new List<Color>();
+        
+        [SerializeField]
+        private float scalingFactorHeight = 3f;
+
         private void Start()
         {
             BuildVisualization();
@@ -55,7 +59,12 @@ namespace HRAOrganGallery
         public override void BuildVisualization()
         {
             CreateCells (cellList); //creates a list of cell game objects
+            AdjustParent(_parent); //moves all cells to preselected position
             CreateBars (cellsObjects); //uses those game objects to draw biomarker trees
+        }
+
+        void AdjustParent(Transform parent) {
+            _parent.position = _adjustedParentPosition.position;
         }
 
         private void CreateCells(
@@ -88,6 +97,11 @@ namespace HRAOrganGallery
                     .Init("No Known Cell Type",
                     Color.white,
                     currentCell.biomarkers);
+
+                //set parent
+                newCell.parent = _parent;
+                
+                //add to list of cell objects
                 cellsObjects.Add (newCell);
             }
         }
@@ -125,12 +139,16 @@ namespace HRAOrganGallery
                         {
                             CellDataWithBiomarkers data =
                                 c.GetComponent<CellDataWithBiomarkers>();
-                            float height = data.biomarkers[counter].value;
+                            float height = data.biomarkers[counter].value * scalingFactorHeight;
 
                             Vector3 v0 = new Vector3(p.Item1, 0, p.Item2);
                             Vector3 v1 =
                                 new Vector3(p.Item1, 0, p.Item2) +
                                 new Vector3(0, height, 0);
+
+                            // Assign random colors for each vertex (line start and end)
+                            treeColors.Add(Random.ColorHSV());
+                            treeColors.Add(Random.ColorHSV());
 
                             //add vertices to list that holds all vertices
                             vertices.Add (v0);
@@ -142,6 +160,7 @@ namespace HRAOrganGallery
 
             // Assign vertices to mesh
             lineMesh.vertices = vertices.ToArray();
+            lineMesh.colors = treeColors.ToArray();
 
             // Set mesh to use line topology
             int[] indices = new int[vertices.Count];
