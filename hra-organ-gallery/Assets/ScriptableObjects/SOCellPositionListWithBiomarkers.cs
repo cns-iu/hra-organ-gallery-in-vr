@@ -19,7 +19,7 @@ namespace HRAOrganGallery
         //private string x, y, z;
         public List<BiomarkerValuePair> biomarkers = new List<BiomarkerValuePair>();
 
-        public Dictionary<int, string> biomarkerColumnLookup = new Dictionary<int, string>()
+        public static Dictionary<int, string> biomarkerColumnLookup = new Dictionary<int, string>()
         {
             { 3,"San.Diego.TMC"},
             { 4,"Resistance.to.Apoptosis"},

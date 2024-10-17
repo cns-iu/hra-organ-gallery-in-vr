@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static Assets.Scripts.Interaction.CCFAPISPARQLQuery;
 using Random = UnityEngine.Random;
 
 namespace HRAOrganGallery
@@ -42,9 +43,11 @@ namespace HRAOrganGallery
 
         [Header("Visual Encoding")]
         private List<Color> treeColors = new List<Color>();
-        
+
         [SerializeField]
         private float scalingFactorHeight = 3f;
+
+        private Dictionary<string, int> biomarkerColorLookup = new Dictionary<string, int>();
 
         private void Start()
         {
@@ -58,12 +61,25 @@ namespace HRAOrganGallery
 
         public override void BuildVisualization()
         {
-            CreateCells (cellList); //creates a list of cell game objects
+            InvertBiomarkerLookup(); //create a color lookup by biomarker
+            CreateCells(cellList); //creates a list of cell game objects
             AdjustParent(_parent); //moves all cells to preselected position
-            CreateBars (cellsObjects); //uses those game objects to draw biomarker trees
+            CreateBars(cellsObjects); //uses those game objects to draw biomarker trees
         }
 
-        void AdjustParent(Transform parent) {
+        private void InvertBiomarkerLookup()
+        {
+            // Invert the dictionary
+
+
+            foreach (var kvp in CellWithBiomarkers.biomarkerColumnLookup)
+            {
+                biomarkerColorLookup.Add(kvp.Value, kvp.Key);
+            }
+        }
+
+        void AdjustParent(Transform parent)
+        {
             _parent.position = _adjustedParentPosition.position;
         }
 
@@ -100,9 +116,9 @@ namespace HRAOrganGallery
 
                 //set parent
                 newCell.parent = _parent;
-                
+
                 //add to list of cell objects
-                cellsObjects.Add (newCell);
+                cellsObjects.Add(newCell);
             }
         }
 
@@ -122,7 +138,7 @@ namespace HRAOrganGallery
                     float cz = c.position.z; // Z coordinate of the center
 
                     int n = numberOfBiomarkersToDisplay; // Number of points
-                    
+
                     //initialize list to hold x and z values
                     List<(float, float)> pointsOnCircle =
                         new List<(float, float)>();
@@ -141,18 +157,7 @@ namespace HRAOrganGallery
                                 c.GetComponent<CellDataWithBiomarkers>();
                             float height = data.biomarkers[counter].value * scalingFactorHeight;
 
-                            Vector3 v0 = new Vector3(p.Item1, 0, p.Item2);
-                            Vector3 v1 =
-                                new Vector3(p.Item1, 0, p.Item2) +
-                                new Vector3(0, height, 0);
-
-                            // Assign random colors for each vertex (line start and end)
-                            treeColors.Add(Random.ColorHSV());
-                            treeColors.Add(Random.ColorHSV());
-
-                            //add vertices to list that holds all vertices
-                            vertices.Add (v0);
-                            vertices.Add (v1);
+                            GenerateVertices(p, height, data.biomarkers[counter].label);
 
                             counter++;
                         });
@@ -169,6 +174,34 @@ namespace HRAOrganGallery
             for (int i = 0; i < indices.Length; i++) indices[i] = i;
 
             lineMesh.SetIndices(indices, MeshTopology.Lines, 0);
+        }
+
+        void GenerateVertices((float, float) point, float height, string biomarkerLabel)
+        {
+
+            Vector3 v0 = new Vector3(point.Item1, 0, point.Item2);
+            Vector3 v1 =
+                new Vector3(point.Item1, 0, point.Item2) +
+                new Vector3(0, height, 0);
+
+            // Assign random colors for each vertex (line start and end)
+            //treeColors.Add(Random.ColorHSV());
+            //treeColors.Add(Random.ColorHSV());
+
+            //get color by biomarker
+            //get index from dict
+            int index = biomarkerColorLookup[biomarkerLabel] - 1;
+
+            //get color from inverted lookup
+            Color color = _colorScheme.values[index].color;
+
+            //add colors to treeColors list
+            treeColors.Add(color);
+            treeColors.Add(color);
+
+            //add vertices to list that holds all vertices
+            vertices.Add(v0);
+            vertices.Add(v1);
         }
 
         void OnRenderObject()

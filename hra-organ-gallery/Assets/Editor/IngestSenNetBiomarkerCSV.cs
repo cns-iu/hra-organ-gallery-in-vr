@@ -93,7 +93,7 @@ namespace HRAOrganGallery
                             //determine label based on column
                             for (int i = 3; i <= 10; i++)
                             {
-                                BiomarkerValuePair newPair = new BiomarkerValuePair(newCell.biomarkerColumnLookup[i], float.Parse(line.Split(',')[i]));
+                                BiomarkerValuePair newPair = new BiomarkerValuePair(CellWithBiomarkers.biomarkerColumnLookup[i], float.Parse(line.Split(',')[i]));
                                 biomarkers.Add(newPair);
                             }
 
