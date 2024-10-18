@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
+using Unity.VisualScripting;
 using UnityEngine;
 using static Assets.Scripts.Interaction.CCFAPISPARQLQuery;
 using Random = UnityEngine.Random;
@@ -137,7 +139,7 @@ namespace HRAOrganGallery
                     .AddComponent<CellDataWithBiomarkers>()
                     .Init("No Known Cell Type",
                     Color.white,
-                    currentCell.biomarkers);
+                    currentCell.biomarkers, currentCell.meetsThresholds);
 
                 //set parent
                 newCell.parent = _parent;
@@ -159,6 +161,7 @@ namespace HRAOrganGallery
             cells
                 .ForEach(c =>
                 {
+                    if (!c.GetComponent<CellDataWithBiomarkers>().meetsThresholds) return;
                     float cx = c.position.x; // X coordinate of the center
                     float cz = c.position.z; // Z coordinate of the center
 

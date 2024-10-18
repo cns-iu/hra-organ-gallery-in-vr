@@ -6,8 +6,9 @@ namespace HRAOrganGallery
 {
     public class CellDataWithBiomarkers : CellData
     {
-
+        public bool meetsThresholds = false;
         public List<BiomarkerValuePair> biomarkers = new List<BiomarkerValuePair>();
+
 
         /// <summary>
         /// A constructor-like function to initialize an object of this class
@@ -15,9 +16,9 @@ namespace HRAOrganGallery
         /// <param name="cellType"></param>
         /// <param name="color"></param>
         /// <param name="biomarkersArg"></param>
-        public void Init(string cellType, Color color, List<BiomarkerValuePair> biomarkersArg)
+        public void Init(string cellType, Color color, List<BiomarkerValuePair> biomarkersArg, bool meetsThresholdsArg)
         {
-            (CellType, Color, biomarkers) = (cellType, color, biomarkersArg);
+            (CellType, Color, biomarkers, meetsThresholds) = (cellType, color, biomarkersArg, meetsThresholdsArg);
         }
     }
 }

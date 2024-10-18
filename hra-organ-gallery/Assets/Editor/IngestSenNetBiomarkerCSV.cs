@@ -14,7 +14,7 @@ namespace HRAOrganGallery
     {
 
         //fill in the file name here
-        private static string sourceFileName = "CU034-U54-HRA-058-A_coords_scores";
+        private static string sourceFileName = "CU034-U54-HRA-058-A_coords_scores_with_thresholds";
 
         //decrease to read in **more** rows from the cell position CSV file
         private static int _readIterator = 1;
@@ -87,6 +87,9 @@ namespace HRAOrganGallery
                             //instantiate new cell
                             CellWithBiomarkers newCell = new CellWithBiomarkers();
 
+                            //get threshold
+                            bool meetsThresholds = bool.Parse(line.Split(',')[14]);
+
                             //construct biomarker value pair list
                             List<BiomarkerValuePair> biomarkers = new List<BiomarkerValuePair>();
 
@@ -99,7 +102,7 @@ namespace HRAOrganGallery
 
 
                             //init new cell
-                            newCell.Init(x, y, label, biomarkers, z);
+                            newCell.Init(x, y, label, biomarkers, meetsThresholds, z);
 
                             //add to list of cells
                             list.cells.Add(newCell);
