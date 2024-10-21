@@ -255,7 +255,7 @@ MonoBehaviour:
       value: -0.007032967
   - position: {x: 15793, y: 0, z: 11898}
     label: AAACCGGAAATGTTAA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.009689845
@@ -555,7 +555,7 @@ MonoBehaviour:
       value: -0.06259341
   - position: {x: 14211, y: 0, z: 2854}
     label: AAACTAACGTGGCGAC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.003658904
@@ -2715,7 +2715,7 @@ MonoBehaviour:
       value: -0.015208791
   - position: {x: 11160, y: 0, z: 3051}
     label: AACGTGATGAAGGACA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.023703333
@@ -2855,7 +2855,7 @@ MonoBehaviour:
       value: -0.078945056
   - position: {x: 6754, y: 0, z: 8752}
     label: AACTCAAGTTAATTGC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.0990546
@@ -6915,7 +6915,7 @@ MonoBehaviour:
       value: -0.11753846
   - position: {x: 14776, y: 0, z: 12881}
     label: ACACTGGGACAGTCGT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.047653813
@@ -7755,7 +7755,7 @@ MonoBehaviour:
       value: -0.032527473
   - position: {x: 10708, y: 0, z: 16027}
     label: ACCACACGGTTGATGG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.01558159
@@ -7815,7 +7815,7 @@ MonoBehaviour:
       value: -0.007824176
   - position: {x: 10369, y: 0, z: 10718}
     label: ACCACGTGCAGCTATA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.029234301
@@ -8495,7 +8495,7 @@ MonoBehaviour:
       value: -0.041758243
   - position: {x: 9353, y: 0, z: 13274}
     label: ACCGACACATCTCCCA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.07646768
@@ -8995,7 +8995,7 @@ MonoBehaviour:
       value: -0.06417582
   - position: {x: 4494, y: 0, z: 7573}
     label: ACGAAATGGGCGGCAC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.029504173
@@ -9555,7 +9555,7 @@ MonoBehaviour:
       value: -0.12887911
   - position: {x: 5285, y: 0, z: 9342}
     label: ACGCGCTACACAGGGT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.02543336
@@ -10415,7 +10415,7 @@ MonoBehaviour:
       value: -0.017758243
   - position: {x: 12516, y: 0, z: 14060}
     label: ACGTTCTGTACAAGTC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.04467101
@@ -10635,7 +10635,7 @@ MonoBehaviour:
       value: -0.05468132
   - position: {x: 13533, y: 0, z: 11111}
     label: ACTAGTTGCGATCGTC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.03603793
@@ -10955,7 +10955,7 @@ MonoBehaviour:
       value: 0.010461538
   - position: {x: 15680, y: 0, z: 5410}
     label: ACTCCCGTAGACTAGG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.039409917
@@ -11195,7 +11195,7 @@ MonoBehaviour:
       value: -0.079032965
   - position: {x: 12742, y: 0, z: 14847}
     label: ACTCTGACCTAATAGA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.013007858
@@ -12415,7 +12415,7 @@ MonoBehaviour:
       value: -0.043164834
   - position: {x: 4381, y: 0, z: 4623}
     label: AGAATTGTTTGACATA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.03611463
@@ -12475,7 +12475,7 @@ MonoBehaviour:
       value: -0.013362637
   - position: {x: 7093, y: 0, z: 2657}
     label: AGACATAGATCCTTCC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.003144726
@@ -14055,7 +14055,7 @@ MonoBehaviour:
       value: 0.002461538
   - position: {x: 15454, y: 0, z: 9342}
     label: AGCCCTGTCGCACCGT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.03611463
@@ -14115,7 +14115,7 @@ MonoBehaviour:
       value: -0.010813187
   - position: {x: 2121, y: 0, z: 8556}
     label: AGCCGCAAATTCAAAT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.043841507
@@ -15935,7 +15935,7 @@ MonoBehaviour:
       value: -0.106725276
   - position: {x: 14550, y: 0, z: 6983}
     label: AGGGAGACATACTTCG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.003727082
@@ -17735,7 +17735,7 @@ MonoBehaviour:
       value: -0.16641758
   - position: {x: 11838, y: 0, z: 12881}
     label: AGTGATAACCTGCGCG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.063036546
@@ -18555,7 +18555,7 @@ MonoBehaviour:
       value: -0.13019781
   - position: {x: 13872, y: 0, z: 12488}
     label: ATAAACGTTGCACCAC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.01774057
@@ -18955,7 +18955,7 @@ MonoBehaviour:
       value: -0.07454945
   - position: {x: 5059, y: 0, z: 8162}
     label: ATACCACGGGCAACTT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.006380356
@@ -19015,7 +19015,7 @@ MonoBehaviour:
       value: 0.028131869
   - position: {x: 7997, y: 0, z: 1478}
     label: ATACCAGGTGAGCGAT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.01971206
@@ -19495,7 +19495,7 @@ MonoBehaviour:
       value: -0.16931868
   - position: {x: 12290, y: 0, z: 6589}
     label: ATAGAGTTATCAACTT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.008198444
@@ -19835,7 +19835,7 @@ MonoBehaviour:
       value: -0.10461538
   - position: {x: 1895, y: 0, z: 10915}
     label: ATATACATGTATGGTA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.019922277
@@ -21915,7 +21915,7 @@ MonoBehaviour:
       value: -0.035692308
   - position: {x: 7884, y: 0, z: 4427}
     label: ATGATCGGGAATAGAC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.007519502
@@ -22215,7 +22215,7 @@ MonoBehaviour:
       value: -0.1723956
   - position: {x: 10369, y: 0, z: 13077}
     label: ATGCTCTGGCGCGGTA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.033236936
@@ -23315,7 +23315,7 @@ MonoBehaviour:
       value: -0.025758242
   - position: {x: 13646, y: 0, z: 6196}
     label: ATTAGATTCCTCAGCA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.044543177
@@ -24655,7 +24655,7 @@ MonoBehaviour:
       value: -0.07156044
   - position: {x: 9804, y: 0, z: 5017}
     label: ATTTGTTCCAGGGCTC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.010482419
@@ -25735,7 +25735,7 @@ MonoBehaviour:
       value: -0.067956045
   - position: {x: 12403, y: 0, z: 9145}
     label: CAAGTGTGGTTGCAAA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.024785664
@@ -25775,7 +25775,7 @@ MonoBehaviour:
       value: -0.009758242
   - position: {x: 15341, y: 0, z: 9932}
     label: CAATACGAGAGTCTGA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.009803476
@@ -25955,7 +25955,7 @@ MonoBehaviour:
       value: -0.019340659
   - position: {x: 15228, y: 0, z: 6983}
     label: CAATGAGGTTCGACTA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.008476839
@@ -26015,7 +26015,7 @@ MonoBehaviour:
       value: -0.020835165
   - position: {x: 11499, y: 0, z: 6786}
     label: CAATGGATCTCTACCA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.001457312
@@ -26815,7 +26815,7 @@ MonoBehaviour:
       value: 0.029274724
   - position: {x: 15002, y: 0, z: 15633}
     label: CACCCGCGTTTGACAC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.003931617
@@ -27215,7 +27215,7 @@ MonoBehaviour:
       value: -0.035164837
   - position: {x: 11273, y: 0, z: 6000}
     label: CACCTTGCGAAACTCG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.008306393
@@ -28075,7 +28075,7 @@ MonoBehaviour:
       value: -0.016967032
   - position: {x: 9691, y: 0, z: 6393}
     label: CAGAGCATGAGCTTGC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.06076678
@@ -28155,7 +28155,7 @@ MonoBehaviour:
       value: -0.015120879
   - position: {x: 13307, y: 0, z: 14257}
     label: CAGATAATGGGCGGGT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.06177241
@@ -29715,7 +29715,7 @@ MonoBehaviour:
       value: -0.017582418
   - position: {x: 13307, y: 0, z: 4820}
     label: CATATACTACTGATAA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.013729412
@@ -30095,7 +30095,7 @@ MonoBehaviour:
       value: 0.03964835
   - position: {x: 2686, y: 0, z: 6786}
     label: CATCTGCAGGATCATT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.05752263
@@ -30955,7 +30955,7 @@ MonoBehaviour:
       value: -0.04923077
   - position: {x: 15567, y: 0, z: 13471}
     label: CATTCGTCGTAGCGGT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.04135868
@@ -31815,7 +31815,7 @@ MonoBehaviour:
       value: -0.010197802
   - position: {x: 4833, y: 0, z: 10522}
     label: CCACGGAGCCATAAGA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.01580885
@@ -32075,7 +32075,7 @@ MonoBehaviour:
       value: -0.14391209
   - position: {x: 11273, y: 0, z: 6786}
     label: CCAGATAGTTGAGTGA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.042671114
@@ -34375,7 +34375,7 @@ MonoBehaviour:
       value: -0.055736262
   - position: {x: 3364, y: 0, z: 4427}
     label: CCGACAAACACATGAG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.04387844
@@ -34575,7 +34575,7 @@ MonoBehaviour:
       value: -0.005010989
   - position: {x: 13194, y: 0, z: 8555}
     label: CCGATCTCAACCTTAT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.03663449
@@ -36055,7 +36055,7 @@ MonoBehaviour:
       value: -0.02567033
   - position: {x: 7319, y: 0, z: 6589}
     label: CCTACTGCTTACACTT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.024177741
@@ -36595,7 +36595,7 @@ MonoBehaviour:
       value: -0.06241758
   - position: {x: 10030, y: 0, z: 1871}
     label: CCTCGACCCACTGCCT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.00100563
@@ -38015,7 +38015,7 @@ MonoBehaviour:
       value: -0.061714288
   - position: {x: 16132, y: 0, z: 14454}
     label: CGAATTCCCGGTTCAA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.019800125
@@ -38055,7 +38055,7 @@ MonoBehaviour:
       value: -0.031824175
   - position: {x: 15115, y: 0, z: 3247}
     label: CGACACCGCTTAAGGA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.034753904
@@ -39275,7 +39275,7 @@ MonoBehaviour:
       value: -0.005626374
   - position: {x: 8336, y: 0, z: 2854}
     label: CGCAGAAACATTTGCG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.019794442
@@ -39875,7 +39875,7 @@ MonoBehaviour:
       value: -0.024703298
   - position: {x: 12629, y: 0, z: 13864}
     label: CGCGAAGTGGCATACT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.0870893
@@ -39935,7 +39935,7 @@ MonoBehaviour:
       value: -0.11657143
   - position: {x: 13985, y: 0, z: 4427}
     label: CGCGAGAGGGACTTGT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.021106875
@@ -40195,7 +40195,7 @@ MonoBehaviour:
       value: -0.010989011
   - position: {x: 15341, y: 0, z: 2461}
     label: CGCGTACATTCTGGAA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.042602934
@@ -41135,7 +41135,7 @@ MonoBehaviour:
       value: -0.014065934
   - position: {x: 8449, y: 0, z: 8162}
     label: CGGCCACGCACAAAGT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.09078797
@@ -41955,7 +41955,7 @@ MonoBehaviour:
       value: -0.028659342
   - position: {x: 5285, y: 0, z: 4623}
     label: CGGTGTACTTGATCCC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.040566105
@@ -42095,7 +42095,7 @@ MonoBehaviour:
       value: -0.034197804
   - position: {x: 13081, y: 0, z: 2854}
     label: CGGTTGGGTTCAAGTT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.031998362
@@ -42315,7 +42315,7 @@ MonoBehaviour:
       value: -0.090549454
   - position: {x: 9465, y: 0, z: 5606}
     label: CGTACCTGATAGGCCT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.005298025
@@ -42615,7 +42615,7 @@ MonoBehaviour:
       value: -0.041230768
   - position: {x: 4042, y: 0, z: 5213}
     label: CGTCATACCATATCCA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.050227545
@@ -43195,7 +43195,7 @@ MonoBehaviour:
       value: 0.000263736
   - position: {x: 14889, y: 0, z: 7572}
     label: CGTGTGTTAAACCCTG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.04314836
@@ -45075,7 +45075,7 @@ MonoBehaviour:
       value: -0.04307692
   - position: {x: 13533, y: 0, z: 11898}
     label: CTATGGGAAGCGGAAT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.14654364
@@ -46755,7 +46755,7 @@ MonoBehaviour:
       value: -0.031472526
   - position: {x: 7771, y: 0, z: 10522}
     label: CTGAATCCGAGACCTC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.003960025
@@ -47955,7 +47955,7 @@ MonoBehaviour:
       value: -0.08342857
   - position: {x: 12968, y: 0, z: 15240}
     label: CTGGTAAAGACTTACA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.017734889
@@ -50175,7 +50175,7 @@ MonoBehaviour:
       value: 0.016087912
   - position: {x: 2008, y: 0, z: 4820}
     label: GAAATCTGACCAAGTT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.040446796
@@ -51675,7 +51675,7 @@ MonoBehaviour:
       value: -0.07692308
   - position: {x: 14211, y: 0, z: 11505}
     label: GACACTGGAACCCGAT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.06642842
@@ -51835,7 +51835,7 @@ MonoBehaviour:
       value: -0.12536263
   - position: {x: 9805, y: 0, z: 14060}
     label: GACATCCGTCGAACTG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.03536751
@@ -53055,7 +53055,7 @@ MonoBehaviour:
       value: -0.05986813
   - position: {x: 14324, y: 0, z: 3444}
     label: GAGACCCTGCAACGCC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.012155628
@@ -53115,7 +53115,7 @@ MonoBehaviour:
       value: -0.10593407
   - position: {x: 2460, y: 0, z: 6786}
     label: GAGAGCGCAGTCCCTG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.040208172
@@ -53975,7 +53975,7 @@ MonoBehaviour:
       value: 0.012659341
   - position: {x: 5285, y: 0, z: 13667}
     label: GAGGGTAGTAACAAAG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.01398224
@@ -55975,7 +55975,7 @@ MonoBehaviour:
       value: -0.046505496
   - position: {x: 10369, y: 0, z: 4427}
     label: GATTCCGCGTTTCCGT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.055073887
@@ -56115,7 +56115,7 @@ MonoBehaviour:
       value: -0.09327473
   - position: {x: 16132, y: 0, z: 4230}
     label: GATTTAGTGCGTACTG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.08478828
@@ -56515,7 +56515,7 @@ MonoBehaviour:
       value: -0.017494505
   - position: {x: 15680, y: 0, z: 7376}
     label: GCAATTAGTCGCACCG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.051270105
@@ -56995,7 +56995,7 @@ MonoBehaviour:
       value: -0.10197802
   - position: {x: 8675, y: 0, z: 8556}
     label: GCAGATTAGGGATATC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.040480886
@@ -57115,7 +57115,7 @@ MonoBehaviour:
       value: -0.09142857
   - position: {x: 3477, y: 0, z: 11701}
     label: GCAGGAACTTAGATCT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.040478043
@@ -57295,7 +57295,7 @@ MonoBehaviour:
       value: -0.09793407
   - position: {x: 6528, y: 0, z: 4427}
     label: GCATCCCTAACTTTGA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.038006578
@@ -57515,7 +57515,7 @@ MonoBehaviour:
       value: -0.008263736
   - position: {x: 14324, y: 0, z: 7769}
     label: GCATTTCCAAGGCTCC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.047551546
@@ -58995,7 +58995,7 @@ MonoBehaviour:
       value: -0.107868135
   - position: {x: 14550, y: 0, z: 5410}
     label: GCGAGAGGCCATGTAA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.007610406
@@ -59755,7 +59755,7 @@ MonoBehaviour:
       value: -0.089494504
   - position: {x: 15228, y: 0, z: 4623}
     label: GCGGTCCCGGTGAAGG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.018240545
@@ -60035,7 +60035,7 @@ MonoBehaviour:
       value: -0.08553846
   - position: {x: 12516, y: 0, z: 8162}
     label: GCGTGGTACTGGGTTA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.09241857
@@ -60815,7 +60815,7 @@ MonoBehaviour:
       value: 0.005978022
   - position: {x: 14098, y: 0, z: 9735}
     label: GCTCCCAGTCGGTCCA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.050199136
@@ -61475,7 +61475,7 @@ MonoBehaviour:
       value: -0.042373627
   - position: {x: 12516, y: 0, z: 8949}
     label: GCTGTTGCTACCGAAC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.09223392
@@ -63115,7 +63115,7 @@ MonoBehaviour:
       value: -0.077274725
   - position: {x: 6867, y: 0, z: 8556}
     label: GGATGACGCGAGTTTA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.021470493
@@ -63835,7 +63835,7 @@ MonoBehaviour:
       value: -0.13837363
   - position: {x: 15228, y: 0, z: 6589}
     label: GGCCCGTATACCATGC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.001962968
@@ -64235,7 +64235,7 @@ MonoBehaviour:
       value: -0.057846155
   - position: {x: 6980, y: 0, z: 7573}
     label: GGCGGAGTAATATTAG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.05035822
@@ -64375,7 +64375,7 @@ MonoBehaviour:
       value: -0.07191209
   - position: {x: 12968, y: 0, z: 5017}
     label: GGCTAAAGGGCGGGTC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.041256413
@@ -66155,7 +66155,7 @@ MonoBehaviour:
       value: -0.07876923
   - position: {x: 14437, y: 0, z: 7179}
     label: GGGTGCATATGAAAGC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.00000852
@@ -67255,7 +67255,7 @@ MonoBehaviour:
       value: -0.07120879
   - position: {x: 4155, y: 0, z: 6590}
     label: GGTGCTGATCACAAAG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.03206086
@@ -67295,7 +67295,7 @@ MonoBehaviour:
       value: -0.07032967
   - position: {x: 13646, y: 0, z: 2657}
     label: GGTGGACCACGTGTTA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.014254953
@@ -68675,7 +68675,7 @@ MonoBehaviour:
       value: -0.20026374
   - position: {x: 7432, y: 0, z: 2461}
     label: GTAGCGCTGTTGTAGT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.016198035
@@ -69735,7 +69735,7 @@ MonoBehaviour:
       value: -0.07287912
   - position: {x: 9353, y: 0, z: 8556}
     label: GTCATTAGAGCGAACG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.061002564
@@ -70635,7 +70635,7 @@ MonoBehaviour:
       value: -0.10320879
   - position: {x: 11951, y: 0, z: 11111}
     label: GTCTATTGGTTCCGGT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.113158986
@@ -71135,7 +71135,7 @@ MonoBehaviour:
       value: -0.03868132
   - position: {x: 14663, y: 0, z: 7572}
     label: GTGACGAGGGTGACCC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.007843349
@@ -71275,7 +71275,7 @@ MonoBehaviour:
       value: -0.020747254
   - position: {x: 14550, y: 0, z: 15240}
     label: GTGAGTCGACTAATAG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.000198853
@@ -71475,7 +71475,7 @@ MonoBehaviour:
       value: -0.2378022
   - position: {x: 8787, y: 0, z: 4034}
     label: GTGCAACAAATGTGGC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.01320387
@@ -71775,7 +71775,7 @@ MonoBehaviour:
       value: -0.04
   - position: {x: 6302, y: 0, z: 2461}
     label: GTGCGGGACCATCGGC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.007255311
@@ -72715,7 +72715,7 @@ MonoBehaviour:
       value: -0.100395605
   - position: {x: 14324, y: 0, z: 9735}
     label: GTTAACTATGTTGTCA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.031935867
@@ -73895,7 +73895,7 @@ MonoBehaviour:
       value: -0.018197803
   - position: {x: 9014, y: 0, z: 10718}
     label: GTTTACGTTCCATCTG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.0556392
@@ -75875,7 +75875,7 @@ MonoBehaviour:
       value: -0.10118681
   - position: {x: 3364, y: 0, z: 9932}
     label: TACATCCCTATCCCTG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.03060923
@@ -77015,7 +77015,7 @@ MonoBehaviour:
       value: -0.034901097
   - position: {x: 2008, y: 0, z: 2068}
     label: TACTCACAACGTAGTA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.02208978
@@ -77075,7 +77075,7 @@ MonoBehaviour:
       value: -0.007648352
   - position: {x: 3590, y: 0, z: 8359}
     label: TACTCGGCACGCCGGG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.018530302
@@ -79395,7 +79395,7 @@ MonoBehaviour:
       value: -0.08738461
   - position: {x: 12855, y: 0, z: 8359}
     label: TATATCCCTGGGAGGA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.032012567
@@ -79995,7 +79995,7 @@ MonoBehaviour:
       value: -0.12923077
   - position: {x: 5737, y: 0, z: 2264}
     label: TATGATTCTGCTTGGT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.04451761
@@ -80275,7 +80275,7 @@ MonoBehaviour:
       value: 0.019604396
   - position: {x: 11047, y: 0, z: 7179}
     label: TATGTCTCATTGTGCC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.002818038
@@ -80935,7 +80935,7 @@ MonoBehaviour:
       value: -0.026461538
   - position: {x: 3929, y: 0, z: 7376}
     label: TCAACTAACGTATAAC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.014479373
@@ -80955,7 +80955,7 @@ MonoBehaviour:
       value: -0.115428574
   - position: {x: 13985, y: 0, z: 12291}
     label: TCAACTGCAGAGTCAG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.078638025
@@ -80975,7 +80975,7 @@ MonoBehaviour:
       value: -0.1992967
   - position: {x: 13985, y: 0, z: 7966}
     label: TCAAGAAATACTAGCT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.016499156
@@ -81195,7 +81195,7 @@ MonoBehaviour:
       value: -0.06716484
   - position: {x: 7319, y: 0, z: 11308}
     label: TCACAGCAAACTCGAA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.004025362
@@ -81515,7 +81515,7 @@ MonoBehaviour:
       value: -0.06065934
   - position: {x: 6754, y: 0, z: 1281}
     label: TCACTCAGCGCATTAG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.014283361
@@ -81555,7 +81555,7 @@ MonoBehaviour:
       value: 0.01731868
   - position: {x: 2686, y: 0, z: 4820}
     label: TCACTCTTCGTCTGTC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.06999074
@@ -83235,7 +83235,7 @@ MonoBehaviour:
       value: 0.04079121
   - position: {x: 14550, y: 0, z: 7376}
     label: TCCGAATGGTCCTGAG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.030214364
@@ -83295,7 +83295,7 @@ MonoBehaviour:
       value: -0.06487912
   - position: {x: 9013, y: 0, z: 4820}
     label: TCCGATAATTGCCATA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.004778165
@@ -83875,7 +83875,7 @@ MonoBehaviour:
       value: -0.059516486
   - position: {x: 5398, y: 0, z: 6393}
     label: TCCTCTACGAGATGGC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.046278883
@@ -84315,7 +84315,7 @@ MonoBehaviour:
       value: -0.14074725
   - position: {x: 15228, y: 0, z: 12488}
     label: TCGAGGGCAACAGACG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.02666341
@@ -84855,7 +84855,7 @@ MonoBehaviour:
       value: -0.07859341
   - position: {x: 8901, y: 0, z: 6983}
     label: TCGCTCGATATATTCC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.07243095
@@ -85655,7 +85655,7 @@ MonoBehaviour:
       value: -0.060923077
   - position: {x: 6302, y: 0, z: 5606}
     label: TCGTCCGCTGGCGTCT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.023828328
@@ -86495,7 +86495,7 @@ MonoBehaviour:
       value: -0.10189011
   - position: {x: 12403, y: 0, z: 3640}
     label: TCTCGAACGAGGTCAC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.005448585
@@ -87275,7 +87275,7 @@ MonoBehaviour:
       value: -0.05213187
   - position: {x: 12064, y: 0, z: 5410}
     label: TCTTACCGGAACTCGT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.03841849
@@ -87735,7 +87735,7 @@ MonoBehaviour:
       value: 0.002989011
   - position: {x: 10030, y: 0, z: 3444}
     label: TGAAACTTATGCAAGC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.05500571
@@ -88675,7 +88675,7 @@ MonoBehaviour:
       value: -0.04210989
   - position: {x: 6415, y: 0, z: 10128}
     label: TGAGTGCCTCTTAAAT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.04236431
@@ -88955,7 +88955,7 @@ MonoBehaviour:
       value: 0.017582418
   - position: {x: 14663, y: 0, z: 7179}
     label: TGATGGCTGTTTCTGA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.015206609
@@ -90035,7 +90035,7 @@ MonoBehaviour:
       value: -0.06523077
   - position: {x: 9691, y: 0, z: 5213}
     label: TGCCTGATCAAACGAT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.012485157
@@ -90195,7 +90195,7 @@ MonoBehaviour:
       value: -0.06769231
   - position: {x: 14776, y: 0, z: 3444}
     label: TGCGAGATGGCGGCCA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.044989176
@@ -91255,7 +91255,7 @@ MonoBehaviour:
       value: -0.13010989
   - position: {x: 11499, y: 0, z: 5606}
     label: TGGCAACTCGCGCGCC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.08006409
@@ -91375,7 +91375,7 @@ MonoBehaviour:
       value: -0.12703297
   - position: {x: 3138, y: 0, z: 12291}
     label: TGGCATGAAGTTTGGG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.05522445
@@ -92055,7 +92055,7 @@ MonoBehaviour:
       value: -0.1571868
   - position: {x: 9465, y: 0, z: 2854}
     label: TGGTATCGCATCCCAA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.008306393
@@ -92875,7 +92875,7 @@ MonoBehaviour:
       value: -0.059252746
   - position: {x: 14098, y: 0, z: 5410}
     label: TGTCATTTGTTGGGAA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.004423069
@@ -94155,7 +94155,7 @@ MonoBehaviour:
       value: -0.012307692
   - position: {x: 10482, y: 0, z: 3837}
     label: TTAAGCCGACAACTTC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.00119028
@@ -94275,7 +94275,7 @@ MonoBehaviour:
       value: -0.07578022
   - position: {x: 9691, y: 0, z: 2068}
     label: TTAATGCGAGGTAACT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.06003102
@@ -94495,7 +94495,7 @@ MonoBehaviour:
       value: -0.21134067
   - position: {x: 11386, y: 0, z: 4623}
     label: TTACCCATTGCCGGGT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.03072002
@@ -94775,7 +94775,7 @@ MonoBehaviour:
       value: -0.018725274
   - position: {x: 9465, y: 0, z: 1674}
     label: TTACTGTTTCTCTACG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.015561704
@@ -95215,7 +95215,7 @@ MonoBehaviour:
       value: -0.023296703
   - position: {x: 14437, y: 0, z: 5606}
     label: TTAGTTCAAGTGTTCG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.036694147
@@ -95955,7 +95955,7 @@ MonoBehaviour:
       value: 0.024175825
   - position: {x: 2573, y: 0, z: 6590}
     label: TTCAGTTTGTGGCAGC-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.001389134
@@ -96495,7 +96495,7 @@ MonoBehaviour:
       value: -0.04975824
   - position: {x: 6754, y: 0, z: 6000}
     label: TTCGACGGGAAGGGCG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.007806419
@@ -96935,7 +96935,7 @@ MonoBehaviour:
       value: -0.026373627
   - position: {x: 13646, y: 0, z: 5803}
     label: TTCGTTCAACGAAGTT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.009792113
@@ -97235,7 +97235,7 @@ MonoBehaviour:
       value: -0.07024176
   - position: {x: 13759, y: 0, z: 6786}
     label: TTCTGCTAGACTCCAA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.007616088
@@ -97935,7 +97935,7 @@ MonoBehaviour:
       value: -0.116043955
   - position: {x: 14889, y: 0, z: 9932}
     label: TTGAGCAGCCCACGGT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.03441017
@@ -98215,7 +98215,7 @@ MonoBehaviour:
       value: -0.08685714
   - position: {x: 13759, y: 0, z: 1281}
     label: TTGCAGGTCATGAAGT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.025038492
@@ -99075,7 +99075,7 @@ MonoBehaviour:
       value: -0.036307693
   - position: {x: 14098, y: 0, z: 11308}
     label: TTGGGACGTAAGAGTT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.037475355
@@ -99175,7 +99175,7 @@ MonoBehaviour:
       value: -0.060395606
   - position: {x: 15567, y: 0, z: 2461}
     label: TTGGTGCGGTGTTGAA-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: -0.005414496
@@ -99575,7 +99575,7 @@ MonoBehaviour:
       value: -0.01731868
   - position: {x: 16019, y: 0, z: 6000}
     label: TTGTGGTATAGGTATG-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.017223552
@@ -99695,7 +99695,7 @@ MonoBehaviour:
       value: -0.056615386
   - position: {x: 2121, y: 0, z: 5410}
     label: TTGTTCTAGATACGCT-1
-    meetsThresholds: 0
+    meetsThresholds: 1
     biomarkers:
     - label: San.Diego.TMC
       value: 0.044381253

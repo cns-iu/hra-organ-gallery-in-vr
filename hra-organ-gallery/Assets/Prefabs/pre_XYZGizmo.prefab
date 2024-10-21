@@ -608,7 +608,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pre_ScaleCube
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4301680400491904668, guid: 1c49d587f3c004d7eac0a09009f417c6, type: 3}
+    - {fileID: 7686813206268703516, guid: 1c49d587f3c004d7eac0a09009f417c6, type: 3}
+    - {fileID: 3901520780393530106, guid: 1c49d587f3c004d7eac0a09009f417c6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
