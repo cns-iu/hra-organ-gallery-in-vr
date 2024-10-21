@@ -101,7 +101,7 @@ namespace HRAOrganGallery
 
             foreach (var kvp in biomarkerColorLookup)
             {
-                mapping.pairs.Add(new CellTypeColorPair(kvp.Key, _colorScheme.values[kvp.Value].color));
+                mapping.pairs.Add(new CellTypeColorPair(kvp.Key, _colorScheme.values[kvp.Value-3].color));
             }
         }
 
@@ -221,7 +221,7 @@ namespace HRAOrganGallery
             int index = biomarkerColorLookup[biomarkerLabel];
 
             //get color from inverted lookup
-            Color color = _colorScheme.values[index].color;
+            Color color = _colorScheme.values[index-3].color;
 
             legend.Add((biomarkerLabel, new HexColorPair("", color)));
 

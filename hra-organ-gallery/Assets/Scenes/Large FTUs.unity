@@ -2242,7 +2242,7 @@ MonoBehaviour:
   _maxDesiredWidth: 1
   _scalingFactor: 0.00045
   _adjustedParentPosition: {fileID: 1545769823}
-  _colorScheme: {fileID: 11400000, guid: be10d3702eaa8a841920583d2bbc0d07, type: 2}
+  _colorScheme: {fileID: 11400000, guid: 2d0b35c6e3b554e34b8dbbde8d3faec5, type: 2}
   prefabDot: {fileID: 3430073639665117259, guid: f9a83dece806345cab66d4879d4cd997,
     type: 3}
   radius: 0.025
