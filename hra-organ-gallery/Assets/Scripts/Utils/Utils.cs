@@ -7,6 +7,15 @@ using UnityEngine;
 
 namespace Assets.Scripts.Shared
 {
+    /// <summary>
+    /// An enum to capture cell type annotation tools
+    /// </summary>
+    public enum CellTypeAnnotationTool
+    {
+        Azimuth,
+        CellTypist,
+        PopV
+    }
     public static class Utils
     {
         /// <summary>
@@ -116,7 +125,27 @@ namespace Assets.Scripts.Shared
             return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
         }
 
+        /// <summary>
+        /// A static function to mirror a game object
+        /// </summary>
+        /// <param name="go">Game object to mirror</param>
+        /// <returns>An updated position</returns>
+        public static Vector3 AdjustPosition(GameObject go)
+        {
+            Matrix4x4 reflected = Utils.ReflectX() * Matrix4x4.TRS(
+                go.transform.position,
+                go.transform.rotation,
+                go.transform.localScale
+                );
 
+            return reflected.GetPosition();
+        }
+
+        /// <summary>
+        /// A class to remove version prefixes from organ names
+        /// </summary>
+        /// <param name="name">A string for the reference organ name</param>
+        /// <returns></returns>
         public static string CleanReferenceOrganName(string name)
         {
             if (name.Contains("V1."))
@@ -127,6 +156,21 @@ namespace Assets.Scripts.Shared
             {
                 return name;
             }
+        }
+
+        /// <summary>
+        /// A static function to mirror a transform matrix
+        /// </summary>
+        /// <returns>an updated Matrix4x4</returns>
+        public static Matrix4x4 ReflectX()
+        {
+            var result = new Matrix4x4(
+                new Vector4(-1, 0, 0, 0),
+                new Vector4(0, 1, 0, 0),
+                new Vector4(0, 0, 1, 0),
+                new Vector4(0, 0, 0, 1)
+            );
+            return result;
         }
 
         public static Vector3 ComputeCentroid(List<GameObject> list)
@@ -161,6 +205,66 @@ namespace Assets.Scripts.Shared
             {
                 return value;
             }
+        }
+
+        /// <summary>
+        /// A class that returns a style for showing descriptions in `EditorWindows`s
+        /// </summary>
+        /// <returns>A GUIStyle for descriptions in 1EditorWindows`s</returns>
+        public static GUIStyle GetStyleForDescription()
+        {
+
+            // Define a custom GUIStyle for word wrapping
+            GUIStyle descriptionStyle = new GUIStyle(
+                 //EditorStyles.label
+                );
+            descriptionStyle.wordWrap = true;
+            return descriptionStyle;
+        }
+
+        /// <summary>
+        /// Get cell type frequency as a Scritpable Object
+        /// </summary>
+        /// <param name="list">a SOCellPositionList</param>
+        /// <returns>SODatasetCellTypeFrequency as SO</returns>
+        public static SODatasetCellTypeFrequency
+        GetCellTypeFrequency(SOCellPositionList list)
+        {
+            Dictionary<string, int> frequencyDictionary =
+                new Dictionary<string, int>();
+
+            //go through all cells and populate dict with kvps
+            list
+                .cells
+                .ForEach(c =>
+                {
+                    if (frequencyDictionary.ContainsKey(c.label))
+                    {
+                        frequencyDictionary[c.label]++;
+                    }
+                    else
+                    {
+                        frequencyDictionary.Add(c.label, 1);
+                    }
+                });
+
+            //create Scriptable Object
+            SODatasetCellTypeFrequency frequencySO =
+                ScriptableObject.CreateInstance<SODatasetCellTypeFrequency>();
+
+            //populate Scriptable Object from dict
+            foreach (var kvp in frequencyDictionary)
+            {
+                CellTypeFrequencyPair pair = new CellTypeFrequencyPair();
+                pair.Init(kvp.Key, kvp.Value);
+
+                frequencySO.pairs.Add(pair);
+            }
+
+            //sort list by cell frequency
+            frequencySO.SortByCellFrequency();
+
+            return frequencySO;
         }
     }
 }

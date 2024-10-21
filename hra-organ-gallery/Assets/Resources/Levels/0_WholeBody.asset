@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72cd13f94607e4228869811660d89463, type: 3}
   m_Name: 0_WholeBody
   m_EditorClassIdentifier: 
-  index: 0
-  label: Whole Body
-  scale: 10 cm
+  power: 0
+  levelName: Whole Body
+  scaleGlobal: 1 m
+  scaleLocalMeasure: 10 cm

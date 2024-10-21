@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c96fff78a74e9940a9dd43612ddf8fe, type: 3}
+  m_Name: material_500_modified
+  m_EditorClassIdentifier: 
+  values:
+  - hexValue: '#E91E63'
+    color: {r: 0.9137255, g: 0.11764706, b: 0.3882353, a: 1}
+  - hexValue: '#2196F3'
+    color: {r: 0.12941177, g: 0.5882353, b: 0.9529412, a: 1}
+  - hexValue: '#FFEB3B'
+    color: {r: 1, g: 0.92156863, b: 0.23137255, a: 1}
+  - hexValue: '#673AB7'
+    color: {r: 0.40392157, g: 0.22745098, b: 0.7176471, a: 1}
+  - hexValue: '#4CAF50'
+    color: {r: 0.29803923, g: 0.6862745, b: 0.3137255, a: 1}
+  - hexValue: '#FF9800'
+    color: {r: 1, g: 0.59607846, b: 0, a: 1}
+  - hexValue: '#795548'
+    color: {r: 0.4745098, g: 0.33333334, b: 0.28235295, a: 1}
+  - hexValue: '#3F51B5'
+    color: {r: 0.24705882, g: 0.31764707, b: 0.70980394, a: 1}

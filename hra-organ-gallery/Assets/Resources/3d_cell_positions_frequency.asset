@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f616ddb91fc4942b605d614744a044, type: 3}
+  m_Name: 3d_cell_positions_frequency
+  m_EditorClassIdentifier: 
+  pairs:
+  - type: Cortical Thick Ascending Limb
+    frequency: 1126
+  - type: Inner Medullary Collecting Duct
+    frequency: 857
+  - type: Proximal Tubule Epithelial Segment 1
+    frequency: 569
+  - type: Distal Convoluted Tubule Type 1
+    frequency: 430
+  - type: Ascending Thin Limb
+    frequency: 405
+  - type: Connecting Tubule
+    frequency: 338
+  - type: Proximal Tubule Epithelial Segment 3
+    frequency: 334
+  - type: Descending Thin Limb Type 2
+    frequency: 316
+  - type: Descending Thin Limb Type 1
+    frequency: 201
+  - type: Fibroblast
+    frequency: 198
+  - type: Medullary Thick Ascending Limb
+    frequency: 187
+  - type: Cortical Collecting Duct Principal
+    frequency: 140
+  - type: Macula Densa
+    frequency: 131
+  - type: Medullary Fibroblast
+    frequency: 84
+  - type: Descending Thin Limb Type 3
+    frequency: 79
+  - type: 'Descending Vasa Recta Endothelial '
+    frequency: 67
+  - type: Podocyte
+    frequency: 49
+  - type: 'Peritubular Capilary Endothelial '
+    frequency: 48
+  - type: Cortical Collecting Duct Intercalated Type A
+    frequency: 44
+  - type: Intercalated Type B
+    frequency: 43
+  - type: Outer Medullary Collecting Duct Principal
+    frequency: 39
+  - type: Cortical Vascular Smooth Muscle / Pericyte
+    frequency: 37
+  - type: Ascending Vasa Recta Endothelial
+    frequency: 36
+  - type: Parietal Epithelial
+    frequency: 34
+  - type: Outer Medullary Collecting Duct Intercalated Type A
+    frequency: 33
+  - type: Glomerular Capillary Endothelial
+    frequency: 28
+  - type: Connecting Tubule Principal
+    frequency: 23
+  - type: Mesangial
+    frequency: 23
+  - type: Classical Dendritic
+    frequency: 18
+  - type: M2 Macrophage
+    frequency: 14
+  - type: Distal Convoluted Tubule Type 2
+    frequency: 10
+  - type: Afferent / Efferent Arteriole Endothelial
+    frequency: 8
+  - type: B
+    frequency: 6
+  - type: Proximal Tubule Epithelial Segment 2
+    frequency: 6
+  - type: T
+    frequency: 4
+  - type: Monocyte-derived
+    frequency: 4
+  - type: Mast
+    frequency: 2
+  - type: Schwann / Neural
+    frequency: 1
+  - type: Connecting Tubule Intercalated Type A
+    frequency: 1
+  - type: Papillary Tip Epithelial
+    frequency: 1
+  - type: Lymphatic Endothelial
+    frequency: 1
+  - type: Plasma
+    frequency: 1

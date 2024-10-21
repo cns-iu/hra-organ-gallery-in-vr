@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: ThemeSettings_ModernMenuUI
   m_EditorClassIdentifier: 
   custom1:
-    graphic1: {r: 0.9019608, g: 0.91764706, b: 0.9411765, a: 1}
+    graphic1: {r: 1, g: 1, b: 1, a: 1}
     text1:
       serializedVersion: 2
-      rgba: 4293978854
+      rgba: 4294967295
   custom2:
     graphic2: {r: 0.9019608, g: 0.91764706, b: 0.9411765, a: 1}
     text2:
       serializedVersion: 2
-      rgba: 4293978854
+      rgba: 4294967295
   custom3:
     graphic3: {r: 0.9019608, g: 0.91764706, b: 0.9411765, a: 1}
     text3:

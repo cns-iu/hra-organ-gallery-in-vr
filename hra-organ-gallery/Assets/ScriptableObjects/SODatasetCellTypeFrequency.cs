@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace HRAOrganGallery
-{
+
     public class SODatasetCellTypeFrequency : ScriptableObject
     {
         public List<CellTypeFrequencyPair> pairs = new List<CellTypeFrequencyPair>();
@@ -80,4 +79,4 @@ namespace HRAOrganGallery
 
         public void Init(string cellType, int cellFrequency) => (type, frequency) = (cellType, cellFrequency);
     }
-}
+

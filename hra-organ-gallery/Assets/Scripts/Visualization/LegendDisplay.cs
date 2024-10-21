@@ -26,7 +26,7 @@ namespace HRAOrganGallery
             _credits = _verticalLayout.GetChild(0);
 
             //get frequency
-            _frequency = GetComponent<Visualizer>().cellTypeFrequency;
+            _frequency = GetComponent<VisualizerBase>().cellTypeFrequency;
 
             //get kegend
             _legend = GetComponent<CellLegend>();

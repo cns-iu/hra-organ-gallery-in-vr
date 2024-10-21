@@ -7,14 +7,14 @@ namespace HRAOrganGallery
     public class CellLegend : MonoBehaviour
     {
         [SerializeField] public CellTypeToColorMapping mapping;
-        [SerializeField] private Visualizer _visualizer; //Visualizer on same GameObject
+        [SerializeField] private VisualizerBase _visualizer; //Visualizer on same GameObject
         [SerializeField]
         private SODatasetCellTypeFrequency _cellTypeFrequency;
         [SerializeField] private SOColorValues _colorValues;
 
         private void Awake()
         {
-            _visualizer = GetComponent<Visualizer>();
+            _visualizer = GetComponent<VisualizerBase>();
 
             CaptureColorMappings();
         }
