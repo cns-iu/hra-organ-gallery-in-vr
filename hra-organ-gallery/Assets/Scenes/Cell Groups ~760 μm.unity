@@ -959,7 +959,7 @@ PrefabInstance:
     - target: {fileID: 3317629756968725239, guid: 7d5e21585814e8f44a14a2f2ff790424,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.73
+      value: -11.477
       objectReference: {fileID: 0}
     - target: {fileID: 3317629756968725239, guid: 7d5e21585814e8f44a14a2f2ff790424,
         type: 3}
@@ -969,7 +969,7 @@ PrefabInstance:
     - target: {fileID: 3317629756968725239, guid: 7d5e21585814e8f44a14a2f2ff790424,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.54
+      value: -8.064
       objectReference: {fileID: 0}
     - target: {fileID: 3317629756968725239, guid: 7d5e21585814e8f44a14a2f2ff790424,
         type: 3}
@@ -1442,7 +1442,7 @@ MonoBehaviour:
   m_ThresholdMoveRatioForScale: 0.05
   m_ClampScaling: 1
   m_MinimumScaleRatio: 0.147
-  m_MaximumScaleRatio: 7.68
+  m_MaximumScaleRatio: 10
   m_ScaleMultiplier: 0.46
 --- !u!4 &1636723241 stripped
 Transform:
@@ -1486,7 +1486,7 @@ PrefabInstance:
     - target: {fileID: 1809720101664699119, guid: d7216b41c9fa4354283ed8672986f66a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.035
+      value: 0.39
       objectReference: {fileID: 0}
     - target: {fileID: 1809720101664699119, guid: d7216b41c9fa4354283ed8672986f66a,
         type: 3}
