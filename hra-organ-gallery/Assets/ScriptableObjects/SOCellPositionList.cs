@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace HRAOrganGallery
-{
     /// <summary>
     /// A Scriptable Object to hold a list of Cells
     /// </summary>
@@ -22,8 +20,8 @@ namespace HRAOrganGallery
     public class Cell
     {
         public Vector3 position;
-        public string type;
-        private string x, y, z;
+        public string label;
+        protected string x, y, z;
 
         /// <summary>
         /// An constructor-style function to handle the setup of variables once the class has been instantiated
@@ -35,11 +33,10 @@ namespace HRAOrganGallery
         public void Init(string xArg, string yArg, string labelArg, string zArg = "0.0")
         {
             //fill variables
-            (x, y, type, z) = (xArg, yArg, labelArg, zArg);
+            (x, y, label, z) = (xArg, yArg, labelArg, zArg);
 
             //make position
             position = new Vector3(float.Parse(x), float.Parse(y), float.Parse(z));
         }
     }
 
-}

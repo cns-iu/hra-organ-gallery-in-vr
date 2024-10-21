@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: 3_CellGroups
   m_EditorClassIdentifier: 
   power: -4
-  label: "Cell Groups ~760 \u03BCm"
-  scaleSemantic: "100 \u03BCm "
+  levelName: "Cell Groups ~760 \u03BCm"
+  scaleGlobal: "100 \u03BCm"
+  scaleLocalMeasure: "10 \u03BCm"
