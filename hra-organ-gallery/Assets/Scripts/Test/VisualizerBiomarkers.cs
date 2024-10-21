@@ -212,10 +212,6 @@ namespace HRAOrganGallery
                 new Vector3(point.Item1, 0, point.Item2) +
                 new Vector3(0, height, 0);
 
-            // Assign random colors for each vertex (line start and end)
-            //treeColors.Add(Random.ColorHSV());
-            //treeColors.Add(Random.ColorHSV());
-
             //get color by biomarker
             //get index from dict
             int index = biomarkerColorLookup[biomarkerLabel];
