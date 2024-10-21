@@ -6,11 +6,17 @@
 * Rendering issues cause lack of transparency between organs and tissue blocks 
 * Jagged edges along text labels and background can occur
 
+## 0.12.1 - 2024-10-21
+
+### Added in 0.12.1
+
+* Updated language in level 10<sup>-3</sup> based on input from data providers
+
 ## 0.12.0 - 2024-10-20
 
 ### Added in 0.12.0
 
-* Added a new level: 10<sup>-3</sup>, labeled "Large FTUs," with a series of visualizations for senescence hallmarks on a Visium slide with 4,992 spots and 8 hallmarks each
+* Added a new level: 10<sup>-3</sup>, labeled "Large FTUs," with a series of visualizations for senescence hallmarks on a Visium slide for a female donor with 4,992 spots and 8 hallmarks each
 * Added 2D plots (scatter graphs) from a Jupyter Notebook as auxiliary visualizations
 * Cleaned legend displays in all open levels
 * Added XYZ gizmo using axes with same colors as [RUI](https://apps.humanatlas.io/rui/)

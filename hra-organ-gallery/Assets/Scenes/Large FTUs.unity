@@ -846,7 +846,8 @@ MonoBehaviour:
     to Apoptosis, DDR, SASP, Cell Cycle Arrest</b>: https://www.nature.com/articles/s41580-024-00738-8\n\n<b>Fridman</b>:
     Curated senescence list from 2008: https://pubmed.ncbi.nlm.nih.gov/18711403/\n\n<b>Senmayo</b>:
     https://www.nature.com/articles/s41467-022-32552-1\n\n<b>Activated.p53.Targets</b>
-    https://www.nature.com/articles/onc2016502\n\n<b>TMC.SanDiego</b>: TBD "
+    https://www.nature.com/articles/onc2016502\n\n<b>San.Diego.TMC</b>: curated by
+    the Tissue Mapping Center San Diego"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea45cf26a972c7540bb260cb9ef0b2e5, type: 2}
   m_sharedMaterial: {fileID: -7169325082349725780, guid: ea45cf26a972c7540bb260cb9ef0b2e5,
@@ -1318,7 +1319,7 @@ PrefabInstance:
     - target: {fileID: 2340305493712730342, guid: 790962dd6cbbf43b5bf78735dd41f3c6,
         type: 3}
       propertyPath: m_text
-      value: "<b>8 senescence hallmarks for Visium slide in male, human brain</b>\n\n<b>Description</b>:
+      value: "<b>8 senescence hallmarks for Visium slide in human, female brain</b>\n\n<b>Description</b>:
         \nVisium-no-probes human dorsolateral prefrontal cortex\n\n<b>Created:</b>
         Wed Sep 18 2024 16:53:20 GMT-0400 (Eastern Daylight Time)\n\n<b>Approx. slide
         size</b>:  6.5 x 6.5 mm\n\n<b>Source</b>: SenNet ID SNT956.RQLW.577\n\n<b>Slide
