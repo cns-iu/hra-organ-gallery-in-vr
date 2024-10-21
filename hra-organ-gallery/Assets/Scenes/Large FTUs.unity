@@ -1131,6 +1131,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5852121660924979911, guid: 7f6cb8eee85a8412682d7bb86bcbf923,
         type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2007
+      objectReference: {fileID: 0}
+    - target: {fileID: 5852121660924979911, guid: 7f6cb8eee85a8412682d7bb86bcbf923,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.9
       objectReference: {fileID: 0}
@@ -3794,6 +3799,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: pre_Plot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5852121660924979911, guid: 7f6cb8eee85a8412682d7bb86bcbf923,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2165
       objectReference: {fileID: 0}
     - target: {fileID: 5852121660924979911, guid: 7f6cb8eee85a8412682d7bb86bcbf923,
         type: 3}
