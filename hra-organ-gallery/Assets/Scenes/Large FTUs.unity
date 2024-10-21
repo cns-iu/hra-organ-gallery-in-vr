@@ -842,12 +842,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<b>Scientific evidence for senescence hallmarks</b>: \n\n<b>Resistance
-    to Apoptosis, DDR, SASP, Cell Cycle Arrest</b>: https://www.nature.com/articles/s41580-024-00738-8\n\n<b>Fridman</b>:
-    Curated senescence list from 2008: https://pubmed.ncbi.nlm.nih.gov/18711403/\n\n<b>Senmayo</b>:
-    https://www.nature.com/articles/s41467-022-32552-1\n\n<b>Activated.p53.Targets</b>
-    https://www.nature.com/articles/onc2016502\n\n<b>San.Diego.TMC</b>: curated by
-    the Tissue Mapping Center San Diego"
+  m_text: "<b>Scientific evidence for senescence hallmarks</b>: \n\n<b>San.Diego.TMC</b>:
+    curated by the Tissue Mapping Center San Diego\n\n<b>Fridman</b>: Curated senescence
+    list from 2008: https://pubmed.ncbi.nlm.nih.gov/18711403/\n\n<b>Senmayo</b>:
+    https://www.nature.com/articles/s41467-022-32552-1\n\n<b>Resistance to Apoptosis,
+    DDR, SASP, Cell Cycle Arrest</b>: https://www.nature.com/articles/s41580-024-00738-8\n\n<b>Activated.p53.Targets</b>
+    https://www.nature.com/articles/onc2016502"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ea45cf26a972c7540bb260cb9ef0b2e5, type: 2}
   m_sharedMaterial: {fileID: -7169325082349725780, guid: ea45cf26a972c7540bb260cb9ef0b2e5,
