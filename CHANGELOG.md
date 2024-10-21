@@ -6,14 +6,22 @@
 * Rendering issues cause lack of transparency between organs and tissue blocks 
 * Jagged edges along text labels and background can occur
 
+## 0.12.1 - 2024-10-21
+
+### Added in 0.12.1
+
+* Updated language in level 10<sup>-3</sup> based on input from data providers
+
 ## 0.12.0 - 2024-10-20
 
 ### Added in 0.12.0
 
-* Added a new level: 10<sup>-3</sup>, labeled "Large FTUs," with a series of visualizations for senescence hallmarks on a Visium slide with 4,992 spots and 8 hallmarks each
+* Added a new level: 10<sup>-3</sup>, labeled "Large FTUs," with a series of visualizations for senescence hallmarks on a Visium slide for a female donor with 4,992 spots and 8 hallmarks each
 * Added 2D plots (scatter graphs) from a Jupyter Notebook as auxiliary visualizations
 * Cleaned legend displays in all open levels
 * Added XYZ gizmo using axes with same colors as [RUI](https://apps.humanatlas.io/rui/)
+* <b>Summary</b>:
+On the surface, v0.12.0 brings a whole new level to the application, literally! The 10^-3 level introduces a 3D stepped relief map plus auxiliary 2D plots made with seaborn that show 4,992 spots with 8 senescence hallmarks for a 6.5mm x 6.5mm Visium slide in the male brain, courtesy of Hemali Phatnani’s lab. Additionally, we performed aesthetic clean-ups across all 3 open levels and added new scaling cubes as well as scaling gizmos to each scene to hammer home the increasingly important multiscale aspect of the HRA. Under the hood, we applied object-oriented programming principles to make future addition of levels and rooms within levels easier and more scalable. 
 
 ## 0.11.3 - 2024-10-10
 
