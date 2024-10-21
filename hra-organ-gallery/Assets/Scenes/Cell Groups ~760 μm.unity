@@ -1737,12 +1737,22 @@ PrefabInstance:
         <b>Source</b>: 10.1101/2023.11.10.566670
 
         <b>Courtesy
-        of<b>: Clarence Yapp, Harvard Medical School'
+        of<b> Clarence Yapp, Harvard Medical School'
       objectReference: {fileID: 0}
     - target: {fileID: 2340305493712730342, guid: 790962dd6cbbf43b5bf78735dd41f3c6,
         type: 3}
       propertyPath: m_fontSize
-      value: 162.3
+      value: 466
+      objectReference: {fileID: 0}
+    - target: {fileID: 2340305493712730342, guid: 790962dd6cbbf43b5bf78735dd41f3c6,
+        type: 3}
+      propertyPath: m_margin.w
+      value: -238.5446
+      objectReference: {fileID: 0}
+    - target: {fileID: 2340305493712730342, guid: 790962dd6cbbf43b5bf78735dd41f3c6,
+        type: 3}
+      propertyPath: m_margin.z
+      value: -341.15662
       objectReference: {fileID: 0}
     - target: {fileID: 2340305493712730342, guid: 790962dd6cbbf43b5bf78735dd41f3c6,
         type: 3}
