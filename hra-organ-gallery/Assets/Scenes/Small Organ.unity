@@ -1073,6 +1073,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bb2349beb796aad448affe936049327a, type: 2}
+    - target: {fileID: 656558316329820113, guid: d7216b41c9fa4354283ed8672986f66a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9de968ffd9d55324fbc2b2887799ffcf, type: 2}
     - target: {fileID: 1097111589741583893, guid: d7216b41c9fa4354283ed8672986f66a,
         type: 3}
       propertyPath: _levelIndex
@@ -1083,7 +1088,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9de968ffd9d55324fbc2b2887799ffcf, type: 2}
+      objectReference: {fileID: 2100000, guid: bb2349beb796aad448affe936049327a, type: 2}
     - target: {fileID: 1809720101664699119, guid: d7216b41c9fa4354283ed8672986f66a,
         type: 3}
       propertyPath: m_LocalScale.x
