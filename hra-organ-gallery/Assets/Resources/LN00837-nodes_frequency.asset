@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f616ddb91fc4942b605d614744a044, type: 3}
+  m_Name: LN00837-nodes_frequency
+  m_EditorClassIdentifier: 
+  pairs:
+  - type: B_mem
+    frequency: 78428
+  - type: NK
+    frequency: 33892
+  - type: T_CD4+_naive
+    frequency: 28050
+  - type: B_Cycling
+    frequency: 24912
+  - type: B_GC_LZ
+    frequency: 19084
+  - type: T_CD4+_TfH
+    frequency: 17758
+  - type: B_plasma
+    frequency: 17239
+  - type: Endothelial
+    frequency: 17044
+  - type: T_CD8+_cytotoxic
+    frequency: 16827
+  - type: B_naive
+    frequency: 16425
+  - type: Monocytes
+    frequency: 16011
+  - type: ILC
+    frequency: 12334
+  - type: T_CD4+
+    frequency: 9806
+  - type: B_activated
+    frequency: 8548
+  - type: Macrophages_M2
+    frequency: 8070
+  - type: T_CD4+_TfH_GC
+    frequency: 7167
+  - type: DC_pDC
+    frequency: 6982
+  - type: T_TfR
+    frequency: 6246
+  - type: B_GC_DZ
+    frequency: 5271
+  - type: NKT
+    frequency: 3662
+  - type: Macrophages_M1
+    frequency: 3640
+  - type: T_CD8+_naive
+    frequency: 2557
+  - type: FDC
+    frequency: 2085
+  - type: VSMC
+    frequency: 1471
+  - type: T_Treg
+    frequency: 1382
+  - type: DC_cDC2
+    frequency: 1208
+  - type: T_CD8+_CD161+
+    frequency: 944
+  - type: DC_cDC1
+    frequency: 846
+  - type: Mast
+    frequency: 434
+  - type: B_preGC
+    frequency: 396
+  - type: DC_CCR7+
+    frequency: 293
+  - type: B_IFN
+    frequency: 280
+  - type: B_GC_prePB
+    frequency: 181
+  - type: T_TIM3+
+    frequency: 169
