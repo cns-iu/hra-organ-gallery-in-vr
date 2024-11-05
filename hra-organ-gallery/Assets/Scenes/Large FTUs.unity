@@ -1326,12 +1326,13 @@ PrefabInstance:
         information</b>: There are a total of 4992 total spots per capture area and
         each spot is 55 \xB5m in diameter with a 100 \xB5m center to center distance
         between spots.\r\n\n<b>Courtesy of<b> Maria Pedersen, Courteney Mattison,
-        Nicholas Sloan, Jason Mares, Hemali Phatnani (NYGC & Columbia University)"
+        Nicholas Sloan, Jason Mares, Hemali Phatnani (NYGC & Columbia University)
+        as well as Vilas Menon (Columbia) and Aidan Daly (NYGC)."
       objectReference: {fileID: 0}
     - target: {fileID: 2340305493712730342, guid: 790962dd6cbbf43b5bf78735dd41f3c6,
         type: 3}
       propertyPath: m_fontSize
-      value: 505.45
+      value: 489.2
       objectReference: {fileID: 0}
     - target: {fileID: 2340305493712730342, guid: 790962dd6cbbf43b5bf78735dd41f3c6,
         type: 3}
