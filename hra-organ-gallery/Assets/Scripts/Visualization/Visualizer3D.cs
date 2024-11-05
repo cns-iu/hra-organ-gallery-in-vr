@@ -113,13 +113,13 @@ public class Visualizer3D : VisualizerBase
                 0,
                 _maxVectorOriginal.y * _scalingFactor);
 
-        result.z = 0f;
-            // originalPosition
-            //     .z
-            //     .Remap(0,
-            //     _maxVectorOriginal.z,
-            //     0,
-            //     _maxVectorOriginal.z * _scalingFactor);
+        // result.z = 0f;
+            originalPosition
+                .z
+                .Remap(0,
+                _maxVectorOriginal.z,
+                0,
+                _maxVectorOriginal.z * _scalingFactor);
 
         return result;
     }
