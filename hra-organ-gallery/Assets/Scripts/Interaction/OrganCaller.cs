@@ -28,7 +28,7 @@ namespace HRAOrganGallery
         public List<string> TwoSidedOrgans { get { return _twoSidedOrgans; } private set { } }
 
         [Header("3D Objects")]
-        [SerializeField] private Transform _currentOrgan;
+        [SerializeField] public Transform _currentOrgan;
         [SerializeField] private GameObject pre_TissueBlock;
         [SerializeField] private Transform _platform;
         [SerializeField] private Transform _defaultLocation;

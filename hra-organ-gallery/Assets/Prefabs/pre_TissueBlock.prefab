@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4480762098930172057}
   - component: {fileID: -5558407448840974127}
   - component: {fileID: -1230945338834849994}
+  - component: {fileID: 9179788795157516172}
   m_Layer: 7
   m_Name: pre_TissueBlock
   m_TagString: Untagged
@@ -319,3 +320,19 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &9179788795157516172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903711217248147082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cae2e9b5cf407f43840036ed55b8ac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <DefaultPosition>k__BackingField: {x: 0, y: 0, z: 0}
+  lineMaterial: {fileID: 2100000, guid: dca8ecc9455b1f14fa7af1c88bdb6337, type: 2}
+  isTissueBlockModeActive: 0
+  isOrganPicked: 0

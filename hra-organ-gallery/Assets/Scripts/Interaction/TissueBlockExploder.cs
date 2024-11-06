@@ -15,7 +15,7 @@ public class TissueBlockExploder : MonoBehaviour
 
     [Header("Explode tissue blocks")]
     [SerializeField] private InputActionReference _explodeTissueBlocks;
-    [SerializeField] private List<GameObject> _explodeTissueBlocksList = new List<GameObject>();
+    [SerializeField] private List<Transform> _explodeTissueBlocksList = new List<Transform>();
     public Vector3 Centroid { get { return _centroid; } }
     [SerializeField] private Vector3 _centroid;
     [SerializeField] private List<GameObject> _tissueBlocks = new List<GameObject>();
@@ -58,19 +58,18 @@ public class TissueBlockExploder : MonoBehaviour
     {
         _sphere = GetComponent<Transform>();
         _max = GetComponent<AdjustSphereSize>().SphereSizeMax;
-        _tissueBlocks = GameObject.FindGameObjectsWithTag("TissueBlock").ToList();
-        foreach (var block in _tissueBlocks)
-        {
-            block.GetComponent<TissueBlockExplodeManager>().DefaultPosition = block.transform.position;
-        }
-        _centroid = Utils.ComputeCentroid(_tissueBlocks);
+        _centroid = Utils.ComputeCentroid(_explodeTissueBlocksList);
     }
+
+    //find all GOs with TB data under parent, compute centroid once!
+    void GetAllTissueBlocksInOrgan() { }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<TissueBlockData>() != null)
         {
-            _explodeTissueBlocksList.Add(other.gameObject);
+            _explodeTissueBlocksList.Add(other.gameObject.transform);
+            _centroid = Utils.ComputeCentroid(_explodeTissueBlocksList);
         }
     }
 
@@ -78,7 +77,8 @@ public class TissueBlockExploder : MonoBehaviour
     {
         if (other.GetComponent<TissueBlockData>() != null)
         {
-            _explodeTissueBlocksList.Remove(other.gameObject);
+            _explodeTissueBlocksList.Remove(other.gameObject.transform);
+            _centroid = Utils.ComputeCentroid(_explodeTissueBlocksList);
         }
     }
 
