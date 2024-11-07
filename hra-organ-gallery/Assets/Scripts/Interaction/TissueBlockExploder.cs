@@ -1,6 +1,7 @@
 using Assets.Scripts.Data;
 using Assets.Scripts.Shared;
 using HRAOrganGallery;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,7 @@ public class TissueBlockExploder : MonoBehaviour
     {
         _explodeTissueBlocks.action.performed += ExplodeTissueBlocks;
         OrganCaller.OnOrganPicked += GetAllTissueBlocks;
+        AfterInteractResetOrgan.OnOrganResetClicked += ResetAllExplosion;
 
         //get current organ etc.
         GetAllTissueBlocks();
@@ -38,6 +40,17 @@ public class TissueBlockExploder : MonoBehaviour
     {
         _explodeTissueBlocks.action.performed -= ExplodeTissueBlocks;
         OrganCaller.OnOrganPicked -= GetAllTissueBlocks;
+        AfterInteractResetOrgan.OnOrganResetClicked -= ResetAllExplosion;
+    }
+
+    private void ResetAllExplosion()
+    {
+        _tissueBlocks.ForEach(
+            t =>
+            {
+                t.position = t.gameObject.GetComponent<TissueBlockExplodeManager>().DefaultPosition;
+            }
+        );
     }
 
     //overload GetAllTissueBlocks(OrganData data) so it can be called independently of the event from OrganCaller
@@ -78,7 +91,6 @@ public class TissueBlockExploder : MonoBehaviour
     {
         _sphere = GetComponent<Transform>();
         _max = GetComponent<AdjustSphereSize>().SphereSizeMax;
-        // _centroid = Utils.ComputeCentroid(_tissueBlocks);
     }
 
 
@@ -87,7 +99,6 @@ public class TissueBlockExploder : MonoBehaviour
         if (other.GetComponent<TissueBlockData>() != null)
         {
             _explodeTissueBlocksList.Add(other.gameObject.transform);
-            // _centroid = Utils.ComputeCentroid(_tissueBlocks);
         }
     }
 
@@ -96,7 +107,6 @@ public class TissueBlockExploder : MonoBehaviour
         if (other.GetComponent<TissueBlockData>() != null)
         {
             _explodeTissueBlocksList.Remove(other.gameObject.transform);
-            // _centroid = Utils.ComputeCentroid(_tissueBlocks);
         }
     }
 

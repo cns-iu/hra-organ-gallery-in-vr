@@ -21,7 +21,13 @@ public class TissueBlockExplodeManager : MonoBehaviour
         {
             isTissueBlockModeActive = newState == UserInputState.TissueBlockExplode;
             _renderer.enabled = isTissueBlockModeActive;
+
+            if (!isTissueBlockModeActive) ResetPosition();
         };
+    }
+
+    private void ResetPosition() {
+        transform.position = DefaultPosition;
     }
 
     private void OnDestroy()
