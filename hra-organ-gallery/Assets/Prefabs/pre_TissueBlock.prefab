@@ -333,6 +333,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <DefaultPosition>k__BackingField: {x: 0, y: 0, z: 0}
-  lineMaterial: {fileID: 2100000, guid: dca8ecc9455b1f14fa7af1c88bdb6337, type: 2}
+  lineMaterial: {fileID: 2100000, guid: 7fed9a71e42d54274894ca8863777238, type: 2}
   isTissueBlockModeActive: 0
   isOrganPicked: 0
