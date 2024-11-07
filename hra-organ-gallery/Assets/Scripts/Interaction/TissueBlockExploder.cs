@@ -18,7 +18,7 @@ public class TissueBlockExploder : MonoBehaviour
     [SerializeField] private List<Transform> _explodeTissueBlocksList = new List<Transform>();
     public Vector3 Centroid { get { return _centroid; } }
     [SerializeField] private Vector3 _centroid;
-    [SerializeField] private List<GameObject> _tissueBlocks = new List<GameObject>();
+    [SerializeField] private List<Transform> _tissueBlocks = new List<Transform>();
     private float _min = 0f;
     private float _max = .2f;
     [SerializeField] private float _rate = .1f;
@@ -28,11 +28,31 @@ public class TissueBlockExploder : MonoBehaviour
     private void OnEnable()
     {
         _explodeTissueBlocks.action.performed += ExplodeTissueBlocks;
+        OrganCaller.OnOrganPicked += GetAllTissueBlocks;
+
+        //get current organ etc.
+        GetAllTissueBlocks();
     }
 
     private void OnDestroy()
     {
         _explodeTissueBlocks.action.performed -= ExplodeTissueBlocks;
+        OrganCaller.OnOrganPicked -= GetAllTissueBlocks;
+    }
+
+    //overload GetAllTissueBlocks(OrganData data) so it can be called independently of the event from OrganCaller
+    private void GetAllTissueBlocks()
+    {
+        //get all tissue blocks and add them to _tissueBlocks
+        _tissueBlocks = OrganCaller.Instance.TissueBlocks;
+        _centroid = Utils.ComputeCentroid(_tissueBlocks);
+    }
+
+    private void GetAllTissueBlocks(OrganData data)
+    {
+        //get all tissue blocks and add them to _tissueBlocks
+        _tissueBlocks = OrganCaller.Instance.TissueBlocks;
+        _centroid = Utils.ComputeCentroid(_tissueBlocks);
     }
 
     private void ExplodeTissueBlocks(InputAction.CallbackContext ctx)
@@ -58,18 +78,16 @@ public class TissueBlockExploder : MonoBehaviour
     {
         _sphere = GetComponent<Transform>();
         _max = GetComponent<AdjustSphereSize>().SphereSizeMax;
-        _centroid = Utils.ComputeCentroid(_explodeTissueBlocksList);
+        // _centroid = Utils.ComputeCentroid(_tissueBlocks);
     }
 
-    //find all GOs with TB data under parent, compute centroid once!
-    void GetAllTissueBlocksInOrgan() { }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<TissueBlockData>() != null)
         {
             _explodeTissueBlocksList.Add(other.gameObject.transform);
-            _centroid = Utils.ComputeCentroid(_explodeTissueBlocksList);
+            // _centroid = Utils.ComputeCentroid(_tissueBlocks);
         }
     }
 
@@ -78,7 +96,7 @@ public class TissueBlockExploder : MonoBehaviour
         if (other.GetComponent<TissueBlockData>() != null)
         {
             _explodeTissueBlocksList.Remove(other.gameObject.transform);
-            _centroid = Utils.ComputeCentroid(_explodeTissueBlocksList);
+            // _centroid = Utils.ComputeCentroid(_tissueBlocks);
         }
     }
 
