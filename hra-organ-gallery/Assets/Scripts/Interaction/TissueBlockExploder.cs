@@ -45,6 +45,10 @@ public class TissueBlockExploder : MonoBehaviour
 
     private void ResetAllExplosion()
     {
+        //reset explode value
+        _explodingValue = 0;
+
+        //reset tissue blocks
         _tissueBlocks.ForEach(
             t =>
             {

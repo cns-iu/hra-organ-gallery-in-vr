@@ -14,11 +14,14 @@ public class TissueBlockExplodeManager : MonoBehaviour
 
     private void OnEnable()
     {
-        //get default position once tissue blocke explode mode is on
-        UserInputStateManager.OnStateChanged += GetDefault;
+        OrganCaller.OnOrganPicked += HandleOrganPick;
 
+        //get default position once tissue blocke explode mode is on
         UserInputStateManager.OnStateChanged += (newState) =>
         {
+            //get defaults
+            GetDefault(newState);
+
             isTissueBlockModeActive = newState == UserInputState.TissueBlockExplode;
             _renderer.enabled = isTissueBlockModeActive;
 
@@ -26,8 +29,18 @@ public class TissueBlockExplodeManager : MonoBehaviour
         };
     }
 
-    private void ResetPosition() {
+    private void ResetPosition()
+    {
         transform.position = DefaultPosition;
+    }
+
+    private void HandleOrganPick(OrganData data)
+    {
+        if (OrganCaller.Instance.TissueBlocks.Contains(transform))
+        {
+            //get defaults
+            GetDefault();
+        }
     }
 
     private void OnDestroy()
@@ -37,7 +50,13 @@ public class TissueBlockExplodeManager : MonoBehaviour
 
     private void GetDefault(UserInputState newState)
     {
-        if (newState == UserInputState.TissueBlockExplode) DefaultPosition = transform.position;
+        DefaultPosition = transform.position;
+    }
+
+    //overload
+    private void GetDefault()
+    {
+        DefaultPosition = transform.position;
     }
 
     private void Awake()
