@@ -1,13 +1,9 @@
 using Assets.Scripts.Data;
 using Assets.Scripts.Shared;
 using HRAOrganGallery;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEngine.CullingGroup;
 
 public class TissueBlockExploder : MonoBehaviour
 {
@@ -31,6 +27,7 @@ public class TissueBlockExploder : MonoBehaviour
         _explodeTissueBlocks.action.performed += ExplodeTissueBlocks;
         OrganCaller.OnOrganPicked += GetAllTissueBlocks;
         AfterInteractResetOrgan.OnOrganResetClicked += ResetAllExplosion;
+        UserInputStateManager.OnStateChanged += HandleModeSwitch;
 
         //get current organ etc.
         GetAllTissueBlocks();
@@ -41,12 +38,16 @@ public class TissueBlockExploder : MonoBehaviour
         _explodeTissueBlocks.action.performed -= ExplodeTissueBlocks;
         OrganCaller.OnOrganPicked -= GetAllTissueBlocks;
         AfterInteractResetOrgan.OnOrganResetClicked -= ResetAllExplosion;
+        UserInputStateManager.OnStateChanged -= HandleModeSwitch;
     }
 
     private void ResetAllExplosion()
     {
         //reset explode value
         _explodingValue = 0;
+
+        //reset sphere size
+        ResetSphere();
 
         //reset tissue blocks
         _tissueBlocks.ForEach(
@@ -55,6 +56,15 @@ public class TissueBlockExploder : MonoBehaviour
                 t.position = t.gameObject.GetComponent<TissueBlockExplodeManager>().DefaultPosition;
             }
         );
+    }
+
+    private void HandleModeSwitch(UserInputState newState)
+    {
+        if (newState == UserInputState.Movement)
+        {
+            ResetAllExplosion();
+        }
+
     }
 
     //overload GetAllTissueBlocks(OrganData data) so it can be called independently of the event from OrganCaller
@@ -70,6 +80,11 @@ public class TissueBlockExploder : MonoBehaviour
         //get all tissue blocks and add them to _tissueBlocks
         _tissueBlocks = OrganCaller.Instance.TissueBlocks;
         _centroid = Utils.ComputeCentroid(_tissueBlocks);
+    }
+
+    private void ResetSphere()
+    {
+        _sphere.GetComponent<AdjustSphereSize>().ResetSphere();
     }
 
     private void ExplodeTissueBlocks(InputAction.CallbackContext ctx)
@@ -88,6 +103,8 @@ public class TissueBlockExploder : MonoBehaviour
               destination + _centroid,
               _explodeTissueBlocksList[i].GetComponent<TissueBlockExplodeManager>().ExplodeValue
           );
+
+            _explodeTissueBlocksList[i].GetComponent<TissueBlockExplodeManager>().explodeState = ExplodeState.Expanded;
         }
     }
 

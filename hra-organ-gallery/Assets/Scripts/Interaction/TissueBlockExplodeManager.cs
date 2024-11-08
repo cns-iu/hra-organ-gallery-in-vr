@@ -6,13 +6,14 @@ public enum ExplodeState { Collapsed, Expanded }
 public class TissueBlockExplodeManager : MonoBehaviour
 {
     [field: SerializeField] public Vector3 DefaultPosition { get; set; }
+    [SerializeField] public ExplodeState explodeState = ExplodeState.Collapsed;
     public float ExplodeValue { get; set; }
     private LineRenderer _renderer;
     [SerializeField] private Material lineMaterial;
 
     [SerializeField] private bool isOrganPicked = false;
     [SerializeField] private bool hasReadyBeenPicked = false;
-    [SerializeField] ExplodeState explodeState = ExplodeState.Collapsed;
+    
 
     private void OnEnable()
     {
@@ -29,6 +30,7 @@ public class TissueBlockExplodeManager : MonoBehaviour
             switch (newState)
             {
                 case UserInputState.Movement:
+                    explodeState = ExplodeState.Collapsed;
                     ResetPosition();
                     break;
                 case UserInputState.TissueBlockExplode:
@@ -77,14 +79,16 @@ public class TissueBlockExplodeManager : MonoBehaviour
     {
         switch (explodeState)
         {
-            // case ExplodeState.Collapsed:
-            //     break;
-            // case ExplodeState.Expanded:
-            //     break;
-            // default:
-            //     break;
+            case ExplodeState.Collapsed:
+                _renderer.SetPositions(new Vector3[] { transform.position, transform.position });
+                break;
+            case ExplodeState.Expanded:
+                _renderer.SetPositions(new Vector3[] { transform.position, DefaultPosition });
+                break;
+            default:
+                break;
         }
-        _renderer.SetPositions(new Vector3[] { transform.position, DefaultPosition });
+        
     }
 
     private void SetUpLines()

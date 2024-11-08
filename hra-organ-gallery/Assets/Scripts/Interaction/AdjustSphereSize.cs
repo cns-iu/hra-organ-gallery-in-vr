@@ -28,6 +28,10 @@ public class AdjustSphereSize : MonoBehaviour
         };
     }
 
+    public void ResetSphere() {
+        _sphere.localScale = new Vector3(_min, _min, _min);
+    }
+
     private void OnDestroy()
     {
         _increaseSphereSize.action.performed -= SetSphereSize;
