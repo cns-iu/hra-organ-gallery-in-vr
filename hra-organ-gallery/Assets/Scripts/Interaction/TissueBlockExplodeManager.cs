@@ -2,6 +2,7 @@ using Assets.Scripts.Data;
 using HRAOrganGallery;
 using UnityEngine;
 
+public enum ExplodeState { Collapsed, Expanded }
 public class TissueBlockExplodeManager : MonoBehaviour
 {
     [field: SerializeField] public Vector3 DefaultPosition { get; set; }
@@ -9,23 +10,34 @@ public class TissueBlockExplodeManager : MonoBehaviour
     private LineRenderer _renderer;
     [SerializeField] private Material lineMaterial;
 
-    [SerializeField] private bool isTissueBlockModeActive = false;
     [SerializeField] private bool isOrganPicked = false;
+    [SerializeField] private bool hasReadyBeenPicked = false;
+    [SerializeField] ExplodeState explodeState = ExplodeState.Collapsed;
 
     private void OnEnable()
     {
         OrganCaller.OnOrganPicked += HandleOrganPick;
 
+        AfterInteractResetOrgan.OnOrganResetClicked += () =>
+        {
+            ResetPosition();
+        };
+
         //get default position once tissue blocke explode mode is on
         UserInputStateManager.OnStateChanged += (newState) =>
         {
-            //get defaults
-            GetDefault(newState);
-
-            isTissueBlockModeActive = newState == UserInputState.TissueBlockExplode;
-            _renderer.enabled = isTissueBlockModeActive;
-
-            if (!isTissueBlockModeActive) ResetPosition();
+            switch (newState)
+            {
+                case UserInputState.Movement:
+                    ResetPosition();
+                    break;
+                case UserInputState.TissueBlockExplode:
+                    GetDefault();
+                    _renderer.enabled = true;
+                    break;
+                default:
+                    break;
+            }
         };
     }
 
@@ -41,16 +53,13 @@ public class TissueBlockExplodeManager : MonoBehaviour
             //get defaults
             GetDefault();
         }
+        // }
+
     }
 
     private void OnDestroy()
     {
-        UserInputStateManager.OnStateChanged -= GetDefault;
-    }
 
-    private void GetDefault(UserInputState newState)
-    {
-        DefaultPosition = transform.position;
     }
 
     //overload
@@ -66,6 +75,15 @@ public class TissueBlockExplodeManager : MonoBehaviour
 
     private void Update()
     {
+        switch (explodeState)
+        {
+            // case ExplodeState.Collapsed:
+            //     break;
+            // case ExplodeState.Expanded:
+            //     break;
+            // default:
+            //     break;
+        }
         _renderer.SetPositions(new Vector3[] { transform.position, DefaultPosition });
     }
 
