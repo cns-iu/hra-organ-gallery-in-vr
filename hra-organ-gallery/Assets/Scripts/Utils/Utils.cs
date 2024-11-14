@@ -173,12 +173,12 @@ namespace Assets.Scripts.Shared
             return result;
         }
 
-        public static Vector3 ComputeCentroid(List<GameObject> list)
+        public static Vector3 ComputeCentroid(List<Transform> list)
         {
             Vector3 total = Vector3.zero;
             for (int i = 0; i < list.Count; i++)
             {
-                total += list[i].transform.position;
+                total += list[i].position;
             }
             Vector3 result = total / list.Count;
             return result;

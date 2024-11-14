@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Whole Body.unity
     guid: 4c5bbf13e18d02640945f1726a681f72
   - enabled: 1
+    path: Assets/Scenes/Small Organ.unity
+    guid: 417192850eca24e2cb8de2feb99696bd
+  - enabled: 1
     path: Assets/Scenes/Large FTUs.unity
     guid: 4c36946f18b002048b4671c1750236ea
   - enabled: 1

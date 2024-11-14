@@ -2,37 +2,61 @@ using Assets.Scripts.Data;
 using HRAOrganGallery;
 using UnityEngine;
 
+public enum ExplodeState { Collapsed, Expanded }
 public class TissueBlockExplodeManager : MonoBehaviour
 {
-    public Vector3 DefaultPosition { get; set; }
+    [field: SerializeField] public Vector3 DefaultPosition { get; set; }
+    [SerializeField] public ExplodeState explodeState = ExplodeState.Collapsed;
     public float ExplodeValue { get; set; }
     private LineRenderer _renderer;
     [SerializeField] private Material lineMaterial;
 
-    [SerializeField] private bool isTissueBlockModeActive = false;
     [SerializeField] private bool isOrganPicked = false;
+    [SerializeField] private bool hasReadyBeenPicked = false;
+    
 
-
-    private void Awake()
+    private void OnEnable()
     {
-        SetUpLines();
+        OrganCaller.OnOrganPicked += HandleOrganPick;
 
-        //subscribe to event when organ is picked and placed
-        //OrganCaller.OrganPicked += ActivateLines;
+        AfterInteractResetOrgan.OnOrganResetClicked += () =>
+        {
+            ResetPosition();
+        };
+
+        //get default position once tissue blocke explode mode is on
         UserInputStateManager.OnStateChanged += (newState) =>
         {
-            isTissueBlockModeActive = newState == UserInputState.TissueBlockExplode;
-        };
-
-        OrganCaller.OnOrganPicked += (data) =>
-        {
-            //check oif tissue block has been parented yet
-            OrganData parentData;
-            if (transform.parent.TryGetComponent<OrganData>(out parentData))
+            switch (newState)
             {
-                isOrganPicked = parentData.ReferenceOrgan == GetComponent<TissueBlockData>().ReferenceOrgan;
+                case UserInputState.Movement:
+                    explodeState = ExplodeState.Collapsed;
+                    ResetPosition();
+                    break;
+                case UserInputState.TissueBlockExplode:
+                    GetDefault();
+                    _renderer.enabled = true;
+                    break;
+                default:
+                    break;
             }
         };
+    }
+
+    private void ResetPosition()
+    {
+        transform.position = DefaultPosition;
+    }
+
+    private void HandleOrganPick(OrganData data)
+    {
+        if (OrganCaller.Instance.TissueBlocks.Contains(transform))
+        {
+            //get defaults
+            GetDefault();
+        }
+        // }
+
     }
 
     private void OnDestroy()
@@ -40,26 +64,39 @@ public class TissueBlockExplodeManager : MonoBehaviour
 
     }
 
-    private void Update()
+    //overload
+    private void GetDefault()
     {
-        _renderer.SetPositions(new Vector3[] { transform.position, DefaultPosition });
+        DefaultPosition = transform.position;
     }
 
-    private void ActivateLines()
+    private void Awake()
     {
-        _renderer.enabled = true;
-        DefaultPosition = transform.position;
+        SetUpLines();
+    }
+
+    private void Update()
+    {
+        switch (explodeState)
+        {
+            case ExplodeState.Collapsed:
+                _renderer.SetPositions(new Vector3[] { transform.position, transform.position });
+                break;
+            case ExplodeState.Expanded:
+                _renderer.SetPositions(new Vector3[] { transform.position, DefaultPosition });
+                break;
+            default:
+                break;
+        }
+        
     }
 
     private void SetUpLines()
     {
         _renderer = gameObject.AddComponent<LineRenderer>();
-        _renderer.startColor = Color.white;
-        _renderer.endColor = Color.white;
         _renderer.startWidth = .001f;
         _renderer.endWidth = .001f;
         _renderer.material = lineMaterial;
-        _renderer.enabled = false;
     }
 
 }
