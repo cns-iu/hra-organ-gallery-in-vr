@@ -28,8 +28,11 @@ namespace HRAOrganGallery
         public List<string> TwoSidedOrgans { get { return _twoSidedOrgans; } private set { } }
 
         [Header("3D Objects")]
-        [SerializeField] private Transform _currentOrgan;
         [SerializeField] private GameObject pre_TissueBlock;
+
+        [SerializeField] public Transform CurrentOrgan { get; set; }
+        [field: SerializeField] public List<Transform> TissueBlocks { get; set; }
+
         [SerializeField] private Transform _platform;
         [SerializeField] private Transform _defaultLocation;
         [SerializeField] private List<GameObject> _organsLowRes;
@@ -71,6 +74,9 @@ namespace HRAOrganGallery
 
             //get default position and rotation for grab ring
             GetGrabRingDefault();
+
+            //initialize TissueBlocks property
+            TissueBlocks = new List<Transform>();
 
             //subscribe to all keyboard buttons
             OrganCallButton.OnClick += async (possibleOrgans) =>
@@ -131,12 +137,12 @@ namespace HRAOrganGallery
 
         void RemoveCurrentOrgan()
         {
-            if (_currentOrgan != null)
+            if (CurrentOrgan != null)
             {
-                _currentOrgan.transform.position = _currentOrgan.GetComponent<OrganData>().DefaultPosition;
-                _currentOrgan.transform.parent = _parentOrgansHighRes;
+                CurrentOrgan.transform.position = CurrentOrgan.GetComponent<OrganData>().DefaultPosition;
+                CurrentOrgan.transform.parent = _parentOrgansHighRes;
                 //enable the organ
-                _currentOrgan.gameObject.SetActive(false);
+                CurrentOrgan.gameObject.SetActive(false);
             }
         }
 
@@ -218,10 +224,10 @@ namespace HRAOrganGallery
 
                         CreateTissueBlocks(_highResOrganNodeArray, organ.transform);
                         organ.transform.position = _platform.position;
-                        _currentOrgan = organ.transform;
+                        CurrentOrgan = organ.transform;
 
                         //child organ to ring
-                        _currentOrgan.transform.parent = _grabber;
+                        CurrentOrgan.transform.parent = _grabber;
                     }
                 }
             }
@@ -230,11 +236,14 @@ namespace HRAOrganGallery
             NumberOfTissueBlocksInSelected = _highResOrganNodeArray.nodes.Length - 1;
 
             //raise event
-            OnOrganPicked.Invoke(_currentOrgan.GetComponent<OrganData>());
+            OnOrganPicked.Invoke(CurrentOrgan.GetComponent<OrganData>());
         }
 
         private void CreateTissueBlocks(NodeArray nodeArray, Transform organ)
         {
+            //clear TissueBlocks
+            TissueBlocks.Clear();
+
             for (int i = 0; i < nodeArray.nodes.Length; i++)
             {
                 if (nodeArray.nodes[i].scenegraph != null) continue;
@@ -257,6 +266,7 @@ namespace HRAOrganGallery
                 block.transform.localScale = reflected.lossyScale * 2f;
                 block.AddComponent<TissueBlockData>().Init(nodeArray.nodes[i]);
                 block.transform.parent = organ;
+                TissueBlocks.Add(block.transform);
             }
         }
 

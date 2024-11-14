@@ -19,16 +19,23 @@ namespace HRAOrganGallery
         private float lightTime = 2f;
         private IKeyboardHover _keyboardHoverResponse;
 
+        private bool canBeUsed = true;
+
         private void Awake()
         {
+            UserInputStateManager.OnStateChanged += (newState) => { canBeUsed = newState == UserInputState.Movement; };
             //get keyboard hover response
             _keyboardHoverResponse = GetComponentInChildren<IKeyboardHover>();
 
             GetComponent<XRBaseInteractable>().selectEntered.AddListener(
                 (SelectEnterEventArgs args) =>
                 {
-                    OnOrganResetClicked.Invoke();
-                    StartCoroutine(LightUp());
+                    if (canBeUsed)
+                    {
+                        OnOrganResetClicked?.Invoke();
+                        StartCoroutine(LightUp());
+                    }
+
                 }
                 );
 

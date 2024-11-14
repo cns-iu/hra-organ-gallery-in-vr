@@ -15,7 +15,7 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogColor: {r: 0.1254902, g: 0.11764706, b: 0.23921569, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
@@ -1326,12 +1326,13 @@ PrefabInstance:
         information</b>: There are a total of 4992 total spots per capture area and
         each spot is 55 \xB5m in diameter with a 100 \xB5m center to center distance
         between spots.\r\n\n<b>Courtesy of<b> Maria Pedersen, Courteney Mattison,
-        Nicholas Sloan, Jason Mares, Hemali Phatnani (NYGC & Columbia University)"
+        Nicholas Sloan, Jason Mares, Hemali Phatnani (NYGC & Columbia University)
+        as well as Vilas Menon (Columbia) and Aidan Daly (NYGC)."
       objectReference: {fileID: 0}
     - target: {fileID: 2340305493712730342, guid: 790962dd6cbbf43b5bf78735dd41f3c6,
         type: 3}
       propertyPath: m_fontSize
-      value: 505.45
+      value: 489.2
       objectReference: {fileID: 0}
     - target: {fileID: 2340305493712730342, guid: 790962dd6cbbf43b5bf78735dd41f3c6,
         type: 3}

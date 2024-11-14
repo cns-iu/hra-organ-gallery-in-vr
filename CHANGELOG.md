@@ -6,6 +6,16 @@
 * Rendering issues cause lack of transparency between organs and tissue blocks 
 * Jagged edges along text labels and background can occur
 
+## 0.12.2 - 2024-11-08
+
+### Added in 0.12.2
+
+* Changes to language in Large FTUs level
+* Added initial ability to disentangle tissue blocks
+* Adjusted font size on keyboard
+* Added language on store entry
+* Added lymph node level
+
 ## 0.12.1 - 2024-10-21
 
 ### Added in 0.12.1
